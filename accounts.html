@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>
+            CHOCOLATE COSMOS
+        </title>
+    </head>
+
+    <body>
+        <form action="accounts.php" method="post">
+        ACCOUNTS
+        <br>
+        <br>
+                Account name: <input type = "text" id = "account_name" />
+                <!-- <input type = "submit" id = "submitAccount" value = "Create Account" /> -->
+                <input type="button" class="submit" value="Create Account" id="createAccount"/>
+        </form>
+    </body>
+    <script>
+    //Create account
+    const createAccBtn=document.querySelector('#createAccount');
+    const accountName=document.querySelector('#account_name');
+    createAccBtn.addEventListener('click', (e) =>{
+      e.preventDefault();
+      const account=accountName.value;
+      console.log(account);
+      // Add a new document in collection "cities"
+db.collection("cities").doc("LA").set({
+    name: "Los Angeles",
+    state: "CA",
+    country: "USA"
+})
+.then(function() {
+    console.log("Document successfully written!");
+})
+.catch(function(error) {
+    console.error("Error writing document: ", error);
+});
+
+    })
+
+    </script>
+</html>

@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>
+            CHOCOLATE COSMOS
+        </title>
+    </head>
+
+    <body>
+        WELCOME TO CHOCOLATE COSMOS
+
+        <br>
+        <div>
+                <button onclick="location.href='transactions.php'">transactions</button>
+            </div>
+    <br>
+    <div>
+            <button onclick="location.href='items.php'">items</button>
+        </div>
+
+        <br>
+        <div>
+                <button onclick="location.href='accounts.html'">accounts</button>
+            </div>
+
+    <br>
+    <div>
+            <button onclick="location.href='suppliers.html'">suppliers</button>
+        </div>
+<br>
+<div>
+        <button id="logout">Log Out</button>
+    </div>
+    </body>
+
+      <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+      apiKey: "AIzaSyB8v_sona0iDOs26uX-uJtpYKCcFFjDVeQ",
+      authDomain: "chocolate-cosmos.firebaseapp.com",
+      databaseURL: "https://chocolate-cosmos.firebaseio.com",
+      projectId: "chocolate-cosmos",
+      storageBucket: "chocolate-cosmos.appspot.com",
+      messagingSenderId: "350208192448",
+      appId: "1:350208192448:web:3d0f46f2a4043d26fae225",
+      measurementId: "G-4VJF29Z73K"
+    };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      // firebase.analytics();
+
+    // auth and firestore references
+        const auth=firebase.auth();
+        const db=firebase.firestore();
+    // update firestore settings
+        db.settings({timestampsInSnapshots: true});
+
+    </script>
+    <script>
+    // logout
+    const logoutBtn=document.querySelector('#logout');
+    logoutBtn.addEventListener('click',(e)=>{
+    auth.signOut().then(() => {
+      console.log("SIGNED OUT");
+      document.location.replace("index.html");
+
+    });
+    })
+</script>
+</html>
