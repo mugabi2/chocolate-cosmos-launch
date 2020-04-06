@@ -14,7 +14,7 @@
         <br>
         <br>
         <!-- ***********ITEMS************* -->
-        <select name="select_item"> 
+        <select name="select_item">
           <option>ITEM</option>
     <?php
 include "db_chocolate_cosmos.php";
@@ -32,19 +32,19 @@ $i=0;
 foreach($stmt->fetchAll(PDO::FETCH_ASSOC) as $row){ 
     ?>
     <option>
-    <?php   
+    <?php
     $itemArray[$i] = $row['item'];
-    echo $itemArray[$i]; 
+    echo $itemArray[$i];
     $i++;
     ?>
     </option>
 
 
-<?php     CloseCon($conn); 
+<?php     CloseCon($conn); .
 } ?>
-      </select>        
+      </select>
 <!-- /////////////////////SUPPLIER/////////////////// -->
-<select name="select_supplier"> 
+<select name="select_supplier">
           <option>SUPPLIER</option>
     <?php
 
@@ -58,12 +58,12 @@ $stmt->execute(array(':no' => $zero));
 
 $r=0;
 //Your Array Data
-foreach($stmt->fetchAll(PDO::FETCH_ASSOC) as $rowa){ 
+foreach($stmt->fetchAll(PDO::FETCH_ASSOC) as $rowa){
     ?>
     <option>
-    <?php   
+    <?php
     $supArray[$r] = $rowa['supplier'];
-    echo $supArray[$r]; 
+    echo $supArray[$r];
     $i++;
     ?>
     </option>
@@ -74,10 +74,9 @@ foreach($stmt->fetchAll(PDO::FETCH_ASSOC) as $rowa){
       <!-- ///////////date//////////////// -->
       Date: <input type="date" name="date" min="2019-01-01" max="2040-01-01">
         <br>
-		
+
       Amount: <input type = "text" name = "amount" />
         <input type = "submit" name = "submit" value = "transact" />
         </form>
     </body>
 </html>
-            

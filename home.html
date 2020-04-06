@@ -1,0 +1,186 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <script type = "text/javascript"
+        src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <title>Chocolate Cosmos</title>
+</head>
+<body class="grey lighten-3">
+
+  <!-- NAVBAR -->
+  <nav class="z-depth-0 grey lighten-4">
+    <div class="nav-wrapper container">
+      <a href="#" class="brand-logo">
+        <img src="images/dblogo.png" style="width: 60px; margin-top: 10px;">
+      </a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li class="logged-in">
+            <a href="#" class="grey-text modal-trigger" data-target="modal-accounts">Create Accounts</a>
+          </li>
+          <li class="logged-in">
+            <a href="#" class="grey-text modal-trigger" data-target="modal-items">Create Items</a>
+          </li>
+          <li class="logged-in">
+            <a href="#" class="grey-text modal-trigger" data-target="modal-suppliers">Create Suppliers</a>
+          </li>
+          <li class="logged-in">
+            <a href="#" class="grey-text modal-trigger" data-target="modal-suppliers">Profile</a>
+          </li>
+          <li class="logged-out">
+            <a href="#" class="grey-text" id="logout">Log Out</a>
+          </li>
+        </span>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- account MODAL -->
+  <div id="modal-accounts" class="modal">
+    <div class="modal-content">
+      <h4>Create Accounts</h4><br />
+      <form id="accounts-form">
+        <div class="input-field">
+          <input type="text" id="account_name" required />
+          <label for="account_name">Account name</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0" id="createAccBtn">Create Account</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- items MODAL -->
+  <div id="modal-items" class="modal">
+    <div class="modal-content">
+      <h4>Create Items</h4><br />
+      <form id="items-form">
+        <div class="input-field">
+          <input type="text" id="item_name" required />
+          <label for="item_name">Item Name</label>
+        </div>
+        <div class="input-field">
+          <!-- Dropdown Trigger -->
+          <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
+
+          <!-- Dropdown Structure -->
+          <ul id='dropdown1' class='dropdown-content'>
+            <li><a href="#!">one</a></li>
+            <li><a href="#!">two</a></li>
+            <li class="divider" tabindex="-1"></li>
+            <li><a href="#!">three</a></li>
+            <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+            <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+          </ul>
+
+
+</div>
+        <button class="btn yellow darken-2 z-depth-0">Login</button>
+      </form>
+    </div>
+  </div>
+
+      <!-- suppliers MODAL -->
+      <div id="modal-suppliers" class="modal">
+        <div class="modal-content">
+          <h4>Create Supplier</h4><br />
+          <form id="suppliers-form">
+            <div class="input-field">
+              <input type="text" id="supplier_name" required />
+              <label for="supplier_name">Supplier Name</label>
+            </div>
+            <div class="input-field">
+              <input type="text" id="supplier_phone" required />
+              <label for="supplier_phone">Phone number</label>
+            </div>
+            <button class="btn yellow darken-2 z-depth-0" id="regsup">Register supplier</button>
+          </form>
+        </div>
+      </div>
+
+          <!-- profile MODAL -->
+          <div id="modal-profile" class="modal">
+            <div class="modal-content">
+              <h4>Create Supplier</h4><br />
+              <form id="profile-form">
+                <div class="input-field">
+                  <input type="text" id="company_name" required />
+                  <label for="company_name">Supplier Name</label>
+                </div>
+                <div class="input-field">
+                  <input type="text" id="company_phone" required />
+                  <label for="company_phone">Phone number</label>
+                </div>
+                <button class="btn yellow darken-2 z-depth-0">Login</button>
+              </form>
+            </div>
+          </div>
+
+  <!-- CREATE GUIDE MODAL -->
+  <div id="modal-create" class="modal">
+    <div class="modal-content">
+      <h4>Create Guide</h4><br />
+      <form id="create-form">
+        <div class="input-field">
+          <input type="text" id="title" required>
+          <label for="title">Guide Title</label>
+        </div>
+        <div class="input-field">
+          <textarea id="content" class="materialize-textarea" required></textarea>
+          <label for="content">Guide Content</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0">Create</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- GUIDE LIST -->
+  <div class="container" style="margin-top: 40px;" background="#00ffff">
+    <ul class="collapsible z-depth-0 guides" style="border: none;">
+
+    </ul>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+    apiKey: "AIzaSyB8v_sona0iDOs26uX-uJtpYKCcFFjDVeQ",
+    authDomain: "chocolate-cosmos.firebaseapp.com",
+    databaseURL: "https://chocolate-cosmos.firebaseio.com",
+    projectId: "chocolate-cosmos",
+    storageBucket: "chocolate-cosmos.appspot.com",
+    messagingSenderId: "350208192448",
+    appId: "1:350208192448:web:3d0f46f2a4043d26fae225",
+    measurementId: "G-4VJF29Z73K"
+  };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    // firebase.analytics();
+
+  // auth and firestore references
+      const auth=firebase.auth();
+      const db=firebase.firestore();
+  // update firestore settings
+      db.settings({timestampsInSnapshots: true});
+
+  </script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- <script src="scripts/auth.js"></script> -->
+  <script src="js/index.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>
