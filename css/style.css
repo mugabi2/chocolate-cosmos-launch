@@ -1,10 +1,88 @@
         html,body {
           height: 100%;
-        background-color: #F3EBF6;
+        background-color:white;
         font-family: 'Ubuntu', sans-serif;
         padding: 0px;
         margin: 0px;
     }
+        .mainprint {
+          width: 650px;
+          height: 460px;
+          margin-top: 15px;
+          padding-top: 15px;
+          padding-bottom: 5px;
+          padding-left: 10px;
+          padding-right: 10px;
+    /* #4 AND INFINITY!!! (CSS3 only) */
+    box-shadow:
+        0 0 0 5px black,
+        0 0 0 10px white,
+        0 0 0 15px black;
+        }
+          .watermark {
+          opacity: 0.2;
+          color: BLACK;
+          position: absolute;
+          margin-top: 120px;
+          margin-left: 130px;
+        }
+          .imagebox {
+          max-width: 65px;
+          max-width: 65px;
+        }
+        .printdetail{
+          max-width: 133px;
+          font-size: 25px;
+          margin: 10px;
+        }
+        .printdetailin{
+          max-width: 170px;
+          font-size: 20px !important;
+          margin: 10px;
+        }
+        .bottomchoco{
+          margin-top: 5px;
+            margin-left: 4px;
+        }
+        .firstdiv{
+          margin-top: 0px;
+        }
+        .signsa{
+          max-width: 133px;
+        }
+        .signs{
+          max-width: 220px;
+          padding-left: 10px;
+        }
+        .signse{
+          max-width: 300px;
+          padding-left: 10px;
+        }
+        .signsc{
+          max-width: 150px;
+          padding-left: 10px;
+        }
+        .signuptitle{
+          padding-top: 0px;
+        }
+        .adsec{
+          max-width: 140px;
+          width: 5000px;
+        }
+        .passnote{
+          font-size: 12px;
+        }
+        .adtitle{
+          margin-left: 0px;
+        }
+        .margin1{
+          width: 1px;
+          padding-left: 25px;
+        }
+        .margin2{
+          width: 1px;
+          padding-left: 250px;
+        }
     .box {
       width: 950px;
       height: 300px;
@@ -24,11 +102,14 @@
       /* align-items: center; */
     }
     .contactinput {
-      background: red darken-4;
+      background: grey darken-4;
       color: white;
       line-height: 1.5rem;
       border: none;
       margin: 0px;
+    }
+    .contactinput:focus {
+      background: #1a1a1a;
     }
     .footerbottom {
       width: 100%;
@@ -120,9 +201,16 @@
       margin-left: 70px;
     }
     .navio {
-    margin-top:20px;
+    margin-top:0px;
     background-color: solid #911024 ;
     padding-left: 60px;
+    }
+    .naviosup {
+    margin-top:0px;
+    height: 80px;
+    }
+    .titcont {
+      padding-top: 10px;
     }
     .trap {
     /* margin: 0 auto; */
@@ -142,14 +230,12 @@
     }
     .dating {
       /* float: left; */
-    margin-top: 3000px;
+    padding-top: 3000px;
     max-width: 140px;
     }
     .traam {
-      /* float: left;
+      float: left;
       max-width: 140px;
-    margin-right: 10px;
-  margin-left: 20px; */
     /* border: 3px solid red; */
     }
     .tranco {

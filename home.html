@@ -22,13 +22,13 @@
 <body class="grey lighten-3">
 
   <!-- NAVBAR -->
-  <nav class="z-depth-0 navio pink darken-4">
+  <nav class="z-depth-0 navio pink darken-3">
     <div class="nav-wrapper container  ">
       <a href="#" class="brand-logo left">
         <img src="images/choco2.png" style="width: 60px; margin-top: 10px;">
         Chocolate Cosmos
       </a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down ">
+      <ul id="nav-mobile" class="right nav-wrapper-fixed ">
           <li class="logged-in">
             <a href="#" class="white-text modal-trigger" data-target="modal-accounts">Create Accounts</a>
           </li>
@@ -48,6 +48,7 @@
       </ul>
     </div>
   </nav>
+
   <!-- transactions -->
   <div class="trandiv ">
     <form id="transactform" class="container white tranco" >
@@ -57,7 +58,7 @@
   <input id="date" class="trap dating datepicker autoClose" required>
   </div>
     <div class="container ">
-  <input  id="amount"  placeholder="Amount" class="trap traam" required/>
+  <input  id="amount"  placeholder="Amount" class="trap traam" required/><a class="margin2"></a>
   <button class="btn teal btntrans trap z-depth-2" id="transactbut">Transact</button>
   </div>
     </form>
@@ -72,7 +73,7 @@
           <label for="account_name">Account name</label>
         </div>
         <button class="btn teal z-depth-2" id="createAccBtn">Create Account</button>
-      </form>
+    </form>
     </div>
   </div>
 
@@ -188,13 +189,13 @@
       <img  class="socialicons" src="images/emailwhite.png" style="width: 25px; height:20px;">
     </a><br/><br/>
       <a class="chocosic white-text">CONTACT US</a><br/><br/>
-    <form class="emailus" action="index.html" method="post">
+    <!-- <form class="emailus" action="index.html" method="post">
       <input type="email" class="contactinput" id="emailyours" placeholder="Your email">
       <textarea id="emailmsg" class="contactinput" placeholder="Your message..."></textarea>
       <button class="z-depth-2" id="sendemail">
-        <!-- <i class="material-icons white-text">send</i> -->
+        <i class="material-icons white-text">send</i>
         Send email</button>
-    </form>
+    </form>  -->
   </div>
   </div>
   <div class="cointainer grey darken-3 footerbottom">

@@ -25,8 +25,8 @@ loginBtn.addEventListener('click', (e) =>{
 })
 
 // create account
-const creataccaBtn=document.querySelector('#createAccountbtn');
-creataccaBtn.addEventListener('click', (e) =>{
-  e.preventDefault();
-      document.location.href="signUp.html";
-})
+// const creataccaBtn=document.querySelector('#createAccountbtn');
+// creataccaBtn.addEventListener('click', (e) =>{
+//   e.preventDefault();
+//       document.location.href="signUp.html";
+// })

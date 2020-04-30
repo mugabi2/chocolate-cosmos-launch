@@ -2,7 +2,17 @@
 
 <head>
   <link rel="stylesheet" href="./css/style.css">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script type = "text/javascript"
+        src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
    <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
   <title>Sign in</title>
@@ -10,16 +20,48 @@
 
 <body>
   <div class="main">
-    <p class="sign" align="center">Sign in</p>
+    <p class="sign pink-text text-darken-4" align="center">Sign in</p>
     <form class="form" id="login_form">
       <input class="un " type="text" align="center" placeholder="Username" id="userEmailli">
       <input class="pass" type="password" align="center" placeholder="Password" id="userPasswordli">
       <!-- <a class="submit" align="center">Sign in</a> -->
       <input type="button" class="submit" value="Login" id="loginBtn"/>
       <p class="forgot" align="center"><a href="#">Forgot Password?</p>
-      <input type="button" class="submit" value="Create Account" id="createAccountbtn"/>
-
+      <input type="button" href="#modal-signup" class=" modal-trigger" data-target="modal-signup" value="Create Account" id="createAccountbtn"/>
     </div>
+
+      <!-- signup MODAL -->
+      <div id="modal-signup" class="modal">
+        <!-- NAVBAR -->
+        <nav class="z-depth-0 naviosup pink darken-4">
+          <div class="container titcont ">
+            <a href="#" class="bratitle brand-logo center">
+              <img src="images/choco2.png" style="width: 50px; margin-top: 10px;">
+              Chocolate Cosmos
+            </a>
+          </div>
+        </nav>
+        <div class="modal-content container">
+          <h4 class="signuptitle center">Sign Up</h4>
+          <form class="form" id="signup_form">
+            <input class="un signsa " type="text" placeholder="Surname" id="userSurnamesu"><a class="margin1"></a>
+            <input class="un signsa" type="text"  placeholder="Firstname" id="userFirstnamesu"><a class="margin1"></a>
+            <input class="un signsa" type="text"  placeholder="Phone number" id="userPhonesu"><br/>
+            <input class="un signse" type="email"  placeholder="Email" id="userEmailsu"><a class="margin1"></a>
+            <input class="un signsa" type="text"  placeholder="Company name" id="userCompanysu">
+            <input class="left pass signs" type="password" align="center" placeholder="Password" id="userPasswordsu"><br/><br/><br/><br/>
+            <a class="left red-text passnote">Password should be atleast 6 characters.</a>
+            <br/>
+            <h5 class="adtitle">Administrator Account</h5>
+            <a class="adtitle">This is where the charts, totals and other information will be displayed.</a>
+            <input class="un signs adtitle" type="email"  placeholder="Email" id="userEmailadmin">
+            <!-- <a class="submit" align="center">Sign in</a> -->
+            <a class="left red-text passnote">Password to the Administrator's account shall be sent to your email.</a>
+            <br/><br/><br/>
+            <input type="button" class="submit center" value="Sign up" id="signupBtn"/>
+          </form>
+        </div>
+      </div>
 
 </body>
 
@@ -50,7 +92,15 @@
     db.settings({timestampsInSnapshots: true});
 
 </script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $('.modal').modal();
+  });
+</script>
 <script src='js/authlogin.js'></script>
+<script src='js/authsignup.js'></script>
 <script >
 function logme(){
     console.log("emailpassword");

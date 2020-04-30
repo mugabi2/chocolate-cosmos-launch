@@ -20,12 +20,12 @@ function generator(str){
         querySnapshot.forEach(function(doc) {
           execute=1;
             // doc.data() is never undefined for query doc snapshots
-            console.log("inside");
-            console.log(doc.id, " => ", doc.data());
+            // console.log("inside");
+            // console.log(doc.id, " => ", doc.data());
               fuel=parseInt(fuel)+parseInt(1);
               string=string+fuel;
-                generator(string);
-                console.log("fuel:",fuel);
+                // generator(string);
+                // console.log("fuel:",fuel);
                 // return true;
                 // console.log("exists:", doc.data());
 
@@ -34,14 +34,14 @@ function generator(str){
     .catch(function(error) {
         console.log("Error getting documents: ", error);
     });
-    execute(execute);
+    // execute(execute);
     // if (execute==0) {
       db.collection('USERS').doc(string).set({
           code: string
         });
 
       // doc.data() will be undefined in this case
-      console.log("doesent doesent doesint");
+      // console.log("doesent doesent doesint");
     // }else {
     // }
 }
@@ -70,6 +70,10 @@ const setupTransacs =(data)=>{
   var list='';
   var liste;
   var coname="s t.#!@#$%^&*(ar";
+  var identity,identityp,identityd;
+  var prints=[];
+  var deletes=[];
+  var identities=[];
   generator(coname);
   // console.log("sani2",sani);
   data.forEach(doc=>{
@@ -96,20 +100,27 @@ const setupTransacs =(data)=>{
      }
       liste=doc.id+" "+itd+" "+amd+" "+spd+" "+dtd+" "+tmd;
       k++;
+      identity=doc.id;
+      identityp=doc.id+'p';
+      identityd=doc.id+'d';
+
       // console.log("kkkkk:",k);
-      if(k==30){return true;}
+      // if(k==30){return true;}
       // console.log(liste);
      // console.log("html1:",html);
                  })
             var li;
             y++;
+            prints.push(identityp);
+            deletes.push(identityd);
+            identities.push(identity);
             // console.log(y);
                  if(y%2==1){
              li=`
                 <li class="entry ">
-                <div class="orange lighten-4 entry valign-wrapper left">${liste}
-                <i class="small material-icons right">print</i>
-                <i class="small material-icons right">delete_forever</i>
+                <div "class="orange lighten-4 entry valign-wrapper left">${liste}
+                <i id="${identityp}" class="iconprint small material-icons right">print</i>
+                <i id="${identityd}" class="icondelete small material-icons right">delete_forever</i>
                 </div>
                 </li>
             `;
@@ -117,9 +128,9 @@ const setupTransacs =(data)=>{
               // console.log("2");
               li=`
            <li class="entry ">
-           <div class="entry valign-wrapper ">${liste}
-             <i class="small material-icons right">print</i>
-             <i class="small material-icons right">delete_forever</i>
+           <div class="entry valign-wrapper left">${liste}
+             <i id="${identityp}" class="iconprint small material-icons right">print</i>
+             <i id="${identityd}" class="icondelete small material-icons right">delete_forever</i>
            </div>
            </li>
        `;
@@ -133,7 +144,6 @@ const setupTransacs =(data)=>{
          //     console.error('Please check your collection and document name in the [firestore] shortcode!', error);
          // });
   /////////////////////
-
   });
   // console.log("list"+list);
   // data.forEach(doc=>{
@@ -142,6 +152,93 @@ const setupTransacs =(data)=>{
   // });
   // console.log("html:",html);
 transList.innerHTML=html;
+
+console.log(identities);
+
+// for(var i=0;i<y;i++){
+// var $currentitem=prints[i];
+// console.log("yoo ",currentitem);
+var cutstring;
+      $(document).ready(function(){
+        $(".iconprint").on("click", function(){
+          var idhere=$(this).attr("id");
+          console.log("preeeee ",idhere);
+var queryString = "?para1=" + idhere;
+window.location.href = "print.html" + queryString;
+      // alert(  $(this).attr("id")  );
+        });
+      });
+      $(document).ready(function(){
+        $(".icondelete").on("click", function(){
+          // console.log("deeee ",$(this).attr("id"));
+            cutstring=$(this).attr("id");
+            cutstring = cutstring.substring(0, cutstring.length - 1);
+// GETTING
+              var total,icamount,icitem,icsupplier,icaccount;
+              const docRef = db.collection('TRANSACTIONS').doc(cutstring);
+              docRef.get().then(doc => {
+                         if (doc.exists) {
+                             // console.log('Document data:', doc.data());
+                jQuery.each(doc.data(), function (key, value) {
+                if(key=="amount"){
+                icamount=value;
+                console.log("here:",icamount);
+                }else if (key=="item") {
+                icitem=value;
+                console.log("here:",icitem);
+                }else if (key=="supplier") {
+                icsupplier=value;
+                console.log("here:",icsupplier);
+              }else if (key=="account") {
+                icaccount=value;
+                console.log("here:",icaccount);
+                }
+                             })
+                         } else {
+                             // doc.data() will be undefined in this case
+                             console.error('Please check your collection and document name in the [firestore] shortcode!');
+                         }
+                     }).catch(error => {
+                         console.error('Please check your collection and document name in the [firestore] shortcode!', error);
+                     });
+// SUBTRACTING AND UPDATING
+                     const docReft = db.collection("ACCOUNTS").doc(icaccount);
+                     docReft.get().then(doc => {
+                              if (doc.exists) {
+                                  // console.log('Document data:', doc.data());
+                     jQuery.each(doc.data(), function (key, value) {
+                     if(key==icitem){
+                     var acite=value;
+
+                    var accit=value;
+                    var updacc=parseInt(acite)-parseInt(icamount);
+                    // console.log("in IT meth acc total:",total);
+                     db.collection('ACCOUNTS').doc(icaccount).update({
+                    [icitem]: updacc
+                    })
+                       console.log("here:",icamount);
+                       }
+                                    })
+                                } else {
+                                    // doc.data() will be undefined in this case
+                                    console.error('Please check your collection and document name in the [firestore] shortcode!');
+                                }
+                            }).catch(error => {
+                                console.error('Please check your collection and document name in the [firestore] shortcode!', error);
+                            });
+
+
+                             // var y=1;
+            //                  return y;
+            // db.collection("TRANSACTIONS").doc(cutstring).delete().then(function() {
+            //     console.log("Document successfully deleted!");
+            // }).catch(function(error) {
+            //     console.error("Error removing document: ", error);
+            // });
+        });
+      });
+    // }
+
 }
 
 // accounts
@@ -167,6 +264,7 @@ const setupAccounts =(data)=>{
     // console.log(doc.id,acc);
   // });
 accountList.innerHTML=html;
+// console.log(html);
 }
 //accounts
 const accountsForm=document.querySelector('#accounts-form');
@@ -188,7 +286,7 @@ createAccBtn.addEventListener('click', (e) =>{
 
   // console.log(accountName);
 })
-// transact
+// traing
 const transactForm=document.querySelector('#transactform');
 const transactBtn=document.querySelector('#transactbut');
 transactBtn.addEventListener('click', (e) =>{
@@ -198,21 +296,50 @@ transactBtn.addEventListener('click', (e) =>{
   const datetrans=transactForm['date'].value;
   const amounttrans=transactForm['amount'].value;
   const numbertrans = Math.round(+new Date()/1000);
-  console.log("no:",numbertrans);
+  // console.log("no:",numbertrans);
 
+  // if (itemtrans.val() === '') {
+  //     alert("Please select an item from the list and then proceed!");
+  //     // $('#selBooks').focus();
+  //     // return false;
+  //     console.log("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
+  //   }else {
+  //     console.log("yyyyyyyyyyyyyyyyyyyyy");
+  //   }
+  var accit;
   var d = new Date(); // for now
   const timetransaction=d.getHours()+":"+d.getMinutes();
   // worktrans(amounttrans,datetrans,itemtrans,suptrans,timetransaction,numbertrans);
     // //////////////////
-
+    // console.log("time",timetransaction);
           const docRef = db.collection('ITEMS').doc(itemtrans);
   docRef.get().then(doc => {
              if (doc.exists) {
                  // console.log('Document data:', doc.data());
     jQuery.each(doc.data(), function (key, value) {
     if(key=="account"){
-      var accit=value;
+      accit=value;
+      // var geto="total";
+      // var holdingtot=doc.data("total");
+      // console.log("holding:",holdingtot);
+      accit='beans';
       totalitems=totalIt(itemtrans,amounttrans,accit);
+
+        let id =String(numbertrans)
+        console.log(numbertrans);
+          db.collection('TRANSACTIONS').doc(id).set({
+              account: accit,
+              amount: amounttrans,
+              date:   datetrans,
+              item:   itemtrans,
+              supplier:suptrans,
+              time:timetransaction,
+              created:  firebase.firestore.FieldValue.serverTimestamp()
+            }).then(() => {
+              transactForm.reset();
+            }).catch(err => {
+              console.log(err.message);
+            });
                  }
                  })
              } else {
@@ -228,20 +355,6 @@ db.collection('ITEMS').doc(itemtrans).update({
   total: totalitems
 })
 
-  let id =String(numbertrans)
-  console.log(numbertrans);
-    db.collection('TRANSACTIONS').doc(id).set({
-        amount: amounttrans,
-        date:   datetrans,
-        item:   itemtrans,
-        supplier:suptrans,
-        time:timetransaction,
-        created:  firebase.firestore.FieldValue.serverTimestamp()
-      }).then(() => {
-        transactForm.reset();
-      }).catch(err => {
-        console.log(err.message);
-      });
       // adding supplier
                 const docRef1 = db.collection('SUPPLIERS').doc(suptrans);
         docRef1.get().then(doc => {
@@ -396,26 +509,29 @@ dropdownListtrasup.innerHTML=html;
 }
 // current total items
 function totalIt(item,amt,accc){
-  var total;
-          const docRef = db.collection('ITEMS').doc(item);
-          docRef.get().then(doc => {
+  var total, totalall;
+          const docReftm = db.collection('ITEMS').doc(item);
+          docReftm.get().then(doc => {
                      if (doc.exists) {
                          // console.log('Document data:', doc.data());
             jQuery.each(doc.data(), function (key, value) {
               if(key=="total"){
-              const tot=value;
-              console.log("in IT meth1:",tot);
-              var total=parseInt(tot)+parseInt(amt);
-              console.log("in IT meth2:",total);
+              var tot=value;
+              console.log("item",item);
+              console.log("value",value);
+              console.log("in meth db:",tot);
+              console.log("ammount", amt);
+               total=parseInt(tot)+parseInt(amt);
+              console.log("in meth after:",total);
               db.collection('ITEMS').doc(item).update({
                      total: total
                    })
 
                      var accit=value;
-                     console.log("in IT meth acc total:",total);
-            db.collection('ACCOUNTS').doc(accc).update({
-                     [item]: total
-                   })
+                     // console.log("in IT meth acc total:",total);
+            // db.collection('ACCOUNTS').doc(accc).update({
+            //          [item]: total
+            //        })
             }
             // if(key=="account"){
             //   var accit=value;
