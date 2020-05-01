@@ -310,50 +310,13 @@ transactBtn.addEventListener('click', (e) =>{
   var d = new Date(); // for now
   const timetransaction=d.getHours()+":"+d.getMinutes();
   // worktrans(amounttrans,datetrans,itemtrans,suptrans,timetransaction,numbertrans);
-    // //////////////////
-    // console.log("time",timetransaction);
-          const docRef = db.collection('ITEMS').doc(itemtrans);
-  docRef.get().then(doc => {
-             if (doc.exists) {
-                 // console.log('Document data:', doc.data());
-    jQuery.each(doc.data(), function (key, value) {
-    if(key=="account"){
-      accit=value;
-      // var geto="total";
-      // var holdingtot=doc.data("total");
-      // console.log("holding:",holdingtot);
-      accit='beans';
-      totalitems=totalIt(itemtrans,amounttrans,accit);
-
-        let id =String(numbertrans)
-        console.log(numbertrans);
-          db.collection('TRANSACTIONS').doc(id).set({
-              account: accit,
-              amount: amounttrans,
-              date:   datetrans,
-              item:   itemtrans,
-              supplier:suptrans,
-              time:timetransaction,
-              created:  firebase.firestore.FieldValue.serverTimestamp()
-            }).then(() => {
-              transactForm.reset();
-            }).catch(err => {
-              console.log(err.message);
-            });
-                 }
-                 })
-             } else {
-                 // doc.data() will be undefined in this case
-                 console.error('Please check your collection and document name in the [firestore] shortcode!');
-             }
-         }).catch(error => {
-             console.error('Please check your collection and document name in the [firestore] shortcode!', error);
-         });
-  /////////////////////
+    //111111111111111111111111
+    var accnow=totalIt(itemtrans,amounttrans);
+    console.log("now",accnow);
   totalitems=totalitems+amounttrans;
-db.collection('ITEMS').doc(itemtrans).update({
-  total: totalitems
-})
+// db.collection('ITEMS').doc(itemtrans).update({
+//   total: totalitems
+// })
 
       // adding supplier
                 const docRef1 = db.collection('SUPPLIERS').doc(suptrans);
@@ -364,7 +327,7 @@ db.collection('ITEMS').doc(itemtrans).update({
           if(key=="total"){
             var cash=value;
             cash=parseInt(cash)+parseInt(amounttrans);
-            console.log("cash:"+cash);
+            // console.log("cash:"+cash);
           docRef1.update({
             total: cash
           })
@@ -507,9 +470,50 @@ dropdownListtrasup.innerHTML=html;
     $('select').formSelect();
   });
 }
+function accountIt(item,amt,accc){
+
+            const docRef = db.collection('ITEMS').doc(itemtrans);
+    docRef.get().then(doc => {
+               if (doc.exists) {
+                   // console.log('Document data:', doc.data());
+      jQuery.each(doc.data(), function (key, value) {
+      if(key=="account"){
+        accit=value;
+        // var geto="total";
+        // var holdingtot=doc.data("total");
+        // console.log("holding:",holdingtot);
+        accit='beans';
+
+          let id =String(numbertrans)
+          console.log(numbertrans);
+            // db.collection('TRANSACTIONS').doc(id).set({
+            //     account: accit,
+            //     amount: amounttrans,
+            //     date:   datetrans,
+            //     item:   itemtrans,
+            //     supplier:suptrans,
+            //     time:timetransaction,
+            //     created:  firebase.firestore.FieldValue.serverTimestamp()
+            //   }).then(() => {
+            //     transactForm.reset();
+            //   }).catch(err => {
+            //     console.log(err.message);
+            //   });
+                   }
+                   })
+               } else {
+                   // doc.data() will be undefined in this case
+                   console.error('Please check your collection and document name in the [firestore] shortcode!');
+               }
+           }).catch(error => {
+               console.error('Please check your collection and document name in the [firestore] shortcode!', error);
+           });
+    /////////////////////
+}
 // current total items
-function totalIt(item,amt,accc){
+function totalIt(item,amt){
   var total, totalall;
+  var accret;
           const docReftm = db.collection('ITEMS').doc(item);
           docReftm.get().then(doc => {
                      if (doc.exists) {
@@ -517,15 +521,13 @@ function totalIt(item,amt,accc){
             jQuery.each(doc.data(), function (key, value) {
               if(key=="total"){
               var tot=value;
-              console.log("item",item);
-              console.log("value",value);
-              console.log("in meth db:",tot);
-              console.log("ammount", amt);
+              console.log("item now now",tot);
+              console.log(tot," ++++",amt);
                total=parseInt(tot)+parseInt(amt);
               console.log("in meth after:",total);
-              db.collection('ITEMS').doc(item).update({
-                     total: total
-                   })
+              // db.collection('ITEMS').doc(item).update({
+              //        total: total
+              //      })
 
                      var accit=value;
                      // console.log("in IT meth acc total:",total);
@@ -548,8 +550,28 @@ function totalIt(item,amt,accc){
                  }).catch(error => {
                      console.error('Please check your collection and document name in the [firestore] shortcode!', error);
                  });
-                 var y=1;
-                 return y;
+
+                           const docRef1 = db.collection('ITEMS').doc(item);
+                   var statement=await docRef1.get().then(doc => {
+                              if (doc.exists) {
+                                  // console.log('Document data:', doc.data());
+                     jQuery.each(doc.data(), function (key, value) {
+                     if(key=="account"){
+                       this.accret=value;
+                       return accret;
+                                            }
+                                  })
+                              } else {
+                                  // doc.data() will be undefined in this case
+                                  console.error('Please check your collection and document name in the [firestore] shortcode!');
+                              }
+                          }).catch(error => {
+                              console.error('Please check your collection and document name in the [firestore] shortcode!', error);
+                          });
+                 // var y=1;
+                 console.log("now1",statement);
+                 console.log("now2",accret);
+                 return accret;
 }
 // current total items
 function worktrans(
