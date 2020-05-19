@@ -28,7 +28,7 @@
       <div class="center ">
       <img class="center imagebox" src="images/dblogo.png" style="width: 100px; margin-top: 0px;">
       </div>
-      <h4 class="center">ST FLORENCE S S</h4>
+      <h4 class="center" id="companynameid"></h4>
       <hr>
       <h5 class="center">PAYMENT VOUCHER</h5>
       <hr>
@@ -74,6 +74,21 @@
               const db=firebase.firestore();
           // update firestore settings
               db.settings({timestampsInSnapshots: true});
+
+  //             firebase.firestore().enablePersistence()
+  // .catch(function(err) {
+  //     if (err.code == 'failed-precondition') {
+  //         // Multiple tabs open, persistence can only be enabled
+  //         // in one tab at a a time.
+  //         // ...
+  //     } else if (err.code == 'unimplemented') {
+  //         // The current browser does not support all of the
+  //         // features required to enable persistence
+  //         // ...
+  //     }
+  // });
+// Subsequent queries will use persistence, if it was enabled successfully
+
 ////////////////////////////////////////////////
 
       </script>

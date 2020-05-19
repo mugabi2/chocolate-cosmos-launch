@@ -4,7 +4,11 @@
         font-family: 'Ubuntu', sans-serif;
         padding: 0px;
         margin: 0px;
+        /* visibility: hidden; */
     }
+    .bodey {
+    visibility: hidden;
+}
         .mainprint {
           width: 650px;
           height: 460px;
@@ -82,6 +86,18 @@
         .margin2{
           width: 1px;
           padding-left: 250px;
+        }
+        .margin3{
+          width: 1px;
+          padding-left: 50px;
+        }
+        .margin4{
+          width: 1px;
+          padding-left: 5px;
+        }
+        .dater{
+          max-width: 120px;
+          padding-left: 0px;
         }
     .box {
       width: 950px;
@@ -203,7 +219,7 @@
     .navio {
     margin-top:0px;
     background-color: solid #911024 ;
-    padding-left: 60px;
+    padding-left: 0px;
     }
     .naviosup {
     margin-top:0px;
@@ -238,6 +254,22 @@
       max-width: 140px;
     /* border: 3px solid red; */
     }
+    .probar {
+    position: -webkit-sticky;
+    position: sticky;
+  left:  50%;
+  top: 50%;
+  width: 200px;
+  height: 200px;
+    }
+  .sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  /* background-color: yellow; */
+  /* padding: 50px; */
+  /* font-size: 20px; */
+}
     .tranco {
     margin-top: 40px;
     margin-bottom: 20px;

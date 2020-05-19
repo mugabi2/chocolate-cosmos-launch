@@ -1,0 +1,252 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <script type = "text/javascript"
+        src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+        <!--Load the AJAX API-->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+  <title>Chocolate Cosmos</title>
+</head>
+<body class="grey lighten-3">
+
+  <!-- NAVBAR -->
+  <nav class="z-depth-0 navio pink darken-3 sticky">
+    <div class="nav-wrapper container  ">
+      <a onclick="location.href='index.html';" class="brand-logo left">
+        <img  src="images/choco2.png" style="width: 60px; margin-top: 10px;">
+        Chocolate Cosmos
+      </a>
+      <ul id="nav-mobile" class="right nav-wrapper-fixed ">
+          <li class="logged-in">
+            <a href="#" class="white-text modal-trigger" data-target="modal-accounts">Create Accounts</a>
+          </li>
+          <li class="logged-in">
+            <a href="#" class="white-text modal-trigger" data-target="modal-items">Create Items</a>
+          </li>
+          <li class="logged-in">
+            <a href="#" class="white-text modal-trigger" data-target="modal-suppliers">Create Suppliers</a>
+          </li>
+          <li class="logged-in">
+            <a href="#" class="white-text modal-trigger" data-target="modal-suppliers">Profile</a>
+          </li>
+          <li class="logged-out">
+            <a href="#" class="white-text" id="logout">Log Out</a>
+          </li>
+        </span>
+      </ul>
+    </div>
+  </nav>
+
+    <ul id="tabs-swipe-demo" class="tabs">
+      <li class="tab col s3"><a class="active" href="#testacc">ACCOUNTS</a></li>
+      <li class="tab col s3"><a  href="#testit">ITEMS</a></li>
+    </ul>
+        <!--Table and divs that hold the pie charts-->
+        <table class="columns" id="testacc">
+          <tr>
+            <td><div class="center" id="piechart_div" style="border: 1px solid #ccc"></div></td>
+            <td><div  class="center" id="barchart_div" style="border: 1px solid #ccc"></div></td>
+          </tr>
+        </table>
+              <!--Table and divs that hold the pie charts-->
+              <table class="columns" id="testit">
+                <tr>
+                  <td><div class="center" id="piechart_divit" style="border: 1px solid #ccc"></div></td>
+                  <td><div  class="center" id="barchart_divit" style="border: 1px solid #ccc"></div></td>
+                </tr>
+              </table>
+  <!-- items MODAL -->
+  <div id="modal-items" class="modal">
+    <div class="modal-content">
+      <h4>Create Items</h4><br />
+      <form id="items-form">
+        <div class="input-field">
+          <input type="text" id="item_name" required />
+          <label for="item_name">Item Name</label>
+        </div>
+  <div class="input-field col s12 one">
+  </div>
+        <button class="btn teal z-depth-2 z-depth-0" id="createIt">Create Item</button>
+      </form>
+    </div>
+  </div>
+
+      <!-- suppliers MODAL -->
+      <div id="modal-suppliers" class="modal">
+        <div class="modal-content">
+          <h4>Create Supplier</h4><br />
+          <form id="suppliers-form">
+            <div class="input-field">
+              <input type="text" id="supplier_name" required />
+              <label for="supplier_name">Supplier Name</label>
+            </div>
+            <div class="input-field">
+              <input type="text" id="supplier_phone" required />
+              <label for="supplier_phone">Phone number</label>
+            </div>
+            <button class="btn teal z-depth-2 z-depth-0" id="regsup">Register supplier</button>
+          </form>
+        </div>
+      </div>
+
+          <!-- profile MODAL -->
+          <div id="modal-profile" class="modal">
+            <div class="modal-content">
+              <h4>Create Supplier</h4><br />
+              <form id="profile-form">
+                <div class="input-field">
+                  <input type="text" id="company_name" required />
+                  <label for="company_name">Supplier Name</label>
+                </div>
+                <div class="input-field">
+                  <input type="text" id="company_phone" required />
+                  <label for="company_phone">Phone number</label>
+                </div>
+                <button class="btn teal z-depth-2 z-depth-0">Login</button>
+              </form>
+            </div>
+          </div>
+
+  <!-- CREATE GUIDE MODAL -->
+  <div id="modal-create" class="modal">
+    <div class="modal-content">
+      <h4>Create Guide</h4><br />
+      <form id="create-form">
+        <div class="input-field">
+          <input type="text" id="title" required>
+          <label for="title">Guide Title</label>
+        </div>
+        <div class="input-field">
+          <textarea id="content" class="materialize-textarea" required></textarea>
+          <label for="content">Guide Content</label>
+        </div>
+        <button class="btn teal z-depth-2">Create</button>
+      </form>
+    </div>
+  </div>
+
+        <table>
+          <thead>
+            <tr>
+                <th>ACCOUNT NAME</th>
+                <th>TOTAL</th>
+            </tr>
+          </thead>
+          <tbody class="tablo">
+          </tbody>
+        </table>
+
+              <table>
+                <thead>
+                  <tr>
+                      <th>ITEM NAME</th>
+                      <th>TOTAL</th>
+                  </tr>
+                </thead>
+                <tbody class="tabloit">
+                </tbody>
+              </table>
+  <!-- black -->
+  <div class=" bottombox grey darken-4 footer">
+  <div class=" bottombox grey darken-4 footer ">
+  <div class="blackleft left grey darken-4 ">
+    <a href="#" class="brand-logo left ">
+      <img src="images/choco2.png" style="width: 63px; height:33px;">
+      <a class="chocosize white-text">Chocolate Cosmos</a>
+    </a>
+  </div>
+  <div class="blackabout left grey darken-4">
+    <a class="chocosititle white-text">ABOUT CHOCOLATE COSMOS</a><br/>
+    <a class="chocosid white-text" href="http://stardigitalbikes.com/">About Us</a><br/>
+    <a class="chocosid white-text" href="http://stardigitalbikes.com/">Terms and Conditions</a><br/>
+    <a class="chocosid white-text" href="http://stardigitalbikes.com/">Privacy policy</a>
+  </div>
+  <div class="blackcontact left grey darken-4">
+    <a class="chocosi white-text">FOLLOW US</a><br/><br/>
+
+      <a href="http://stardigitalbikes.com/">
+      <img  class="socialicons" src="images/facebookwhite.png" style="width: 15px; height:25px; margin-right: 35px;">
+      </a>
+      <a href="http://stardigitalbikes.com/">
+      <img  class="socialicons" src="images/twitterwhite.png" style="width: 25px; height:20px; margin-right: 35px;">
+      </a>
+      <a href="http://stardigitalbikes.com/">
+      <img  class="socialicons" src="images/emailwhite.png" style="width: 25px; height:20px;">
+    </a><br/><br/>
+      <a class="chocosic white-text">CONTACT US</a><br/><br/>
+    <!-- <form class="emailus" action="index.html" method="post">
+      <input type="email" class="contactinput" id="emailyours" placeholder="Your email">
+      <textarea id="emailmsg" class="contactinput" placeholder="Your message..."></textarea>
+      <button class="z-depth-2" id="sendemail">
+        <i class="material-icons white-text">send</i>
+        Send email</button>
+    </form>  -->
+  </div>
+  </div>
+  <div class="cointainer grey darken-3 footerbottom">
+  &copy;stardigitalbikes
+  </div>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+    apiKey: "AIzaSyB8v_sona0iDOs26uX-uJtpYKCcFFjDVeQ",
+    authDomain: "chocolate-cosmos.firebaseapp.com",
+    databaseURL: "https://chocolate-cosmos.firebaseio.com",
+    projectId: "chocolate-cosmos",
+    storageBucket: "chocolate-cosmos.appspot.com",
+    messagingSenderId: "350208192448",
+    appId: "1:350208192448:web:3d0f46f2a4043d26fae225",
+    measurementId: "G-4VJF29Z73K"
+  };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    // firebase.analytics();
+
+  // auth and firestore references
+      const auth=firebase.auth();
+      const db=firebase.firestore();
+  // update firestore settings
+      db.settings({timestampsInSnapshots: true});
+      //
+      // firebase.firestore().enablePersistence()
+      //   .catch(function(err) {
+      //       if (err.code == 'failed-precondition') {
+      //           // Multiple tabs open, persistence can only be enabled
+      //           // in one tab at a a time.
+      //           // ...
+      //       } else if (err.code == 'unimplemented') {
+      //           // The current browser does not support all of the
+      //           // features required to enable persistence
+      //           // ...
+      //       }
+      //   });
+      // Subsequent queries will use persistence, if it was enabled successfully
+
+  </script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- <script src="scripts/auth.js"></script> -->
+  <script src="js/reports.js"></script>
+  <!-- <script src="js/home.js"></script> -->
+</body>
+
+</html>

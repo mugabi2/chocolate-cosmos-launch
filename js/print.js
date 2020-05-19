@@ -1,4 +1,25 @@
 var identity;
+var userid_key="userid";
+var account_key="account";
+var items_key="items";
+var suppliers_key="suppliers";
+var transactions_key="transactions";
+var company_key="company";
+var surname_key="surname";
+var firstname_key="firstname";
+var phone_key="phone";
+var email_key="email";
+
+
+        var el_down = document.getElementById("companynameid");
+        setext();
+        function setext() {
+            var inpu = localStorage.getItem(company_key);
+            console.log("dfg",inpu);
+
+            el_down.innerHTML =inpu;
+        }
+
 var queryString = decodeURIComponent(window.location.search); //parsing
 queryString = queryString.substring(1);
 var queries = queryString.split("&");
@@ -14,9 +35,11 @@ identity=stringers[1];
 }
 identity=identity.substring(0, identity.length - 1);
 
+  // Retrieve
+  var trasa = localStorage.getItem(transactions_key);
 // GETTING
 var total,icamount,icitem,icsupplier,icdate;
-const docRef = db.collection('TRANSACTIONS').doc(identity);
+const docRef = db.collection(trasa).doc(identity);
 docRef.get().then(doc => {
          if (doc.exists) {
              // console.log('Document data:', doc.data());

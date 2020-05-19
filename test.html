@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <!-- <form class="form" id="testt">
+      <input class="un " type="text" align="center" placeholder="Username" id="userEmailli">
+      <input class="pass" type="password" align="center" placeholder="Password" id="userPasswordli">
+      <!-- <a class="submit" align="center">Sign in</a> -->
+      <!-- <input type="button" class="submit" value="Login" id="loginBtn"/>
+      <p class="forgot" align="center"><a href="#">Forgot Password?</p>
+      <input type="button" href="#modal-signup" class=" modal-trigger" data-target="modal-signup" value="Create Account" id="createAccountbtn"/>
+      <input type="button" class="submit center" value="Sign up" id="signupBtn"/> --> -->
+
+    <form class="form" id="testt">
+      <input class="un signsa " type="text" placeholder="Surname" id="userSurnamesu"><a class="margin1"></a>
+      <input class="un signsa" type="text"  placeholder="Firstname" id="userFirstnamesu"><a class="margin1"></a>
+      <input class="un signsa" type="text"  placeholder="Phone number" id="userPhonesu"><br/>
+      <input class="un signse" type="email"  placeholder="Email" id="userEmailsu"><a class="margin1"></a>
+      <input class="un signsa" type="text"  placeholder="Company name" id="userCompanysu">
+      <input class="left pass signs" type="password" align="center" placeholder="Password" id="userPasswordsu"><br/><br/><br/><br/>
+      <a class="left red-text passnote">Password should be atleast 6 characters.</a>
+      <a class="right red-text fillnote" id="fillall"></a>
+    <br/>
+      <input type="button" class="submit center" value="Sign up" id="signupBtn"/>
+    </form>
+
+  </body>
+
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+    apiKey: "AIzaSyB8v_sona0iDOs26uX-uJtpYKCcFFjDVeQ",
+    authDomain: "chocolate-cosmos.firebaseapp.com",
+    databaseURL: "https://chocolate-cosmos.firebaseio.com",
+    projectId: "chocolate-cosmos",
+    storageBucket: "chocolate-cosmos.appspot.com",
+    messagingSenderId: "350208192448",
+    appId: "1:350208192448:web:3d0f46f2a4043d26fae225",
+    measurementId: "G-4VJF29Z73K"
+  };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    // firebase.analytics();
+
+  // auth and firestore references
+      const auth=firebase.auth();
+      const db=firebase.firestore();
+  // update firestore settings
+      db.settings({timestampsInSnapshots: true});
+
+  </script>
+  <script src='js/test.js'></script>
+
+</html>
