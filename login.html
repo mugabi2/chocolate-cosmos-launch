@@ -2,6 +2,9 @@
 
 <head>
   <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/login.css">
+      <link rel="stylesheet" href="./css/registration.css">
+      <!-- <link rel="stylesheet" href="./css/signup.css"> -->
   <script type = "text/javascript"
         src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
@@ -19,45 +22,156 @@
 </head>
 
 <body id="bodeys">
-  <div class="main">
+
+  <!-- <div class="main">
     <p class="sign pink-text text-darken-4" align="center">Sign in</p>
     <form class="form" id="login_form">
       <input class="un " type="text" align="center" placeholder="Username" id="userEmailli">
       <input class="pass" type="password" align="center" placeholder="Password" id="userPasswordli">
-      <!-- <a class="submit" align="center">Sign in</a> -->
       <input type="button" class="submit" value="Login" id="loginBtn"/>
       <p class="forgot" align="center"><a href="#">Forgot Password?</p>
       <input type="button" href="#modal-signup" class=" modal-trigger" data-target="modal-signup" value="Create Account" id="createAccountbtn"/>
-    </div>
+    </div> -->
+
+    <!-- partial:index.partial.html -->
+    <!-- <div class="wrapper login-wrapper first">
+    	<div class="container">
+          <img class="center"src="images/choco2.png" style="width: 100px;">
+          <h1 class="center white-text hlog">Chocolate Cosmos</h1>
+
+    		<form class="form" id="login_form">
+    			<input class="forminput center white-text input-field" type="text" placeholder="Email" id="userEmailli"></br>
+    			<input  class="forminput center input-field" type="password" placeholder="Password" id="userPasswordli"></br>
+    			<button  class="formbutton" type="submit" id="login-button">Login</button></br></br>
+          <button
+          class=" formbuttonsu center"
+          id="next">Sign up</button>
+          <p class="error white-text center-align"></p>
+    		</form>
+    	</div>
+
+    	<ul class="bg-bubbles">
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    	</ul>
+    </div> -->
+
       <!-- signup MODAL -->
-      <div id="modal-signup" class="modal">
-        <!-- NAVBAR -->
-        <nav class="z-depth-0 naviosup pink darken-4">
-          <div class="container titcont ">
-            <a href="#" class="bratitle brand-logo center">
+      <!-- <div id="modal-signup" class="modal signupmodal">
+        <nav class="z-depth-0 naviosup pink darken-3">
+          <div class="container1 titcont row">
+            <a href="#" class="bratitle brand-logo center col s12">
               <img src="images/choco2.png" style="width: 50px; margin-top: 10px;">
               Chocolate Cosmos
             </a>
           </div>
         </nav>
-        <div class="modal-content container">
-          <h4 class="signuptitle center">Sign Up</h4>
-          <form class="form" id="signup_form1">
-            <input class="un signsa " type="text" placeholder="Surname" id="userSurnamesu"><a class="margin1"></a>
-            <input class="un signsa" type="text"  placeholder="Firstname" id="userFirstnamesu"><a class="margin1"></a>
-            <input class="un signsa" type="text"  placeholder="Phone number" id="userPhonesu"><br/>
-            <input class="un signse" type="email"  placeholder="Email" id="userEmailsu"><a class="margin1"></a>
-            <input class="un signsa" type="text"  placeholder="Company name" id="userCompanysu">
-            <input class="left pass signs" type="password" align="center" placeholder="Password" id="userPasswordsu"><br/><br/><br/><br/>
-            <a class="left red-text passnote">Password should be atleast 6 characters.</a>
-            <a class="right red-text fillnote" id="fillall"></a>
+        <div class="signupmodal modal-content container row">
+          <h4 class="signuptitle center pink-text text-darken-3">Sign Up</h4>
+          <form class="form signupmodal row" id="signup_form1">
+            <input class="un signsa s12 m4 fours center" type="text" placeholder="Surname" id="userSurnamesu">
+            <input class="un signsa s12 m4 fours center" type="text"  placeholder="Firstname" id="userFirstnamesu">
+            <input class="un signsa s12 m4 fours center" type="text"  placeholder="Phone number" id="userPhonesu"><br/>
+            <input class="un signse s12 m8" type="email"  placeholder="Email" id="userEmailsu">
+            <input class="un signsa s12 m4 fours center" type="text"  placeholder="Company name" id="userCompanysu">
+            <input class="left pass s12 m12 signs" type="password" align="center" placeholder="Password" id="userPasswordsu"><br/><br/><br/><br/>
+            <a class="left red-text s12 passnote">Password should be atleast 6 characters.</a>
+            <p class="error red-text right"></p>
 <br/>
+        <div class="progress progbarsing" id="progbarsing">
+              <div class="indeterminate"></div>
+          </div>
             <input type="button" class="submit center" value="Sign up" id="signupBtn"/>
-          </form>
+            <p class="error red-text center-align"></p>
+            </form>
         </div>
+      </div> -->
+<!-- 8888888888888888888888888 -->
+
+    <div id="zero" class=" wrapper login-wrapper zero">
+      <!-- <div class=" preloader-wrapper big probar1" id="progbar1"><div class="spinner-layer spinner-yellow-only"><div class="circle-clipper left "><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div> -->
+      <div class="container">
+          <img class="center"src="images/choco2.png" style="width: 100px;">
+          <h1 class="center white-text hlog">Chocolate Cosmos</h1>
+        <form class="form" id="login_form">
+          <input class="forminput center white-text input-field" type="text" placeholder="Email" id="userEmailli"></br>
+          <input  class="forminput center input-field" type="password" placeholder="Password" id="userPasswordli"></br>
+          <button  class="formbutton" type="submit" id="login-button">Login</button></br></br>
+          <button class=" formbuttonsu center onebtn" id="onebtn">Sign up</button>
+          <p class="error white-text center-align"></p>
+        </form>
       </div>
 
+      <ul class="bg-bubbles">
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+      </ul>
+    </div>
+
+        <div id="first" class=" login-wrapper opacitee first ">
+    <div>
+    <div class="container">
+        <img id="imgone" class="center heads"src="images/choco2.png" style="width: 100px;">
+        <h1 id="hone" class="center white-text hlog heads">Chocolate Cosmos</h1>
+      <h4 id="hone4" class="hcreateacc heads">Create an account</h4><br/>
+
+        <form  id="formone" class="">
+        <input  class="forminput center white-text input-field" type="text" id="userSurnamesu" placeholder="Surname"></br>
+        <input  class="forminput center white-text input-field"type="text" id="userFirstnamesu" placeholder="Firstname"></br>
+        <input  class="forminput center white-text input-field"type="text" id="userPhonesu" maxlength="10" placeholder="Phone number"></br>
+
+        <button type="submit" class="twobtn formbuttonsu" id="twobtn">Next</button>
+      </form>
+    </div>
+    </div>
+    </div>
+<!-- 2222222222 -->
+<div id="second" class=" login-wrapper opacitee second ">
+    	<div class="container">
+        <img id="imgone" class="center heads"src="images/choco2.png" style="width: 100px;">
+        <h1 id="hone" class="center white-text hlog heads">Chocolate Cosmos</h1>
+      <h4 id="hone4" class="hcreateacc heads">Create an account</h4><br/>
+
+        <form  id="formtwo" class=""> <input type="text"  class="forminput
+        center white-text input-field" id="userCompanysu" placeholder="Company Name"><br/> <input type="text"  class="forminput center white-text
+        input-field" id="userEmailsu" placeholder="Email"><br/> <input
+        type="password"   class="forminput center white-text input-field"
+        id="userPasswordsu"placeholder="Password"><br/> <a class=" blue-text s12
+        passnote center">Password should be atleast 6 characters.</a><br/>
+
+            <!-- /////////////// -->
+                  <div class="progress progbarsing center" id="progbarsing">
+                        <div class="indeterminate"></div>
+                    </div>
+            <!-- /////////////// -->
+<button  class="twobtn formbuttonsu" id="signupBtn">Setup Account</button>
+    		</form>
+    	</div>
+    </div>
+
+    <nav id="navig" class="opacitee">
+    	<ol>
+    		<li class="active">1</li>
+    		<li>2</li>
+    	</ol>
+    </nav>
+      <script src="js/registration.js"></script>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <!-- <script  src="./script.js"></script> -->
+
+  <script src="js/signup.js"></script>
+<!-- 8888888888888888888888888 -->
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
 
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
@@ -114,4 +228,5 @@ function logme(){
     console.log("emailpassword");
 }
 </script>
+<script src="js/signup.js"></script>
 </html>

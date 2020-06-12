@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Groovy account creation</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<nav>
+	<ol>
+		<li class="active">1</li>
+		<li>2</li>
+		<li>3</li>
+	</ol>
+</nav>
+
+<div class="sec-bg"></div>
+
+<div class="login-wrapper first">
+	<div class="container">
+		<h1>Create an account</h1>
+		<h2 id="title">Welcome <span></span></h2>
+	
+		<form>
+			<p class="instruction">Choose a username</p>
+			<input type="text" id="name" maxlength="14" placeholder="Username">
+
+			<a href="#">Already have an account?</a>
+			<button type="submit" id="next">Next</button>
+		</form>
+	</div>
+</div>
+
+<div class="login-wrapper second">
+	<div class="container">
+		<h1>Create an account</h1>
+		<h2 id="title">Please create a password <span></span></h2>
+	
+		<form>
+			<p class="instruction">Choose a password</p>
+			<input type="password" maxlength="16" placeholder="Password">
+
+			<button type="submit" id="complete">Done</button>
+		</form>
+	</div>
+</div>
+
+<div class="login-wrapper third">
+	<div class="container">
+		<h2 id="title">You're done <span></span></h2>
+	</div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

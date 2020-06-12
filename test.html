@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
 <!--Import Google Icon Font-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -16,16 +16,7 @@
     <meta charset="utf-8">
     <title></title>
   </head>
-  <body>
-    <!-- <form class="form" id="testt">
-      <input class="un " type="text" align="center" placeholder="Username" id="userEmailli">
-      <input class="pass" type="password" align="center" placeholder="Password" id="userPasswordli">
-      <!-- <a class="submit" align="center">Sign in</a> -->
-      <!-- <input type="button" class="submit" value="Login" id="loginBtn"/>
-      <p class="forgot" align="center"><a href="#">Forgot Password?</p>
-      <input type="button" href="#modal-signup" class=" modal-trigger" data-target="modal-signup" value="Create Account" id="createAccountbtn"/>
-      <input type="button" class="submit center" value="Sign up" id="signupBtn"/> --> -->
-
+  <body >
     <form class="form" id="testt">
       <input class="un signsa " type="text" placeholder="Surname" id="userSurnamesu"><a class="margin1"></a>
       <input class="un signsa" type="text"  placeholder="Firstname" id="userFirstnamesu"><a class="margin1"></a>
@@ -39,6 +30,19 @@
       <input type="button" class="submit center" value="Sign up" id="signupBtn"/>
     </form>
 
+      <!-- financialyear MODAL -->
+      <div id="mofinancialyear" class="mofinancialyear modal mfy modal-financialyear">
+        <div class="modal-content">
+          <h4>Finacial Year</h4><br />
+          <form id="financialyear-form">
+              <div class="input-field">
+                <input id="fromdate" class="dater" value="FROM DATE"><a class="margin2"></a><br/>
+                <input id="todate" class="dater" value="TO DATE">
+              </div>
+            <button class="btn teal z-depth-2" id="financialyearBtn">Submit</button>
+        </form>
+        </div>
+      </div>
   </body>
 
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>

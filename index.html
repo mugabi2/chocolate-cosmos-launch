@@ -26,23 +26,53 @@
 </head>
 <body class="grey lighten-3 bodey" id="bodey">
 
-  <!-- Dropdown Structure -->
-  <ul id="dropdown1" class="dropdown-content">
-    <li><a href="#!" class="modal-trigger" data-target="modal-accounts">Accounts</a></li>
-    <li><a href="#!"  class="modal-trigger" data-target="modal-items">Items</a></li>
-    <li><a href="#!" class="modal-trigger" data-target="modal-suppliers">Suppliers</a></li>
-  </ul>
+    <!-- Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content ">
+      <li><a href="#!" class="modal-trigger" data-target="modal-accounts">Accounts</a></li>
+      <li><a href="#!"  class="modal-trigger" data-target="modal-items">Items</a></li>
+      <li><a href="#!" class="modal-trigger" data-target="modal-suppliers">Suppliers</a></li>
+    </ul>
+      <!-- Dropdown Structure -->
+      <ul id="dropdown2" class="dropdown-content">
+        <li><a href="#!" class="modal-trigger" data-target="modal-accounts">Accounts</a></li>
+        <li><a href="#!"  class="modal-trigger" data-target="modal-items">Items</a></li>
+        <li><a href="#!" class="modal-trigger" data-target="modal-suppliers">Suppliers</a></li>
+      </ul>
+  <!-- procard -->
+  <div id="dropprocard" class="container procard dropdown-content">
+    <img class="imgprocd center"src="images/choco2.png"><br/>
+  <h5 class="black-text center proco trancate">ST FLORENCE SECONDARY SCHOOL</h5>
+  <h6 class="black-text center prolice">LICENCE:100 days</h6>
+<div class="vipdiv container">
+      <img class="imgpropl center"src="images/platinum.png">
+      <img class="imgprogo center"src="images/gold.png">
+</div>
+<div class="vipdiv container">
+  <img class="center imgpromomo"src="images/momo.jpg" >
+  <img class="center imgpromomo"src="images/googlepay.png" style="width: 60px; margin-top: 10px;"><br/>
+</div>
+  <div class="input-field finapro">
+  </div>
+  <div class="collapsible-body white">financial year</div>
+  <button class=" btn teal z-depth-2 center" id="personaldetails">Personal Details</button><br/>
+  <a> </a>
+  <button class=" btn teal z-depth-2" id="financialyearBtn">LOG OUT</button>
+  </div>
+
   <!-- NAVBAR -->
   <nav class="z-depth-0 navio pink darken-3 sticky">
-    <div class="nav-wrapper container  ">
-      <a  onclick="location.href='index.html';" class="brand-logo left">
+    <div class="nav-wrapper container row">
+      <a class="sidenav-trigger left hide-on-med-and-up" href="#!" data-target="mobile-links">
+        <i class="material-icons">menu</i>
+      </a>
         <img src="images/choco2.png" style="width: 60px; margin-top: 10px;">
+        <a  onclick="location.href='index.html';" class="brand-logo flow-text">
         Chocolate Cosmos
       </a>
-      <ul id="nav-mobile" class="right nav-wrapper-fixed ">
+      <ul id="nav-mobile" class="right nav-wrapper-fixed hide-on-small-only">
       <!-- Dropdown Trigger -->
       <li>
-        <a class="dropdown-trigger" href="#!" data-target="dropdown1">Create
+        <a class=" 3 dropdown-triggerpc" href="#!" data-target="dropdown2">Create
           <i class="material-icons right">arrow_drop_down</i>
         </a>
       </li>
@@ -56,7 +86,7 @@
             <a href="#" class="white-text modal-trigger" data-target="modal-suppliers">Create Suppliers</a>
           </li> -->
           <li class="logged-in">
-            <a href="#" class="white-text modal-trigger" data-target="modal-suppliers">Profile</a>
+            <a href="#" class="white-text 4 procardtrigpc" data-target="dropprocard">Profile</a>
           </li>
           <li class="logged-out">
             <a href="#" class="white-text" id="logout">Log Out</a>
@@ -65,12 +95,38 @@
       </ul>
     </div>
   </nav>
+<!-- sidenav -->
+  <ul id="mobile-links" class="sidenav">
+  <!-- Dropdown Trigger -->
+  <li>
+    <a class="1 dropdown-triggerpn" href="#!" data-target="dropdown1">Create
+      <i class="material-icons right">arrow_drop_down</i>
+    </a>
+  </li>
+      <li class="logged-in">
+        <a href="#" onclick="location.href='reports.html';">Reports</a>
+      </li>
+      <li class="logged-in">
+        <a href="#" class=" modal-trigger" data-target="modal-items">Help</a>
+      </li>
+      <!-- <li class="logged-in">
+        <a href="#" class="white-text modal-trigger" data-target="modal-suppliers">Create Suppliers</a>
+      </li> -->
+      <li class="logged-in">
+        <a href="#" class="2 procardtrigpn" data-target="dropprocard">Profile</a>
+      </li>
+      <li class="logged-out">
+        <a href="#" class="" id="logout">Log Out</a>
+      </li>
+    </span>
+  </ul>
 </br>
-<input type="button" class="modal-trigger" data-target="modal-financialyear" value="Go to Google" />
+<input type="button" class="modal-trigger" data-target="modal-financialyear" value="Go to Google" /><br/>
+<input type="button" class="modal-trigger" data-target="helpmodal" value="Help" />
 <!-- <input type="button" onclick="location.href='reports.html';" value="Go to Google" /> -->
 <!-- /////////////// -->
 
-    <div class="preloader-wrapper big active probar">
+    <div class="preloader-wrapper big active probartra" id="probartra">
       <div class="spinner-layer spinner-blue">
         <div class="circle-clipper left">
           <div class="circle"></div>
@@ -113,11 +169,12 @@
     </div>
 <!-- /////////////// -->
   <!-- transactions -->
-  <div class="trandiv ">
-    <form id="transactform" class="container white tranco" >
+  <div class="valign-wrapper trandiv row tranco">
+    <form id="transactform" class="container white center trancona" >
       <div class="container fifty">
-  <div class="input-field col s12 left-align trap trait" required></div>
-  <div class="input-field col s12 right-align trap trasup" required></div>
+  <!-- <div class="input-field left-align trap trait"></div> -->
+<a class='dropdown-trigger btn trait' href='#' data-target='dropdown1'>Items</a>
+  <div class="input-field right-align trap trasup"></div>
   <input id="date" class="trap dating datepicker autoClose" required>
   </div>
     <div class="container ">
@@ -127,7 +184,7 @@
     </form>
 </div>
   <!-- financialyear MODAL -->
-  <div id="modal-financialyear" class="modal mfy">
+  <div id="modal-financialyear" class="modal mfy modal-financialyear">
     <div class="modal-content">
       <h4>Finacial Year</h4><br />
       <form id="financialyear-form">
@@ -142,12 +199,18 @@
     <!-- account MODAL -->
     <div id="modal-accounts" class="modal">
       <div class="modal-content">
+
         <h4>Create Accounts</h4><br />
         <form id="accounts-form">
           <div class="input-field">
             <input type="text" id="account_name" required />
             <label for="account_name">Account name</label>
           </div>
+            <!-- /////////////// -->
+                  <div class="progress progbarac " id="progbarac">
+                        <div class="indeterminate"></div>
+                    </div>
+            <!-- /////////////// -->
           <button class="btn teal z-depth-2" id="createAccBtn">Create Account</button>
       </form>
       </div>
@@ -164,6 +227,11 @@
         </div>
   <div class="input-field col s12 one">
   </div>
+    <!-- /////////////// -->
+          <div class="progress progbarit" id="progbarit">
+                <div class="indeterminate"></div>
+            </div>
+    <!-- /////////////// -->
         <button class="btn teal z-depth-2 z-depth-0" id="createIt">Create Item</button>
       </form>
     </div>
@@ -182,27 +250,24 @@
               <input type="text" id="supplier_phone" required />
               <label for="supplier_phone">Phone number</label>
             </div>
+              <!-- /////////////// -->
+                    <div class="progress progbarsup" id="progbarsup">
+                          <div class="indeterminate"></div>
+                      </div>
+              <!-- /////////////// -->
             <button class="btn teal z-depth-2 z-depth-0" id="regsup">Register supplier</button>
           </form>
         </div>
       </div>
 
-          <!-- profile MODAL -->
-          <div id="modal-profile" class="modal">
-            <div class="modal-content">
-              <h4>Create Supplier</h4><br />
-              <form id="profile-form">
-                <div class="input-field">
-                  <input type="text" id="company_name" required />
-                  <label for="company_name">Supplier Name</label>
-                </div>
-                <div class="input-field">
-                  <input type="text" id="company_phone" required />
-                  <label for="company_phone">Phone number</label>
-                </div>
-                <button class="btn teal z-depth-2 z-depth-0">Login</button>
-              </form>
-            </div>
+          <!-- HELP MODAL -->
+          <div id="helpmodal" class="modal container helpmodal">
+              <!-- <a class="center black-text helpa">How does it work?</a> -->
+            <!-- <div class="container"> -->
+              <h5 class="center">QUICK HELP</h5>
+              <img class="imghelp center"src="images/help.png">
+          <button class="btn teal z-depth-2 z-depth-0 center valign helpbtn" id="setfinebtn">SET FINANCIAL YEAR</button>
+        <!-- </div> -->
           </div>
 
   <!-- CREATE GUIDE MODAL -->
@@ -250,21 +315,21 @@
   <p><button>Contact</button></p>
 </div> -->
   <!-- black -->
-  <div class=" bottombox grey darken-4 footer">
-  <div class=" bottombox grey darken-4 footer ">
-  <div class="blackleft left grey darken-4 ">
+  <!-- <div class=" bottombox grey darken-4 footer"> -->
+  <div class=" bottombox grey darken-4 footer row">
+  <div class="blackleft left grey darken-4 col s18">
     <a href="#" class="brand-logo left ">
       <img src="images/choco2.png" style="width: 63px; height:33px;">
       <a class="chocosize white-text">Chocolate Cosmos</a>
     </a>
   </div>
-  <div class="blackabout left grey darken-4">
+  <div class="blackabout left grey darken-4 col s12">
     <a class="chocosititle white-text">ABOUT CHOCOLATE COSMOS</a><br/>
     <a class="chocosid white-text" href="http://stardigitalbikes.com/">About Us</a><br/>
     <a class="chocosid white-text" href="http://stardigitalbikes.com/">Terms and Conditions</a><br/>
     <a class="chocosid white-text" href="http://stardigitalbikes.com/">Privacy policy</a>
   </div>
-  <div class="blackcontact left grey darken-4">
+  <div class="blackcontact left grey darken-4 col s12">
     <a class="chocosi white-text">FOLLOW US</a><br/><br/>
 
       <a href="http://stardigitalbikes.com/">
@@ -286,9 +351,9 @@
     </form>  -->
   </div>
   </div>
-  <div class="cointainer grey darken-3 footerbottom">
+  <!-- <div class="cointainer grey darken-3 footerbottom">
   &copy;stardigitalbikes
-  </div>
+  </div> -->
   </div>
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>

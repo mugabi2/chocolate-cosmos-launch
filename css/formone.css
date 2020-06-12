@@ -1,0 +1,45 @@
+body.step2 .login-wrapper.first {
+  opacity: 0;
+  -webkit-transform: translateX(-100%);
+}
+body.step2 .login-wrapper.second {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+}
+body.step2 .login-wrapper.second form {
+  -webkit-animation: fadeUp 1s 1s 1;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+.login-wrapper {
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+  -webkit-transition-timing-function: cubic-bezier(0.8, 0, 0.3, 1);
+          transition-timing-function: cubic-bezier(0.8, 0, 0.3, 1);
+}
+.login-wrapper.first {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+}
+.login-wrapper.first form {
+  -webkit-animation: fadeUp 1s 1s 1;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+.login-wrapper.second {
+  opacity: 0;
+  -webkit-transform: translateX(100%);
+}
+form {
+  opacity: 0;
+}
+@-webkit-keyframes fadeUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}

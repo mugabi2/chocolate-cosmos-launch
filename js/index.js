@@ -6,12 +6,7 @@ var account_key="account";
 var items_key="items";
 var suppliers_key="suppliers";
 var transactions_key="transactions";
-function openModal() {
-    $(document).ready(function(){
-      $('#modal-accounts').modal({ show: true});
-       console.log(88888888888888888888888);
-    });
-}
+
 var song = localStorage.getItem(userid_key);
 console.log("song",song);
 // localStorage.setItem(account_key, "ACCOUNTSblank");
@@ -23,6 +18,7 @@ auth.onAuthStateChanged(user=>{
           // console.log(user.uid);
   // .then(cred => { console.log(55555,cred);})
   if(user){
+
     // Store
 // localStorage.setItem(userid_key, user.uid);
 var statuss = localStorage.getItem(userid_key);
@@ -30,10 +26,16 @@ var statuss = localStorage.getItem(userid_key);
   identitynational=user.uid;
 document.getElementById("bodey").style.visibility="visible";
 var status = localStorage.getItem("login");
-$('#modal-accounts').modal({ show: false})
-openModal();
+// $('#modal-accounts').modal({ show: false})
+// openModal();
 if (status=="0") {
-}
+             jQuery(document).ready(function(){
+                   jQuery('#mofinancialyear').modal();
+                   jQuery(document).ready(function(){
+                       jQuery('#mofinancialyear').modal('open');
+                   });
+             });
+           }
         //get user id
           //         const docRef1 = db.collection('USERS').doc(suptrans);
           // docRef1.get().then(doc => {
@@ -143,19 +145,19 @@ const setupTransacs =(data)=>{
             identities.push(identity);
             // console.log(y);
                  if(y%2==1){
-             li=`
-                <li class="entry ">
-                <div "class="orange lighten-4 entry valign-wrapper left">${liste}
+                 li=`
+              <li class="entry blue lighten-4">
+              <div class=" valign-wrapper left">${liste}
                 <i id="${identityp}" class="iconprint small material-icons right">print</i>
                 <i id="${identityd}" class="icondelete small material-icons right">delete_forever</i>
-                </div>
-                </li>
+              </div>
+              </li>
             `;
           }else {
               // console.log("2");
               li=`
            <li class="entry ">
-           <div class="entry valign-wrapper left">${liste}
+           <div class=" valign-wrapper left">${liste}
              <i id="${identityp}" class="iconprint small material-icons right">print</i>
              <i id="${identityd}" class="icondelete small material-icons right">delete_forever</i>
            </div>
@@ -386,11 +388,11 @@ function sanitizeSlash(str){
   str = str.replace(/[^a-z0-9,_-]/gim,"");
     return str;//.trim();
 }
-//finacialyear
-const finForm=document.querySelector('#finacialyear-form');
+//financialyear
+const finForm=document.querySelector('#financialyear-form');
 const finBtn=document.querySelector('#financialyearBtn');
 finBtn.addEventListener('click', (e) =>{
-  // e.preventDefault();
+  document.getElementById("progbarfy").style.visibility="visible";
   var frofro=document.getElementById("fromdate").value;
   var toto=document.getElementById("todate").value;
   frofro=sanitizeSlash(frofro);
@@ -421,12 +423,14 @@ finBtn.addEventListener('click', (e) =>{
                           to: toto
     }).then(() => {
       // close the create modal & reset form
-      const modal = document.querySelector('#modal-finacialyear');
+      const modal = document.querySelector('#modal-financialyear');
+        document.getElementById("progbarfy").style.visibility="hidden";
       M.Modal.getInstance(modal).close();
       // accountsForm.reset();
     }).catch(err => {
       console.log("errrr");
       console.log(err.message);
+        document.getElementById("progbarfy").style.visibility="hidden";
     });
 
   // console.log(accountName);
@@ -437,6 +441,9 @@ const createAccBtn=document.querySelector('#createAccBtn');
 createAccBtn.addEventListener('click', (e) =>{
   e.preventDefault();
   const accountName=accountsForm['account_name'].value;
+    // document.querySelector('.error').innerHTML=err.message;
+    // $('#progbarac').addClass("active");
+  document.getElementById("progbarac").style.visibility="visible";
 
     // Retrieve
     var dbacca = localStorage.getItem(account_key);
@@ -447,8 +454,12 @@ createAccBtn.addEventListener('click', (e) =>{
       const modal = document.querySelector('#modal-accounts');
       M.Modal.getInstance(modal).close();
       accountsForm.reset();
+        document.getElementById("progbarac").style.visibility="hidden";
     }).catch(err => {
       console.log(err.message);
+        // document.querySelector('.error').innerHTML=err.message;
+        // $('#progbar2').removeClass("active");
+          document.getElementById("progbarac").style.visibility="hidden";
     });
 
   // console.log(accountName);
@@ -579,6 +590,7 @@ const itForm=document.querySelector('#items-form');
 const createItBtn=document.querySelector('#createIt');
 createItBtn.addEventListener('click', (e) =>{
   e.preventDefault();
+    document.getElementById("progbarit").style.visibility="visible";
   const itName=itForm['item_name'].value;
   const itAcc=itForm['metro'].value;
 
@@ -590,10 +602,12 @@ createItBtn.addEventListener('click', (e) =>{
     }).then(() => {
       // close the create modal & reset form
       const modal = document.querySelector('#modal-items');
-      M.Modal.getInstance(modal).close();
+        document.getElementById("progbarit").style.visibility="hidden";
       itForm.reset();
+    M.Modal.getInstance(modal).close();
     }).catch(err => {
       console.log(err.message);
+        document.getElementById("progbarit").style.visibility="hidden";
     });
 
   // console.log(itAcc);
@@ -603,6 +617,7 @@ const supForm=document.querySelector('#suppliers-form');
 const createsupBtn=document.querySelector('#regsup');
 createsupBtn.addEventListener('click', (e) =>{
   e.preventDefault();
+    document.getElementById("progbarsup").style.visibility="visible";
   const supName=supForm['supplier_name'].value;
   const supPhone=supForm['supplier_phone'].value;
 
@@ -615,10 +630,12 @@ createsupBtn.addEventListener('click', (e) =>{
     }).then(() => {
       // close the create modal & reset form
       const modal = document.querySelector('#modal-suppliers');
+        document.getElementById("progbarsup").style.visibility="hidden";
       M.Modal.getInstance(modal).close();
       supForm.reset();
     }).catch(err => {
       console.log(err.message);
+        document.getElementById("progbarsup").style.visibility="hidden";
     });
 
   // console.log(supName);
@@ -635,6 +652,31 @@ logoutBtn.addEventListener('click', (e) =>{
 // var sample = localStorage.getItem(userid_key);
 // console.log(777,sample);
 })
+// dropdown
+const dropdownpro=document.querySelector('.finapro');
+
+const setupDropdownprocard =(data)=>{
+  let html=`
+    <select class="team wonder" id="droppro">`;
+  let htmlEnd=`
+</select>`;
+  var list='';
+  data.forEach(doc=>{
+    const drops=doc.data();
+    const li=`
+    <option>${doc.id}</option>
+    `;
+    html+=li;
+  });
+  html+=htmlEnd;
+dropdownpro.innerHTML=html;
+// console.log(html);
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+}
 // dropdown
 const dropdownList=document.querySelector('.one');
 const dropdownListtrait=document.querySelector('.trait');
@@ -665,32 +707,46 @@ dropdownList.innerHTML=html;
 }
 // trait
 const setupDropdowntrait =(data)=>{
+//   let html=`
+//     <select id="trait">
+//     <option>Item</option>`;
+//   let htmlEnd=`
+// </select>`;
   let html=`
-    <select class="trait" id="trait">
-    <option>Item</option>`;
+  <ul id='dropdown1' class='dropdown-content'>
+    <li><a href="#!">one</a></li>`;
   let htmlEnd=`
-</select>`;
+</ul>`;
   var list='';
   data.forEach(doc=>{
     const drops=doc.data();
+    // const li=`
+    // <option>${doc.id}</option>
+    // `;
     const li=`
-    <option>${doc.id}</option>
+    <li><a href="#!">${doc.id}</a></li>
     `;
     html+=li;
   });
   html+=htmlEnd;
+  console.log(3333,html);
 dropdownListtrait.innerHTML=html;
 // console.log(html);
   // Or with jQuery
 
   $(document).ready(function(){
     $('select').formSelect();
+  document.getElementById("probartra").style.visibility="invisible";
+  var status = localStorage.getItem("login");
   });
 }
+  // Or with jQuery
+
+  $('.dropdown-trigger').dropdown();
 // trasup
 const setupDropdowntrasup =(data)=>{
   let html=`
-    <select class="trasup" id="trasup">
+    <select  id="trasup">
     <option>Supplier</option>`;
   let htmlEnd=`
 </select>`;
@@ -781,7 +837,13 @@ function worktrans(
                  return tot;
 }
 // dropdown
-$('.dropdown-trigger').dropdown();
+$('.dropdown-triggerpn').dropdown();
+// dropdown
+$('.dropdown-triggerpc').dropdown();
+// dropdown procard
+$('.procardtrigpn').dropdown();
+// dropdown procard
+$('.procardtrigpc').dropdown();
 
   // Retrieve
   var dbacca = localStorage.getItem(account_key);
@@ -802,7 +864,7 @@ db.collection(dbit).onSnapshot(snapshot=>{
   // Retrieve
   var dbsu = localStorage.getItem(suppliers_key);
 // get sup data
-db.collection(dbsu).orderBy("name", "desc").onSnapshot(snapshot=>{
+db.collection(dbsu).onSnapshot(snapshot=>{
   setupDropdowntrasup(snapshot.docs);
 })
 
@@ -836,11 +898,9 @@ $(document).ready(function() {
   }).datepicker("setDate", new Date());
 });
 
-  // Or with jQuery
-  //
-  // $(document).ready(function(){
-  //   $('.datepicker').datepicker();
-  // });
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
 
   // setup materialize components
   document.addEventListener('DOMContentLoaded', function() {
@@ -852,6 +912,12 @@ $(document).ready(function() {
     M.Collapsible.init(items);
 
   });
+
+    // Or with jQuery
+
+    $(document).ready(function(){
+      $('.helpmodal').modal();
+    });
 
   //email
   // const emailForm=document.querySelector('#emailus');

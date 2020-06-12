@@ -110,14 +110,14 @@ db.collection(accs).onSnapshot(snapshot=>{
         console.log(array1.length); // 3
 
           var piechart_options = {title:'Pie Chart: How Much Pizza I Ate Last Night',
-                         width:400,
-                         height:300};
+                         width:100%,
+                         height:100%};
           var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
           piechart.draw(data, piechart_options);
 
           var barchart_options = {title:'Barchart: How Much Pizza I Ate Last Night',
-                         width:400,
-                         height:300,
+          width:100%,
+          height:100%,
                          legend: 'none'};
           var barchart = new google.visualization.BarChart(document.getElementById('barchart_div'));
           barchart.draw(data, barchart_options);

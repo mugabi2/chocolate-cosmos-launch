@@ -27,6 +27,7 @@ const signupBtn=document.querySelector('#signupBtn');
 
 signupBtn.addEventListener('click', (e) =>{
   e.preventDefault();
+  document.getElementById("progbarsing").style.visibility="visible";
   const surname=document.getElementById("userSurnamesu").value;
   const firstname=document.getElementById("userFirstnamesu").value;
   const company=document.getElementById("userCompanysu").value;
@@ -35,9 +36,11 @@ signupBtn.addEventListener('click', (e) =>{
   const password=document.getElementById("userPasswordsu").value;
 console.log(surname);
     if (surname === '' || firstname==='' || company==='' || email==='' || phone==='' || password==='') {
-        alert("Please fill in all fields");
+        // alert("Please fill in all fields");
         // $('#selBooks').focus();
         console.log("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
+          document.querySelector('.error').innerHTML="Please fill in all fields";
+          document.getElementById("progbarsing").style.visibility="hidden";
         return false;
       }else {
         console.log("yyyyyyyyyyyyyyyyyyyyy");
@@ -65,11 +68,14 @@ console.log(surname);
                   const checkIfDonein = () => {
                     waitinside.then(ok => {
                       console.log("0000004",usernumber);
-
+                      // signup
+                      document.getElementById("progbarsing").style.visibility="hidden";
                       document.location.replace("index.html");
                       })
                       .catch(err => {
                         console.error(err)
+                          document.querySelector('.error').innerHTML=err.message;
+                          document.getElementById("progbarsing").style.visibility="hidden";
                       })
 
                   }
@@ -78,11 +84,16 @@ console.log(surname);
               })
               .catch(err => {
                 console.error(err)
+                  document.querySelector('.error').innerHTML=err.message;
+                  document.getElementById("progbarsing").style.visibility="hidden";
               })
 
           }
           checkIfDonesees();
 
+  }).catch(err=>{
+    document.querySelector('.error').innerHTML=err.message;
+    document.getElementById("progbarsing").style.visibility="hidden";
   });
   console.log(email,password);
 })
@@ -132,12 +143,16 @@ function generator(str1,str2){
 }
 //log in
 const loginForm=document.querySelector('#login_form');
-const loginBtn=document.querySelector('#loginBtn');
+const loginBtn=document.querySelector('#login-button');
 loginBtn.addEventListener('click', (e) =>{
   e.preventDefault();
-  const email=loginForm['userEmailli'].value;
-  const password=loginForm['userPasswordli'].value;
 
+$('#progbar1').addClass("active");
+  // const email=loginForm['userEmailli'].value;
+  // const password=loginForm['userPasswordli'].value;
+
+  const email=document.getElementById("userEmailli").value;
+  const password=document.getElementById("userPasswordli").value;
     // log in the user
   auth.signInWithEmailAndPassword(email, password).then(cred => {
       // console.log(cred.user);
@@ -154,7 +169,10 @@ console.log("wait",waitforme);
           console.log("wait:",waitforme);
           localStorage.setItem("login", "1");
           loginForm.reset();
-                document.location.replace("index.html");
+          $('#progbar1').removeClass("active");
+        document.querySelector('.error').innerHTML=" ";
+        // login
+        document.location.replace("index.html");
 
           })
           .catch(err => {
@@ -164,6 +182,9 @@ console.log("wait",waitforme);
       }
       checkIfDonesee();
 
+  }).catch(err=>{
+    document.querySelector('.error').innerHTML=err.message;
+    $('#progbar1').removeClass("active");
   });
   console.log(email,password);
 })

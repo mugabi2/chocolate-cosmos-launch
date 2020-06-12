@@ -1,17 +1,36 @@
+function pageload(){
+    // const modal = document.querySelector('.modal-financialyear');
+    // M.Modal.getInstance(modal).open();
+            // alert('ok');
+            //
+            // $(document).ready(function(){
+            // $('#mofinancialyear').modal('open');
+            // });
+          }
+
+           // $(window).load(function(){
+           //     $('#modal-financialyear').modal('show');
+           // });
+
+           jQuery(document).ready(function(){
+                 jQuery('#mofinancialyear').modal();
+                 jQuery(document).ready(function(){
+                     jQuery('#mofinancialyear').modal('open');
+                 });
+           });
+  // Or with jQuery
+
+  // $(document).ready(function(){
+  //   $('.modal-financialyear').modal();
+  // });
+
+    window.onload=pageload();
 //signup form
 const signupFormee=document.querySelector('#testt');
 const signupBtn=document.querySelector('#signupBtn');
 signupBtn.addEventListener('click', (e) =>{
   e.preventDefault();
-  const surname=signupFormee['userSurnamesu'].value;
-  const firstname=signupFormee['userFirstnamesu'].value;
-  const company=signupFormee['userCompanysu'].value;
-  const email=signupFormee['userEmailsu'].value;
-  const phone=signupFormee['userPhonesu'].value;
-  const password=signupFormee['userPasswordsu'].value;
 
-
-  // console.log(email,password);
 })
 var Harvard=sanitizeSlash("45/85/5");
 // console.log(Harvard);
