@@ -1,0 +1,9 @@
+6/24/20
+put in accountsblank on registration into firebase
+registration issue
+6/25/20
+issue was username already existed
+fixed
+register fy successfully
+fy synchronises well
+next procard fy dropdown

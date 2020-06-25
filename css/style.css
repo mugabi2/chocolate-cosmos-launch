@@ -6,9 +6,15 @@
         margin: 0px;
         /* visibility: hidden; */
     }
-    .bodey {
-    visibility: hidden;
-}
+        .bodey {
+        visibility: hidden;
+            }
+        .selectfy {
+        max-width: 40%;
+        }
+        .createfy {
+        max-width: 40%;
+        }
         .mainprint {
           width: 650px;
           height: 460px;
@@ -277,10 +283,15 @@
       /* float: left; */
     margin-right:0px  !important;
     /* margin-left:50px; */
-    margin: 0px  !important;
+    margin: 0px !important;
     border: 3px solid blue !important;
     }
     .trasup {
+      /* float: left; */
+    margin-right: 50px;
+    border: 3px solid red !important;
+    }
+    .finalist {
       /* float: left; */
     margin-right: 50px;
     border: 3px solid red !important;

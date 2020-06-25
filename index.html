@@ -37,10 +37,14 @@
         <li><a href="#!" class="modal-trigger" data-target="modal-accounts">Accounts</a></li>
         <li><a href="#!"  class="modal-trigger" data-target="modal-items">Items</a></li>
         <li><a href="#!" class="modal-trigger" data-target="modal-suppliers">Suppliers</a></li>
+        <li><a href="#!" class="modal-trigger" data-target="modal-financialyear">Finacial Year</a></li>
       </ul>
   <!-- procard -->
   <div id="dropprocard" class="container procard dropdown-content">
-    <img class="imgprocd center"src="images/choco2.png"><br/>
+    <label>
+      <img class="imgprocd center" id="output_image" src="images/addimagegrey1.png"><br/>
+      <input type="file" accept="image/*"  style="display:none" onchange="preview_image(event)"/>
+    </label>
   <h5 class="black-text center proco trancate">ST FLORENCE SECONDARY SCHOOL</h5>
   <h6 class="black-text center prolice">LICENCE:100 days</h6>
 <div class="vipdiv container">
@@ -56,7 +60,7 @@
   <div class="collapsible-body white">financial year</div>
   <button class=" btn teal z-depth-2 center" id="personaldetails">Personal Details</button><br/>
   <a> </a>
-  <button class=" btn teal z-depth-2" id="financialyearBtn">LOG OUT</button>
+  <button class=" btn teal z-depth-2" id="logoutbtnprof">LOG OUT</button>
   </div>
 
   <!-- NAVBAR -->
@@ -121,7 +125,7 @@
     </span>
   </ul>
 </br>
-<input type="button" class="modal-trigger" data-target="modal-financialyear" value="Go to Google" /><br/>
+<!-- <input type="button" class="modal-trigger" data-target="modal-financialyear" value="Go to Google" /><br/> -->
 <input type="button" class="modal-trigger" data-target="helpmodal" value="Help" />
 <!-- <input type="button" onclick="location.href='reports.html';" value="Go to Google" /> -->
 <!-- /////////////// -->
@@ -175,25 +179,37 @@
   <!-- <div class="input-field left-align trap trait"></div> -->
 <a class='dropdown-trigger btn trait' href='#' data-target='dropdown1'>Items</a>
   <div class="input-field right-align trap trasup"></div>
-  <input id="date" class="trap dating datepicker autoClose" required>
+  <input id="date" class="trap dating datepicker autoClose" >
   </div>
     <div class="container ">
-  <input  id="amount"  placeholder="Amount" class="trap traam" required/><a class="margin2"></a>
+  <input  id="amount"  placeholder="Amount" class="trap traam" /><a class="margin2"></a>
   <button class="btn teal btntrans trap z-depth-2" id="transactbut">Transact</button>
   </div>
     </form>
 </div>
   <!-- financialyear MODAL -->
   <div id="modal-financialyear" class="modal mfy modal-financialyear">
-    <div class="modal-content">
-      <h4>Finacial Year</h4><br />
+    <div class="modal-content row">
+      <h4 class="center">Finacial Year</h4><br />
+      <div class="container createfy center col s12 l5">
+        <h5>Create FY</h5>
       <form id="financialyear-form">
           <div class="input-field">
             <input id="fromdate" class="dater" value="FROM DATE"><a class="margin2"></a><br/>
             <input id="todate" class="dater" value="TO DATE">
           </div>
+          <!-- ////////////// -->
+                <div class="progress progbarsing center" id="progbarfy">
+                      <div class="indeterminate"></div>
+                  </div>
+          <!-- /////////////// -->
         <button class="btn teal z-depth-2" id="financialyearBtn">Submit</button>
     </form>
+  </div>
+  <div class="container selectfy center col s12 l5">
+    <h5>Select FY</h5>
+    <div class="input-field right-align trap finalist"></div>
+  </div>
     </div>
   </div>
     <!-- account MODAL -->
@@ -210,7 +226,7 @@
                   <div class="progress progbarac " id="progbarac">
                         <div class="indeterminate"></div>
                     </div>
-            <!-- /////////////// -->
+            <!-- //////////////// -->
           <button class="btn teal z-depth-2" id="createAccBtn">Create Account</button>
       </form>
       </div>

@@ -1,11 +1,19 @@
 var totalitems,totalaccounts,itemaccount;
 var fuel=0;
 var identitynational;
-var userid_key="userid";
-var account_key="account";
-var items_key="items";
-var suppliers_key="suppliers";
-var transactions_key="transactions";
+          var userid_key="userid";
+          var account_key="account";
+          var items_key="items";
+          var suppliers_key="suppliers";
+          var transactions_key="transactions";
+          var company_key="company";
+          var surname_key="surname";
+          var firstname_key="firstname";
+          var phone_key="phone";
+          var email_key="email";
+          var numberusers_key="usersNo";
+          var financialyear_key="financial year";
+          var realfinancialyear_key="real financial year";
 
 var song = localStorage.getItem(userid_key);
 console.log("song",song);
@@ -389,58 +397,74 @@ function sanitizeSlash(str){
     return str;//.trim();
 }
 //financialyear
-const finForm=document.querySelector('#financialyear-form');
+// const finForm=document.querySelector('#financialyear-form');
 const finBtn=document.querySelector('#financialyearBtn');
 finBtn.addEventListener('click', (e) =>{
+  e.preventDefault();
   document.getElementById("progbarfy").style.visibility="visible";
   var frofro=document.getElementById("fromdate").value;
   var toto=document.getElementById("todate").value;
   frofro=sanitizeSlash(frofro);
   toto=sanitizeSlash(toto);
+  finyear=frofro+toto;
 
   // Retrieve
   var idy = localStorage.getItem(userid_key);
-  var dbacc="ACCOUNTS"+idy+frofro+toto;
-  var dbite="ITEMS"+idy+frofro+toto;
-  var dbsup="SUPPLIERS"+idy+frofro+toto;
-  var dbtra="TRANSACTIONS"+idy+frofro+toto;
+  var dbacc=idy+"ACCOUNTS"+finyear;
+  var dbite=idy+"ITEMS"+finyear;
+  var dbsup=idy+"SUPPLIERS"+finyear;
+  var dbtra=idy+"TRANSACTIONS"+finyear;
+  var newfinyear=idy+"FINANCIALYEAR";
     // clear
   localStorage.removeItem(account_key);
   localStorage.removeItem(items_key);
   localStorage.removeItem(suppliers_key);
   localStorage.removeItem(transactions_key);
+  localStorage.removeItem(financialyear_key);
+  localStorage.removeItem(realfinancialyear_key);
     // Store
   localStorage.setItem(account_key, dbacc);
   localStorage.setItem(items_key, dbite);
   localStorage.setItem(suppliers_key, dbsup);
   localStorage.setItem(transactions_key, dbtra);
+  localStorage.setItem(financialyear_key, dbtra);
+  localStorage.setItem(realfinancialyear_key, finyear);
+
+  var companyThis=localStorage.getItem(company_key);
+  db.collection(newfinyear).doc(finyear).set({
+  from: frofro,
+  to: toto
+})
+
   db.collection('USERS').doc(idy).update({
       ACCOUNTS: dbacc,
           ITEMS: dbite,
               SUPPLIERS: dbsup,
                   TRANSACTIONS: dbtra,
                       from: frofro,
-                          to: toto
+                          to: toto,
+                          financialyear:finyear
     }).then(() => {
       // close the create modal & reset form
       const modal = document.querySelector('#modal-financialyear');
         document.getElementById("progbarfy").style.visibility="hidden";
       M.Modal.getInstance(modal).close();
+      location.reload();
       // accountsForm.reset();
     }).catch(err => {
       console.log("errrr");
       console.log(err.message);
-        document.getElementById("progbarfy").style.visibility="hidden";
+      document.getElementById("progbarfy").style.visibility="hidden";
     });
 
-  // console.log(accountName);
+  console.log("OVER"+finyear);
 })
 //accounts
 const accountsForm=document.querySelector('#accounts-form');
 const createAccBtn=document.querySelector('#createAccBtn');
 createAccBtn.addEventListener('click', (e) =>{
   e.preventDefault();
-  const accountName=accountsForm['account_name'].value;
+  const accountName=accountsForm['account_name'].value.toUpperCase();
     // document.querySelector('.error').innerHTML=err.message;
     // $('#progbarac').addClass("active");
   document.getElementById("progbarac").style.visibility="visible";
@@ -681,7 +705,32 @@ dropdownpro.innerHTML=html;
 const dropdownList=document.querySelector('.one');
 const dropdownListtrait=document.querySelector('.trait');
 const dropdownListtrasup=document.querySelector('.trasup');
+const dropdownListfin=document.querySelector('.finalist');
 
+const setupDropdownfinalist =(data)=>{
+  console.log("finalist222",data);
+  let html=`
+    <select class="team wonder" id="metropo">
+    <option>Choose Financial Year</option>`;
+  let htmlEnd=`
+</select>`;
+  var list='';
+  data.forEach(doc=>{
+    const drops=doc.data();
+    const li=`
+    <option>${doc.id}</option>
+    `;
+    html+=li;
+  });
+  html+=htmlEnd;
+dropdownList.innerHTML=html;
+// console.log(html);
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+}
 const setupDropdownitacc =(data)=>{
   let html=`
     <select class="team wonder" id="metro">
@@ -862,6 +911,14 @@ db.collection(dbit).onSnapshot(snapshot=>{
 })
 
   // Retrieve
+  var dbfy= localStorage.getItem(financialyear_key);
+  console.log("finalist111",dbfy);
+db.collection(dbfy).onSnapshot(snapshot=>{
+  setupDropdownfinalist(snapshot.docs);
+  console.log("finalist",snapshot);
+})
+
+  // Retrieve
   var dbsu = localStorage.getItem(suppliers_key);
 // get sup data
 db.collection(dbsu).onSnapshot(snapshot=>{
@@ -919,6 +976,18 @@ $(document).ready(function() {
       $('.helpmodal').modal();
     });
 
+      function preview_image(event) {
+        var reader = new FileReader();
+        reader.onload = function(){
+          var output = document.getElementById('output_image');
+          output.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
+      // const logoBtn=document.querySelector('#output_image');
+      // logoBtn.addEventListener('click', (e) =>{
+      //   e.preventDefault();
+      // })
   //email
   // const emailForm=document.querySelector('#emailus');
   // const emailBtn=document.querySelector('#sendemail');

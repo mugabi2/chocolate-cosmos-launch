@@ -1,0 +1,9 @@
+6/25/20
+1.POPUP MODULE NOT SHOWING ESP IN FIREFOX
+cause
+not saving userid to localStorage
+2.KNOWING WHICH FY ON LOGIN
+soln===theres fy in users
+3.WHEN ADDS FY, WHICH IS CURRENT
+soln===theres fy in users
+4.UPDATES IF DOCUMENT EXISTS

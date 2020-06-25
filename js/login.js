@@ -21,6 +21,8 @@ document.getElementById("bodeys").style.visibility="visible";
           var phone_key="phone";
           var email_key="email";
           var numberusers_key="usersNo";
+          var financialyear_key="financial year";
+          var realfinancialyear_key="real financial year";
 
 const signupForm=document.querySelector('#signup_form1');
 const signupBtn=document.querySelector('#signupBtn');
@@ -30,7 +32,7 @@ signupBtn.addEventListener('click', (e) =>{
   document.getElementById("progbarsing").style.visibility="visible";
   const surname=document.getElementById("userSurnamesu").value;
   const firstname=document.getElementById("userFirstnamesu").value;
-  const company=document.getElementById("userCompanysu").value;
+  const company=document.getElementById("userCompanysu").value.toUpperCase();
   const email=document.getElementById("userEmailsu").value;
   const phone=document.getElementById("userPhonesu").value;
   const password=document.getElementById("userPasswordsu").value;
@@ -92,7 +94,9 @@ console.log(surname);
           checkIfDonesees();
 
   }).catch(err=>{
-    document.querySelector('.error').innerHTML=err.message;
+document.getElementById("errormsg").innerHTML =err.message;
+    // document.querySelector('.error').innerHTML=err.message;
+    console.log(err);
     document.getElementById("progbarsing").style.visibility="hidden";
   });
   console.log(email,password);
@@ -109,14 +113,20 @@ var something=await db.collection('USERS').doc(userid).set({
   phone: phone,
   licence: "0",
   financialyear: "0",
-  created:  firebase.firestore.FieldValue.serverTimestamp()
+  created:  firebase.firestore.FieldValue.serverTimestamp(),
+  ACCOUNTS:"blankACCOUNTS",
+  ITEMS:"blankITEMS",
+  FINANCIALYEAR:"blankFINANCIALYEAR",
+  SUPPLIERS:"blankSUPPLIERS",
+  TRANSACTIONS:"blankTRANSACTIONS"
 })
 
 localStorage.setItem(userid_key, userid);
-localStorage.setItem(account_key, "ACCOUNTSblank");
-localStorage.setItem(items_key, "ITEMSblank");
-localStorage.setItem(suppliers_key, "SUPPLIERSblank");
-localStorage.setItem(transactions_key, "TRANSACTIONSblank");
+localStorage.setItem(account_key, "blankACCOUNTS");
+localStorage.setItem(items_key, "blankITEMS");
+localStorage.setItem(suppliers_key, "blankSUPPLIERS");
+localStorage.setItem(transactions_key, "blankTRANSACTIONS");
+localStorage.setItem(financialyear_key, "blankFINANCIALYEAR");
 localStorage.setItem("login", "0");
 
 localStorage.setItem(company_key, company);
@@ -141,6 +151,35 @@ function generator(str1,str2){
 
   return sanitizeString(str1)+sanitizeString(str2);
 }
+
+
+
+
+async function giveidentity(){
+  var number;
+    const docReftss = db.collection("INFORMATION").doc("users");
+    var statement =await docReftss.get().then(doc => {
+             if (doc.exists) {
+                 // console.log('Document data:', doc.data());
+    jQuery.each(doc.data(), function (key, value) {
+              if(key=="number"){
+                number=value;
+                localStorage.setItem(numberusers_key, value);
+              }
+
+  })
+  console.log("000001",number);
+
+  } else {
+  // doc.data() will be undefined in this case
+  console.error('Please check your collection and document name in the [firestore] shortcode!');
+  }
+  }).catch(error => {
+  console.error('Please check your collection and document name in the [firestore] shortcode!', error);
+  });
+return number;
+}
+
 //log in
 const loginForm=document.querySelector('#login_form');
 const loginBtn=document.querySelector('#login-button');
@@ -164,13 +203,15 @@ console.log("wait",waitforme);
       const checkIfDonesee = () => {
         waitforme.then(ok => {
           waitforme=ok;
-                    var song = localStorage.getItem(account_key);
-                    console.log("555555acckey",song);
+                    // var song = localStorage.getItem(account_key);
+                    // console.log("555555acckey",song);
           console.log("wait:",waitforme);
           localStorage.setItem("login", "1");
           loginForm.reset();
           $('#progbar1').removeClass("active");
         document.querySelector('.error').innerHTML=" ";
+        // var take=localStorage.getItem(account_key);
+        // console.log("take",take);
         // login
         document.location.replace("index.html");
 
@@ -188,6 +229,9 @@ console.log("wait",waitforme);
   });
   console.log(email,password);
 })
+
+
+
 // settings 222
 async function storage(emshow){
   var drops;
@@ -210,6 +254,8 @@ async function storage(emshow){
             jQuery.each(doc.data(), function (key, value) {
                       if(key=="ACCOUNTS"){
                         localStorage.setItem(account_key, value);
+                        var dbacca = localStorage.getItem(account_key);
+                        console.log("songof lawino",dbacca);
                       }else if (key=="ITEMS") {
                          localStorage.setItem(items_key, value);
                        }else if (key=="SUPPLIERS") {
@@ -225,10 +271,12 @@ async function storage(emshow){
                          localStorage.setItem(firstname_key, value);
                        }else if (key=="phone") {
                          localStorage.setItem(phone_key, value);
-                         console.log("DONE",value);
+                       }else if (key=="financialyear") {
+                         localStorage.setItem(realfinancialyear_key, value);
                        }else if (key=="email") {
                          localStorage.setItem(email_key, value);
-                         console.log("DONE",value);
+                         var dbaccad = localStorage.getItem(account_key);
+                         console.log("song law",dbaccad);
                        }
 
           })
@@ -285,28 +333,4 @@ var sulement=await db.collection("USERS").where("email", "==", emshow)
   }
 
                  return 3;
-}
-async function giveidentity(){
-  var number;
-    const docReftss = db.collection("INFORMATION").doc("users");
-    var statement =await docReftss.get().then(doc => {
-             if (doc.exists) {
-                 // console.log('Document data:', doc.data());
-    jQuery.each(doc.data(), function (key, value) {
-              if(key=="number"){
-                number=value;
-                localStorage.setItem(numberusers_key, value);
-              }
-
-  })
-  console.log("000001",number);
-
-  } else {
-  // doc.data() will be undefined in this case
-  console.error('Please check your collection and document name in the [firestore] shortcode!');
-  }
-  }).catch(error => {
-  console.error('Please check your collection and document name in the [firestore] shortcode!', error);
-  });
-return number;
 }
