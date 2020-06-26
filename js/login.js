@@ -196,8 +196,10 @@ $('#progbar1').addClass("active");
   auth.signInWithEmailAndPassword(email, password).then(cred => {
       // console.log(cred.user);
       console.log("000000000");
-
+      localStorage.setItem("kzzero", 0);
+////////////////
       var waitforme=storage(email);
+      //////////////////
 console.log("wait",waitforme);
   // WAIT FOR THE PROMISE
       const checkIfDonesee = () => {
@@ -205,6 +207,7 @@ console.log("wait",waitforme);
           waitforme=ok;
                     // var song = localStorage.getItem(account_key);
                     // console.log("555555acckey",song);
+                    localStorage.setItem("kzfive", 5);
           console.log("wait:",waitforme);
           localStorage.setItem("login", "1");
           loginForm.reset();
@@ -235,6 +238,7 @@ console.log("wait",waitforme);
 // settings 222
 async function storage(emshow){
   var drops;
+  localStorage.setItem("kzone", 1);
   var seconddrops=inner();
 
   // WAIT FOR THE PROMISE
@@ -245,6 +249,7 @@ async function storage(emshow){
             var total, totalall;
             var accret=1;
             console.log("333333dropds",seconddrops);
+            localStorage.setItem("kzthree", 3);
 
             const docReftss = db.collection("USERS").doc(seconddrops);
             // var statement =await
@@ -278,6 +283,7 @@ async function storage(emshow){
                          var dbaccad = localStorage.getItem(account_key);
                          console.log("song law",dbaccad);
                        }
+                       localStorage.setItem("kzfour", 4);
 
           })
 
@@ -308,6 +314,7 @@ var sulement=await db.collection("USERS").where("email", "==", emshow)
             drops=doc.id;
               localStorage.setItem(userid_key, drops);
               console.log("22222222drps",drops);
+              localStorage.setItem("kztwo", 2);
         });
     })
     .catch(function(error) {

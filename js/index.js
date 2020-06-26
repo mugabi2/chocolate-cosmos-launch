@@ -15,8 +15,24 @@ var identitynational;
           var financialyear_key="financial year";
           var realfinancialyear_key="real financial year";
 
-var song = localStorage.getItem(userid_key);
-console.log("song",song);
+          var song = localStorage.getItem(userid_key);
+          console.log("song id",song);
+          var songs = localStorage.getItem("login");
+          console.log("song login",songs);
+
+          var s0 = localStorage.getItem("kzzero");
+          var s1 = localStorage.getItem("kzone");
+          var s2 = localStorage.getItem("kztwo");
+          var s3 = localStorage.getItem("kzthree");
+          var s4 = localStorage.getItem("kzfour");
+          var s5 = localStorage.getItem("kzfive");
+
+          console.log("fix0",s0);
+          console.log("fix1",s1);
+          console.log("fix2",s2);
+          console.log("fix3",s3);
+          console.log("fix4",s4);
+          console.log("fix5",s5);
 // localStorage.setItem(account_key, "ACCOUNTSblank");
 // localStorage.setItem(items_key, "ITEMSblank");
 // localStorage.setItem(suppliers_key, "SUPPLIERSblank");
@@ -706,6 +722,7 @@ const dropdownList=document.querySelector('.one');
 const dropdownListtrait=document.querySelector('.trait');
 const dropdownListtrasup=document.querySelector('.trasup');
 const dropdownListfin=document.querySelector('.finalist');
+const dropdownListfinapro=document.querySelector('.finapro');
 
 const setupDropdownfinalist =(data)=>{
   console.log("finalist222",data);
@@ -754,6 +771,41 @@ dropdownList.innerHTML=html;
     $('select').formSelect();
   });
 }
+// profile financialyear
+const setupDropdownfinapro =(data)=>{
+//   let html=`
+//     <select id="trait">
+//     <option>Item</option>`;
+//   let htmlEnd=`
+// </select>`;
+  let html=`
+  <ul id='dropdownfypro' class='dropdown-content'>
+    <li><a href="#!">one</a></li>`;
+  let htmlEnd=`
+</ul>`;
+  var list='';
+  data.forEach(doc=>{
+    const drops=doc.data();
+    // const li=`
+    // <option>${doc.id}</option>
+    // `;
+    const li=`
+    <li><a href="#!">${doc.id}</a></li>
+    `;
+    html+=li;
+  });
+  html+=htmlEnd;
+  console.log(3333,html);
+dropdownListfinapro.innerHTML=html;
+// console.log(html);
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('select').formSelect();
+  // document.getElementById("probartra").style.visibility="invisible";
+  var status = localStorage.getItem("login");
+  });
+}
 // trait
 const setupDropdowntrait =(data)=>{
 //   let html=`
@@ -790,7 +842,6 @@ dropdownListtrait.innerHTML=html;
   });
 }
   // Or with jQuery
-
   $('.dropdown-trigger').dropdown();
 // trasup
 const setupDropdowntrasup =(data)=>{
@@ -908,6 +959,15 @@ db.collection(dbacca).onSnapshot(snapshot=>{
 // get item data
 db.collection(dbit).onSnapshot(snapshot=>{
   setupDropdowntrait(snapshot.docs);
+})
+
+  // Retrieve
+  var fiya= localStorage.getItem(userid_key)+"FINANCIALYEAR";
+// get item data
+db.collection(fiya).onSnapshot(snapshot=>{
+  console.log("great1"+fiya);
+    console.log("great2"+snapshot);
+  setupDropdownfinapro(snapshot.docs);
 })
 
   // Retrieve

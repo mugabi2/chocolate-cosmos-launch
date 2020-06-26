@@ -291,6 +291,10 @@
     margin-right: 50px;
     border: 3px solid red !important;
     }
+    .finapro {
+      /* max-width: 150px; */
+      max-height: 50px;
+    }
     .finalist {
       /* float: left; */
     margin-right: 50px;
