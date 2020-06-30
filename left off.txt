@@ -7,3 +7,6 @@ fixed
 register fy successfully
 fy synchronises well
 procard fy dropdown
+6/29/20
+fixing items dropdown and items not recorded in accounts ++++++++
+warningfy++++

@@ -40,27 +40,73 @@
         <li><a href="#!" class="modal-trigger" data-target="modal-financialyear">Finacial Year</a></li>
       </ul>
   <!-- procard -->
-  <div id="dropprocard" class="container procard dropdown-content">
-    <label>
-      <img class="imgprocd center" id="output_image" src="images/addimagegrey1.png"><br/>
-      <input type="file" accept="image/*"  style="display:none" onchange="preview_image(event)"/>
-    </label>
-  <h5 class="black-text center proco trancate">ST FLORENCE SECONDARY SCHOOL</h5>
-  <h6 class="black-text center prolice">LICENCE:100 days</h6>
-<div class="vipdiv container">
-      <img class="imgpropl center"src="images/platinum.png">
-      <img class="imgprogo center"src="images/gold.png">
-</div>
-<div class="vipdiv container">
-  <img class="center imgpromomo"src="images/momo.jpg" >
-  <img class="center imgpromomo"src="images/googlepay.png" style="width: 60px; margin-top: 10px;"><br/>
-</div>
-<div class="input-field finapro center"></div>
-  <!-- <div class="collapsible-body blue">financial year</div> -->
-  <button class=" btn teal z-depth-2 center" id="personaldetails">Personal Details</button><br/>
-  <a> </a>
-  <button class=" btn teal z-depth-2" id="logoutbtnprof">LOG OUT</button>
+  <div id="dropprocard" class="procard dropdown-content">
+        <label>
+          <!-- <img class="imgprocd center" id="output_image" src="images/addimagegrey1.png"><br/> -->
+          <input type="file" accept="image/*"  style="display:none" onchange="chooseFile(event)"/>
+        </label>
+          <h5 class="black-text center proco trancate">ST FLORENCE SECONDARY SCHOOL</h5>
+          <h6 class="black-text center prolice">LICENCE:100 days</h6>
+        <div class="vipdiv container">
+          <img class="imgpropl center"src="images/platinum.png">
+          <img class="imgprogo center"src="images/gold.png">
+        </div>
+        <div class="vipdiv container">
+          <img class="center imgpromomo"src="images/momo.jpg" >
+          <img class="center imgpromomo"src="images/googlepay.png" style="width: 60px; margin-top: 10px;"><br/>
+        </div>
+        <!-- <div class="input-field finapro center"></div> -->
+        <button class=" btn teal z-depth-2 center" id="personaldetails">Personal Details</button><br/>
+        <!-- <button class=" btn teal z-depth-2" id="logoutbtnprof">LOG OUT</button> -->
   </div>
+
+  <!-- <nav></nav> -->
+
+  <ul id="slide-out" class="sidenav">
+    <li>
+      <div class="user-view">
+      <div class="background">
+        <img src="images/good1.webp">
+      </div>
+            <label class="imagelabel">
+              <img class="imgprocd center circle" id="output_image" src="images/addlogo.png"><br/>
+              <!-- <input type="file" accept="image/*"  style="display:none" onchange="chooseFile(event)"/> -->
+              <input type="file" accept="image/*"  style="display:none" onchange="preview_image(event)"/>
+            </label>
+              <h5 id="procona" class="white-text center proco trancate">COMPANY NAME</h5>
+      <a id="proem" href="#email"><span class="white-text email">email@gmail.com</span></a>
+    <!-- <li>
+      <a class="" href="#!"id="personaldetails">PERSONAL DETAILS</a>
+    </li> -->
+    </div>
+  </li>
+    <li>
+      <!-- <div> -->
+    <h5 id="liceNumb" class="black-text center prolice">LICENCE: days </h5>
+  <!-- </div> -->
+  <div class="vipdiv container">
+    <img class="imgpropl center"src="images/platinum.png">
+    <img class="imgprogo center"src="images/gold.png">
+  </div><br/>
+  <div class="vipdiv container">
+    <img class="center imgpromomo"src="images/momo.jpg" >
+    <img class="center imgpromomo"src="images/googlepay.png" style="width: 60px; margin-top: 10px;"><br/>
+  </div>
+    </li>
+    <li><div class="divider"></div></li>
+    <li>
+      <a class="subheader">SETTINGS</a>
+    </li>
+      <a class="finyearhead">Financial year</a>
+    <div class="input-field finapro center"></div>
+      <!-- <div class="collapsible-body blue">financial year</div> -->
+    <!-- <button class=" btn teal z-depth-2 center" id="personaldetails">Personal Details</button><br/> -->
+    <button class="logout btn teal z-depth-2" id="logoutbtnprof" onclick="logmeout()">LOG OUT</button>
+  </ul>
+  <!-- <a href="#" data-target="slide-out" class="sidenav-trigger">
+    <i class="material-icons">menu</i>
+  </a> -->
+
 
   <!-- NAVBAR -->
   <nav class="z-depth-0 navio pink darken-3 sticky">
@@ -85,15 +131,12 @@
           <li class="logged-in">
             <a href="#" class="white-text modal-trigger" data-target="modal-items">Help</a>
           </li>
-          <!-- <li class="logged-in">
-            <a href="#" class="white-text modal-trigger" data-target="modal-suppliers">Create Suppliers</a>
-          </li> -->
           <li class="logged-in">
-            <a href="#" class="white-text 4 procardtrigpc" data-target="dropprocard">Profile</a>
+            <a class="sidenav-trigger show-on-large white-text 4 procardtrigpc" data-target="slide-out">Profile</a>
           </li>
-          <li class="logged-out">
+          <!-- <li class="logged-out">
             <a href="#" class="white-text" id="logout">Log Out</a>
-          </li>
+          </li> -->
         </span>
       </ul>
     </div>
@@ -125,7 +168,8 @@
   </ul>
 </br>
 <!-- <input type="button" class="modal-trigger" data-target="modal-financialyear" value="Go to Google" /><br/> -->
-<input type="button" class="modal-trigger" data-target="helpmodal" value="Help" />
+<!-- <input type="button" value="Help" /> -->
+<p id="warningfy" class="error red-text center-align"></p><br/>
 <!-- <input type="button" onclick="location.href='reports.html';" value="Go to Google" /> -->
 <!-- /////////////// -->
 
@@ -172,20 +216,24 @@
     </div>
 <!-- /////////////// -->
   <!-- transactions -->
-  <div class="valign-wrapper trandiv row tranco">
-    <form id="transactform" class="container white center trancona" >
-      <div class="container fifty">
-  <!-- <div class="input-field left-align trap trait"></div> -->
-<a class='dropdown-trigger btn trait' href='#' data-target='dropdown1'>Items</a>
-  <div class="input-field right-align trap trasup"></div>
-  <input id="date" class="trap dating datepicker autoClose" >
-  </div>
-    <div class="container ">
-  <input  id="amount"  placeholder="Amount" class="trap traam" /><a class="margin2"></a>
-  <button class="btn teal btntrans trap z-depth-2" id="transactbut">Transact</button>
-  </div>
+  <div class="row tranco">
+    <form id="transactform" class="container white trancona" >
+        <div class="container fifty">
+            <div class="input-field trait browser-default"></div>
+            <div class="input-field trasup browser-default"></div>
+            <!-- <a class='dropdown-trigger btn trait' href='#' data-target='dropdown1'>Items</a> -->
+        </div>
+        <div class="container fifty">
+  <input id="date" class="dating datepicker autoClose" />
+      <input  id="amount"  placeholder="Amount" class=" traam" />
+            <label  class="traqua">Qty:
+              <input  id="quantity"  value='1'/>
+            </label>
+                <button class="btn teal btntrans z-depth-2" id="transactbut">Transact</button>
+        </div>
     </form>
 </div>
+
   <!-- financialyear MODAL -->
   <div id="modal-financialyear" class="modal mfy modal-financialyear">
     <div class="modal-content row">
@@ -240,7 +288,7 @@
           <input type="text" id="item_name" required />
           <label for="item_name">Item Name</label>
         </div>
-  <div class="input-field col s12 one">
+  <div class="input-field col s12 one itacc">
   </div>
     <!-- /////////////// -->
           <div class="progress progbarit" id="progbarit">
@@ -281,27 +329,9 @@
             <!-- <div class="container"> -->
               <h5 class="center">QUICK HELP</h5>
               <img class="imghelp center"src="images/help.png">
-          <button class="btn teal z-depth-2 z-depth-0 center valign helpbtn" id="setfinebtn">SET FINANCIAL YEAR</button>
+          <button class="btn teal z-depth-2 z-depth-0 center valign helpbtn" id="helpfinebtn">SET FINANCIAL YEAR</button>
         <!-- </div> -->
           </div>
-
-  <!-- CREATE GUIDE MODAL -->
-  <div id="modal-create" class="modal">
-    <div class="modal-content">
-      <h4>Create Guide</h4><br />
-      <form id="create-form">
-        <div class="input-field">
-          <input type="text" id="title">
-          <label for="title">Guide Title</label>
-        </div>
-        <div class="input-field">
-          <textarea id="content" class="materialize-textarea"></textarea>
-          <label for="content">Guide Content</label>
-        </div>
-        <button class="btn teal z-depth-2">Create</button>
-      </form>
-    </div>
-  </div>
 
 <!-- transaacccss -->
 <div class="container">
@@ -371,20 +401,20 @@
   </div> -->
   </div>
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-storage.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
   <script>
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-    apiKey: "AIzaSyB8v_sona0iDOs26uX-uJtpYKCcFFjDVeQ",
-    authDomain: "chocolate-cosmos.firebaseapp.com",
-    databaseURL: "https://chocolate-cosmos.firebaseio.com",
-    projectId: "chocolate-cosmos",
-    storageBucket: "chocolate-cosmos.appspot.com",
-    messagingSenderId: "350208192448",
-    appId: "1:350208192448:web:3d0f46f2a4043d26fae225",
-    measurementId: "G-4VJF29Z73K"
-  };
+  const firebaseConfig = {
+  apiKey: "AIzaSyB8v_sona0iDOs26uX-uJtpYKCcFFjDVeQ",
+  authDomain: "chocolate-cosmos.firebaseapp.com",
+  databaseURL: "https://chocolate-cosmos.firebaseio.com",
+  projectId: "chocolate-cosmos",
+  storageBucket: "chocolate-cosmos.appspot.com",
+  messagingSenderId: "350208192448",
+  appId: "1:350208192448:web:3d0f46f2a4043d26fae225",
+  measurementId: "G-4VJF29Z73K"
+};
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     // firebase.analytics();
@@ -392,6 +422,8 @@
   // auth and firestore references
       const auth=firebase.auth();
       const db=firebase.firestore();
+      var storage = firebase.storage();
+      var storageRef = storage.ref();
   // update firestore settings
       db.settings({timestampsInSnapshots: true});
 

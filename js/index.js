@@ -1,5 +1,6 @@
 var totalitems,totalaccounts,itemaccount;
-var fuel=0;
+var fuel=0,
+zero=0,one=1,two=2,three=3,four=4;
 var identitynational;
           var userid_key="userid";
           var account_key="account";
@@ -14,6 +15,8 @@ var identitynational;
           var numberusers_key="usersNo";
           var financialyear_key="financial year";
           var realfinancialyear_key="real financial year";
+          var logo_key="imagelogo";
+          var changedlogo_key="changedlogo";
 
           var song = localStorage.getItem(userid_key);
           console.log("song id",song);
@@ -27,12 +30,68 @@ var identitynational;
           var s4 = localStorage.getItem("kzfour");
           var s5 = localStorage.getItem("kzfive");
 
-          console.log("fix0",s0);
-          console.log("fix1",s1);
-          console.log("fix2",s2);
-          console.log("fix3",s3);
-          console.log("fix4",s4);
-          console.log("fix5",s5);
+          // console.log("fix0",s0);
+          // console.log("fix1",s1);
+          // console.log("fix3",s3);
+          // console.log("fix4",s4);
+          // console.log("fix5",s5);
+function pageSetup(){
+
+  var change = localStorage.getItem(changedlogo_key);
+  if(change==one){
+    var image64 = localStorage.getItem(logo_key);
+    // console.log("6464"+image64);
+  var output = document.getElementById('output_image');
+    output.src=image64;
+  }
+
+  var today = new Date();
+    var datetoday = (today.getMonth()+1).toString()+today.getDate().toString()+today.getFullYear().toString();
+    var dateDB,licence;
+    var userid = localStorage.getItem(userid_key);
+    const docRef = db.collection("USERS").doc(userid);
+    docRef.get().then(doc => {
+               if (doc.exists) {
+                   // console.log('Document data:', doc.data());
+      jQuery.each(doc.data(), function (key, value) {
+      if(key=="today"){
+        dateDB=value;
+                   }
+        else if (key=="licence") {
+        licence=value;
+        }
+                   })
+               } else {
+                   // doc.data() will be undefined in this case
+                   console.error('Please check your collection and document name in the [firestore] shortcode!');
+               }
+               if(datetoday==dateDB){
+               }else {
+              licence=(parseInt(licence))-1;
+                 innerPageSetup(licence,datetoday,userid);
+               }
+               var proco = localStorage.getItem(company_key);
+               var proem = localStorage.getItem(email_key);
+
+              document.getElementById("procona").innerHTML = proco;
+              document.getElementById("proem").innerHTML = proem;
+              document.getElementById("liceNumb").innerHTML = "LICENCE: "+licence+" days";
+           }).catch(error => {
+               console.error('Please check your collection and document name in the [firestore] shortcode!', error);
+           });
+}
+function innerPageSetup(lice,theday,idpara){
+    db.collection('USERS').doc(idpara).update({
+        licence: lice,
+            today: theday
+      }).then(() => {
+      }).catch(err => {
+        console.log("errrr");
+        console.log(err.message);
+        document.getElementById("progbarfy").style.visibility="hidden";
+      });
+
+}
 // localStorage.setItem(account_key, "ACCOUNTSblank");
 // localStorage.setItem(items_key, "ITEMSblank");
 // localStorage.setItem(suppliers_key, "SUPPLIERSblank");
@@ -42,21 +101,28 @@ auth.onAuthStateChanged(user=>{
           // console.log(user.uid);
   // .then(cred => { console.log(55555,cred);})
   if(user){
-
+  pageSetup();
     // Store
 // localStorage.setItem(userid_key, user.uid);
 var statuss = localStorage.getItem(userid_key);
-  console.log("user logged in:",statuss);
+var fycheck = localStorage.getItem(financialyear_key);
+  console.log("financial",fycheck);
   identitynational=user.uid;
 document.getElementById("bodey").style.visibility="visible";
-var status = localStorage.getItem("login");
 // $('#modal-accounts').modal({ show: false})
 // openModal();
+if (fycheck=="blankFINANCIALYEAR") {
+  console.log(fycheck);
+localStorage.setItem("login", "0");
+document.getElementById("warningfy").innerHTML ="Please set your Financil Year";
+}
+var status = localStorage.getItem("login");
 if (status=="0") {
+document.getElementById("warningfy").innerHTML ="Please set your Financil Year";
              jQuery(document).ready(function(){
-                   jQuery('#mofinancialyear').modal();
+                   jQuery('#helpmodal').modal();
                    jQuery(document).ready(function(){
-                       jQuery('#mofinancialyear').modal('open');
+                       jQuery('#helpmodal').modal('open');
                    });
              });
            }
@@ -104,7 +170,7 @@ function execute(numba){
   }
 }
 function sanitizeString(str){
-  console.log("sani1",str);
+  // console.log("sani1",str);
 str = str.replace(/[^a-z0-9\,_-]/gim,"");
     return str;//.trim();
 }
@@ -206,7 +272,7 @@ const setupTransacs =(data)=>{
   // console.log("html:",html);
 transList.innerHTML=html;
 
-console.log(identities);
+// console.log(identities);
 
 // for(var i=0;i<y;i++){
 // var $currentitem=prints[i];
@@ -336,6 +402,7 @@ window.location.href = "print.html" + queryString;
 
   // Retrieve
   var dbsu = localStorage.getItem(suppliers_key);
+  console.log("fix"+dbsu);
                                 var supsup;
                                 const docRefts = db.collection(dbsu).doc(icsupplier);
                                docRefts.get().then(doc => {
@@ -344,6 +411,7 @@ window.location.href = "print.html" + queryString;
                                jQuery.each(doc.data(), function (key, value) {
                                if(key=="total"){
                                  supsup=value;
+                                 console.log("fix"+supsup);
                                 }
 
                                 var updsup=parseInt(supsup)-parseInt(icamount);
@@ -446,6 +514,8 @@ finBtn.addEventListener('click', (e) =>{
   localStorage.setItem(financialyear_key, dbtra);
   localStorage.setItem(realfinancialyear_key, finyear);
 
+  localStorage.setItem("login", "1");
+
   var companyThis=localStorage.getItem(company_key);
   db.collection(newfinyear).doc(finyear).set({
   from: frofro,
@@ -504,6 +574,21 @@ createAccBtn.addEventListener('click', (e) =>{
 
   // console.log(accountName);
 })
+// bring finyear modal
+const helpfinebtn=document.querySelector('#helpfinebtn');
+helpfinebtn.addEventListener('click', (e) =>{
+  e.preventDefault();
+               jQuery(document).ready(function(){
+                     jQuery('#modal-financialyear').modal();
+                     jQuery(document).ready(function(){
+                         jQuery('#modal-financialyear').modal('open');
+                     });
+               });
+
+   const modal = document.querySelector('#helpmodal');
+     document.getElementById("progbarfy").style.visibility="hidden";
+   M.Modal.getInstance(modal).close();
+})
 // traing
 const transactForm=document.querySelector('#transactform');
 const transactBtn=document.querySelector('#transactbut');
@@ -512,10 +597,11 @@ transactBtn.addEventListener('click', (e) =>{
   const itemtrans=transactForm['trait'].value;
   const suptrans=transactForm['trasup'].value;
   const datetrans=transactForm['date'].value;
-  const amounttrans=transactForm['amount'].value;
+  var amounttrans=transactForm['amount'].value;
+  const quantity=transactForm['quantity'].value;
   const numbertrans = Math.round(+new Date()/1000);
 
-  if (itemtrans === 'Item' || suptrans==='Supplier' || datetrans==='' || amount==='') {
+  if (itemtrans === 'Item' || suptrans==='Supplier' || datetrans==='' || amount==='' || quantity==='') {
       alert("Please fill in all fields");
       // $('#selBooks').focus();
       console.log("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
@@ -523,6 +609,7 @@ transactBtn.addEventListener('click', (e) =>{
     }else {
       console.log("yyyyyyyyyyyyyyyyyyyyy");
     }
+    amounttrans=amounttrans*quantity;
   var accit;
   var d = new Date(); // for now
   const timetransaction=d.getHours()+":"+d.getMinutes();
@@ -634,8 +721,13 @@ createItBtn.addEventListener('click', (e) =>{
   const itName=itForm['item_name'].value;
   const itAcc=itForm['metro'].value;
 
-    // Retrieve
-    var dbit = localStorage.getItem(items_key);
+      // Retrieve
+      var dbitacc = localStorage.getItem(account_key);
+      db.collection(dbitacc).doc(itAcc).update({
+             [itName]: 0
+           })
+          // Retrieve
+          var dbit = localStorage.getItem(items_key);
   db.collection(dbit).doc(itName).set({
       total: 0,
       account: itAcc
@@ -681,6 +773,34 @@ createsupBtn.addEventListener('click', (e) =>{
   // console.log(supName);
 })
 
+// const drBtn=document.querySelector('#procardtrigpc');
+// drBtn.addEventListener('click', (e) =>{
+//   // document.getElementById("mySidenav").style.width = "250px";
+//   // document.querySelector("#bodey").style.marginLeft = "250px";
+//   // document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+//   // console.log("opennerve");
+//   // e.preventDefault();
+//   // drBtn.style.display = "block";
+//   // alert("Hello! I am an alert box!!");
+// })
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.querySelector("bodey").style.marginLeft = "250px";
+  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+  console.log("opennerve");
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.querySelector("bodey").style.marginLeft= "0";
+  document.body.style.backgroundColor = "white";
+}
+// logout
+function logmeout(){
+    auth.signOut();
+    localStorage.clear();
+      document.location.replace("login.html");}
 // log out
 const logoutBtn=document.querySelector('#logout');
 logoutBtn.addEventListener('click', (e) =>{
@@ -718,17 +838,19 @@ dropdownpro.innerHTML=html;
   });
 }
 // dropdown
-const dropdownList=document.querySelector('.one');
+// const dropdownList=document.querySelector('.one');
+const dropdownList=document.querySelector('.itacc');
 const dropdownListtrait=document.querySelector('.trait');
 const dropdownListtrasup=document.querySelector('.trasup');
 const dropdownListfin=document.querySelector('.finalist');
 const dropdownListfinapro=document.querySelector('.finapro');
 
 const setupDropdownfinalist =(data)=>{
-  console.log("finalist222",data);
+var sample = localStorage.getItem(realfinancialyear_key);
+  // console.log("finalist222",data);
   let html=`
-    <select class="team wonder" id="metropo">
-    <option>Choose Financial Year</option>`;
+    <select id="selectId2" onchange="configurationsfinalist()" class="team wonder" id="metropo">
+    <option selected>${sample}</option>`;
   let htmlEnd=`
 </select>`;
   var list='';
@@ -740,7 +862,7 @@ const setupDropdownfinalist =(data)=>{
     html+=li;
   });
   html+=htmlEnd;
-dropdownList.innerHTML=html;
+dropdownListfin.innerHTML=html;
 // console.log(html);
   // Or with jQuery
 
@@ -778,11 +900,14 @@ const setupDropdownfinapro =(data)=>{
 //     <option>Item</option>`;
 //   let htmlEnd=`
 // </select>`;
+
+var sample = localStorage.getItem(realfinancialyear_key);
+// console.log(777,sample);
   let html=`
-  <ul id='dropdownfypro' class='dropdown-content'>
-    <li><a href="#!">one</a></li>`;
+    <select id="selectId" onchange="configurations()">
+      <option selected>${sample}</option>`;
   let htmlEnd=`
-</ul>`;
+</select>`;
   var list='';
   data.forEach(doc=>{
     const drops=doc.data();
@@ -790,12 +915,12 @@ const setupDropdownfinapro =(data)=>{
     // <option>${doc.id}</option>
     // `;
     const li=`
-    <li><a href="#!">${doc.id}</a></li>
+    <option id="${doc.id}">${doc.id}</option>
     `;
     html+=li;
   });
   html+=htmlEnd;
-  console.log(3333,html);
+  // console.log(3333,html);
 dropdownListfinapro.innerHTML=html;
 // console.log(html);
   // Or with jQuery
@@ -808,16 +933,17 @@ dropdownListfinapro.innerHTML=html;
 }
 // trait
 const setupDropdowntrait =(data)=>{
-//   let html=`
-//     <select id="trait">
-//     <option>Item</option>`;
-//   let htmlEnd=`
-// </select>`;
+  console.log(data);
   let html=`
-  <ul id='dropdown1' class='dropdown-content'>
-    <li><a href="#!">one</a></li>`;
+    <select id="trait">
+    <option>Item</option>`;
   let htmlEnd=`
-</ul>`;
+</select>`;
+//   let html=`
+//   <ul id='dropdown1' class='dropdown-content'>
+//     <li><a href="#!">one</a></li>`;
+//   let htmlEnd=`
+// </ul>`;
   var list='';
   data.forEach(doc=>{
     const drops=doc.data();
@@ -825,7 +951,7 @@ const setupDropdowntrait =(data)=>{
     // <option>${doc.id}</option>
     // `;
     const li=`
-    <li><a href="#!">${doc.id}</a></li>
+    <option>${doc.id}</option>
     `;
     html+=li;
   });
@@ -897,8 +1023,108 @@ function accountIt(item,amt,accc){
     /////////////////////
 }
 function configurations(){
+  var finyear = document.getElementById("selectId").value;
+  console.log("sisisi "+finyear);
+  // Retrieve
+  // var aidemoi = localStorage.getItem(logo_key);
+  // console.log(aidemoi);
+  var idy = localStorage.getItem(userid_key);
+  var dbacc=idy+"ACCOUNTS"+finyear;
+  var dbite=idy+"ITEMS"+finyear;
+  var dbsup=idy+"SUPPLIERS"+finyear;
+  var dbtra=idy+"TRANSACTIONS"+finyear;
+  var newfinyear=idy+"FINANCIALYEAR";
+    // clear
+  localStorage.removeItem(account_key);
+  localStorage.removeItem(items_key);
+  localStorage.removeItem(suppliers_key);
+  localStorage.removeItem(transactions_key);
+  localStorage.removeItem(financialyear_key);
+  localStorage.removeItem(realfinancialyear_key);
+    // Store
+  localStorage.setItem(account_key, dbacc);
+  localStorage.setItem(items_key, dbite);
+  localStorage.setItem(suppliers_key, dbsup);
+  localStorage.setItem(transactions_key, dbtra);
+  localStorage.setItem(financialyear_key, dbtra);
+  localStorage.setItem(realfinancialyear_key, finyear);
 
+  var frofro="frofro",toto="toto"
+    db.collection('USERS').doc(idy).update({
+        ACCOUNTS: dbacc,
+            ITEMS: dbite,
+                SUPPLIERS: dbsup,
+                    TRANSACTIONS: dbtra,
+                        from: frofro,
+                            to: toto,
+                            financialyear:finyear
+      }).then(() => {
+        // close the create modal & reset form
+        // const modal = document.querySelector('#modal-financialyear');
+        //   document.getElementById("progbarfy").style.visibility="hidden";
+        // M.Modal.getInstance(modal).close();
+        location.reload();
+        // accountsForm.reset();
+      }).catch(err => {
+        console.log("errrr");
+        console.log(err.message);
+        document.getElementById("progbarfy").style.visibility="hidden";
+      });
 }
+function configurationsfinalist(){
+  var finyear = document.getElementById("selectId2").value;
+  document.getElementById("progbarfy").style.visibility="visible";
+  console.log("sisisi "+finyear);
+  // Retrieve
+  // var aidemoi = localStorage.getItem(logo_key);
+  // console.log(aidemoi);
+  var idy = localStorage.getItem(userid_key);
+  var dbacc=idy+"ACCOUNTS"+finyear;
+  var dbite=idy+"ITEMS"+finyear;
+  var dbsup=idy+"SUPPLIERS"+finyear;
+  var dbtra=idy+"TRANSACTIONS"+finyear;
+  var newfinyear=idy+"FINANCIALYEAR";
+    // clear
+  localStorage.removeItem(account_key);
+  localStorage.removeItem(items_key);
+  localStorage.removeItem(suppliers_key);
+  localStorage.removeItem(transactions_key);
+  localStorage.removeItem(financialyear_key);
+  localStorage.removeItem(realfinancialyear_key);
+    // Store
+  localStorage.setItem(account_key, dbacc);
+  localStorage.setItem(items_key, dbite);
+  localStorage.setItem(suppliers_key, dbsup);
+  localStorage.setItem(transactions_key, dbtra);
+  localStorage.setItem(financialyear_key, dbtra);
+  localStorage.setItem(realfinancialyear_key, finyear);
+
+  var frofro="frofro",toto="toto"
+    db.collection('USERS').doc(idy).update({
+        ACCOUNTS: dbacc,
+            ITEMS: dbite,
+                SUPPLIERS: dbsup,
+                    TRANSACTIONS: dbtra,
+                        from: frofro,
+                            to: toto,
+                            financialyear:finyear
+      }).then(() => {
+        // close the create modal & reset form
+        // const modal = document.querySelector('#modal-financialyear');
+          document.getElementById("progbarfy").style.visibility="hidden";
+        // M.Modal.getInstance(modal).close();
+        location.reload();
+        // accountsForm.reset();
+      }).catch(err => {
+        console.log("errrr");
+        console.log(err.message);
+        document.getElementById("progbarfy").style.visibility="hidden";
+      });
+}
+$('#selectId select').on('change', function(){
+    console.log("option selected!")
+    // do your stuff here.
+})
 // current total items
 async function totalIt(item,amt){
   var total, totalall;
@@ -943,11 +1169,11 @@ $('.dropdown-triggerpc').dropdown();
 // dropdown procard
 $('.procardtrigpn').dropdown();
 // dropdown procard
-$('.procardtrigpc').dropdown();
+// $('.procardtrigpc').dropdown();
 
   // Retrieve
   var dbacca = localStorage.getItem(account_key);
-  console.log("song",dbacca);
+  // console.log("song",dbacca);
 // get acc data
 db.collection(dbacca).onSnapshot(snapshot=>{
   setupAccounts(snapshot.docs);
@@ -965,17 +1191,17 @@ db.collection(dbit).onSnapshot(snapshot=>{
   var fiya= localStorage.getItem(userid_key)+"FINANCIALYEAR";
 // get item data
 db.collection(fiya).onSnapshot(snapshot=>{
-  console.log("great1"+fiya);
-    console.log("great2"+snapshot);
+  // console.log("great1"+fiya);
+  //   console.log("great2"+snapshot);
   setupDropdownfinapro(snapshot.docs);
 })
 
   // Retrieve
-  var dbfy= localStorage.getItem(financialyear_key);
-  console.log("finalist111",dbfy);
+  var dbfy= localStorage.getItem(userid_key)+"FINANCIALYEAR";
+  // console.log("finalist111",dbfy);
 db.collection(dbfy).onSnapshot(snapshot=>{
   setupDropdownfinalist(snapshot.docs);
-  console.log("finalist",snapshot);
+  // console.log("finalist",snapshot);
 })
 
   // Retrieve
@@ -1037,17 +1263,85 @@ $(document).ready(function() {
     });
 
       function preview_image(event) {
+      auth.onAuthStateChanged(user=>{
+              file=event.target.files[0];
         var reader = new FileReader();
         reader.onload = function(){
           var output = document.getElementById('output_image');
-          output.src = reader.result;
+          readed=reader.result;
+          output.src = readed;
         }
-        reader.readAsDataURL(event.target.files[0]);
+
+      storage.ref('users/'+ user.uid + '/logo.jpg').put(file).then(doc => {
+        console.log("upload successful");
+              storage.ref('users/'+ user.uid + '/logo.jpg').getDownloadURL().then(imgURL => {
+                console.log("upload saving");
+                var userid = localStorage.getItem(userid_key);
+                localStorage.setItem(logo_key, imgURL);
+                localStorage.setItem(changedlogo_key, one);
+                db.collection("USERS").doc(userid).update({
+              logo: one,
+              logo64:imgURL
+              })
+                     }).catch(error => {
+                         console.error('Please check your collection and document name in the [firestore] shortcode!', error);
+                     });
+             }).catch(error => {
+                 console.error('Please check your collection and document name in the [firestore] shortcode!', error);
+             });
+
+        reader.readAsDataURL(file);
+      })
       }
-      // const logoBtn=document.querySelector('#output_image');
-      // logoBtn.addEventListener('click', (e) =>{
-      //   e.preventDefault();
-      // })
+
+      // let file{};
+
+      function chooseFile(e){
+      auth.onAuthStateChanged(user=>{
+
+        file=e.target.files[0];
+          var output = document.getElementById('output_image');
+          // output.src = file.src;
+        storage.ref('users/'+ user.uid + '/logo.jpg').put(file).then(doc => {
+          console.log("upload successful");
+               }).catch(error => {
+                   console.error('Please check your collection and document name in the [firestore] shortcode!', error);
+               });
+
+        // imgData = getBase64Image(file);
+        // localStorage.setItem("imgData", imgData);
+        // var dataImage = localStorage.getItem('imgData');
+        // // bannerImg = document.getElementById('tableBanner');
+        // output.src = "data:image/png;base64," + dataImage;
+
+               })
+      }
+
+
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+
+  function getBase64Image(img) {
+      var canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+
+      var ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0);
+
+      var dataURL = canvas.toDataURL("image/png");
+      console.log("datdatdat"+dataURL);
+
+      return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+  }
+// Close the dropdown menu if the user clicks outside of it
+// window.onclick = function(event) {
+//
+//   if (event.target.matches('.procard')) {
+//     return;
+//    }
+// }
   //email
   // const emailForm=document.querySelector('#emailus');
   // const emailBtn=document.querySelector('#sendemail');

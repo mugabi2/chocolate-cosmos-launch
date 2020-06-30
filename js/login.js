@@ -1,3 +1,5 @@
+var fuel=0,
+zero=0,one=1,two=2,three=3,four=4;
 // listen for authentication
 // auth.onAuthStateChanged(user=>{
 //   if(user){
@@ -23,6 +25,10 @@ document.getElementById("bodeys").style.visibility="visible";
           var numberusers_key="usersNo";
           var financialyear_key="financial year";
           var realfinancialyear_key="real financial year";
+          var logo_key="imagelogo";
+          var changedlogo_key="changedlogo";
+
+    localStorage.setItem(changedlogo_key, zero);
 
 const signupForm=document.querySelector('#signup_form1');
 const signupBtn=document.querySelector('#signupBtn');
@@ -104,6 +110,8 @@ document.getElementById("errormsg").innerHTML =err.message;
 
 async function inside(usernumber,company,surname,firstname,email,phone){
 var userid=generator(usernumber,company);
+  var today = new Date();
+  var date = (today.getMonth()+1).toString()+today.getDate().toString()+today.getFullYear().toString();
 var something=await db.collection('USERS').doc(userid).set({
   userid: userid,
   firstname: firstname,
@@ -111,8 +119,11 @@ var something=await db.collection('USERS').doc(userid).set({
   company: company,
   email: email,
   phone: phone,
-  licence: "0",
+  licence: "14",
   financialyear: "0",
+  today:date,
+  logo:zero,
+  logo64:"not yet",
   created:  firebase.firestore.FieldValue.serverTimestamp(),
   ACCOUNTS:"blankACCOUNTS",
   ITEMS:"blankITEMS",
@@ -239,22 +250,23 @@ console.log("wait",waitforme);
 async function storage(emshow){
   var drops;
   localStorage.setItem("kzone", 1);
-  var seconddrops=inner();
+  // var seconddrops=inner();
 
   // WAIT FOR THE PROMISE
-      const checkIfDoneiner = () => {
-        seconddrops.then(ok => {
-          seconddrops=ok;
+      // const checkIfDoneiner = () => {
+        // seconddrops.then(ok => {
+          // seconddrops=ok;
 
             var total, totalall;
             var accret=1;
-            console.log("333333dropds",seconddrops);
             localStorage.setItem("kzthree", 3);
-
-            const docReftss = db.collection("USERS").doc(seconddrops);
-            // var statement =await
-            docReftss.get().then(doc => {
-                     if (doc.exists) {
+            var sulement=await db.collection("USERS").where("email", "==", emshow)
+            .get().then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+            var dropss=doc.id;
+console.log("emmm "+doc);
+              localStorage.setItem(userid_key, dropss);
+                     // if (doc.exists) {
                          // console.log('Document data:', doc.data());
             jQuery.each(doc.data(), function (key, value) {
                       if(key=="ACCOUNTS"){
@@ -278,31 +290,30 @@ async function storage(emshow){
                          localStorage.setItem(phone_key, value);
                        }else if (key=="financialyear") {
                          localStorage.setItem(realfinancialyear_key, value);
+                       }else if (key=="FINANCIALYEAR") {
+                         localStorage.setItem(financialyear_key, value);
                        }else if (key=="email") {
                          localStorage.setItem(email_key, value);
-                         var dbaccad = localStorage.getItem(account_key);
-                         console.log("song law",dbaccad);
+                       }else if (key=="logo") {
+                         localStorage.setItem(changedlogo_key, value);
+                       }else if (key=="logo64") {
+                         localStorage.setItem(logo_key, value);
                        }
                        localStorage.setItem("kzfour", 4);
 
           })
-
-
-          } else {
-          // doc.data() will be undefined in this case
-          console.error('Please check your collection and document name in the [firestore] shortcode!');
-          }
+          });
           }).catch(error => {
           console.error('Please check your collection and document name in the [firestore] shortcode!', error);
           });
 
-          })
-          .catch(err => {
-            console.error(err)
-          })
+          // })
+          // .catch(err => {
+          //   console.error(err)
+          // })
 
-      }
-      checkIfDoneiner();
+      // }
+      // checkIfDoneiner();
   async function inner(){
 // Create a reference to the cities collection
 var sulement=await db.collection("USERS").where("email", "==", emshow)
@@ -316,8 +327,7 @@ var sulement=await db.collection("USERS").where("email", "==", emshow)
               console.log("22222222drps",drops);
               localStorage.setItem("kztwo", 2);
         });
-    })
-    .catch(function(error) {
+    }).catch(function(error) {
         console.log("Error getting documents: ", error);
     });
     return drops;

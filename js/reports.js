@@ -4,8 +4,12 @@ var account_key="account";
 var items_key="items";
 var suppliers_key="suppliers";
 var transactions_key="transactions";
+var totalaccounts_key="total accounts";
+var totalitems_key="total items";
 // table accounts
 
+localStorage.setItem(totalaccounts_key, 0);
+localStorage.setItem(totalitems_key, 0);
 const tableList=document.querySelector('.tablo');
 const setuptableaccounts =(data)=>{
   let html=`<tr>`;
@@ -17,6 +21,9 @@ const setuptableaccounts =(data)=>{
 jQuery.each(drops, function (key, value) {
 if(key=="total"){
 totalholder=value;
+var very=localStorage.getItem(totalaccounts_key);
+very=parseInt(very)+parseInt(value);
+localStorage.setItem(totalaccounts_key, very);
 }
     })
     const li=`
@@ -24,6 +31,11 @@ totalholder=value;
     `;
     html+=li;
   });
+  var very=localStorage.getItem(totalaccounts_key);
+  const htend=`
+  <td><b>TOTAL</b></td><td><b>${very}</b></td></tr>
+  `;
+  html+=htend;
   // html+=htmlEnd;
 tableList.innerHTML=html;
 // console.log(html);
@@ -41,19 +53,29 @@ const setuptableitems =(data)=>{
   let htmlEnd=`</tr>`;
   var list='';
   var totalholder;
+  var accholder;
   data.forEach(doc=>{
     const drops=doc.data();
 jQuery.each(drops, function (key, value) {
 if(key=="total"){
 totalholder=value;
+var very=localStorage.getItem(totalitems_key);
+very=parseInt(very)+parseInt(value);
+localStorage.setItem(totalitems_key, very);
+}else if (key=="account") {
+accholder=value;
 }
     })
     const li=`
-    <td>${doc.id}</td><td>${totalholder}</td></tr>
+    <td>${doc.id}   (${accholder})</td><td>${totalholder}</td></tr>
     `;
     html+=li;
   });
-  // html+=htmlEnd;
+  var very=localStorage.getItem(totalitems_key);
+  const htend=`
+  <td><b>TOTAL</b></td><td><b>${very}</b></td></tr>
+  `;
+  html+=htend;
 tableListit.innerHTML=html;
 // console.log(html);
   // Or with jQuery
@@ -75,6 +97,9 @@ db.collection(accs).onSnapshot(snapshot=>{
   const checkIfDonede = () => {
     bigbigarray.then(ok => {
       bigbigarray=ok;
+      var very=localStorage.getItem(totalaccounts_key);
+      document.getElementById("expencehead").innerHTML = "TOTAL EXPENDITURE: "+very;
+      console.log("accounts "+very);
       })
       .catch(err => {
         console.error(error)
@@ -109,15 +134,15 @@ db.collection(accs).onSnapshot(snapshot=>{
         console.log(array1); // [1, 2, 3]
         console.log(array1.length); // 3
 
-          var piechart_options = {title:'Pie Chart: How Much Pizza I Ate Last Night',
-                         width:100%,
-                         height:100%};
+          var piechart_options = {title:'Pie Chart: EXPENDITURE PER ACCOUNT',
+                         width:400,
+                         height:300};
           var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
           piechart.draw(data, piechart_options);
 
-          var barchart_options = {title:'Barchart: How Much Pizza I Ate Last Night',
-          width:100%,
-          height:100%,
+          var barchart_options = {title:'Barchart: EXPENDITURE PER ACCOUNT',
+          width:400,
+          height:300,
                          legend: 'none'};
           var barchart = new google.visualization.BarChart(document.getElementById('barchart_div'));
           barchart.draw(data, barchart_options);
@@ -164,6 +189,9 @@ db.collection(its).onSnapshot(snapshot=>{
   const checkIfDonedeit = () => {
     bigbigarrayit.then(ok => {
       bigbigarrayit=ok;
+      var very=localStorage.getItem(totalitems_key);
+      // document.getElementById("expencehead").innerHTML = "TOTAL EXPENDITURE: "+very;
+      console.log("items "+very);
       })
       .catch(err => {
         console.error(error)

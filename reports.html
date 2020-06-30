@@ -23,7 +23,6 @@
   <title>Chocolate Cosmos</title>
 </head>
 <body class="grey lighten-3">
-
   <!-- NAVBAR -->
   <nav class="z-depth-0 navio pink darken-3 sticky">
     <div class="nav-wrapper container  ">
@@ -32,25 +31,15 @@
         Chocolate Cosmos
       </a>
       <ul id="nav-mobile" class="right nav-wrapper-fixed ">
-          <li class="logged-in">
-            <a href="#" class="white-text modal-trigger" data-target="modal-accounts">Create Accounts</a>
-          </li>
-          <li class="logged-in">
-            <a href="#" class="white-text modal-trigger" data-target="modal-items">Create Items</a>
-          </li>
-          <li class="logged-in">
-            <a href="#" class="white-text modal-trigger" data-target="modal-suppliers">Create Suppliers</a>
-          </li>
-          <li class="logged-in">
-            <a href="#" class="white-text modal-trigger" data-target="modal-suppliers">Profile</a>
-          </li>
-          <li class="logged-out">
-            <a href="#" class="white-text" id="logout">Log Out</a>
+          <li class="logged-out right">
+            <a href="#" class="white-text"  onclick="location.href='index.html';" >HOME</a>
           </li>
         </span>
       </ul>
     </div>
   </nav>
+
+  <h4 id="expencehead" class="center"></h4>
 <div class="container">
 
     <ul id="tabs-swipe-demo" class="tabs">
@@ -60,8 +49,8 @@
         <!--Table and divs that hold the pie charts-->
         <table class="columns" id="testacc">
           <tr class="row">
-            <td class=" col s8 m4 l2"><div class="center" id="piechart_div" style="border: 1px solid #ccc"></div></td>
-            <td class=" col s8 m4 l2"><div  class="center" id="barchart_div" style="border: 1px solid #ccc"></div></td>
+            <td class=" "><div class="center" id="piechart_div" style="border: 1px solid #ccc"></div></td>
+            <td class=" "><div  class="center" id="barchart_div" style="border: 1px solid #ccc"></div></td>
           </tr>
         </table>
               <!--Table and divs that hold the pie charts-->
@@ -71,77 +60,8 @@
                   <td><div  class="center" id="barchart_divit" style="border: 1px solid #ccc"></div></td>
                 </tr>
               </table>
-  <!-- items MODAL -->
-  <div id="modal-items" class="modal">
-    <div class="modal-content">
-      <h4>Create Items</h4><br />
-      <form id="items-form">
-        <div class="input-field">
-          <input type="text" id="item_name" required />
-          <label for="item_name">Item Name</label>
-        </div>
-  <div class="input-field col s12 one">
-  </div>
-        <button class="btn teal z-depth-2 z-depth-0" id="createIt">Create Item</button>
-      </form>
-    </div>
-  </div>
-
-      <!-- suppliers MODAL -->
-      <div id="modal-suppliers" class="modal">
-        <div class="modal-content">
-          <h4>Create Supplier</h4><br />
-          <form id="suppliers-form">
-            <div class="input-field">
-              <input type="text" id="supplier_name" required />
-              <label for="supplier_name">Supplier Name</label>
-            </div>
-            <div class="input-field">
-              <input type="text" id="supplier_phone" required />
-              <label for="supplier_phone">Phone number</label>
-            </div>
-            <button class="btn teal z-depth-2 z-depth-0" id="regsup">Register supplier</button>
-          </form>
-        </div>
-      </div>
-
-          <!-- profile MODAL -->
-          <div id="modal-profile" class="modal">
-            <div class="modal-content">
-              <h4>Create Supplier</h4><br />
-              <form id="profile-form">
-                <div class="input-field">
-                  <input type="text" id="company_name" required />
-                  <label for="company_name">Supplier Name</label>
-                </div>
-                <div class="input-field">
-                  <input type="text" id="company_phone" required />
-                  <label for="company_phone">Phone number</label>
-                </div>
-                <button class="btn teal z-depth-2 z-depth-0">Login</button>
-              </form>
-            </div>
-          </div>
-
-  <!-- CREATE GUIDE MODAL -->
-  <div id="modal-create" class="modal">
-    <div class="modal-content">
-      <h4>Create Guide</h4><br />
-      <form id="create-form">
-        <div class="input-field">
-          <input type="text" id="title" required>
-          <label for="title">Guide Title</label>
-        </div>
-        <div class="input-field">
-          <textarea id="content" class="materialize-textarea" required></textarea>
-          <label for="content">Guide Content</label>
-        </div>
-        <button class="btn teal z-depth-2">Create</button>
-      </form>
-    </div>
-  </div>
-
-        <table>
+              <h5>EXPENDITURE PER ACCOUNT</h5>
+        <table class="acctable white">
           <thead>
             <tr>
                 <th>ACCOUNT NAME</th>
@@ -150,9 +70,10 @@
           </thead>
           <tbody class="tablo">
           </tbody>
-        </table>
+        </table><br/>
 
-              <table>
+        <h5>EXPENDITURE PER ITEM</h5>
+              <table class="ittable white">
                 <thead>
                   <tr>
                       <th>ITEM NAME</th>

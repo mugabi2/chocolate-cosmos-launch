@@ -1,3 +1,5 @@
+var fuel=0,
+zero=0,one=1,two=2,three=3,four=4;
 var identity;
 var userid_key="userid";
 var account_key="account";
@@ -9,7 +11,16 @@ var surname_key="surname";
 var firstname_key="firstname";
 var phone_key="phone";
 var email_key="email";
+var logo_key="imagelogo";
+var changedlogo_key="changedlogo";
 
+  var change = localStorage.getItem(changedlogo_key);
+  if(change==one){
+    var image64 = localStorage.getItem(logo_key);
+    // console.log("6464"+image64);
+  var output = document.getElementById('imagebox');
+    output.src=image64;
+  }
 
         var el_down = document.getElementById("companynameid");
         setext();
