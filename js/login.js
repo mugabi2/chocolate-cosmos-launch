@@ -196,8 +196,9 @@ const loginForm=document.querySelector('#login_form');
 const loginBtn=document.querySelector('#login-button');
 loginBtn.addEventListener('click', (e) =>{
   e.preventDefault();
+  document.getElementById("progbarlog").style.visibility="visible";
 
-$('#progbar1').addClass("active");
+// $('#progbar1').addClass("active");
   // const email=loginForm['userEmailli'].value;
   // const password=loginForm['userPasswordli'].value;
 
@@ -222,11 +223,11 @@ console.log("wait",waitforme);
           console.log("wait:",waitforme);
           localStorage.setItem("login", "1");
           loginForm.reset();
-          $('#progbar1').removeClass("active");
         document.querySelector('.error').innerHTML=" ";
         // var take=localStorage.getItem(account_key);
         // console.log("take",take);
         // login
+        document.getElementById("progbarlog").style.visibility="hidden";
         document.location.replace("index.html");
 
           })
@@ -239,7 +240,7 @@ console.log("wait",waitforme);
 
   }).catch(err=>{
     document.querySelector('.error').innerHTML=err.message;
-    $('#progbar1').removeClass("active");
+    document.getElementById("progbarlog").style.visibility="hidden";
   });
   console.log(email,password);
 })
@@ -292,6 +293,7 @@ console.log("emmm "+doc);
                          localStorage.setItem(realfinancialyear_key, value);
                        }else if (key=="FINANCIALYEAR") {
                          localStorage.setItem(financialyear_key, value);
+                         console.log("finafina"+value);
                        }else if (key=="email") {
                          localStorage.setItem(email_key, value);
                        }else if (key=="logo") {
@@ -304,6 +306,7 @@ console.log("emmm "+doc);
           })
           });
           }).catch(error => {
+          document.getElementById("progbarlog").style.visibility="hidden";
           console.error('Please check your collection and document name in the [firestore] shortcode!', error);
           });
 

@@ -35,6 +35,8 @@ var identitynational;
           // console.log("fix3",s3);
           // console.log("fix4",s4);
           // console.log("fix5",s5);
+
+          document.getElementById("probartra").style.visibility="visible";
 function pageSetup(){
 
   var change = localStorage.getItem(changedlogo_key);
@@ -112,7 +114,7 @@ document.getElementById("bodey").style.visibility="visible";
 // $('#modal-accounts').modal({ show: false})
 // openModal();
 if (fycheck=="blankFINANCIALYEAR") {
-  console.log(fycheck);
+  console.log("finafina"+fycheck);
 localStorage.setItem("login", "0");
 document.getElementById("warningfy").innerHTML ="Please set your Financil Year";
 }
@@ -529,7 +531,8 @@ finBtn.addEventListener('click', (e) =>{
                   TRANSACTIONS: dbtra,
                       from: frofro,
                           to: toto,
-                          financialyear:finyear
+                          financialyear:finyear,
+                          FINANCIALYEAR:newfinyear
     }).then(() => {
       // close the create modal & reset form
       const modal = document.querySelector('#modal-financialyear');
@@ -986,6 +989,7 @@ const setupDropdowntrasup =(data)=>{
   });
   html+=htmlEnd;
 dropdownListtrasup.innerHTML=html;
+          document.getElementById("probartra").style.visibility="hidden";
 // console.log(html);
   // Or with jQuery
 
@@ -1057,7 +1061,8 @@ function configurations(){
                     TRANSACTIONS: dbtra,
                         from: frofro,
                             to: toto,
-                            financialyear:finyear
+                            financialyear:finyear,
+                            FINANCIALYEAR:newfinyear
       }).then(() => {
         // close the create modal & reset form
         // const modal = document.querySelector('#modal-financialyear');
@@ -1107,7 +1112,8 @@ function configurationsfinalist(){
                     TRANSACTIONS: dbtra,
                         from: frofro,
                             to: toto,
-                            financialyear:finyear
+                            financialyear:finyear,
+                            FINANCIALYEAR:newfinyear
       }).then(() => {
         // close the create modal & reset form
         // const modal = document.querySelector('#modal-financialyear');

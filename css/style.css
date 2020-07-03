@@ -311,21 +311,20 @@
     }
     .finalist {
       /* float: left; */
-    margin-right: 50px;
-    border: 3px solid red !important;
+      max-width: 200px;
+    margin-right: 10px;
     }
-    .traam {
-      float: left;
-      max-width: 140px;
-    /* border: 3px solid red; */
+    .tac {
+      padding: 20px;
     }
     .probartra {
-    position: -webkit-sticky;
-    position: sticky;
-  left:  50%;
-  top: 50%;
-  width: 200px;
-  height: 200px;
+      position: -webkit-sticky;
+      position: sticky;
+      left:  50%;
+      top: 50%;
+      width: 200px;
+      height: 200px;
+      visibility: hidden;
     }
     .progbar2 {
     position: -webkit-sticky;
@@ -363,13 +362,21 @@
   top: 50%;
   visibility: hidden;
     }
-    .progbarsing{
-    position: -webkit-sticky;
-    position: sticky;
+    .progbarlog{
+    display:block !important;
+    margin:auto !important;
+    visibility: hidden;
     max-width: 400px;
-  /* left:  50%; */
-  top: 50%;
-  visibility: hidden;
+    margin-bottom: 15px !important;
+    margin-top: -10px !important;
+    }
+    .progbarsing{
+    display:block !important;
+    margin:auto !important;
+    visibility: hidden;
+    max-width: 400px;
+    margin-bottom: 15px !important;
+    margin-top: -10px !important;
     }
     .probar4 {
     position: -webkit-sticky;
@@ -378,6 +385,12 @@
   top: 50%;
   width: 200px;
   height: 200px;
+    }
+    .progcont {
+      display:block;
+      margin:0px;
+      max-width: 100%;
+      max-height: 5px;
     }
   .sticky {
   position: -webkit-sticky;
@@ -412,8 +425,8 @@
     width: 100%;
     margin: 0 !important;
     /* display: inline; */
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 35px;
+    padding-right: 35px;
     }
     .trasup {
       /* border: 3px solid red; */
@@ -421,16 +434,26 @@
       width: 100%;
       margin: 0 !important;
       /* display: inline; */
-      padding-left: 15px;
-      padding-right: 15px;
+      padding-left: 35px;
+      padding-right: 35px;
     }
     .dating {
-    border: 3px solid green !important;
-    max-width: 150px;
+    max-width: 150px !important;
+    margin: 5px !important;
     }
     .traqua {
-      max-width: 150px;
-      margin: 0 !important;
+      max-width: 150px !important;
+      width: 150px;
+      margin: 5px !important;
+    }
+    .traam {
+      max-width: 140px;
+      margin: 5px !important;
+    }
+    .btntrans {
+    width: 350px;
+      display:block;
+      margin:auto;
     }
     .main {
         background-color: #FFFFFF;
