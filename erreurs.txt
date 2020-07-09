@@ -7,3 +7,4 @@ soln===theres fy in users
 3.WHEN ADDS FY, WHICH IS CURRENT
 soln===theres fy in users
 4.UPDATES IF DOCUMENT EXISTS
+php mtnmomo/mtn-momo-api-php/src/SandboxUserProvision.php -k '1acff530c2fa41be9b6c99d7ab3270a3' -c 'https://chocolate-cosmos.web.app/'

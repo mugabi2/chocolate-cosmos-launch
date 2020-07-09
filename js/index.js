@@ -1224,13 +1224,19 @@ db.collection(dbtra).orderBy("created", "desc").onSnapshot(snapshot=>{
   setupTransacs(snapshot.docs);
   // console.log("traaaa:",snapshot.docs);
 })
+//////////
+
+//////////
 // datepicker
 var currYear = (new Date()).getFullYear();
 
+var today = new Date();
+var datetoday = (today.getMonth()+1).toString()+today.getDate().toString()+today.getFullYear().toString();
+
 $(document).ready(function() {
   $(".datepicker").datepicker({
-    defaultDate: new Date(),
-    // setDefaultDate: new Date(2000,01,31),
+    // defaultDate: datetoday,
+    setDefaultDate: true,
     format: "mm/dd/yyyy",
     autoClose:true
   }).datepicker("setDate", new Date());
@@ -1341,25 +1347,27 @@ $(document).ready(function() {
 
       return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
   }
+
+
+      // $(function(){
+      //   $("#bottomind").load("bottom.html");
+      // });
+
+      $.get("universal/nav.html", function(data){
+          $("#navind").replaceWith(data);
+      });
+      $.get("universal/bottom.html", function(data){
+          $("#bottomind").replaceWith(data);
+      });
 // Close the dropdown menu if the user clicks outside of it
 // window.onclick = function(event) {
 //
 //   if (event.target.matches('.procard')) {
 //     return;
 //    }
-// }
+// // }
   //email
-  // const emailForm=document.querySelector('#emailus');
-  // const emailBtn=document.querySelector('#sendemail');
-  // emailBtn.addEventListener('click', (e) =>{
+  // const addBtn1=document.querySelector('#additembtn');
+  // addBtn1.addEventListener('click', (e) =>{
   //   e.preventDefault();
-  //   const hisemail=emailForm['emailyours'].value;
-  //   const hismessage=emailForm['emailmsg'].value;
-  //   send();
-  //   function send() {
-  //     setTimeout(function() {
-  //       window.open("mailto:" + "samuelmugabi2@gmail.com" + "?subject=" + "subjecgt" + "&body=" + "body body");
-  //     }, 20);
-  //     console.log('sent');
-  //   }
   // })

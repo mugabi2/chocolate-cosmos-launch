@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- This site is converting visitors into subscribers and customers with respond.io - https://respond.io -->
+    <script src="https://app.respond.io/facebook/chat/plugin/30918/109269794100142" async></script>
+    <!-- https://respond.io/ -->
+    <script type = "text/javascript"
+          src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+      <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="./css/create.css">
+    <title>Chocolate Cosmos Create</title>
+  </head>
+  <body>
+    <div class="container topcrt">
+      <div class="modal-content row">
+        <h5 class="center headthin">Finacial Year</h5>
+        <div class="percent50 container createfy center col s12 l5">
+          <h6 class=" headthin">Create FY</h6>
+        <form id="financialyear-form">
+            <div class="input-field straightline headthin">
+              <input id="fromdate" class="dater impu" value="FROM DATE"><a class="margin2"></a><br/>
+              <input id="todate" class="dater impu" value="TO DATE">
+            </div>
+            <!-- ////////////// -->
+                  <div class="progress progbarsing center" id="progbarfy">
+                        <div class="indeterminate"></div>
+                    </div>
+            <!-- /////////////// -->
+          <button class="crtfybtn btn teal z-depth-2" id="financialyearBtn">Submit</button>
+      </form>
+    </div>
+    <div class="percent50 container selectfy center col s12 l5">
+      <h6 class=" headthin center">Select FY</h6>
+      <div class="input-field right-align trap finalist"></div>
+      <!-- ////////////// -->
+            <div class="progress progbarsing center" id="progbarfy">
+                  <div class="indeterminate"></div>
+              </div>
+      <!-- /////////////// -->
+    </div>
+      </div>
+
+      </div>
+    <div class="container threebig row">
+      <a class="container threes col s12 m4 l4">
+        <div class="modal-content">
+          <h5 class="headcrt">Create Accounts</h5><br />
+          <form id="accounts-form">
+            <div class="input-field impu">
+              <input class="" type="text" id="account_name"/>
+              <label for="account_name">Account name</label>
+            </div>
+              <!-- /////////////// -->
+                    <div class="progress progbarac " id="progbarac">
+                          <div class="indeterminate"></div>
+                      </div>
+              <!-- //////////////// -->
+            <button class="btn teal z-depth-2" id="createAccBtn">Create Account</button>
+        </form>
+        </div>
+      </a>
+        <a class="container threes col s12  m4 l4">
+              <h5 class="headcrt">Create Items</h5><br />
+              <form id="items-form">
+                <div class="input-field impu">
+                  <input type="text" id="item_name" required />
+                  <label for="item_name">Item Name</label>
+                </div>
+          <div class="input-field col s12 one itacc">
+          </div>
+            <!-- /////////////// -->
+                  <div class="progress progbarit" id="progbarit">
+                        <div class="indeterminate"></div>
+                    </div>
+            <!-- /////////////// -->
+                <button class="btn teal z-depth-2 z-depth-0" id="createIt">Create Item</button>
+              </form>
+        </a>
+          <a class="container threes col s12  m4 l4">
+                <h5 class="headcrt">Create Supplier</h5><br />
+                <form id="suppliers-form">
+                  <div class="input-field impu">
+                    <input type="text" id="supplier_name"/>
+                    <label for="supplier_name">Supplier Name</label>
+                  </div>
+                  <div class="input-field impu">
+                    <input type="text" id="supplier_phone"/>
+                    <label for="supplier_phone">Phone number</label>
+                  </div>
+                    <!-- /////////////// -->
+                          <div class="progress progbarsup" id="progbarsup">
+                                <div class="indeterminate"></div>
+                            </div>
+                    <!-- /////////////// -->
+                  <button class="btn teal z-depth-2 z-depth-0" id="regsup">Register supplier</button>
+                </form>
+            </a>
+    </div>
+  </body>
+</html>

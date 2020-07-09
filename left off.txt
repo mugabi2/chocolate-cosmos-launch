@@ -10,3 +10,8 @@ procard fy dropdown
 6/29/20
 fixing items dropdown and items not recorded in accounts ++++++++
 warningfy++++
+7/6/20
+Momo Sandbox Credentials {
+  "userSecret": "4235033426974670b69dc5313c1bd535",
+  "userId": "fa1ca5d2-0da3-4d88-b9b2-4c9b5562cc2b"
+}

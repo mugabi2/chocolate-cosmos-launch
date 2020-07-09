@@ -46,13 +46,13 @@
           <input type="file" accept="image/*"  style="display:none" onchange="chooseFile(event)"/>
         </label>
           <h5 class="black-text center proco trancate">ST FLORENCE SECONDARY SCHOOL</h5>
-          <h6 class="black-text center prolice">LICENCE:100 days</h6>
+          <h6 class="black-text center prolice">LICENSE:100 days</h6>
         <div class="vipdiv container">
           <img class="imgpropl center"src="images/platinum.png">
           <img class="imgprogo center"src="images/gold.png">
         </div>
         <div class="vipdiv container">
-          <img class="center imgpromomo"src="images/momo.jpg" >
+          <imgclass="center imgpromomo"src="images/momo.jpg" >
           <img class="center imgpromomo"src="images/googlepay.png" style="width: 60px; margin-top: 10px;"><br/>
         </div>
         <!-- <div class="input-field finapro center"></div> -->
@@ -90,7 +90,7 @@
   </div><br/>
     <a class="finyearhead">Coming Soon</a>
   <div class="vipdiv container">
-    <img class="center imgpromomo"src="images/momo.jpg" >
+    <img  id="mtnmomo" class="center imgpromomo"src="images/momo.jpg" >
     <img class="center imgpromomo"src="images/googlepay.png" style="width: 60px; margin-top: 10px;"><br/>
   </div>
     </li>
@@ -167,7 +167,6 @@
       </li>
     </span>
   </ul>
-</br>
 <!-- <input type="button" class="modal-trigger" data-target="modal-financialyear" value="Go to Google" /><br/> -->
 <!-- <input type="button" value="Help" /> -->
 <p id="warningfy" class="error red-text center-align"></p><br/>
@@ -220,16 +219,24 @@
   <div class="row tranco">
     <form id="transactform" class="container white trancona" >
         <div class="container fifty">
-            <div class="input-field trait browser-default"></div>
+            <div href="#!" class="input-field trait browser-default"></div>
+            <button class="modal-trigger addicobtn white btn z-depth-1"
+            data-target="modal-items" id="additembtn">
+              <i class="material-icons center addico">add</i>
+            </button>
             <div class="input-field trasup browser-default"></div>
+            <button class="modal-trigger addicobtn white btn z-depth-1"
+            data-target="modal-suppliers" id="additembtn">
+              <i class="material-icons center addico">add</i>
+            </button>
+            <input id="date" class="dating datepicker autoClose defaultDate" />
             <!-- <a class='dropdown-trigger btn trait' href='#' data-target='dropdown1'>Items</a> -->
         </div>
-        <div class="container fifty">
-          <div class="center">
-          <input id="date" class="dating datepicker autoClose defaultDate" />
-          <input  id="quantity" class="traqua" value='1'/>
+        <div class="container fifty center">
+          <div class="center quadiv">
           <input  id="amount"  placeholder="Amount" class=" traam" />
-          <!-- <a  class="traqua">Qty:</a> -->
+          <a  class="traqua">Qty:</a>
+          <input  id="quantity" class="traqua" value='1'/>
           </div>
         </div><br/>
         <button class="btn teal btntrans z-depth-2" id="transactbut">Transact</button>
@@ -349,55 +356,9 @@
 
     </ul>
   </div>
+<div id="bottomind" class="">
 
-<!-- <div class="card">
-  <img src="img.jpg" alt="John" style="width:100%">
-  <h1>John Doe</h1>
-  <p class="title">CEO & Founder, Example</p>
-  <p>Harvard University</p>
-  <a href="#"><i class="fa fa-dribbble"></i></a>
-  <a href="#"><i class="fa fa-twitter"></i></a>
-  <a href="#"><i class="fa fa-linkedin"></i></a>
-  <a href="#"><i class="fa fa-facebook"></i></a>
-  <p><button>Contact</button></p>
-</div> -->
-  <!-- black -->
-  <!-- <div class=" bottombox grey darken-4 footer"> -->
-  <div class=" bottombox grey darken-4 footer row">
-  <div class="blackleft left grey darken-4 col s18">
-    <a href="#" class="brand-logo left ">
-      <img src="images/choco2.png" style="width: 63px; height:33px;">
-      <a class="chocosize white-text">Chocolate Cosmos</a>
-    </a>
-  </div>
-  <div class="blackabout left grey darken-4 col s12">
-    <a class="chocosititle white-text">ABOUT CHOCOLATE COSMOS</a><br/>
-    <!-- <a class="chocosid white-text" href="http://stardigitalbikes.com/">About Us</a><br/> -->
-    <a class="chocosid white-text" href="terms_and_conditions.html">Terms and Conditions</a><br/>
-    <a class="chocosid white-text" href="terms_and_conditions.html">Privacy policy</a>
-  </div>
-  <div class="blackcontact left grey darken-4 col s12">
-    <a class="chocosi white-text">FOLLOW US</a><br/><br/>
-
-      <a href="https://web.facebook.com/Chocolate-Cosmos-109269794100142/">
-      <img  class="socialicons" src="images/facebookwhite.png" style="width: 15px; height:25px; margin-right: 35px;">
-      </a>
-      <a href="#">
-      <img  class="socialicons" src="images/twitterwhite.png" style="width: 25px; height:20px; margin-right: 35px;">
-      </a>
-      <a href="#">
-      <img  class="socialicons" src="images/emailwhite.png" style="width: 25px; height:20px;">
-    </a><br/><br/>
-      <a class="chocosic white-text">CONTACT US</a><br/><br/>
-    <!-- <form class="emailus" action="index.html" method="post">
-      <input type="email" class="contactinput" id="emailyours" placeholder="Your email">
-      <textarea id="emailmsg" class="contactinput" placeholder="Your message..."></textarea>
-      <button class="z-depth-2" id="sendemail">
-        <i class="material-icons white-text">send</i>
-        Send email</button>
-    </form>  -->
-  </div>
-  </div>
+</div>
   <!-- <div class="cointainer grey darken-3 footerbottom">
   &copy;stardigitalbikes
   </div> -->
@@ -446,9 +407,8 @@
   </script>
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <!-- <script src="scripts/auth.js"></script> -->
   <script src="js/index.js"></script>
-  <!-- <script src="js/home.js"></script> -->
+  <script src="momo.js"></script>
 </body>
 
 </html>

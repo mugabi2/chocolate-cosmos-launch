@@ -414,32 +414,43 @@
         }
     .fifty {
     max-width: 90%;
-    display: inline;
+      display: flex;
+      flex-direction: row;
     /* padding: 10px; */
     }
-    /* .input-field{
-      margin-bottom: 0px !important;
-    } */
+    .quadiv {
+      width: 400px;
+        display:block;
+        margin:auto;
+    }
+    .addicobtn{
+      margin-top: 11px;
+      margin-left:10px;
+      margin-right:10px;
+    }
+    .addico{
+      margin: 0px;
+      color: black;
+    }
     .trait {
     /* border: 3px solid blue; */
-    width: 100%;
     margin: 0 !important;
-    /* display: inline; */
-    padding-left: 35px;
-    padding-right: 35px;
+    /* padding-left: 35px;
+    padding-right: 35px; */
+    width: 200px;
     }
     .trasup {
-      /* border: 3px solid red; */
-      /* max-width: 150px; */
-      width: 100%;
-      margin: 0 !important;
-      /* display: inline; */
-      padding-left: 35px;
-      padding-right: 35px;
+    /* border: 3px solid blue; */
+    margin: 0 !important;
+    /* padding-left: 35px;
+    padding-right: 35px; */
+    width: 200px;
+    /* margin-left: 15px !important; */
     }
     .dating {
-    max-width: 150px !important;
+    max-width: 120px !important;
     margin: 5px !important;
+    margin-top: 0px !important;
     }
     .traqua {
       max-width: 150px !important;

@@ -270,3 +270,4 @@ var fruits = ["Banana", "Orange", "Apple", "Mango"];
   $(document).ready(function(){
     $('.tabs').tabs();
   });
+z
