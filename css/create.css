@@ -10,7 +10,8 @@ html,body{
 max-width: 30%;
 height: 80%;
 padding: 20px;
-background-color: red;
+/* background-color: red; */
+border: 3px solid green;
 margin: 20px;
 }
 .topcrt {

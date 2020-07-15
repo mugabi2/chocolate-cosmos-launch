@@ -15,3 +15,8 @@ Momo Sandbox Credentials {
   "userSecret": "4235033426974670b69dc5313c1bd535",
   "userId": "fa1ca5d2-0da3-4d88-b9b2-4c9b5562cc2b"
 }
+7/10/20
+Momo Sandbox Credentials {
+  "userSecret": "a662b7b377b14d4dad657eb76af68073",
+  "userId": "2de0d2a5-0673-43e8-8bef-69b712711148"
+}

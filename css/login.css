@@ -20,7 +20,7 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   color: white;
   font-weight: 300;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 body ::-webkit-input-placeholder {
   /* WebKit browsers */
@@ -47,6 +47,10 @@ body :-ms-input-placeholder {
   font-family: 'Source Sans Pro', sans-serif;
   color: white;
   font-weight: 1000;
+}
+.why {
+  margin: 1px;
+  margin-top: 60px!important;
 }
 .hlog {
   /* font-weight: 900; */

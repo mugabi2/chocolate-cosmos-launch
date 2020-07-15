@@ -239,9 +239,19 @@ const setupTransacs =(data)=>{
                  if(y%2==1){
                  li=`
               <li class="entry blue lighten-4">
-              <div class=" valign-wrapper left">${liste}
-                <i id="${identityp}" class="iconprint small material-icons right">print</i>
-                <i id="${identityd}" class="icondelete small material-icons right">delete_forever</i>
+              <div class=" valign-wrapper left">
+              <div class="divlist">${liste}</div>
+              <div class="text-right divicon">
+              <button href="#!" class="modal-trigger bottonicon white z-depth-1">
+              <i id="${identityp}" class="center iconprint small material-icons right histicon">edit</i>
+              </button>
+              <button class="modal-trigger  bottonicon  white z-depth-1">
+              <i id="${identityp}" class=" iconprint small material-icons right histicon">print</i>
+              </button>
+              <button class="modal-trigger  bottonicon  white z-depth-1">
+              <i id="${identityd}" class=" icondelete small material-icons right histicon">delete_forever</i>
+              </button>
+              </div>
               </div>
               </li>
             `;
@@ -1359,6 +1369,37 @@ $(document).ready(function() {
       $.get("universal/bottom.html", function(data){
           $("#bottomind").replaceWith(data);
       });
+
+      $(document).ready(function() {
+  var textbox = '#amount';
+  var hidden = '#amount';
+  $(textbox).keyup(function () {
+  var num = $(textbox).val();
+    var comma = /,/g;
+    num = num.replace(comma,'');
+    $(hidden).val(num);
+    var numCommas = addCommas(num);
+    $(textbox).val(numCommas);
+  });
+});
+
+function addCommas(nStr) {
+  nStr += '';
+  var comma = /,/g;
+  nStr = nStr.replace(comma,'');
+  x = nStr.split('.');
+  x1 = x[0];
+  x2 = x.length > 1 ? '.' + x[1] : '';
+  var rgx = /(\d+)(\d{3})/;
+  while (rgx.test(x1)) {
+    x1 = x1.replace(rgx, '$1' + ',' + '$2');
+  }
+  return x1 + x2;
+}
+
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
 // Close the dropdown menu if the user clicks outside of it
 // window.onclick = function(event) {
 //
