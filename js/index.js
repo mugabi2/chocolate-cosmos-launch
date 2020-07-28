@@ -46,7 +46,6 @@ function pageSetup(){
   var output = document.getElementById('output_image');
     output.src=image64;
   }
-
   var today = new Date();
     var datetoday = (today.getMonth()+1).toString()+today.getDate().toString()+today.getFullYear().toString();
     var dateDB,licence;
@@ -497,66 +496,6 @@ function sanitizeSlash(str){
 const finBtn=document.querySelector('#financialyearBtn');
 finBtn.addEventListener('click', (e) =>{
   e.preventDefault();
-  document.getElementById("progbarfy").style.visibility="visible";
-  var frofro=document.getElementById("fromdate").value;
-  var toto=document.getElementById("todate").value;
-  frofro=sanitizeSlash(frofro);
-  toto=sanitizeSlash(toto);
-  finyear=frofro+toto;
-
-  // Retrieve
-  var idy = localStorage.getItem(userid_key);
-  var dbacc=idy+"ACCOUNTS"+finyear;
-  var dbite=idy+"ITEMS"+finyear;
-  var dbsup=idy+"SUPPLIERS"+finyear;
-  var dbtra=idy+"TRANSACTIONS"+finyear;
-  var newfinyear=idy+"FINANCIALYEAR";
-    // clear
-  localStorage.removeItem(account_key);
-  localStorage.removeItem(items_key);
-  localStorage.removeItem(suppliers_key);
-  localStorage.removeItem(transactions_key);
-  localStorage.removeItem(financialyear_key);
-  localStorage.removeItem(realfinancialyear_key);
-    // Store
-  localStorage.setItem(account_key, dbacc);
-  localStorage.setItem(items_key, dbite);
-  localStorage.setItem(suppliers_key, dbsup);
-  localStorage.setItem(transactions_key, dbtra);
-  localStorage.setItem(financialyear_key, dbtra);
-  localStorage.setItem(realfinancialyear_key, finyear);
-
-  localStorage.setItem("login", "1");
-
-  var companyThis=localStorage.getItem(company_key);
-  db.collection(newfinyear).doc(finyear).set({
-  from: frofro,
-  to: toto
-})
-
-  db.collection('USERS').doc(idy).update({
-      ACCOUNTS: dbacc,
-          ITEMS: dbite,
-              SUPPLIERS: dbsup,
-                  TRANSACTIONS: dbtra,
-                      from: frofro,
-                          to: toto,
-                          financialyear:finyear,
-                          FINANCIALYEAR:newfinyear
-    }).then(() => {
-      // close the create modal & reset form
-      const modal = document.querySelector('#modal-financialyear');
-        document.getElementById("progbarfy").style.visibility="hidden";
-      M.Modal.getInstance(modal).close();
-      location.reload();
-      // accountsForm.reset();
-    }).catch(err => {
-      console.log("errrr");
-      console.log(err.message);
-      document.getElementById("progbarfy").style.visibility="hidden";
-    });
-
-  console.log("OVER"+finyear);
 })
 //accounts
 const accountsForm=document.querySelector('#accounts-form');

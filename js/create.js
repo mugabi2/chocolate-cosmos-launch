@@ -26,3 +26,33 @@ const setupAccounts =(data)=>{
 accountList.innerHTML=html;
 console.log(html);
 }
+
+//accounts
+const accountsForm=document.querySelector('#accounts-formcrt');
+const createAccBtn=document.querySelector('#createAccBtncrt');
+createAccBtn.addEventListener('click', (e) =>{
+  e.preventDefault();
+  const accountName=accountsForm['account_namecrt'].value.toUpperCase();
+    // document.querySelector('.error').innerHTML=err.message;
+    // $('#progbarac').addClass("active");
+  document.getElementById("progbaraccrt").style.visibility="visible";
+
+    // Retrieve
+    var dbacca = localStorage.getItem(account_key);
+  db.collection(dbacca).doc(accountName).set({
+      total: 0
+    }).then(() => {
+      // close the create modal & reset form
+      // const modal = document.querySelector('#modal-accounts');
+      // M.Modal.getInstance(modal).close();
+      accountsForm.reset();
+        document.getElementById("progbaraccrt").style.visibility="hidden";
+    }).catch(err => {
+      console.log(err.message);
+        // document.querySelector('.error').innerHTML=err.message;
+        // $('#progbar2').removeClass("active");
+          document.getElementById("progbaraccrt").style.visibility="hidden";
+    });
+
+  // console.log(accountName);
+})

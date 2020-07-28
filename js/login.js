@@ -110,6 +110,39 @@ document.getElementById("errormsg").innerHTML =err.message;
 
 async function inside(usernumber,company,surname,firstname,email,phone){
 var userid=generator(usernumber,company);
+// fina setup
+document.getElementById("progbarfy").style.visibility="visible";
+var frofro="2019";
+var toto="2020";
+finyear=frofro+toto;
+
+// Retrieve
+var idy = userid;
+console.log("idididididid"+idy);
+var dbacc=idy+"ACCOUNTS"+finyear;
+var dbite=idy+"ITEMS"+finyear;
+var dbsup=idy+"SUPPLIERS"+finyear;
+var dbtra=idy+"TRANSACTIONS"+finyear;
+var newfinyear=idy+"FINANCIALYEAR";
+
+  // Store
+localStorage.setItem(account_key, dbacc);
+localStorage.setItem(items_key, dbite);
+localStorage.setItem(suppliers_key, dbsup);
+localStorage.setItem(transactions_key, dbtra);
+localStorage.setItem(financialyear_key, finyear);
+localStorage.setItem(realfinancialyear_key, finyear);
+
+localStorage.setItem("login", "1");
+
+var companyThis=localStorage.getItem(company_key);
+db.collection(newfinyear).doc(finyear).set({
+from: frofro,
+to: toto
+})
+
+console.log("OVER"+finyear);
+///////
   var today = new Date();
   var date = (today.getMonth()+1).toString()+today.getDate().toString()+today.getFullYear().toString();
 var something=await db.collection('USERS').doc(userid).set({
@@ -125,19 +158,19 @@ var something=await db.collection('USERS').doc(userid).set({
   logo:zero,
   logo64:"not yet",
   created:  firebase.firestore.FieldValue.serverTimestamp(),
-  ACCOUNTS:"blankACCOUNTS",
-  ITEMS:"blankITEMS",
-  FINANCIALYEAR:"blankFINANCIALYEAR",
-  SUPPLIERS:"blankSUPPLIERS",
-  TRANSACTIONS:"blankTRANSACTIONS"
+  ACCOUNTS:dbacc,
+  ITEMS:dbit,
+  FINANCIALYEAR:dbfy,
+  SUPPLIERS:dbsup,
+  TRANSACTIONS:dbtra
 })
 
-localStorage.setItem(userid_key, userid);
-localStorage.setItem(account_key, "blankACCOUNTS");
-localStorage.setItem(items_key, "blankITEMS");
-localStorage.setItem(suppliers_key, "blankSUPPLIERS");
-localStorage.setItem(transactions_key, "blankTRANSACTIONS");
-localStorage.setItem(financialyear_key, "blankFINANCIALYEAR");
+// localStorage.setItem(userid_key, userid);
+// localStorage.setItem(account_key, "blankACCOUNTS");
+// localStorage.setItem(items_key, "blankITEMS");
+// localStorage.setItem(suppliers_key, "blankSUPPLIERS");
+// localStorage.setItem(transactions_key, "blankTRANSACTIONS");
+// localStorage.setItem(financialyear_key, "blankFINANCIALYEAR");
 localStorage.setItem("login", "0");
 
 localStorage.setItem(company_key, company);
