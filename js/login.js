@@ -82,7 +82,7 @@ console.log(surname);
                       })
                       .catch(err => {
                         console.error(err)
-                          document.querySelector('.error').innerHTML=err.message;
+                          document.getElementById('.errormsg').innerHTML=err.message;
                           document.getElementById("progbarsing").style.visibility="hidden";
                       })
 
@@ -111,10 +111,10 @@ document.getElementById("errormsg").innerHTML =err.message;
 async function inside(usernumber,company,surname,firstname,email,phone){
 var userid=generator(usernumber,company);
 // fina setup
-document.getElementById("progbarfy").style.visibility="visible";
+document.getElementById("progbarsing").style.visibility="visible";
 var frofro="2019";
 var toto="2020";
-finyear=frofro+toto;
+finyear=localStorage.getItem(financialyear_key);
 
 // Retrieve
 var idy = userid;
@@ -159,8 +159,8 @@ var something=await db.collection('USERS').doc(userid).set({
   logo64:"not yet",
   created:  firebase.firestore.FieldValue.serverTimestamp(),
   ACCOUNTS:dbacc,
-  ITEMS:dbit,
-  FINANCIALYEAR:dbfy,
+  ITEMS:dbite,
+  FINANCIALYEAR:finyear,
   SUPPLIERS:dbsup,
   TRANSACTIONS:dbtra
 })
@@ -209,7 +209,10 @@ async function giveidentity(){
               if(key=="number"){
                 number=value;
                 localStorage.setItem(numberusers_key, value);
-              }
+              }else if(key=="financial year"){
+                          var finya=value;
+                          localStorage.setItem(financialyear_key, value);
+                        }
 
   })
   console.log("000001",number);
@@ -257,8 +260,8 @@ console.log("wait",waitforme);
           localStorage.setItem("login", "1");
           loginForm.reset();
         document.querySelector('.error').innerHTML=" ";
-        // var take=localStorage.getItem(account_key);
-        // console.log("take",take);
+        var take=localStorage.getItem(account_key);
+        console.log("take",take);
         // login
         document.getElementById("progbarlog").style.visibility="hidden";
         document.location.replace("index.html");
@@ -284,6 +287,7 @@ console.log("wait",waitforme);
 async function storage(emshow){
   var drops;
   localStorage.setItem("kzone", 1);
+  console.log('1111111111111');
   // var seconddrops=inner();
 
   // WAIT FOR THE PROMISE

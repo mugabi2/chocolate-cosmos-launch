@@ -57,7 +57,10 @@ margin: 20px;
 .crtfybtn {
   margin: 5px;
   margin-top: 0px;
-}}
-.progbaraccrt {
+}
+.ghost {
 visibility: hidden;
+}
+.guides {
+margin-top: -35px;
 }

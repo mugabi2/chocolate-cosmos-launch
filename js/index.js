@@ -175,6 +175,11 @@ function sanitizeString(str){
 str = str.replace(/[^a-z0-9\,_-]/gim,"");
     return str;//.trim();
 }
+function sanitizeStringComma(str){
+  // console.log("sani1",str);
+str = str.toString().replace(/,/g, "");
+    return str;//.trim();
+}
 const display =(data)=>{
   const getter=doc.data();
   const disdata=getter.total;
@@ -188,7 +193,7 @@ const setupTransacs =(data)=>{
   var list='';
   var liste;
   var coname="s t.#!@#$%^&*(ar";
-  var identity,identityp,identityd;
+  var identitye,identityp,identityd;
   var prints=[];
   var deletes=[];
   var identities=[];
@@ -220,7 +225,7 @@ const setupTransacs =(data)=>{
      }
       liste=doc.id+" "+itd+" "+amd+" "+spd+" "+dtd+" "+tmd;
       k++;
-      identity=doc.id;
+      identitye=doc.id+'e';
       identityp=doc.id+'p';
       identityd=doc.id+'d';
 
@@ -233,7 +238,7 @@ const setupTransacs =(data)=>{
             y++;
             prints.push(identityp);
             deletes.push(identityd);
-            identities.push(identity);
+            identities.push(identitye);
             // console.log(y);
                  if(y%2==1){
                  li=`
@@ -242,7 +247,7 @@ const setupTransacs =(data)=>{
               <div class="divlist">${liste}</div>
               <div class="text-right divicon">
               <button href="#!" class="modal-trigger bottonicon white z-depth-1">
-              <i id="${identityp}" class="center iconprint small material-icons right histicon">edit</i>
+              <i id="${identitye}" class="center iconprint small material-icons right histicon">edit</i>
               </button>
               <button class="modal-trigger  bottonicon  white z-depth-1">
               <i id="${identityp}" class=" iconprint small material-icons right histicon">print</i>
@@ -300,9 +305,9 @@ window.location.href = "print.html" + queryString;
       });
       $(document).ready(function(){
         $(".icondelete").on("click", async function(){
-          // console.log("deeee ",$(this).attr("id"));
-            cutstring=$(this).attr("id");
-            cutstring = cutstring.substring(0, cutstring.length - 1);
+        cutstring=$(this).attr("id");
+        cutstring = cutstring.substring(0, cutstring.length - 1);
+            if (confirm("Do you want to delete "+cutstring+" from transactions")) {
 // GETTING
               var total,icamount,icitem,icsupplier,icaccount;
                 // Retrieve
@@ -321,22 +326,6 @@ window.location.href = "print.html" + queryString;
               }else if (key=="account") {
                 icaccount=value;
                 }
-
-// SUBTRACTING AND UPDATING
-
-// WAIT FOR THE PROMISE
-// const checkIfDonede = () => {
-//   accnow.then(ok => {
-//     accnow=ok;
-//       console.log("wala",ok)
-//       console.log("wala",accnow);
-//     })
-//     .catch(err => {
-//       console.error(error)
-//     })
-//
-// }
-// checkIfDonede();
                                     })
                                 } else {
                                     // doc.data() will be undefined in this case
@@ -455,6 +444,7 @@ window.location.href = "print.html" + queryString;
             }).catch(function(error) {
                 console.error("Error removing document: ", error);
             });
+          }
         });
       });
     // }
@@ -561,6 +551,7 @@ transactBtn.addEventListener('click', (e) =>{
     }else {
       console.log("yyyyyyyyyyyyyyyyyyyyy");
     }
+    var amounttrans=sanitizeStringComma(amounttrans);
     amounttrans=amounttrans*quantity;
   var accit;
   var d = new Date(); // for now
@@ -908,7 +899,7 @@ const setupDropdowntrait =(data)=>{
     html+=li;
   });
   html+=htmlEnd;
-  console.log(3333,html);
+  // console.log(3333,html);
 dropdownListtrait.innerHTML=html;
 // console.log(html);
   // Or with jQuery
