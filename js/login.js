@@ -27,6 +27,8 @@ document.getElementById("bodeys").style.visibility="visible";
           var realfinancialyear_key="real financial year";
           var logo_key="imagelogo";
           var changedlogo_key="changedlogo";
+          var tutorial_key="tutorial";
+
 
     localStorage.setItem(changedlogo_key, zero);
 
@@ -76,9 +78,10 @@ console.log(surname);
                   const checkIfDonein = () => {
                     waitinside.then(ok => {
                       console.log("0000004",usernumber);
+                                localStorage.setItem(tutorial_key, 1);
                       // signup
                       document.getElementById("progbarsing").style.visibility="hidden";
-                      document.location.replace("index.html");
+                      document.location.replace("create.html");
                       })
                       .catch(err => {
                         console.error(err)

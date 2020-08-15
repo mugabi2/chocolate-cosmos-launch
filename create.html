@@ -23,13 +23,18 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
       <!-- Custom CSS -->
       <link rel="stylesheet" href="./css/create.css">
+<!-- standalone -->
+<script src="http://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<link href="css/bootstrap-tour-standalone.min.css" rel="stylesheet">
+<script src="js/bootstrap-tour-standalone.min.js"></script>
+
     <title>Chocolate Cosmos Create</title>
   </head>
   <body>
     <div class="container threebig row">
       <a class="container threes col s12 m4 l4">
         <div class="modal-content">
-          <h5 class="headcrt">Create Accounts</h5><br />
+          <h5 class="headcrt black-text">Create Accounts</h5><br />
           <form id="accounts-formcrt">
             <div class="input-field impu">
               <input class="" type="text" id="account_namecrt"/>
@@ -40,18 +45,19 @@
                           <div class="indeterminate"></div>
                       </div>
               <!-- //////////////// -->
-            <button class="btn teal z-depth-2" id="createAccBtncrt">Create Account</button>
+            <button class="btn teal z-depth-2" id="createAccBtncrt" value="Create Account">Create Account</button>
         </form>
         </div>
         <div class="bottomcol">
         <div class="container" style="mar00gin-top: 40px;" background="#00ffff">
+        <h5 class="center hsix black-text">Accounts</h5>
           <ul class="collapsible z-depth-0 guides guidesa" style="border: none;">
           </ul>
         </div>
         </div>
       </a>
         <a class="container threes col s12  m4 l4">
-              <h5 class="headcrt">Create Items</h5><br />
+              <h5 class="headcrt black-text">Create Items</h5><br />
               <form id="items-formcrt">
                 <div class="input-field impu">
                   <input type="text" id="item_namecrt" required />
@@ -64,15 +70,16 @@
                         <div class="indeterminate"></div>
                     </div>
             <!-- /////////////// -->
-                <button class="btn teal z-depth-2 z-depth-0" id="createItcrt">Create Item</button>
+                <button class="btn teal z-depth-2 z-depth-0" value="Create Item" id="createItcrt">Create Item</button>
               </form>
               <div class="bottomcol">
+              <h5 class="center hsix black-text">Items</h5>
                 <ul class="collapsible z-depth-0 guides guidesi" style="border: none;">
                 </ul>
             </div>
         </a>
           <a class="container threes col s12  m4 l4">
-                <h5 class="headcrt">Create Supplier</h5><br />
+                <h5 class="headcrt black-text">Create Supplier</h5><br />
                 <form id="suppliers-formcrt">
                   <div class="input-field impu">
                     <input type="text" id="supplier_namecrt"/>
@@ -87,15 +94,25 @@
                                 <div class="indeterminate"></div>
                             </div>
                     <!-- /////////////// -->
-                  <button class="btn teal z-depth-2 z-depth-0" id="regsupcrt">Register supplier</button>
+                  <button class="btn teal z-depth-2 z-depth-0" value="Register Supplier" id="regsupcrt">Register Supplier</button>
                 </form>
                 <div class="bottomcol">
+                <h5 class="center hsix black-text">Suppliers</h5>
                   <ul class="collapsible z-depth-0 guides guidess" style="border: none;">
                   </ul>
               </div>
             </a>
     </div>
 
+              <!-- HELP MODAL -->
+              <div id="helpmodal" class="modal container helpmodal" >
+                  <!-- <a class="center black-text helpa">How does it work?</a> -->
+                <!-- <div class="container"> -->
+                  <h5 class="center">QUICK HELP</h5>
+                  <img class="imghelp center"src="images/help.png">
+              <button class="btn teal z-depth-2 center valign helpbtn" id="tutbtn">START QUICK TOUR</button>
+            <!-- </div> -->
+              </div>
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
@@ -141,5 +158,6 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="js/create.js"></script>
+    <!-- <script src="js/tutorial.js"></script> -->
   </body>
 </html>

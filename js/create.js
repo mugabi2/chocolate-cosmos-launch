@@ -2,6 +2,10 @@
 var account_key="account";
 var items_key="items";
 var suppliers_key="suppliers";
+var tutorial_key="tutorial";
+var originalAccount_key="original account";
+var originalItem_key="original item";
+var originalSupplier_key="original supplier";
 var dbacc = localStorage.getItem(account_key);
 var dbit = localStorage.getItem(items_key);
 var dbsup = localStorage.getItem(suppliers_key);
@@ -26,26 +30,84 @@ setupSuppliers(snapshot.docs);
 // items
 const accountList=document.querySelector('.guidesa');
 const setupAccounts =(data)=>{
+  var counter=0,dog='';
   let html='';
-  var list='';
+  var list=``;
+  var longnot=``;
+  var compter= data.length;
+  var y=0,k=0;
+  var liste;
+  var coname="s t.#!@#$%^&*(ar";
+  var identity,identitye,identityd;
+  var prints=[];
+  var deletes=[];
+  var identities=[];
+
   data.forEach(doc=>{
     const acc=doc.data();
     list+=doc.id+" "+"<br/>";
   });
-  // console.log("list"+list);
-  // data.forEach(doc=>{
+
+  data.forEach(doc=>{
   //   const acc=doc.data();
-    const li=`
-    <li>
-    <div class="collapsible-header grey lighten-4">ACCOUNTS</div>
-    <div class="collapsible-body white"><span>${list}</span></div>
-    </li>
+    k++;
+    identity=doc.id;
+    identitye=doc.id+'e';
+    identityd=doc.id+'d';
+               // })
+          y++;
+          prints.push(identitye);
+          deletes.push(identityd);
+          identities.push(identity);
+
+  var cat=doc.id;
+     li=`
+     <li>
+    <div id="${doc.id}" class="black-text center white headsup collapsible-header">
+    ${doc.id}
+    <i id="${identitye}" onclick="editAccount(event)" class="center iconprint small material-icons right histicon">edit</i>
+    <i id="${identityd}" onclick="deleteAccount(event)" class=" icondelete small material-icons right histicon">delete_forever</i>
+    </div>
     `;
+
+        localStorage.setItem(cat, li);
+    var accsong = localStorage.getItem(items_key);
+    var boutiquedt=localStorage.getItem(cat);
+    // console.log("555555"+boutiquedt);
+    // console.log("logogog; "+doc.id);
+    db.collection(accsong).where("account", "==", doc.id)
+        .get()
+        .then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                console.log("wowowo: "+doc.id);
+                var boutique=localStorage.getItem(cat);
+                    // console.log("7777777: "+boutique);
+                var stateme=`<div class="headsup collapsible-body white"><span>${doc.id}</span></div>`;
+                boutique=boutique+stateme;
+                localStorage.setItem(cat, boutique);
+                var boutiquedt=localStorage.getItem(cat);
+                // console.log(cat+"44444"+boutiquedt);
+            });
+            counter++;
+            // console.log("!!!!!"+counter);
+            var boutiquegt=localStorage.getItem(cat);
+            boutiquegt=boutiquegt+`</li>`
+            longnot=longnot+boutiquegt;
+            console.log("after"+longnot);
+            if (counter==compter) {
+            accountList.innerHTML=longnot;
+            }
+        })
+        .catch(function(error) {
+            console.log("Error getting documents: ", error);
+        });
+    li=li+`</li>`
     html+=li;
-    // console.log(doc.id,acc);
-  // });
-accountList.innerHTML=html;
-console.log("here"+list);
+    // console.log("count:"+counter);
+    // console.log("1111"+dogList);
+  });
+// accountList.innerHTML=html;
+// console.log("******"+longnot);
 }
 
 // items
@@ -90,8 +152,8 @@ data.forEach(doc=>{
           deletes.push(identityd);
           identities.push(identity);
                li=`
-            <li class="entry blue lighten-4">
-            <div class=" valign-wrapper left">
+            <li class="itemdiv entry black-text">
+            <div class=" valign-wrapper ">
             <div class="divlist">${doc.id}</div>
             <div class="text-right divicon">
             <i id="${identityd}" onclick="deleteItem(event)" class=" icondelete small material-icons right histicon">delete_forever</i>
@@ -112,24 +174,45 @@ const suppliersList=document.querySelector('.guidess');
 const setupSuppliers =(data)=>{
 let html='';
 var list='';
+var li;
+var itd,amd,dtd,spd,tmd;
+var y=0,k=0;
+var liste;
+var coname="s t.#!@#$%^&*(ar";
+var identity,identitye,identityd;
+var prints=[];
+var deletes=[];
+var identities=[];
 data.forEach(doc=>{
   const acc=doc.data();
+  // Retrieve
+  // const docReftit = db.collection(dbit).doc(doc.id);
   list+=doc.id+" "+"<br/>";
+    k++;
+    identity=doc.id;
+    identitye=doc.id+'e';
+    identityd=doc.id+'d';
+               // })
+          y++;
+          prints.push(identitye);
+          deletes.push(identityd);
+          identities.push(identity);
+               li=`
+            <li class="itemdiv entry black-text">
+            <div class=" valign-wrapper ">
+            <div class="divlist">${doc.id}</div>
+            <div class="text-right divicon">
+            <i id="${identityd}" onclick="deleteSupplier(event)" class=" icondelete small material-icons right histicon">delete_forever</i>
+            <i id="${identitye}" onclick="editsupplierAdapter(event)" class="center iconprint small material-icons right histicon">edit</i>
+            </div>
+            </div>
+            </li>
+          `;
+          html+=li;
 });
-// console.log("list"+list);
-// data.forEach(doc=>{
-//   const acc=doc.data();
-  const li=`
-  <li>
-  <h6 class="center">SUPPLIERS</h6>
-  <div class="white"><span>${list}</span></div>
-  </li>
-  `;
-  html+=li;
-  // console.log(doc.id,acc);
-// });
 suppliersList.innerHTML=html;
 // console.log("here"+html);
+// console.log("hereRERE"+prints);
 }
 // dropdown
 const dropdownpro=document.querySelector('.crtitdrp');
@@ -193,6 +276,9 @@ createAccBtncrt.addEventListener('click', (e) =>{
     // $('#progbarac').addClass("active");
   document.getElementById("progbaraccrt").style.visibility="visible";
 
+  const buttonv=accountsFormcrt['createAccBtncrt'].value;
+  console.log("999999 "+buttonv);
+  if (buttonv=="Create Account") {
     // Retrieve
     var dbacca = localStorage.getItem(account_key);
   db.collection(dbacca).doc(accountName).set({
@@ -207,7 +293,44 @@ createAccBtncrt.addEventListener('click', (e) =>{
         // $('#progbar2').removeClass("active");
           document.getElementById("progbaraccrt").style.visibility="hidden";
     });
+}else {
+  // Retrieve
+  var dbcar = localStorage.getItem(account_key);
+  var accOriginal = localStorage.getItem(originalAccount_key);
+  const docRef = db.collection(dbcar).doc(accOriginal);
+  docRef.get().then(doc => {
+             if (doc.exists) {
+console.log("8888888"+doc.data());
+console.log("77777777"+accOriginal);
+db.collection(dbcar).doc(accountName).set(doc.data()).then(function() {
+    console.log("Document successfully written!");
+});
+// update itemsList
+jQuery.each(doc.data(), function (key, value) {
+  console.log("5555555555"+key);
+  // Retrieve
+  var dbcart = localStorage.getItem(items_key);
+const docRef11 = db.collection(dbcart).doc(key);
+docRef11.update({
+  account: accountName
+})
+             })
+// delete original
+db.collection(dbcar).doc(accOriginal).delete().then(function() {
+    console.log("Document successfully deleted!");
+}).catch(function(error) {
+    console.error("Error removing document: ", error);
+});
 
+             } else {
+                 // doc.data() will be undefined in this case
+                 console.error('Please check your collection and document name in the [firestore] shortcode!');
+             }
+         }).catch(error => {
+             console.error('Please check your collection and document name in the [firestore] shortcode!', error);
+         });
+         location.reload();
+}
   // console.log(accountName);
 })
 
@@ -222,11 +345,15 @@ createItBtn.addEventListener('click', (e) =>{
 
       // Retrieve
       var dbitacc = localStorage.getItem(account_key);
+      var dbit = localStorage.getItem(items_key);
+
+        const buttonv=accountsFormcrt['createItcrt'].value;
+        console.log("999999 "+buttonv);
+        if (buttonv=="Create Item") {
+
       db.collection(dbitacc).doc(itAcc).update({
              [itName]: 0
            })
-          // Retrieve
-          var dbit = localStorage.getItem(items_key);
   db.collection(dbit).doc(itName).set({
       total: 0,
       account: itAcc
@@ -238,6 +365,9 @@ createItBtn.addEventListener('click', (e) =>{
       console.log(err.message);
         document.getElementById("progbaritcrt").style.visibility="hidden";
     });
+  }else {
+
+  }
 })
 //suppliers
 const supForm=document.querySelector('#suppliers-formcrt');
@@ -250,7 +380,7 @@ createsupBtn.addEventListener('click', (e) =>{
 
     // Retrieve
     var dbsu = localStorage.getItem(suppliers_key);
-  db.collection(dbsu).doc(supName).set({
+  db.collection(dbsu).doc(supName).update({
       name:supName,
       total: 0,
       phone_number:supPhone
@@ -294,6 +424,9 @@ async function editItem(event){
   // document.getElementById('item_namecrtlbl').innerHTML=namesir;
     document.getElementById('item_namecrt').setAttribute("value",namesir);
   document.getElementById("item_namecrt").focus();
+  document.getElementById("createItcrt").innerHTML ="Edit "+namesir;
+    document.getElementById('createItcrt').setAttribute("value","Edit "+namesir);
+  localStorage.setItem(originalItem_key, namesir);
 
     // Retrieve
     var dbtem = localStorage.getItem(items_key);
@@ -316,11 +449,72 @@ var somename =await docRef.get().then(doc => {
 return returnee;
 }
 
+function editsupplierAdapter(e){
+var dropacc=editSupplier(e);
+  // WAIT FOR THE PROMISE
+  const checkIfDonede = () => {
+    dropacc.then(ok => {
+      dropacc=ok;
+        console.log("wala",ok)
+        console.log("wala",dropacc);
+          document.getElementById('supplier_phonecrt').setAttribute("value",dropacc);
+          document.getElementById("supplier_phonecrt").focus();
+      })
+      .catch(err => {
+        console.error(error)
+      })
+
+  }
+  checkIfDonede();
+}
+async function editSupplier(event){
+  var ideas=event.target.id;
+  var returnee;
+  var namesir= ideas.substring(0, ideas.length - 1);
+  console.log("ididid: "+ namesir);
+  // document.getElementById('item_namecrtlbl').innerHTML=namesir;
+    document.getElementById('supplier_namecrt').setAttribute("value",namesir);
+  document.getElementById("supplier_namecrt").focus();
+
+    // Retrieve
+    var dbtem = localStorage.getItem(suppliers_key);
+const docRef = db.collection(dbtem).doc(namesir);
+var somename =await docRef.get().then(doc => {
+           if (doc.exists) {
+               // console.log('Document data:', doc.data());
+  jQuery.each(doc.data(), function (key, value) {
+  if(key=="phone_number"){
+  returnee=value;
+  }
+                      })
+                  } else {
+                      // doc.data() will be undefined in this case
+                      console.error('Please check your collection and document name in the [firestore] shortcode!');
+                  }
+              }).catch(error => {
+                  console.error('Please check your collection and document name in the [firestore] shortcode!', error);
+              });
+return returnee;
+}
+function editAccount(event){
+  var ideas=event.target.id;
+  var returnee;
+  var namesir= ideas.substring(0, ideas.length - 1);
+  console.log("ididid: "+ namesir);
+  // document.getElementById('item_namecrtlbl').innerHTML=namesir;
+    document.getElementById('account_namecrt').setAttribute("value",namesir);
+  document.getElementById("account_namecrt").focus();
+  document.getElementById("createAccBtncrt").innerHTML ="Edit "+namesir;
+    document.getElementById('createAccBtncrt').setAttribute("value","Edit "+namesir);
+  localStorage.setItem(originalAccount_key, namesir);
+return returnee;
+}
+
 function deleteItem(event){
   var ideas=event.target.id;
   var namesir= ideas.substring(0, ideas.length - 1);
   var txt;
-  if (confirm("Do you want to delete "+namesir+" from your items!")) {
+  if (confirm("Do you want to delete "+namesir+" from your Items!")) {
   console.log(namesir+" deleted");
     // Retrieve
     var dbtra = localStorage.getItem(items_key);
@@ -331,3 +525,125 @@ function deleteItem(event){
   });
   }
 }
+function deleteSupplier(event){
+  var ideas=event.target.id;
+  var namesir= ideas.substring(0, ideas.length - 1);
+  var txt;
+  if (confirm("Do you want to delete "+namesir+" from your Suppliers!")) {
+  console.log(namesir+" deleted");
+    // Retrieve
+    var dbtra = localStorage.getItem(suppliers_key);
+    console.log("****"+dbtra);
+  db.collection(dbtra).doc(namesir).delete().then(function() {
+      console.log(namesir+"Document successfully deleted!");
+  }).catch(function(error) {
+      console.error("Error removing document: ", error);
+  });
+  }
+}
+function deleteAccount(event){
+  var ideas=event.target.id;
+  var namesir= ideas.substring(0, ideas.length - 1);
+  var txt;
+  if (confirm("Do you want to delete "+namesir+" from your Accounts!")) {
+  console.log(namesir+" deleted");
+    // Retrieve
+    var dbtra = localStorage.getItem(account_key);
+  db.collection(dbtra).doc(namesir).delete().then(function() {
+      console.log(namesir+"Document successfully deleted!");
+  }).catch(function(error) {
+      console.error("Error removing document: ", error);
+  });
+  }
+}
+
+var tour = new Tour({
+  steps: [
+  {
+    element: "#account_namecrt",
+    title: "STEP 1",
+    content: "Lets create our 1st account. Give it name: UTILITY"
+  },
+  {
+    element: "#createAccBtncrt",
+    title: "STEP 1",
+    content: "Finalise with this button"
+  },
+  {
+    element: "#item_namecrt",
+    title: "STEP 2",
+    content: "Lets create our 1st item. Give it name: ELECTRICITY"
+  },
+  {
+    element: ".crtitdrp",
+    title: "STEP 2",
+    content: "Select Account where this item belongs"
+  },
+  {
+    element: "#createItcrt",
+    title: "STEP 2",
+    content: "Finalise with this button"
+  },
+  {
+    element: "#supplier_namecrt",
+    title: "STEP 3",
+    content: "Lets create our 1st Supplier. Name him: UMEME"
+  },
+  {
+    element: "#supplier_phonecrt",
+    title: "STEP 3",
+    content: "Phone contact is Optional."
+  },
+  {
+    element: "#regsupcrt",
+    title: "STEP 3",
+    content: "Finalise with this button"
+}
+,
+{
+  element: "#transactbut",
+  title: "RECORD A TRANSACTION",
+  content: "Choose an item.",
+  path:'index.html'
+}
+],
+  backdrop: true,
+  storage: false,
+  template: `<div class='popover tour black-text'>
+    <div class='arrow'></div>
+    <h2 class='popover-title'></h2>
+    <div class='popover-content'></div>
+    <div class='popover-navigation'>
+        <button class='btn btn-default' data-role='prev'>« Prev</button>
+        <span data-role='separator'>|</span>
+        <button class='btn btn-default' data-role='next'>Next »</button>
+    </div>
+  </div>`
+});
+
+tour.init();
+var tut = localStorage.getItem(tutorial_key);
+if (tut==1) {
+// tour.start();
+}
+
+        localStorage.setItem("login", 0);
+var status = localStorage.getItem("login");
+if (status=="0") {
+               jQuery(document).ready(function(){
+                     jQuery('#helpmodal').modal();
+                     jQuery(document).ready(function(){
+                         jQuery('#helpmodal').modal('open');
+                     });
+               });
+           }
+
+           // bring finyear modal
+           const tutbtn=document.querySelector('#tutbtn');
+           tutbtn.addEventListener('click', (e) =>{
+             e.preventDefault();
+              const modal = document.querySelector('#helpmodal');
+                // document.getElementById("progbarfy").style.visibility="hidden";
+              M.Modal.getInstance(modal).close();
+              tour.start();
+           })

@@ -6,6 +6,9 @@ var suppliers_key="suppliers";
 var transactions_key="transactions";
 var totalaccounts_key="total accounts";
 var totalitems_key="total items";
+var tutorial_key="tutorial";
+
+// localStorage.setItem(tutorial_key, 1);
 // table accounts
 
 localStorage.setItem(totalaccounts_key, 0);
@@ -270,4 +273,33 @@ var fruits = ["Banana", "Orange", "Apple", "Mango"];
   $(document).ready(function(){
     $('.tabs').tabs();
   });
-z
+// z
+
+var tour = new Tour({
+  steps: [
+  {
+    element: "#tabs-swipe-demo",
+    title: "CONGRATULATIONS",
+    content: "You are now fully equiped, Good luck"
+  }
+],
+  backdrop: false,
+  storage: false,
+  template: `<div class='popover tour black-text'>
+    <div class='arrow'></div>
+    <h2 class='popover-title'></h2>
+    <div class='popover-content'></div>
+    <div class='popover-navigation'>
+        <button class='btn btn-default' data-role='prev'>« Prev</button>
+        <span data-role='separator'>|</span>
+    <button class='btn btn-default' data-role='end'>End tour</button>
+    </div>
+  </div>`
+});
+
+tour.init();
+var tut = localStorage.getItem(tutorial_key);
+if (tut==1) {
+tour.start();
+          localStorage.setItem(tutorial_key, 0);
+}
