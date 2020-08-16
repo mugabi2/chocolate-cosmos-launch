@@ -627,9 +627,10 @@ if (tut==1) {
 // tour.start();
 }
 
-        localStorage.setItem("login", 0);
+        // localStorage.setItem("login", 0);
 var status = localStorage.getItem("login");
 if (status=="0") {
+localStorage.setItem(tutorial_key, 1);
                jQuery(document).ready(function(){
                      jQuery('#helpmodal').modal();
                      jQuery(document).ready(function(){

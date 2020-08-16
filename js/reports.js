@@ -303,3 +303,4 @@ if (tut==1) {
 tour.start();
           localStorage.setItem(tutorial_key, 0);
 }
+localStorage.setItem("login", "1");
