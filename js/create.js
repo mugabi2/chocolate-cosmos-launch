@@ -6,6 +6,11 @@ var tutorial_key="tutorial";
 var originalAccount_key="original account";
 var originalItem_key="original item";
 var originalSupplier_key="original supplier";
+var originalItemAcc_key="original item account";
+var originalItemName_key="original item name";
+var originalAccName_key="original account name";
+var originalSupName_key="original supplier name";
+var supplierTotal_key="supplier total";
 var dbacc = localStorage.getItem(account_key);
 var dbit = localStorage.getItem(items_key);
 var dbsup = localStorage.getItem(suppliers_key);
@@ -93,7 +98,7 @@ const setupAccounts =(data)=>{
             var boutiquegt=localStorage.getItem(cat);
             boutiquegt=boutiquegt+`</li>`
             longnot=longnot+boutiquegt;
-            console.log("after"+longnot);
+            // console.log("after"+longnot);
             if (counter==compter) {
             accountList.innerHTML=longnot;
             }
@@ -294,14 +299,19 @@ createAccBtncrt.addEventListener('click', (e) =>{
           document.getElementById("progbaraccrt").style.visibility="hidden";
     });
 }else {
+  // accounts
   // Retrieve
+  var originalName = localStorage.getItem(originalAccount_key);
   var dbcar = localStorage.getItem(account_key);
   var accOriginal = localStorage.getItem(originalAccount_key);
+console.log("name "+accountName+"origi "+originalName);
+      if (accountName!=originalName) {
   const docRef = db.collection(dbcar).doc(accOriginal);
   docRef.get().then(doc => {
              if (doc.exists) {
 console.log("8888888"+doc.data());
 console.log("77777777"+accOriginal);
+// copy data to new name
 db.collection(dbcar).doc(accountName).set(doc.data()).then(function() {
     console.log("Document successfully written!");
 });
@@ -317,11 +327,12 @@ docRef11.update({
              })
 // delete original
 db.collection(dbcar).doc(accOriginal).delete().then(function() {
-    console.log("Document successfully deleted!");
+  accountsFormcrt.reset();
+      console.log("Document successfully deleted!");
+location.reload();
 }).catch(function(error) {
     console.error("Error removing document: ", error);
 });
-
              } else {
                  // doc.data() will be undefined in this case
                  console.error('Please check your collection and document name in the [firestore] shortcode!');
@@ -329,7 +340,11 @@ db.collection(dbcar).doc(accOriginal).delete().then(function() {
          }).catch(error => {
              console.error('Please check your collection and document name in the [firestore] shortcode!', error);
          });
+       }else {
+       accountsFormcrt.reset();
+         document.getElementById("progbaraccrt").style.visibility="hidden";
          location.reload();
+       }
 }
   // console.log(accountName);
 })
@@ -342,12 +357,12 @@ createItBtn.addEventListener('click', (e) =>{
     document.getElementById("progbaritcrt").style.visibility="visible";
   const itName=itForm['item_namecrt'].value;
   const itAcc=itForm['dropitcrt'].value;
-
+  var totaltoAcc;
       // Retrieve
       var dbitacc = localStorage.getItem(account_key);
       var dbit = localStorage.getItem(items_key);
 
-        const buttonv=accountsFormcrt['createItcrt'].value;
+        const buttonv=itForm['createItcrt'].value;
         console.log("999999 "+buttonv);
         if (buttonv=="Create Item") {
 
@@ -366,6 +381,82 @@ createItBtn.addEventListener('click', (e) =>{
         document.getElementById("progbaritcrt").style.visibility="hidden";
     });
   }else {
+    // items
+    // Retrieve
+    var originalName = localStorage.getItem(originalItemName_key);
+    var dbcar = localStorage.getItem(items_key);
+    var itOriginal = localStorage.getItem(originalItem_key);
+    const docRef = db.collection(dbcar).doc(itOriginal);
+    docRef.get().then(doc => {
+       if (doc.exists) {
+         jQuery.each(doc.data(), function (key, value) {
+         if(key=="total"){
+           totaltoAcc=value;
+           console.log("cash:"+totaltoAcc);
+                                }
+                      })
+
+  console.log("8888888"+doc.data());
+  console.log("77777777"+itOriginal);
+  // copy data to new name
+  db.collection(dbcar).doc(itName).set(doc.data()).then(function() {
+      console.log("Document successfully written!");
+  });
+
+  const docRef11 = db.collection(dbcar).doc(itName);
+  docRef11.update({
+    account: itAcc
+  })
+
+    // delete entry
+    const fruitRef = db.collection(localacc).doc(origItAcc);
+    // Remove the 'apple' field from the document
+    const removeFruit = fruitRef.update({
+      [itName]: firebase.firestore.FieldValue.delete()
+     });
+    // Retrieve
+    var origItAcc = localStorage.getItem(originalItemAcc_key);
+    var localacc = localStorage.getItem(account_key);
+
+    if (itName!=originalName) {
+    // delete original
+    db.collection(dbcar).doc(itOriginal).delete().then(function() {
+    itForm.reset();
+        console.log("deleted  deleted!");
+    location.reload();
+    }).catch(function(error) {
+      console.error("Error removing document: ", error);
+    });
+    }
+    if (origItAcc==itAcc) {
+    const docRef112 = db.collection(localacc).doc(itAcc);
+    docRef112.update({
+      [itName]: totaltoAcc
+    })
+
+    }else {
+      // changed acc
+    const docRef112 = db.collection(localacc).doc(itAcc);
+    docRef112.update({
+      [itName]: totaltoAcc
+    }).then(() => {
+      itForm.reset();
+      document.getElementById("progbarfy").style.visibility="hidden";
+        location.reload();
+    }).catch(err => {
+      console.log("errrr");
+      console.log(err.message);
+      document.getElementById("progbarfy").style.visibility="hidden";
+    });
+
+    }
+               } else {
+                   // doc.data() will be undefined in this case
+                   console.error('Please check your collection and document name in the [firestore] shortcode!');
+               }
+           }).catch(error => {
+               console.error('Please check your collection and document name in the [firestore] shortcode!', error);
+           });
 
   }
 })
@@ -378,6 +469,9 @@ createsupBtn.addEventListener('click', (e) =>{
   const supName=supForm['supplier_namecrt'].value;
   const supPhone=supForm['supplier_phonecrt'].value;
 
+          const buttonv=supForm['regsupcrt'].value;
+          console.log("999999 "+buttonv);
+      if (buttonv=="Register Supplier") {
     // Retrieve
     var dbsu = localStorage.getItem(suppliers_key);
   db.collection(dbsu).doc(supName).update({
@@ -392,7 +486,59 @@ createsupBtn.addEventListener('click', (e) =>{
       console.log(err.message);
         document.getElementById("progbarsupcrt").style.visibility="hidden";
     });
+}else {
+  // suppliers
+  var originalName = localStorage.getItem(originalSupName_key);
+  // Retrieve
+  var dbcar = localStorage.getItem(suppliers_key);
+  var supOriginal = localStorage.getItem(originalSupName_key);
+// same names
+  if (supName==originalName) {
+  const docRef11 = db.collection(dbcar).doc(supName);
+  docRef11.update({
+    phone_number: supPhone
+  }).then(() => {
+    itForm.reset();
+    document.getElementById("progbarsupcrt").style.visibility="hidden";
+  supForm.reset();
+  location.reload();
+  }).catch(err => {
+    console.log("errrr");
+    console.log(err.message);
+    document.getElementById("progbarsupcrt").style.visibility="hidden";
+  });
 
+}else {
+  const docRef = db.collection(dbcar).doc(supOriginal);
+  docRef.get().then(doc => {
+     if (doc.exists) {
+// copy data to new name
+db.collection(dbcar).doc(supName).set(doc.data()).then(function() {
+    console.log("Document successfully written!");
+});
+  // Retrieve
+  var origItAcc = localStorage.getItem(originalItemAcc_key);
+  var localacc = localStorage.getItem(account_key);
+
+  // delete original
+  db.collection(dbcar).doc(supOriginal).delete().then(function() {
+  itForm.reset();
+      console.log("deleted  deleted!");
+    supForm.reset();
+  location.reload();
+  }).catch(function(error) {
+    console.error("Error removing document: ", error);
+  });
+             } else {
+                 // doc.data() will be undefined in this case
+                 console.error('Please check your collection and document name in the [firestore] shortcode!');
+             }
+         }).catch(error => {
+             console.error('Please check your collection and document name in the [firestore] shortcode!', error);
+         });
+
+}
+}
   // console.log(supName);
 })
 function editItemAdapter(e){
@@ -403,6 +549,8 @@ var dropacc=editItem(e);
       dropacc=ok;
         console.log("wala",ok)
         console.log("wala",dropacc);
+
+        localStorage.setItem(originalItemAcc_key, dropacc);
 
         db.collection(dbacc).onSnapshot(snapshot=>{
           console.log(snapshot.docs);
@@ -421,6 +569,7 @@ async function editItem(event){
   var returnee;
   var namesir= ideas.substring(0, ideas.length - 1);
   console.log("ididid: "+ namesir);
+  localStorage.setItem(originalItemName_key, namesir);
   // document.getElementById('item_namecrtlbl').innerHTML=namesir;
     document.getElementById('item_namecrt').setAttribute("value",namesir);
   document.getElementById("item_namecrt").focus();
@@ -475,6 +624,10 @@ async function editSupplier(event){
   // document.getElementById('item_namecrtlbl').innerHTML=namesir;
     document.getElementById('supplier_namecrt').setAttribute("value",namesir);
   document.getElementById("supplier_namecrt").focus();
+  document.getElementById("regsupcrt").innerHTML ="Edit "+namesir;
+    document.getElementById('regsupcrt').setAttribute("value","Edit "+namesir);
+  localStorage.setItem(originalSupName_key, namesir);
+localStorage.setItem(originalSupplier_key, namesir);
 
     // Retrieve
     var dbtem = localStorage.getItem(suppliers_key);
@@ -485,7 +638,9 @@ var somename =await docRef.get().then(doc => {
   jQuery.each(doc.data(), function (key, value) {
   if(key=="phone_number"){
   returnee=value;
-  }
+}else if (key=="total") {
+localStorage.setItem(supplierTotal_key, value);
+}
                       })
                   } else {
                       // doc.data() will be undefined in this case
