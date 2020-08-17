@@ -84,7 +84,7 @@ const setupAccounts =(data)=>{
         .get()
         .then(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
-                console.log("wowowo: "+doc.id);
+                // console.log("wowowo: "+doc.id);
                 var boutique=localStorage.getItem(cat);
                     // console.log("7777777: "+boutique);
                 var stateme=`<div class="headsup collapsible-body white"><span>${doc.id}</span></div>`;
@@ -283,6 +283,7 @@ createAccBtncrt.addEventListener('click', (e) =>{
 
   const buttonv=accountsFormcrt['createAccBtncrt'].value;
   console.log("999999 "+buttonv);
+
   if (buttonv=="Create Account") {
     // Retrieve
     var dbacca = localStorage.getItem(account_key);
@@ -291,7 +292,8 @@ createAccBtncrt.addEventListener('click', (e) =>{
     }).then(() => {
       // close the create modal & reset form
       accountsFormcrt.reset();
-        document.getElementById("progbaraccrt").style.visibility="hidden";
+      document.getElementById("progbaraccrt").style.visibility="hidden";
+    document.getElementById("account_namecrt").focus();
     }).catch(err => {
       console.log(err.message);
         // document.querySelector('.error').innerHTML=err.message;
@@ -357,13 +359,14 @@ createItBtn.addEventListener('click', (e) =>{
     document.getElementById("progbaritcrt").style.visibility="visible";
   const itName=itForm['item_namecrt'].value;
   const itAcc=itForm['dropitcrt'].value;
-  var totaltoAcc;
+  var totalItemdb;
       // Retrieve
       var dbitacc = localStorage.getItem(account_key);
       var dbit = localStorage.getItem(items_key);
 
         const buttonv=itForm['createItcrt'].value;
         console.log("999999 "+buttonv);
+
         if (buttonv=="Create Item") {
 
       db.collection(dbitacc).doc(itAcc).update({
@@ -376,48 +379,61 @@ createItBtn.addEventListener('click', (e) =>{
       // close the create modal & reset form
         document.getElementById("progbaritcrt").style.visibility="hidden";
       itForm.reset();
+    document.getElementById("item_namecrt").focus();
     }).catch(err => {
       console.log(err.message);
         document.getElementById("progbaritcrt").style.visibility="hidden";
     });
   }else {
-    // items
+    // items EDIT
+
+              // Retrieve
+              var localacc = localStorage.getItem(account_key);
+              const docReft1222 = db.collection(localacc).doc(itAcc);
+              docReft1222.get().then(doc => {
+                     if (doc.exists) {
+                         // console.log('Document data:', doc.data());
+            jQuery.each(doc.data(), function (key, value) {
+            if(key=="total"){
+                  // totalfromacc=parseInt(value);
+                  console.log("--------------"+value);
+                localStorage.setItem("totaltoacc", value);
+            }
+                                })
+                            } else {
+                                // doc.data() will be undefined in this case
+                                console.error('Please check your collection and document name in the [firestore] shortcode!');
+                            }
+                        }).catch(error => {
+                            console.error('Please check your collection and document name in the [firestore] shortcode!', error);
+                        });
     // Retrieve
     var originalName = localStorage.getItem(originalItemName_key);
     var dbcar = localStorage.getItem(items_key);
     var itOriginal = localStorage.getItem(originalItem_key);
-    const docRef = db.collection(dbcar).doc(itOriginal);
-    docRef.get().then(doc => {
+    console.log("%%% "+dbcar+" %%% "+itOriginal);
+    const docRef23 = db.collection(dbcar).doc(itOriginal);
+    docRef23.get().then(doc => {
        if (doc.exists) {
          jQuery.each(doc.data(), function (key, value) {
          if(key=="total"){
-           totaltoAcc=value;
-           console.log("cash:"+totaltoAcc);
-                                }
-                      })
+           totalItemdb=value;
+           console.log("cash:"+totalItemdb);}})
 
-  console.log("8888888"+doc.data());
-  console.log("77777777"+itOriginal);
   // copy data to new name
   db.collection(dbcar).doc(itName).set(doc.data()).then(function() {
       console.log("Document successfully written!");
   });
-
+// update account
   const docRef11 = db.collection(dbcar).doc(itName);
   docRef11.update({
     account: itAcc
   })
 
-    // delete entry
-    const fruitRef = db.collection(localacc).doc(origItAcc);
-    // Remove the 'apple' field from the document
-    const removeFruit = fruitRef.update({
-      [itName]: firebase.firestore.FieldValue.delete()
-     });
     // Retrieve
     var origItAcc = localStorage.getItem(originalItemAcc_key);
     var localacc = localStorage.getItem(account_key);
-
+// ARE THE ITEM NAMES THE SAME
     if (itName!=originalName) {
     // delete original
     db.collection(dbcar).doc(itOriginal).delete().then(function() {
@@ -428,25 +444,82 @@ createItBtn.addEventListener('click', (e) =>{
       console.error("Error removing document: ", error);
     });
     }
-    if (origItAcc==itAcc) {
+    // ARE THE ACCOUNTS THE SAME
+    if (origItAcc==itAcc) {  //SAME ACCOUNTS
     const docRef112 = db.collection(localacc).doc(itAcc);
     docRef112.update({
-      [itName]: totaltoAcc
+      [itName]: totalItemdb
     })
-
     }else {
-      // changed acc
+      // DIFF ACCOUNT
+      // get item total
+      // var totalfromacc,totaltoacc;
+//       console.log(localacc+"++++"+origItAcc);
+//       const docReft1222 = db.collection(localacc).doc(origItAcc);
+//       docReft1222.get().then(doc => {
+//                if (doc.exists) {
+//                    console.log('********:'+ doc.data());
+//                        console.log('********:'+ doc.id);
+//       jQuery.each(doc.data(), function (key, value) {
+//       if(key=="total"){
+//       // totalfromacc=parseInt(value);
+//       console.log("++++"+value);
+//     localStorage.setItem("totalfromacc", value);
+//     }
+// })
+// } else {
+// console.error('Please check your collection and document name in the [firestore] shortcode!');
+// }
+// }).catch(error => {
+// console.error('Please check your collection and document name in the [firestore] shortcode!', error);
+// });
+var totalfromacc = localStorage.getItem("totalfromacc");
+console.log(totalfromacc+"++++"+totalItemdb);
+totalfromacc=parseInt(totalfromacc)-parseInt(totalItemdb);
+    // delete entry FROM ACC
+    const fruitRef = db.collection(localacc).doc(origItAcc);
+    // Remove the 'apple' field from the document
+    const removeFruit = fruitRef.update({
+      [itName]: firebase.firestore.FieldValue.delete(),
+      total:totalfromacc
+     });
+
+// TO ACC
+// const docReft1112 = db.collection(localacc).doc(itAcc);
+// docReft1112.get().then(doc => {
+//          if (doc.exists) {
+//              // console.log('Document data:', doc.data());
+// jQuery.each(doc.data(), function (key, value) {
+// if(key=="total"){
+// // totaltoacc=parseInt(value);
+// console.log("-----"+value);
+// localStorage.setItem("totaltoacc", value);
+// }
+// })
+// } else {
+// console.error('Please check your collection and document name in the [firestore] shortcode!');
+// }
+// }).catch(error => {
+// console.error('Please check your collection and document name in the [firestore] shortcode!', error);
+// });
+
+var totaltoacc = localStorage.getItem("totaltoacc");
+console.log(totaltoacc+"++++"+totalItemdb);
+totaltoacc=parseInt(totaltoacc)+parseInt(totalItemdb);
+
     const docRef112 = db.collection(localacc).doc(itAcc);
     docRef112.update({
-      [itName]: totaltoAcc
+      [itName]: totalItemdb,
+      total:totaltoacc
     }).then(() => {
+      console.log("difdififf"+totalItemdb);
       itForm.reset();
-      document.getElementById("progbarfy").style.visibility="hidden";
+      document.getElementById("progbaritcrt").style.visibility="hidden";
         location.reload();
     }).catch(err => {
-      console.log("errrr");
+      console.log("errrr5555555555");
       console.log(err.message);
-      document.getElementById("progbarfy").style.visibility="hidden";
+      document.getElementById("progbaritcrt").style.visibility="hidden";
     });
 
     }
@@ -471,10 +544,11 @@ createsupBtn.addEventListener('click', (e) =>{
 
           const buttonv=supForm['regsupcrt'].value;
           console.log("999999 "+buttonv);
+
       if (buttonv=="Register Supplier") {
     // Retrieve
     var dbsu = localStorage.getItem(suppliers_key);
-  db.collection(dbsu).doc(supName).update({
+  db.collection(dbsu).doc(supName).set({
       name:supName,
       total: 0,
       phone_number:supPhone
@@ -482,6 +556,7 @@ createsupBtn.addEventListener('click', (e) =>{
       // close the create modal & reset form
         document.getElementById("progbarsupcrt").style.visibility="hidden";
       supForm.reset();
+    document.getElementById("supplier_namecrt").focus();
     }).catch(err => {
       console.log(err.message);
         document.getElementById("progbarsupcrt").style.visibility="hidden";
@@ -550,6 +625,27 @@ var dropacc=editItem(e);
         console.log("wala",ok)
         console.log("wala",dropacc);
 
+          // Retrieve
+          var localacc = localStorage.getItem(account_key);
+          const docReft1222 = db.collection(localacc).doc(dropacc);
+          docReft1222.get().then(doc => {
+                 if (doc.exists) {
+                     // console.log('Document data:', doc.data());
+        jQuery.each(doc.data(), function (key, value) {
+        if(key=="total"){
+              // totalfromacc=parseInt(value);
+              console.log("-----"+value);
+            localStorage.setItem("totalfromacc", value);
+        }
+                            })
+                        } else {
+                            // doc.data() will be undefined in this case
+                            console.error('Please check your collection and document name in the [firestore] shortcode!');
+                        }
+                    }).catch(error => {
+                        console.error('Please check your collection and document name in the [firestore] shortcode!', error);
+                    });
+
         localStorage.setItem(originalItemAcc_key, dropacc);
 
         db.collection(dbacc).onSnapshot(snapshot=>{
@@ -577,24 +673,25 @@ async function editItem(event){
     document.getElementById('createItcrt').setAttribute("value","Edit "+namesir);
   localStorage.setItem(originalItem_key, namesir);
 
-    // Retrieve
-    var dbtem = localStorage.getItem(items_key);
-const docRef = db.collection(dbtem).doc(namesir);
-var somename =await docRef.get().then(doc => {
-           if (doc.exists) {
-               // console.log('Document data:', doc.data());
-  jQuery.each(doc.data(), function (key, value) {
-  if(key=="account"){
-  returnee=value;
-  }
-                      })
-                  } else {
-                      // doc.data() will be undefined in this case
-                      console.error('Please check your collection and document name in the [firestore] shortcode!');
-                  }
-              }).catch(error => {
-                  console.error('Please check your collection and document name in the [firestore] shortcode!', error);
-              });
+      // Retrieve
+      var dbtem = localStorage.getItem(items_key);
+  const docRef = db.collection(dbtem).doc(namesir);
+  var somename =await docRef.get().then(doc => {
+             if (doc.exists) {
+                 // console.log('Document data:', doc.data());
+    jQuery.each(doc.data(), function (key, value) {
+    if(key=="account"){
+    returnee=value;
+    }
+                        })
+                    } else {
+                        // doc.data() will be undefined in this case
+                        console.error('Please check your collection and document name in the [firestore] shortcode!');
+                    }
+                }).catch(error => {
+                    console.error('Please check your collection and document name in the [firestore] shortcode!', error);
+                });
+
 return returnee;
 }
 
@@ -671,6 +768,62 @@ function deleteItem(event){
   var txt;
   if (confirm("Do you want to delete "+namesir+" from your Items!")) {
   console.log(namesir+" deleted");
+
+              // Retrieve
+              var localacc = localStorage.getItem(items_key);
+              const docReft1222 = db.collection(localacc).doc(namesir);
+              docReft1222.get().then(doc => {
+                     if (doc.exists) {
+                         // console.log('Document data:', doc.data());
+            jQuery.each(doc.data(), function (key, value) {
+            if(key=="total"){
+                  // totalfromacc=parseInt(value);
+                  console.log("-----"+value);
+                localStorage.setItem("totalfromit", value);
+            }else if (key=="account") {
+          localStorage.setItem("accountfromit", value);
+            }
+                                })
+                            } else {
+                                // doc.data() will be undefined in this case
+                                console.error('Please check your collection and document name in the [firestore] shortcode!');
+                            }
+                        }).catch(error => {
+                            console.error('Please check your collection and document name in the [firestore] shortcode!', error);
+                        });
+                  // Retrieve
+                  var localacc1 = localStorage.getItem(account_key);
+                  var acc1 = localStorage.getItem("accountfromit");
+                  const docReft12223 = db.collection(localacc1).doc(acc1);
+                  docReft12223.get().then(doc => {
+                         if (doc.exists) {
+                             // console.log('Document data:', doc.data());
+                jQuery.each(doc.data(), function (key, value) {
+                if(key==namesir){
+                      // totalfromacc=parseInt(value);
+                      console.log("======"+value);
+                    localStorage.setItem("totalfromaccdel", value);
+                }
+                                    })
+                                } else {
+                                    // doc.data() will be undefined in this case
+                                    console.error('Please check your collection and document name in the [firestore] shortcode!');
+                                }
+                            }).catch(error => {
+                                console.error('Please check your collection and document name in the [firestore] shortcode!', error);
+                            });
+
+      var totalfromit=localStorage.getItem("totalfromit");
+      var totalfromaccdel=localStorage.getItem("totalfromaccdel");
+      console.log(totalfromit+"swaswaswa"+totalfromaccdel);
+      var totaltoaccdel=parseInt(totalfromaccdel)-parseInt(totalfromit);
+      console.log("swaswaswa"+totaltoaccdel);
+
+      // update account
+      const docRef114 = db.collection(localacc1).doc(acc1);
+      docRef114.update({
+        [namesir]: totaltoaccdel
+      })
     // Retrieve
     var dbtra = localStorage.getItem(items_key);
   db.collection(dbtra).doc(namesir).delete().then(function() {
@@ -799,7 +952,7 @@ localStorage.setItem(tutorial_key, 1);
            tutbtn.addEventListener('click', (e) =>{
              e.preventDefault();
               const modal = document.querySelector('#helpmodal');
-                // document.getElementById("progbarfy").style.visibility="hidden";
+                // document.getElementById("progbaritcrt").style.visibility="hidden";
               M.Modal.getInstance(modal).close();
               tour.start();
            })
