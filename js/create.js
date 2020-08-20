@@ -161,7 +161,7 @@ data.forEach(doc=>{
             <div class=" valign-wrapper ">
             <div class="divlist">${doc.id}</div>
             <div class="text-right divicon">
-            <i id="${identityd}" onclick="deleteItem(event)" class=" icondelete small material-icons right histicon">delete_forever</i>
+            <i id="${identityd}" onclick="predeleteItem(event)" class=" icondelete small material-icons right histicon">delete_forever</i>
             <i id="${identitye}" onclick="editItemAdapter(event)" class="center iconprint small material-icons right histicon">edit</i>
             </div>
             </div>
@@ -762,12 +762,10 @@ function editAccount(event){
 return returnee;
 }
 
-function deleteItem(event){
+function predeleteItem(event){
   var ideas=event.target.id;
   var namesir= ideas.substring(0, ideas.length - 1);
   var txt;
-  if (confirm("Do you want to delete "+namesir+" from your Items!")) {
-  console.log(namesir+" deleted");
 
               // Retrieve
               var localacc = localStorage.getItem(items_key);
@@ -782,24 +780,37 @@ function deleteItem(event){
                 localStorage.setItem("totalfromit", value);
             }else if (key=="account") {
           localStorage.setItem("accountfromit", value);
+          console.log("-----"+value);
             }
                                 })
                             } else {
                                 // doc.data() will be undefined in this case
                                 console.error('Please check your collection and document name in the [firestore] shortcode!');
                             }
+                            deleteItem(event);
                         }).catch(error => {
                             console.error('Please check your collection and document name in the [firestore] shortcode!', error);
                         });
+
+}
+  function deleteItem(event){
+    var ideas=event.target.id;
+    var namesir= ideas.substring(0, ideas.length - 1);
+    var txt;
+  if (confirm("Do you want to delete "+namesir+" from your Items!")) {
+  console.log(namesir+" deleted");
+
                   // Retrieve
                   var localacc1 = localStorage.getItem(account_key);
                   var acc1 = localStorage.getItem("accountfromit");
+                  console.log("fromit-----"+acc1);
+                  console.log("fromit-----"+localacc1);
                   const docReft12223 = db.collection(localacc1).doc(acc1);
                   docReft12223.get().then(doc => {
                          if (doc.exists) {
                              // console.log('Document data:', doc.data());
                 jQuery.each(doc.data(), function (key, value) {
-                if(key==namesir){
+                if(key=="total"){
                       // totalfromacc=parseInt(value);
                       console.log("======"+value);
                     localStorage.setItem("totalfromaccdel", value);
@@ -809,29 +820,39 @@ function deleteItem(event){
                                     // doc.data() will be undefined in this case
                                     console.error('Please check your collection and document name in the [firestore] shortcode!');
                                 }
+
+                var totalfromit=localStorage.getItem("totalfromit");
+                var totalfromaccdel=localStorage.getItem("totalfromaccdel");
+                console.log(totalfromit+"swaswaswa"+totalfromaccdel);
+                var totaltoaccdel=parseInt(totalfromaccdel)-parseInt(totalfromit);
+                console.log("swaswaswa"+totaltoaccdel);
+                postdeleteitem(namesir,totaltoaccdel);
                             }).catch(error => {
                                 console.error('Please check your collection and document name in the [firestore] shortcode!', error);
                             });
 
-      var totalfromit=localStorage.getItem("totalfromit");
-      var totalfromaccdel=localStorage.getItem("totalfromaccdel");
-      console.log(totalfromit+"swaswaswa"+totalfromaccdel);
-      var totaltoaccdel=parseInt(totalfromaccdel)-parseInt(totalfromit);
-      console.log("swaswaswa"+totaltoaccdel);
-
-      // update account
-      const docRef114 = db.collection(localacc1).doc(acc1);
-      docRef114.update({
-        [namesir]: totaltoaccdel
-      })
-    // Retrieve
-    var dbtra = localStorage.getItem(items_key);
-  db.collection(dbtra).doc(namesir).delete().then(function() {
-      console.log(namesir+"Document successfully deleted!");
-  }).catch(function(error) {
-      console.error("Error removing document: ", error);
-  });
+  }else {
+    console.log("cancel");
   }
+}
+function postdeleteitem(namesir,totaltoaccdel){
+                  // Retrieve
+                  var localacc1 = localStorage.getItem(account_key);
+                  var acc1 = localStorage.getItem("accountfromit");
+
+        // update account
+        const docRef114 = db.collection(localacc1).doc(acc1);
+        docRef114.update({
+          [namesir]: firebase.firestore.FieldValue.delete(),
+          total:totaltoaccdel
+        })
+      // Retrieve
+      var dbtra = localStorage.getItem(items_key);
+    db.collection(dbtra).doc(namesir).delete().then(function() {
+        console.log(namesir+"Document successfully deleted!");
+    }).catch(function(error) {
+        console.error("Error removing document: ", error);
+    });
 }
 function deleteSupplier(event){
   var ideas=event.target.id;
