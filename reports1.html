@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Chocolate Cosmos Reports</title>
+  <!-- Custom fonts for this template-->
+  <link href="reports/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <!-- Custom styles for this template-->
+  <link href="reports/sb-admin-2.min.css" rel="stylesheet">
+  <!-- original -->
+
+    <script type = "text/javascript"
+          src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+          <!--Load the AJAX API-->
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+      <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="./css/style.css">
+  <!-- standalone -->
+  <link href="css/bootstrap-tour-standalone.min.css" rel="stylesheet">
+  <script src="js/bootstrap-tour-standalone.min.js"></script>
+
+</head>
+<body id="page-top" class="grey lighten-3">
+  <!-- NAVBAR -->
+  <nav class="z-depth-0 navio pink darken-3 sticky">
+    <div class="nav-wrapper container  ">
+      <a onclick="location.href='index.html';" class="brand-logo left">
+        <img  src="images/choco2.png" style="width: 60px; margin-top: 10px;">
+        Chocolate Cosmos
+      </a>
+      <ul id="nav-mobile" class="right nav-wrapper-fixed ">
+          <li class="logged-out right">
+            <a href="#" class="white-text"  onclick="location.href='index.html';" >HOME</a>
+          </li>
+        </span>
+      </ul>
+    </div>
+  </nav>
+  <div id="wrapper">
+    <div id="content-wrapper" class="d-flex flex-column">
+      <!-- Main Content -->
+      <div id="content">
+        <div class="container-fluid">
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h4 id="expencehead" class="center">HEADING HERE</h4>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+              <i class="fas fa-download fa-sm text-white-50"></i>Print Report</a>
+          </div>
+
+          <!-- Content Row -->
+          <div class="row">
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
+                      <div class="row no-gutters align-items-center">
+                        <div class="col-auto">
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                        </div>
+                        <div class="col">
+                          <div class="progress progress-sm mr-2">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Row -->
+
+          <div class="row">
+
+                        <!-- Area Chart -->
+                        <div class="col-xl-8 col-lg-7">
+                          <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="chartbox card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                              <h6 class="m-0 font-weight-bold text-primary">Monthly Expenditure</h6>
+                              <div class="dropdown no-arrow">
+                                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                                  <div class="dropdown-header">Dropdown Header:</div>
+                                  <a class="dropdown-item" href="#">Action</a>
+                                  <a class="dropdown-item" href="#">Another action</a>
+                                  <div class="dropdown-divider"></div>
+                                  <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                              <div class="chart-area">
+                                <canvas id="myAreaChart"></canvas>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+          <!-- Area Chart -->
+          <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+              <!-- Card Header - Dropdown -->
+              <div class="chartbox card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">blockquote</h6>
+              </div>
+              <!-- Card Body -->
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="myAreaChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+            <!-- Pie Chart -->
+            <div class="col-xl-4 col-lg-5">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Staff Members</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Invite User</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="card mb-4 py-3 border-bottom-info">
+                    <div class="card-body">
+                      .border-bottom-info
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            <!-- Content Column -->
+            <div class="chartbox col-lg-6 mb-4">
+
+              <!-- Project Card Example -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Charts</h6>
+                </div>
+                <div class="card-body">
+<!-- charts here -->
+<div class="container bigcont">
+
+    <ul id="tabs-swipe-demo" class="tabs">
+      <li class="tab col s3"><a class="active" href="#testacc">ACCOUNTS</a></li>
+      <li class="tab col s3"><a  href="#testit">ITEMS</a></li>
+      <button class="btn right kamargin" onclick="window.print()">Print Report</button><br/>
+    </ul>
+        <!--Table and divs that hold the pie charts-->
+        <table class="columns" id="testacc">
+          <tr class="row">
+            <td class=" "><div class="center" id="piechart_div" style="border: 1px solid #ccc"></div></td>
+            <td class=" "><div  class="center" id="barchart_div" style="border: 1px solid #ccc"></div></td>
+          </tr>
+        </table>
+              <!--Table and divs that hold the pie charts-->
+              <table class="columns" id="testit">
+                <tr>
+                  <td><div class="center" id="piechart_divit" style="border: 1px solid #ccc"></div></td>
+                  <td><div  class="center" id="barchart_divit" style="border: 1px solid #ccc"></div></td>
+                </tr>
+              </table>
+          </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Content Column -->
+            <div class="col-lg-6 mb-4">
+
+              <!-- Project Card Example -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Charts</h6>
+                </div>
+                <div class="card-body">
+<!-- charts here -->
+<div class="tableco container">
+  <div class="tablecoin">
+<h5>EXPENDITURE PER ACCOUNT</h5>
+<table class="acctable white">
+<thead>
+<tr>
+  <th>ACCOUNT NAME</th>
+  <th>TOTAL</th>
+</tr>
+</thead>
+<tbody class="tablo">
+</tbody>
+</table><br/>
+</div>
+<div class="tablecoin">
+<h5>EXPENDITURE PER ITEM</h5>
+<table class="ittable white">
+  <thead>
+    <tr>
+        <th>ITEM NAME</th>
+        <th>TOTAL</th>
+    </tr>
+  </thead>
+  <tbody class="tabloit">
+  </tbody>
+</table>
+</div>
+</div>
+                </div>
+              </div>
+
+            </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="reports/jquery.min.js"></script>
+  <script src="reports/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="reports/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="reports/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="reports/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="reports/chart-area-demo.js"></script>
+  <script src="reports/chart-pie-demo.js"></script>
+<!-- original -->
+<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+  apiKey: "AIzaSyB8v_sona0iDOs26uX-uJtpYKCcFFjDVeQ",
+  authDomain: "chocolate-cosmos.firebaseapp.com",
+  databaseURL: "https://chocolate-cosmos.firebaseio.com",
+  projectId: "chocolate-cosmos",
+  storageBucket: "chocolate-cosmos.appspot.com",
+  messagingSenderId: "350208192448",
+  appId: "1:350208192448:web:3d0f46f2a4043d26fae225",
+  measurementId: "G-4VJF29Z73K"
+};
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  // firebase.analytics();
+
+// auth and firestore references
+    const auth=firebase.auth();
+    const db=firebase.firestore();
+// update firestore settings
+    db.settings({timestampsInSnapshots: true});
+    //
+    // firebase.firestore().enablePersistence()
+    //   .catch(function(err) {
+    //       if (err.code == 'failed-precondition') {
+    //           // Multiple tabs open, persistence can only be enabled
+    //           // in one tab at a a time.
+    //           // ...
+    //       } else if (err.code == 'unimplemented') {
+    //           // The current browser does not support all of the
+    //           // features required to enable persistence
+    //           // ...
+    //       }
+    //   });
+    // Subsequent queries will use persistence, if it was enabled successfully
+
+</script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!-- <script src="scripts/auth.js"></script> -->
+<script src="js/reports.js"></script>
+<!-- <script src="js/home.js"></script> -->
+</body>
+
+</html>

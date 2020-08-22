@@ -394,3 +394,13 @@ var sulement=await db.collection("USERS").where("email", "==", emshow)
 
                  return 3;
 }
+
+// scripts.js custom js file
+$(document).ready(function () {
+	google.maps.event.addDomListener(window, 'load', initialize);
+});
+
+function initialize() {
+	 var input = document.getElementById('userLocationsu');
+	 var autocomplete = new google.maps.places.Autocomplete(input);
+}
