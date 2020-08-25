@@ -46,8 +46,8 @@ signupBtn.addEventListener('click', (e) =>{
   const location=document.getElementById("userLocationsu").value;
   const phone=document.getElementById("userPhonesu").value;
   const password=document.getElementById("userPasswordsu").value;
-console.log(surname);
-    if (surname === '' || firstname==='' || company==='' || location==='' || email==='' || phone==='' || password==='') {
+    if (surname === '' || firstname==='' || company==='' || location==='' || email==='' || phone==='' || password==='')
+    {
         // alert("Please fill in all fields");
         // $('#selBooks').focus();
         console.log("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
@@ -55,10 +55,43 @@ console.log(surname);
           document.getElementById("progbarsing").style.visibility="hidden";
         return false;
       }else {
-        console.log("yyyyyyyyyyyyyyyyyyyyy");
-      }
+        emailvery();
+        function emailvery(){
+          console.log(surname);
+var actionCodeSettings = {
+  // URL you want to redirect back to. The domain (www.example.com) for this
+  // URL must be whitelisted in the Firebase Console.
+  url: 'localhost/logincopy.html',
+  // This must be true.
+  handleCodeInApp: true
+};
+
+firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
+  .then(function() {
+    // The link was successfully sent. Inform the user.
+    // Save the email locally so you don't need to ask the user for it again
+    // if they open the link on the same device.
+    console.log("sent to to "+email);
+    window.localStorage.setItem('emailForSignIn', email);
+  })
+  .catch(function(error) {
+    // Some error occurred, you can inspect the code: error.code
+  });
+
+        }
+                  function outsider(){
     // sign up the user
   firebase.auth().createUserWithEmailAndPassword(email, password).then(async cred => {
+    console.log("yyyyyyyyyyyyyyyyyyyyy");
+    var user=firebase.auth().currentUser;
+    user.sendEmailVerification().then(function(){
+      console.log("sent sent sent"+ user);
+
+    }).catch(function(error){
+      console.log(error);
+    });
+
+          function insider(){
     var usernumber=giveidentity();
       // WAIT FOR THE PROMISE
           const checkIfDonesees = () => {
@@ -103,15 +136,17 @@ console.log(surname);
 
           }
           checkIfDonesees();
-
-  }).catch(err=>{
+        }//end insider
+  }).catch(err=>{ //createuser end
 document.getElementById("errormsg").innerHTML =err.message;
     // document.querySelector('.error').innerHTML=err.message;
     console.log(err);
     document.getElementById("progbarsing").style.visibility="hidden";
   });
   console.log(email,password);
-})
+}//outsider end
+}//else end
+}) // eventlistener end
 
 async function inside(usernumber,company,surname,firstname,email,phone,location){
 var userid=generator(usernumber,company);
