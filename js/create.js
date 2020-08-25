@@ -874,16 +874,30 @@ function deleteAccount(event){
   var ideas=event.target.id;
   var namesir= ideas.substring(0, ideas.length - 1);
   var txt;
-  if (confirm("Do you want to delete "+namesir+" from your Accounts!")) {
-  console.log(namesir+" deleted");
-    // Retrieve
-    var dbtra = localStorage.getItem(account_key);
-  db.collection(dbtra).doc(namesir).delete().then(function() {
-      console.log(namesir+"Document successfully deleted!");
-  }).catch(function(error) {
-      console.error("Error removing document: ", error);
+  if (confirm("Do you want to delete "+namesir+" from your Accounts! THIS DELETES ALL ITEMS IN "+namesir))
+  {
+    if (confirm("Are you really sure you want to delete "+namesir)) {
+            // Retrieve
+      var dbtra = localStorage.getItem(account_key);
+var dbtraitem = localStorage.getItem(items_key);
+// 111 delete Each
+var jobskill_query = db.collection(dbtraitem).where('account','==',namesir);
+jobskill_query.get().then(function(querySnapshot) {
+  querySnapshot.forEach(function(doc) {
+    doc.ref.delete();
   });
-  }
+});
+
+    db.collection(dbtra).doc(namesir).delete().then(function() {
+        console.log(namesir+"Document successfully deleted!");
+    }).catch(function(error) {
+        console.error("Error removing document: ", error);
+    });
+
+    }
+}else {
+  console.log("not not");
+}
 }
 
 var tour = new Tour({

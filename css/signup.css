@@ -321,8 +321,9 @@ margin-right: auto;
   width: 100px;
 }
 .hcreateacc {
-  text-align: center !important;
-  color: white;
-  /* font-family: verdana; */
-  font-weight: 9;
+  /* text-align: center !important; */
+  color: white !important;
+  font-family: verdana;
+  font-weight: 20;
+  margin: 0px;
 }

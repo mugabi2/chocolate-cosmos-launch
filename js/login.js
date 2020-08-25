@@ -21,6 +21,7 @@ document.getElementById("bodeys").style.visibility="visible";
           var surname_key="surname";
           var firstname_key="firstname";
           var phone_key="phone";
+          var location_key="location";
           var email_key="email";
           var numberusers_key="usersNo";
           var financialyear_key="financial year";
@@ -42,10 +43,11 @@ signupBtn.addEventListener('click', (e) =>{
   const firstname=document.getElementById("userFirstnamesu").value;
   const company=document.getElementById("userCompanysu").value.toUpperCase();
   const email=document.getElementById("userEmailsu").value;
+  const location=document.getElementById("userLocationsu").value;
   const phone=document.getElementById("userPhonesu").value;
   const password=document.getElementById("userPasswordsu").value;
 console.log(surname);
-    if (surname === '' || firstname==='' || company==='' || email==='' || phone==='' || password==='') {
+    if (surname === '' || firstname==='' || company==='' || location==='' || email==='' || phone==='' || password==='') {
         // alert("Please fill in all fields");
         // $('#selBooks').focus();
         console.log("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
@@ -72,7 +74,7 @@ console.log(surname);
               console.log("000000002",identitynational);
               // signupForm.reset();
               // var name=surname + firstname;
-              var waitinside=inside(usernumber,company,surname,firstname,email,phone);
+              var waitinside=inside(usernumber,company,surname,firstname,email,phone,location);
               //
               // WAIT FOR THE PROMISE
                   const checkIfDonein = () => {
@@ -111,7 +113,7 @@ document.getElementById("errormsg").innerHTML =err.message;
   console.log(email,password);
 })
 
-async function inside(usernumber,company,surname,firstname,email,phone){
+async function inside(usernumber,company,surname,firstname,email,phone,location){
 var userid=generator(usernumber,company);
 // fina setup
 document.getElementById("progbarsing").style.visibility="visible";
@@ -154,6 +156,7 @@ var something=await db.collection('USERS').doc(userid).set({
   surname: surname,
   company: company,
   email: email,
+  location: location,
   phone: phone,
   licence: "14",
   financialyear: "0",
@@ -181,6 +184,7 @@ localStorage.setItem(surname_key, surname);
 localStorage.setItem(firstname_key, firstname);
 localStorage.setItem(phone_key, phone);
 localStorage.setItem(email_key, email);
+localStorage.setItem(location_key, location);
 
 var very=localStorage.getItem(userid_key);
 console.log("0000003 inside",very);
@@ -404,3 +408,20 @@ function initialize() {
 	 var input = document.getElementById('userLocationsu');
 	 var autocomplete = new google.maps.places.Autocomplete(input);
 }
+
+  //reset email
+  const resetbtn=document.getElementById('resetpass');
+  resetbtn.addEventListener('click', (e) =>{
+    e.preventDefault();
+    // var auth = firebase.auth();
+var emailAddress = document.getElementById("emailreset").value;
+
+auth.sendPasswordResetEmail(emailAddress).then(function() {
+  // Email sent.
+  console.log("email sent");
+}).catch(function(error) {
+  // An error happened.
+  console.log(error);
+});
+
+  })

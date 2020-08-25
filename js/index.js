@@ -146,7 +146,7 @@ if (status=="0") {
           //            console.error('Please check your collection and document name in the [firestore] shortcode!', error);
           //        });
 }else {
-  document.location.replace("login.html");
+  document.location.replace("landing.html");
   console.log("loged out");
 }
 })
@@ -717,14 +717,14 @@ function closeNav() {
 function logmeout(){
     auth.signOut();
     localStorage.clear();
-      document.location.replace("login.html");}
+      document.location.replace("landing.html");}
 // log out
 const logoutBtn=document.querySelector('#logout');
 logoutBtn.addEventListener('click', (e) =>{
   e.preventDefault();
     auth.signOut();
     localStorage.clear();
-      document.location.replace("login.html");
+      document.location.replace("landing.html");
 // Retrieve
 // var sample = localStorage.getItem(userid_key);
 // console.log(777,sample);

@@ -18,11 +18,11 @@
 
   <!-- Vendor CSS Files -->
   <link href="landing/bootstrap.min.css" rel="stylesheet">
-  <link href="landing/icofont.min.css" rel="stylesheet">
-  <link href="landing/boxicons.min.css" rel="stylesheet">
-  <link href="landing/venobox.css" rel="stylesheet">
-  <link href="landing/remixicon.css" rel="stylesheet">
-  <link href="landing/owl.carousel.min.css" rel="stylesheet">
+  <!-- <link href="landing/icofont.min.css" rel="stylesheet"> -->
+  <!-- <link href="landing/boxicons.min.css" rel="stylesheet"> -->
+  <!-- <link href="landing/venobox.css" rel="stylesheet"> -->
+  <!-- <link href="landing/remixicon.css" rel="stylesheet"> -->
+  <!-- <link href="landing/owl.carousel.min.css" rel="stylesheet"> -->
   <link href="landing/aos.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
@@ -35,6 +35,26 @@ type="text/javascript"></script> -->
 </head>
 
 <body id="bodeys">
+   <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+          <div class="modal-body">
+            <p>Some text in the modal.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center header-transparent">
@@ -50,15 +70,23 @@ type="text/javascript"></script> -->
             <input class="forminput center white-text input-field" type="text" placeholder="Email" id="userEmailli">
             <input  class="forminput center input-field" type="password" placeholder="Password" id="userPasswordli">
             <!-- <input class="un signsa" type="text"  placeholder="Company location" id="userLocationsu"> -->
-            <button  class="formbutton" type="submit" id="login-button">Login</button>
+            <button  class="formbutton" type="submit" id="login-button">Login</button></br>
             <p id="errormsglg" class="error white-text center-align"></p>
+            <!-- /////////////// -->
+                <!-- <div class="container progcont"> -->
+                      <div class="progress progbarlog center" id="progbarlog">
+                            <div class="indeterminate center"></div>
+                        </div>
+                <!-- </div> -->
+                <a  class="modal-trigger" data-target="modal-reset" data-toggle="modal" >Forgot password</a>
+                <!-- /////////////// -->
+
           </form>
         </div>
       </nav><!-- .nav-menu -->
 
     </div>
   </header><!-- End Header -->
-
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="secondBg">
 
@@ -71,10 +99,14 @@ type="text/javascript"></script> -->
             <div class="text-center text-lg-left">
               <a href="#about" class="btn-get-started scrollto">Get Started</a>
             </div>
+          </br>
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal-reset">Open Modal</button>
+          </br>
           </div>
         </div>
-        <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
 
+        <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+          <h4 id="hone4" class="hcreateacc heads yellow-text">Create an account</h4>
                     <form class="form" id="signup_form1">
                       <input class="un signsa " type="text" placeholder="Surname" id="userSurnamesu">
                       <input class="un signsa" type="text"  placeholder="Firstname" id="userFirstnamesu">
@@ -86,7 +118,13 @@ type="text/javascript"></script> -->
                       <a class="left red-text passnote">Password should be atleast 6 characters.</a>
                       <a class="right red-text fillnote" id="fillall"></a>
                       <br/>
-                      <input type="button" class="submit center" value="Sign up" id="signupBtn"/>
+                      <button  class="twobtn formbuttonsu" id="signupBtn">Finish Signup</button>
+                      <p id="errormsg" class="error white-text center-align"></p><br/>
+                    <!-- /////////////// -->
+                            <div class="progress progbarsing center" id="progbarsing">
+                                  <div class="indeterminate center"></div>
+                              </div>
+                      <!-- /////////////// -->
                     </form>
         </div>
       </div>
@@ -831,22 +869,72 @@ type="text/javascript"></script> -->
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
   <div id="preloader"></div>
 
-  <!-- Vendor JS Files -->
-  <script src="landing/jquery.min.js"></script>
-  <script src="landing/bootstrap.bundle.min.js"></script>
-  <script src="landing/jquery.easing.min.js"></script>
-  <script src="landing/validate.js"></script>
-  <script src="landing/venobox.min.js"></script>
-  <script src="landing/jquery.waypoints.min.js"></script>
-  <script src="landing/counterup.min.js"></script>
-  <script src="landing/owl.carousel.min.js"></script>
-  <script src="landing/aos.js"></script>
+    <!-- account MODAL -->
+    <div id="modal-reset" class="modal fade"  role="dialog">
+      <div class="modal-content">
 
-  <!-- Template Main JS File -->
-  <script src="landing/main.js"></script>
-  <script src="js/login.js"></script>
-<!-- mine -->
-  <!-- <link rel="stylesheet" href="./css/signup.css"> -->
-</body>
+        <h4>Reset Password</h4><br />
+        <form id="accounts-form">
+          <div class="input-field">
+            <input type="text" id="emailreset" required />
+            <label for="account_name">User Email</label>
+          </div>
+            <!-- /////////////// -->
+                  <div class="progress progbaracres " id="progbaracres">
+                        <div class="indeterminate"></div>
+                    </div>
+            <!-- //////////////// -->
+          <button  type="button" class="btn teal z-depth-2" id="resetpass">Reset Password</button>
+      </form>
+      </div>
+    </div>
+    </body>
 
+    <!-- Vendor JS Files -->
+    <script src="landing/jquery.min.js"></script>
+    <script src="landing/bootstrap.bundle.min.js"></script>
+    <script src="landing/jquery.easing.min.js"></script>
+    <script src="landing/validate.js"></script>
+    <script src="landing/venobox.min.js"></script>
+    <script src="landing/jquery.waypoints.min.js"></script>
+    <script src="landing/counterup.min.js"></script>
+    <script src="landing/owl.carousel.min.js"></script>
+    <script src="landing/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="landing/main.js"></script>
+    <script src="js/login.js"></script>
+    <!-- mine -->
+    <!-- <link rel="stylesheet" href="./css/signup.css"> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+    apiKey: "AIzaSyB8v_sona0iDOs26uX-uJtpYKCcFFjDVeQ",
+    authDomain: "chocolate-cosmos.firebaseapp.com",
+    databaseURL: "https://chocolate-cosmos.firebaseio.com",
+    projectId: "chocolate-cosmos",
+    storageBucket: "chocolate-cosmos.appspot.com",
+    messagingSenderId: "350208192448",
+    appId: "1:350208192448:web:3d0f46f2a4043d26fae225",
+    measurementId: "G-4VJF29Z73K"
+  };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    // firebase.analytics();
+
+  // auth and firestore references
+      const auth=firebase.auth();
+      const db=firebase.firestore();
+  // update firestore settings
+      db.settings({timestampsInSnapshots: true});
+
+  </script>
 </html>
