@@ -1,4 +1,116 @@
-var totalitems,totalaccounts,itemaccount;
+var vine=1;
+// localStorage.setItem(tutorial_key, 0);
+// Confirm the link is a sign-in with email link.
+if (
+  vine==1
+  // firebase.auth().isSignInWithEmailLink(window.location.href)
+) {
+  // Additional state parameters can also be passed via URL.
+  // This can be used to continue the user's intended action before triggering
+  // the sign-in operation.
+  // Get the email if available. This should be available if the user completes
+  // the flow on the same device where they started it.
+  var email = "samuelmugabi2@gmail.com";
+  // window.localStorage.getItem('emailForSignIn');
+  console.log("email"+email);
+  if (!email) {
+    // User opened the link on a different device. To prevent session fixation
+    // attacks, ask the user to provide the associated email again. For example:
+    email = window.prompt('Please provide your email for confirmation');
+  }
+  // The client SDK will parse the code from the link for you.
+  firebase.auth().signInWithEmailLink(email, window.location.href)
+    .then(function(result) {
+    var tutorial_key="tutorial";
+    localStorage.setItem(tutorial_key, 1);
+    // document.location.replace("create.html");
+
+    // var sulement=await
+    db.collection("USERS").where("email", "==", email)
+    .get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+    var dropss=doc.id;
+    console.log("emmm "+doc);
+      localStorage.setItem(userid_key, dropss);
+             // if (doc.exists) {
+                 // console.log('Document data:', doc.data());
+    jQuery.each(doc.data(), function (key, value) {
+              if(key=="ACCOUNTS"){
+                localStorage.setItem(account_key, value);
+                var dbacca = localStorage.getItem(account_key);
+                console.log("songof lawino",value);
+              }else if (key=="ITEMS") {
+                 localStorage.setItem(items_key, value);
+                 console.log("songof lawino",value);
+               }else if (key=="SUPPLIERS") {
+                 localStorage.setItem(suppliers_key, value);
+                 console.log("songof lawino",value);
+               }else if (key=="TRANSACTIONS") {
+                 localStorage.setItem(transactions_key, value);
+                 console.log("songof lawino",value);
+               }else if (key=="company") {
+                 localStorage.setItem(company_key, value);
+                 console.log("company vee",value);
+               }else if (key=="surname") {
+                 localStorage.setItem(surname_key, value);
+               }else if (key=="firstname") {
+                 localStorage.setItem(firstname_key, value);
+               }else if (key=="phone") {
+                 localStorage.setItem(phone_key, value);
+               }else if (key=="financialyear") {
+                 localStorage.setItem(realfinancialyear_key, value);
+               }else if (key=="FINANCIALYEAR") {
+                 localStorage.setItem(financialyear_key, value);
+                 console.log("finafina"+value);
+               }else if (key=="email") {
+                 localStorage.setItem(email_key, value);
+               }else if (key=="logo") {
+                 localStorage.setItem(changedlogo_key, value);
+               }else if (key=="logo64") {
+                 localStorage.setItem(logo_key, value);
+               }
+               localStorage.setItem("kzfour", 4);
+
+    })
+    });
+    }).catch(error => {
+    document.getElementById("progbarlog").style.visibility="hidden";
+    console.error('Please check your collection and document name in the [firestore] shortcode!', error);
+    });
+
+            // localStorage.setItem("login", 0);
+    var status = localStorage.getItem("login");
+    // if (status=="3") {
+    // localStorage.setItem(tutorial_key, 1);
+                   jQuery(document).ready(function(){
+                         jQuery('#helpmodal').modal();
+                         jQuery(document).ready(function(){
+                             jQuery('#helpmodal').modal('open');
+                            jQuery('#helpmodal').modal({
+        dismissible: false
+      });
+                         });
+                   });
+               // }
+			console.log("email:"+ email);
+			console.log("success success");
+      // Clear email from storage.
+      window.localStorage.removeItem('emailForSignIn');
+      // You can access the new user via result.user
+      // Additional user info profile not available via:
+      // result.additionalUserInfo.profile == null
+      // You can check if the user is new or existing:
+      // result.additionalUserInfo.isNewUser
+    })
+    .catch(function(error) {
+      // Some error occurred, you can inspect the code: error.code
+      // Common errors could be invalid email and invalid or expired OTPs.
+    });
+
+}else if(vine==0) {///2222222222222222222222222222222222222222222222222222///////////////////////////////////////////////
+  console.log("else else");
+
+  var totalitems,totalaccounts,itemaccount;
 var fuel=0,
 zero=0,one=1,two=2,three=3,four=4;
 var identitynational;
@@ -646,24 +758,61 @@ createItBtn.addEventListener('click', (e) =>{
   const itAcc=itForm['metro'].value;
       // Retrieve
       var dbitacc = localStorage.getItem(account_key);
-      db.collection(dbitacc).doc(itAcc).update({
-             [itName]: 0
-           })
-          // Retrieve
-          var dbit = localStorage.getItem(items_key);
-  db.collection(dbit).doc(itName).set({
-      total: 0,
-      account: itAcc
-    }).then(() => {
-      // close the create modal & reset form
-      const modal = document.querySelector('#modal-items');
-        document.getElementById("progbarit").style.visibility="hidden";
-      itForm.reset();
-    M.Modal.getInstance(modal).close();
-    }).catch(err => {
-      console.log(err.message);
-        document.getElementById("progbarit").style.visibility="hidden";
-    });
+      var dbit = localStorage.getItem(items_key);
+
+      db.collection(dbit).get()
+          .then(function(querySnapshot) {
+              querySnapshot.forEach(function(doc) {
+                if (doc.id==itName) {
+                  itchecker=1;
+                  console.log("equal equal");
+                }
+
+              })
+
+                        if (itchecker==1) {//same names
+                          console.log("same name same name");
+                          // close the create modal & reset form
+                            document.getElementById("progbarit").style.visibility="hidden";
+                          itForm.reset();
+                        document.getElementById("item_name").focus();
+                      }else {
+                        console.log("noto not not");
+                              db.collection(dbitacc).doc(itAcc).update({
+                           [itName]: 0
+                         })
+                db.collection(dbit).doc(itName).set({
+                    total: 0,
+                    account: itAcc
+                  }).then(() => {
+                    // close the create modal & reset form
+                      document.getElementById("progbarit").style.visibility="hidden";
+                    itForm.reset();
+                  }).catch(err => {
+                    console.log(err.message);
+                      document.getElementById("progbarit").style.visibility="hidden";
+                  });
+              }
+          });
+
+  //     db.collection(dbitacc).doc(itAcc).update({
+  //            [itName]: 0
+  //          })
+  //         // Retrieve
+  //         var dbit = localStorage.getItem(items_key);
+  // db.collection(dbit).doc(itName).set({
+  //     total: 0,
+  //     account: itAcc
+  //   }).then(() => {
+  //     // close the create modal & reset form
+  //     const modal = document.querySelector('#modal-items');
+  //       document.getElementById("progbarit").style.visibility="hidden";
+  //     itForm.reset();
+  //   M.Modal.getInstance(modal).close();
+  //   }).catch(err => {
+  //     console.log(err.message);
+  //       document.getElementById("progbarit").style.visibility="hidden";
+  //   });
   // console.log(itAcc);
 })
 //suppliers
@@ -1308,3 +1457,4 @@ tour.start();
   // addBtn1.addEventListener('click', (e) =>{
   //   e.preventDefault();
   // })
+}

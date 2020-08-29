@@ -1,4 +1,5 @@
-// get acc data
+
+  // get acc data
 var account_key="account";
 var items_key="items";
 var suppliers_key="suppliers";
@@ -11,6 +12,8 @@ var originalItemName_key="original item name";
 var originalAccName_key="original account name";
 var originalSupName_key="original supplier name";
 var supplierTotal_key="supplier total";
+var currentAccounts_key="current accounts";
+var currentItems_key="current items";
 var dbacc = localStorage.getItem(account_key);
 var dbit = localStorage.getItem(items_key);
 var dbsup = localStorage.getItem(suppliers_key);
@@ -18,10 +21,12 @@ console.log("itit"+dbacc);
 console.log("itit"+dbit);
 console.log("itit"+dbsup);
 db.collection(dbacc).onSnapshot(snapshot=>{
+window.localStorage.setItem(currentAccounts_key, snapshot.docs);
 setupAccounts(snapshot.docs);
 setupDropdownitcrt(snapshot.docs);
 })
 db.collection(dbit).onSnapshot(snapshot=>{
+window.localStorage.setItem(currentItems_key, snapshot.docs);
 setupItems(snapshot.docs);
 })
 db.collection(dbsup).onSnapshot(snapshot=>{
@@ -283,23 +288,45 @@ createAccBtncrt.addEventListener('click', (e) =>{
 
   const buttonv=accountsFormcrt['createAccBtncrt'].value;
   console.log("999999 "+buttonv);
-
-  if (buttonv=="Create Account") {
     // Retrieve
     var dbacca = localStorage.getItem(account_key);
-  db.collection(dbacca).doc(accountName).set({
-      total: 0
-    }).then(() => {
-      // close the create modal & reset form
-      accountsFormcrt.reset();
-      document.getElementById("progbaraccrt").style.visibility="hidden";
-    document.getElementById("account_namecrt").focus();
-    }).catch(err => {
-      console.log(err.message);
-        // document.querySelector('.error').innerHTML=err.message;
-        // $('#progbar2').removeClass("active");
-          document.getElementById("progbaraccrt").style.visibility="hidden";
-    });
+
+  if (buttonv=="Create Account") {
+    ///
+    var accchecker=0;
+            db.collection(dbacc).get()
+                .then(function(querySnapshot) {
+                    querySnapshot.forEach(function(doc) {
+                      if (doc.id==accountName) {
+                        accchecker=1;
+                        console.log("equal equal");
+                      }
+
+                    })
+
+                              if (accchecker==1) {//same names
+
+                                  // close the create modal & reset form
+                                  accountsFormcrt.reset();
+                                  document.getElementById("progbaraccrt").style.visibility="hidden";
+                                document.getElementById("account_namecrt").focus();                            }else {
+                              console.log("noto not not");
+                              db.collection(dbacca).doc(accountName).set({
+                                  total: 0
+                                }).then(() => {
+                                  // close the create modal & reset form
+                                  accountsFormcrt.reset();
+                                  document.getElementById("progbaraccrt").style.visibility="hidden";
+                                document.getElementById("account_namecrt").focus();
+                                }).catch(err => {
+                                  console.log(err.message);
+                                    // document.querySelector('.error').innerHTML=err.message;
+                                    // $('#progbar2').removeClass("active");
+                                      document.getElementById("progbaraccrt").style.visibility="hidden";
+                                });
+
+                    }
+                });
 }else {
   // accounts
   // Retrieve
@@ -365,25 +392,48 @@ createItBtn.addEventListener('click', (e) =>{
       var dbit = localStorage.getItem(items_key);
 
         const buttonv=itForm['createItcrt'].value;
-        console.log("999999 "+buttonv);
 
+        var itchecker=0;
+        var itcheckdata = localStorage.getItem(currentItems_key);
         if (buttonv=="Create Item") {
+        console.log("999999 "+itcheckdata);
 
-      db.collection(dbitacc).doc(itAcc).update({
-             [itName]: 0
-           })
-  db.collection(dbit).doc(itName).set({
-      total: 0,
-      account: itAcc
-    }).then(() => {
-      // close the create modal & reset form
-        document.getElementById("progbaritcrt").style.visibility="hidden";
-      itForm.reset();
-    document.getElementById("item_namecrt").focus();
-    }).catch(err => {
-      console.log(err.message);
-        document.getElementById("progbaritcrt").style.visibility="hidden";
-    });
+        db.collection(dbit).get()
+            .then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                  if (doc.id==itName) {
+                    itchecker=1;
+                    console.log("equal equal");
+                  }
+
+                })
+
+                          if (itchecker==1) {//same names
+                            console.log("same name same name");
+                            // close the create modal & reset form
+                              document.getElementById("progbaritcrt").style.visibility="hidden";
+                            itForm.reset();
+                          document.getElementById("item_namecrt").focus();
+                        }else {
+                          console.log("noto not not");
+                                db.collection(dbitacc).doc(itAcc).update({
+                             [itName]: 0
+                           })
+                  db.collection(dbit).doc(itName).set({
+                      total: 0,
+                      account: itAcc
+                    }).then(() => {
+                      // close the create modal & reset form
+                        document.getElementById("progbaritcrt").style.visibility="hidden";
+                      itForm.reset();
+                    document.getElementById("item_namecrt").focus();
+                    }).catch(err => {
+                      console.log(err.message);
+                        document.getElementById("progbaritcrt").style.visibility="hidden";
+                    });
+                }
+            });
+
   }else {
     // items EDIT
 
@@ -967,17 +1017,20 @@ var tour = new Tour({
 tour.init();
 var tut = localStorage.getItem(tutorial_key);
 if (tut==1) {
-// tour.start();
+tour.start();
 }
 
-        localStorage.setItem("login", 1);
+        // localStorage.setItem("login", 0);
 var status = localStorage.getItem("login");
-if (status=="0") {
+if (status=="3") {
 localStorage.setItem(tutorial_key, 1);
                jQuery(document).ready(function(){
                      jQuery('#helpmodal').modal();
                      jQuery(document).ready(function(){
                          jQuery('#helpmodal').modal('open');
+                        jQuery('#helpmodal').modal({
+    dismissible: false
+  });
                      });
                });
            }

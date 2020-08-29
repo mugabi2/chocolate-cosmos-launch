@@ -55,17 +55,23 @@ signupBtn.addEventListener('click', (e) =>{
           document.getElementById("progbarsing").style.visibility="hidden";
         return false;
       }else {
+
+          console.log("1111111111111");
+          // var ura = 'http://localhost:3000/authfb';
+          var ura= 'https://chocolate-cosmos.web.app/?email='+email;
+          // var ura= 'https://localhost:3000/logincopy.html/?email='+email;
+          console.log("ura"+ura);
         emailvery();
         function emailvery(){
           console.log(surname);
 var actionCodeSettings = {
   // URL you want to redirect back to. The domain (www.example.com) for this
   // URL must be whitelisted in the Firebase Console.
-  url: 'localhost/logincopy.html',
+  url: ura,
   // This must be true.
   handleCodeInApp: true
 };
-
+console.log(email);
 firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
   .then(function() {
     // The link was successfully sent. Inform the user.
@@ -73,8 +79,10 @@ firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
     // if they open the link on the same device.
     console.log("sent to to "+email);
     window.localStorage.setItem('emailForSignIn', email);
+    outsider();
   })
   .catch(function(error) {
+    console.log(error);
     // Some error occurred, you can inspect the code: error.code
   });
 
@@ -91,7 +99,7 @@ firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
       console.log(error);
     });
 
-          function insider(){
+          // function insider(){
     var usernumber=giveidentity();
       // WAIT FOR THE PROMISE
           const checkIfDonesees = () => {
@@ -116,7 +124,9 @@ firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
                                 localStorage.setItem(tutorial_key, 1);
                       // signup
                       document.getElementById("progbarsing").style.visibility="hidden";
-                      document.location.replace("create.html");
+                      // document.location.replace("create.html");
+                          alert("A login link has been sent to "+email+". PLEASE CHECK YOUR EMAIL");
+                      console.log("please check email for link");
                       })
                       .catch(err => {
                         console.error(err)
@@ -136,7 +146,7 @@ firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
 
           }
           checkIfDonesees();
-        }//end insider
+        // }//end insider
   }).catch(err=>{ //createuser end
 document.getElementById("errormsg").innerHTML =err.message;
     // document.querySelector('.error').innerHTML=err.message;
