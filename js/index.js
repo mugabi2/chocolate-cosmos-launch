@@ -1,4 +1,4 @@
-var vine=1;
+var vine=0;
 // localStorage.setItem(tutorial_key, 0);
 // Confirm the link is a sign-in with email link.
 if (
@@ -12,25 +12,33 @@ if (
   // the flow on the same device where they started it.
   var email = "samuelmugabi2@gmail.com";
   // window.localStorage.getItem('emailForSignIn');
-  console.log("email"+email);
+  console.log("email "+email);
   if (!email) {
     // User opened the link on a different device. To prevent session fixation
     // attacks, ask the user to provide the associated email again. For example:
     email = window.prompt('Please provide your email for confirmation');
   }
   // The client SDK will parse the code from the link for you.
-  firebase.auth().signInWithEmailLink(email, window.location.href)
-    .then(function(result) {
+  // firebase.auth().signInWithEmailLink(email, window.location.href)
+  //   .then(function(result) {
     var tutorial_key="tutorial";
     localStorage.setItem(tutorial_key, 1);
     // document.location.replace("create.html");
 
-    // var sulement=await
-    db.collection("USERS").where("email", "==", email)
-    .get().then(function(querySnapshot) {
+    var sulement=db.collection("USERS").where("email", "==", email);
+    sulement.get().then(function(querySnapshot) {
+                   jQuery(document).ready(function(){
+                         jQuery('#helpmodal').modal();
+                         jQuery(document).ready(function(){
+                             jQuery('#helpmodal').modal('open');
+                            jQuery('#helpmodal').modal({
+        dismissible: false
+      });
+                         });
+                   });
         querySnapshot.forEach(function(doc) {
     var dropss=doc.id;
-    console.log("emmm "+doc);
+    console.log("emmmmmmm "+dropss);
       localStorage.setItem(userid_key, dropss);
              // if (doc.exists) {
                  // console.log('Document data:', doc.data());
@@ -74,7 +82,7 @@ if (
     })
     });
     }).catch(error => {
-    document.getElementById("progbarlog").style.visibility="hidden";
+    // document.getElementById("progbarlog").style.visibility="hidden";
     console.error('Please check your collection and document name in the [firestore] shortcode!', error);
     });
 
@@ -82,15 +90,6 @@ if (
     var status = localStorage.getItem("login");
     // if (status=="3") {
     // localStorage.setItem(tutorial_key, 1);
-                   jQuery(document).ready(function(){
-                         jQuery('#helpmodal').modal();
-                         jQuery(document).ready(function(){
-                             jQuery('#helpmodal').modal('open');
-                            jQuery('#helpmodal').modal({
-        dismissible: false
-      });
-                         });
-                   });
                // }
 			console.log("email:"+ email);
 			console.log("success success");
@@ -101,11 +100,11 @@ if (
       // result.additionalUserInfo.profile == null
       // You can check if the user is new or existing:
       // result.additionalUserInfo.isNewUser
-    })
-    .catch(function(error) {
-      // Some error occurred, you can inspect the code: error.code
-      // Common errors could be invalid email and invalid or expired OTPs.
-    });
+    // })
+    // .catch(function(error) {
+    //   // Some error occurred, you can inspect the code: error.code
+    //   // Common errors could be invalid email and invalid or expired OTPs.
+    // });
 
 }else if(vine==0) {///2222222222222222222222222222222222222222222222222222///////////////////////////////////////////////
   console.log("else else");
@@ -1276,7 +1275,7 @@ var today = new Date();
 var datetoday = (today.getMonth()+1).toString()+today.getDate().toString()+today.getFullYear().toString();
 $(document).ready(function() {
   $(".datepicker").datepicker({
-    // defaultDate: datetoday,
+    defaultDate: datetoday,
     setDefaultDate: true,
     format: "mm/dd/yyyy",
     autoClose:true

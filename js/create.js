@@ -1017,7 +1017,7 @@ var tour = new Tour({
 tour.init();
 var tut = localStorage.getItem(tutorial_key);
 if (tut==1) {
-tour.start();
+// tour.start();
 }
 
         // localStorage.setItem("login", 0);
