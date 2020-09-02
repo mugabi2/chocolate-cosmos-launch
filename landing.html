@@ -27,7 +27,13 @@
 
   <!-- Template Main CSS File -->
   <link href="landing/style.css" rel="stylesheet">
+  <!-- <link href="css/signup.css" rel="stylesheet"> -->
+<!-- slider  -->
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- end slider -->
   <!-- ===========mine==================== -->
   <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"
 type="text/javascript"></script> -->
@@ -59,29 +65,30 @@ type="text/javascript"></script> -->
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center header-transparent">
-    <div class="container d-flex align-items-center topnav">
-      <div class="logo mr-auto flexy" onclick="location.href='logincopy.html';">
+    <div class="container d-flex align-items-center topnav ">
+      <div class="logo mr-auto flexdp" onclick="location.href='logincopy.html';">
         <img src="images/choco2.png" style="width: 60px;">
         <h1 class="text-light"><span>Chocolate Cosmos</span></h1>
       </div>
 
-      <nav class="nav-menu d-none d-lg-block">
-        <div class="container flexy">
-          <form class="form flexy" id="login_form">
-            <input class="forminput center white-text input-field" type="text" placeholder="Email" id="userEmailli">
-            <input  class="forminput center input-field" type="password" placeholder="Password" id="userPasswordli">
+      <nav class="nav-menu d-none d-lg-block nava">
+        <div class="container ">
+          <form class="form flexdp" id="login_form">
+            <p id="errormsglg" class="error white-text center-align">Users login here</p>
+            <input class="inputlg center white-text input-field" type="text" placeholder="Email" id="userEmailli">
+            <input  class="inputlg center input-field" type="password" placeholder="Password" id="userPasswordli">
             <!-- <input class="un signsa" type="text"  placeholder="Company location" id="userLocationsu"> -->
-            <button  class="formbutton" type="submit" id="login-button">Login</button></br>
-            <p id="errormsglg" class="error white-text center-align"></p>
+            <button  class="formbuttonreal" type="submit" id="login-button">Login</button></br>
+
             <!-- /////////////// -->
                 <!-- <div class="container progcont"> -->
                       <div class="progress progbarlog center" id="progbarlog">
                             <div class="indeterminate center"></div>
                         </div>
                 <!-- </div> -->
-                <a  class="modal-trigger" data-target="modal-reset" data-toggle="modal" >Forgot password</a>
-                <!-- /////////////// -->
-
+                <a  class="forgot"
+                 data-toggle="modal" data-target="#modal-reset">
+                Forgot Password!</a>
           </form>
         </div>
       </nav><!-- .nav-menu -->
@@ -101,26 +108,29 @@ type="text/javascript"></script> -->
               <a href="#about" class="btn-get-started scrollto">Get Started</a>
             </div>
           </br>
-            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal-reset">Open Modal</button>
+            <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal-reset">Open Modal</button> -->
           </br>
           </div>
         </div>
-
+<!-- create account -->
         <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
-          <h4 id="hone4" class="hcreateacc heads yellow-text">Create an account</h4>
+          <h2 id="hone4" class="hcreateacc heads yellow-text">Create an account</h2>
                     <form class="form" id="signup_form1">
-                      <input class="un signsa " type="text" placeholder="Surname" id="userSurnamesu">
-                      <input class="un signsa" type="text"  placeholder="Firstname" id="userFirstnamesu">
-                      <input class="un signsa" type="text"  placeholder="Phone number" id="userPhonesu">
-                      <input class="un signse" type="email"  placeholder="Email" id="userEmailsu"><a class="margin1"></a>
-                      <input class="un signsa" type="text"  placeholder="Company name" id="userCompanysu">
-                      <input class="un signsa" type="text"  placeholder="Company location" id="userLocationsu">
-                      <input class="left pass signs" type="password" align="center" placeholder="Password" id="userPasswordsu"><br/><br/><br/><br/>
-                      <a class="left red-text passnote">Password should be atleast 6 characters.</a>
-                      <a class="right red-text fillnote" id="fillall"></a>
+                      <div class="flexdp">
+                      <input class="un signsa inputup" type="text" placeholder="Surname" id="userSurnamesu">
+                      <input class="un signsa inputup" type="text"  placeholder="Firstname" id="userFirstnamesu">
+                        </div><div class="flexdp">
+                      <input class="un signsa inputup" type="text"  placeholder="Phone number" id="userPhonesu">
+                      <input class="un signse inputup" type="email"  placeholder="Email" id="userEmailsu"><a class="margin1"></a>
+                        </div><div class="flexdp">
+                      <input class="un signsa inputup" type="text"  placeholder="Company name" id="userCompanysu">
+                      <input class="un signsa inputup" type="text"  placeholder="Company location" id="userLocationsu">
+                        </div><div class="flexdp">
+                      <input class="left pass signs inputup" type="password" align="center" placeholder="Password" id="userPasswordsu">
+                      <p id="errormsg" class="passnote error white-text center-align">Password should be atleast 6 characters.</p>                    </div><a class="right red-text fillnote" id="fillall"></a>
                       <br/>
                       <button  class="twobtn formbuttonsu" id="signupBtn" >Finish Signup</button>
-                      <p id="errormsg" class="error white-text center-align"></p><br/>
+                      <br/>
                     <!-- /////////////// -->
                             <div class="progress progbarsing center" id="progbarsing">
                                   <div class="indeterminate center"></div>
@@ -128,6 +138,7 @@ type="text/javascript"></script> -->
                       <!-- /////////////// -->
                     </form>
         </div>
+        <!-- create account end -->
       </div>
     </div>
 
@@ -156,7 +167,7 @@ type="text/javascript"></script> -->
 
             <div class="section-title" data-aos="fade-up">
               <h2>Features</h2>
-              <p>Check The Features</p>
+              <p>Check Out The Features</p>
             </div>
 
             <div class="row" data-aos="fade-left">
@@ -175,7 +186,13 @@ type="text/javascript"></script> -->
               <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
                 <div class="icon-box" data-aos="zoom-in" data-aos-delay="150">
                   <i class="ri-calendar-todo-line" style="color: #e80368;"></i>
-                  <h3><a href="">Cloud Storage</a></h3>
+                  <h3><a href="">10GB Cloud Storage</a></h3>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-4 mt-4">
+                <div class="icon-box" data-aos="zoom-in" data-aos-delay="350">
+                  <i class="ri-file-list-3-line" style="color: #11dbcf;"></i>
+                  <h3><a href="">Customer Support</a></h3>
                 </div>
               </div>
               <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
@@ -197,45 +214,50 @@ type="text/javascript"></script> -->
                 </div>
               </div>
               <div class="col-lg-3 col-md-4 mt-4">
-                <div class="icon-box" data-aos="zoom-in" data-aos-delay="350">
-                  <i class="ri-file-list-3-line" style="color: #11dbcf;"></i>
-                  <h3><a href="">Midela Teren</a></h3>
+                <i class="bx bx-help-circle icon-help"></i>
+                <h3><a data-toggle="collapse" href="#faq-list-4"  data-aos="zoom-in" data-aos-delay="300">Data Security</a></h3>
+                <div id="faq-list-4" class="collapse" data-parent=".faq-list">
+                  <p>We have Data Security professionals on our team to ensure that your data is secure.</p>
                 </div>
               </div>
-              <div class="col-lg-3 col-md-4 mt-4">
-                <div class="icon-box" data-aos="zoom-in" data-aos-delay="400">
-                  <i class="ri-price-tag-2-line" style="color: #4233ff;"></i>
-                  <h3><a href="">Pira Neve</a></h3>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-4 mt-4">
-                <div class="icon-box" data-aos="zoom-in" data-aos-delay="450">
-                  <i class="ri-anchor-line" style="color: #b2904f;"></i>
-                  <h3><a href="">Dirada Pack</a></h3>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-4 mt-4">
-                <div class="icon-box" data-aos="zoom-in" data-aos-delay="500">
-                  <i class="ri-disc-line" style="color: #b20969;"></i>
-                  <h3><a href="">Moton Ideal</a></h3>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-4 mt-4">
-                <div class="icon-box" data-aos="zoom-in" data-aos-delay="550">
-                  <i class="ri-base-station-line" style="color: #ff5828;"></i>
-                  <h3><a href="">Verdo Park</a></h3>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-4 mt-4">
-                <div class="icon-box" data-aos="zoom-in" data-aos-delay="600">
-                  <i class="ri-fingerprint-line" style="color: #29cc61;"></i>
-                  <h3><a href="">Flavor Nivelanda</a></h3>
-                </div>
-              </div>
-            </div>
 
           </div>
         </section><!-- End Features Section -->
+
+            <!-- ======= About Section ======= -->
+            <section id="about" class="about">
+              <div class="container-fluid">
+
+                <div class="row">
+                  <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch" data-aos="fade-right">
+                    <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
+                  </div>
+
+                  <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" data-aos="fade-left">
+                    <h3>Why Chocolate Cosmos!</h3>
+
+                    <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
+                      <div class="icon"><i class="bx bx-gift"></i></div>
+                      <h4 class="title"><a href="">Easy To Setup</a></h4>
+                      <p class="description">Setup your account with quick and easy tutorial.</p>
+                    </div>
+                    <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
+                      <div class="icon"><i class="bx bx-fingerprint"></i></div>
+                      <h4 class="title"><a href="">Easy To Use</a></h4>
+                      <p class="description">Simplicity is main inspiration behind this system. Record and Track Expenses in a very easy way.</p>
+                    </div>
+                    <div class="icon-box" data-aos="zoom-in" data-aos-delay="300">
+                      <div class="icon"><i class="bx bx-atom"></i></div>
+                      <h4 class="title"><a href="">Easy Reports and Analysis</a></h4>
+                      <p class="description">Know your General expenditure or Specific expenses on items like Electricity, Transport e.t.c depending on how you setup your Items.
+                      </p>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </section><!-- End About Section -->
 
             <!-- ======= Details Section ======= -->
             <section id="details" class="details">
@@ -246,62 +268,23 @@ type="text/javascript"></script> -->
                     <img src="landing/img/details-1.png" class="img-fluid" alt="">
                   </div>
                   <div class="col-md-8 pt-4" data-aos="fade-up">
-                    <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+                    <h3>Expense Report</h3>
                     <p class="font-italic">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                      magna aliqua.
+                      This is the main Feature of the system and is broken down as below:
                     </p>
                     <ul>
-                      <li><i class="icofont-check"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                      <li><i class="icofont-check"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                      <li><i class="icofont-check"></i> Iure at voluptas aspernatur dignissimos doloribus repudiandae.</li>
-                      <li><i class="icofont-check"></i> Est ipsa assumenda id facilis nesciunt placeat sed doloribus praesentium.</li>
+                      <li><i class="icofont-check"></i>Total Expenditure of the business.</li>
+                      <li><i class="icofont-check"></i>Charts and Graphs for the Expenditure Breakdown according to each Item or Account.</li>
+                      <li><i class="icofont-check"></i>Printable Expense Reports.</li>
+                      <li><i class="icofont-check"></i>Custom Time Range Reports.</li>
+                      <li><i class="icofont-check"></i>Monthly email of the Business Expenditure Report.</li>
                     </ul>
-                    <p>
-                      Voluptas nisi in quia excepturi nihil voluptas nam et ut. Expedita omnis eum consequatur non. Sed in asperiores aut repellendus. Error quisquam ab maiores. Quibusdam sit in officia
-                    </p>
                   </div>
                 </div>
 
               </div>
-            </section><!-- End Details Section -->
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container-fluid">
-
-        <div class="row">
-          <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch" data-aos="fade-right">
-            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
-          </div>
-
-          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" data-aos="fade-left">
-            <h3>Enim quis est voluptatibus aliquid consequatur fugiat</h3>
-            <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi. Libero laboriosam sint et id nulla tenetur. Suscipit aut voluptate.</p>
-
-            <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
-              <div class="icon"><i class="bx bx-fingerprint"></i></div>
-              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-            </div>
-
-            <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
-              <div class="icon"><i class="bx bx-gift"></i></div>
-              <h4 class="title"><a href="">Nemo Enim</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-            </div>
-
-            <div class="icon-box" data-aos="zoom-in" data-aos-delay="300">
-              <div class="icon"><i class="bx bx-atom"></i></div>
-              <h4 class="title"><a href="">Dine Pad</a></h4>
-              <p class="description">Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit. Sunt aut deserunt minus aut eligendi omnis</p>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End About Section -->
+            </section>
+            <!-- End Details Section -->
 
     <!-- ======= Counts Section ======= -->
     <section id="counts" class="counts">
@@ -312,16 +295,16 @@ type="text/javascript"></script> -->
           <div class="col-lg-3 col-md-6">
             <div class="count-box">
               <i class="icofont-simple-smile"></i>
-              <span data-toggle="counter-up">232</span>
-              <p>Happy Clients</p>
+              <span id="usersNo"data-toggle="counter-up">10</span>
+              <p>Users</p>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
             <div class="count-box">
               <i class="icofont-document-folder"></i>
-              <span data-toggle="counter-up">521</span>
-              <p>Projects</p>
+              <span id="businessesNo" data-toggle="counter-up">5</span>
+              <p>Businesses</p>
             </div>
           </div>
 
@@ -329,7 +312,7 @@ type="text/javascript"></script> -->
             <div class="count-box">
               <i class="icofont-live-support"></i>
               <span data-toggle="counter-up">1,463</span>
-              <p>Hours Of Support</p>
+              <p>Social media followers</p>
             </div>
           </div>
 
@@ -337,7 +320,7 @@ type="text/javascript"></script> -->
             <div class="count-box">
               <i class="icofont-users-alt-5"></i>
               <span data-toggle="counter-up">15</span>
-              <p>Hard Workers</p>
+              <p>Countries</p>
             </div>
           </div>
 
@@ -428,68 +411,57 @@ type="text/javascript"></script> -->
 
     <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials">
+
       <div class="container">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
 
-        <div class="owl-carousel testimonials-carousel" data-aos="zoom-in">
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
 
-          <div class="testimonial-item">
-            <img src="landing/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-            <h3>Saul Goodman</h3>
-            <h4>Ceo &amp; Founder</h4>
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-            </p>
+            <div class="item active">
+              <img src="landing/img/team/team-3.jpg" alt="Los Angeles" style="width:100px; height:100px"><br/>
+              <div class="carousel-caption">
+                <h3>Paragon Real Estate</h3>
+                <p>"We keep track of our expenses but also the system is simple to use."</p>
+              </div>
+            </div>
+
+            <div class="item">
+              <img src="landing/img/team/team-2.jpg" alt="Chicago" style="width:100%; height:300px">
+              <div class="carousel-caption">
+                <h3>St. Florence S. S.</h3>
+                <p>"Other systems complicate the expense recording process which Chocolate Cosmos has simplified."</p>
+              </div>
+            </div>
+
+            <div class="item">
+              <img src="landing/img/team/team-3.jpg" alt="New York" style="width:100%; height:300px">
+              <div class="carousel-caption">
+                <h3>Hillside Hardware</h3>
+                <p>It simplified our record keeping</p>
+              </div>
+            </div>
+
           </div>
 
-          <div class="testimonial-item">
-            <img src="landing/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-            <h3>Sara Wilsson</h3>
-            <h4>Designer</h4>
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-            </p>
-          </div>
-
-          <div class="testimonial-item">
-            <img src="landing/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-            <h3>Jena Karlis</h3>
-            <h4>Store Owner</h4>
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-            </p>
-          </div>
-
-          <div class="testimonial-item">
-            <img src="landing/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-            <h3>Matt Brandon</h3>
-            <h4>Freelancer</h4>
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-            </p>
-          </div>
-
-          <div class="testimonial-item">
-            <img src="landing/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-            <h3>John Larson</h3>
-            <h4>Entrepreneur</h4>
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-            </p>
-          </div>
-
+          <!-- Left and right controls -->
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
-
       </div>
+
     </section><!-- End Testimonials Section -->
 
     <!-- ======= Team Section ======= -->
@@ -507,7 +479,7 @@ type="text/javascript"></script> -->
             <div class="member" data-aos="zoom-in" data-aos-delay="100">
               <div class="pic"><img src="landing/img/team/team-1.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>Walter White</h4>
+                <h4>Esther Gonza</h4>
                 <span>Chief Executive Officer</span>
                 <div class="social">
                   <a href=""><i class="icofont-twitter"></i></a>
@@ -523,8 +495,8 @@ type="text/javascript"></script> -->
             <div class="member" data-aos="zoom-in" data-aos-delay="200">
               <div class="pic"><img src="landing/img/team/team-2.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>Sarah Jhonson</h4>
-                <span>Product Manager</span>
+                <h4>Florence Wotali</h4>
+                <span>Chief Finance Officer</span>
                 <div class="social">
                   <a href=""><i class="icofont-twitter"></i></a>
                   <a href=""><i class="icofont-facebook"></i></a>
@@ -539,8 +511,8 @@ type="text/javascript"></script> -->
             <div class="member" data-aos="zoom-in" data-aos-delay="300">
               <div class="pic"><img src="landing/img/team/team-3.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>CTO</span>
+                <h4>Samuel Mugabi</h4>
+                <span>Chief Technical Officer</span>
                 <div class="social">
                   <a href=""><i class="icofont-twitter"></i></a>
                   <a href=""><i class="icofont-facebook"></i></a>
@@ -555,8 +527,8 @@ type="text/javascript"></script> -->
             <div class="member" data-aos="zoom-in" data-aos-delay="400">
               <div class="pic"><img src="landing/img/team/team-4.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>Amanda Jepson</h4>
-                <span>Accountant</span>
+                <h4>Emmanuel Walugula</h4>
+                <span>Social Media Manager</span>
                 <div class="social">
                   <a href=""><i class="icofont-twitter"></i></a>
                   <a href=""><i class="icofont-facebook"></i></a>
@@ -581,70 +553,20 @@ type="text/javascript"></script> -->
           <p>Check our Pricing</p>
         </div>
 
-        <div class="row" data-aos="fade-left">
+        <div class="pricing row" data-aos="fade-left">
 
-          <div class="col-lg-3 col-md-6">
-            <div class="box" data-aos="zoom-in" data-aos-delay="100">
-              <h3>Free</h3>
-              <h4><sup>$</sup>0<span> / month</span></h4>
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li class="na">Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
+          <div class=" col-lg-3 col-md-6 mt-4 mt-md-0">
             <div class="box featured" data-aos="zoom-in" data-aos-delay="200">
-              <h3>Business</h3>
-              <h4><sup>$</sup>19<span> / month</span></h4>
+              <h3>160,000/=</h3>
+              <!-- <h5>~26,700<span> / month</span></h5> -->
               <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-            <div class="box" data-aos="zoom-in" data-aos-delay="300">
-              <h3>Developer</h3>
-              <h4><sup>$</sup>29<span> / month</span></h4>
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li>Massa ultricies mi</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-            <div class="box" data-aos="zoom-in" data-aos-delay="400">
-              <span class="advanced">Advanced</span>
-              <h3>Ultimate</h3>
-              <h4><sup>$</sup>49<span> / month</span></h4>
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li>Massa ultricies mi</li>
+                <li>For 6 months</li>
+                <li>Expense Reports</li>
+                <li>10GB Cloud Storage</li>
+                <li>Budgeting Tool</li>
+                <li>24/7 Customer Support</li>
+                <li>Global Access</li>
+                <!-- <li class="na">Massa ultricies mi</li> -->
               </ul>
               <div class="btn-wrap">
                 <a href="#" class="btn-buy">Buy Now</a>
@@ -668,48 +590,53 @@ type="text/javascript"></script> -->
 
         <div class="faq-list">
           <ul>
-            <li data-aos="fade-up">
-              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" class="collapse" href="#faq-list-1">Non consectetur a erat nam at lectus urna duis? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-1" class="collapse show" data-parent=".faq-list">
-                <p>
-                  Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
-                </p>
-              </div>
-            </li>
-
-            <li data-aos="fade-up" data-aos-delay="100">
-              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-2" class="collapsed">Feugiat scelerisque varius morbi enim nunc? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-2" class="collapse" data-parent=".faq-list">
-                <p>
-                  Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                </p>
-              </div>
-            </li>
-
             <li data-aos="fade-up" data-aos-delay="200">
-              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-3" class="collapsed">Dolor sit amet consectetur adipiscing elit? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <i class="bx bx-help-circle icon-help"></i>
+              <a data-toggle="collapse" href="#faq-list-3"
+              class="collapsed">
+                For how long are my records kept?
+                <i class="bx bx-chevron-down icon-show"></i>
+                <i class="bx bx-chevron-up icon-close"></i>
+              </a>
               <div id="faq-list-3" class="collapse" data-parent=".faq-list">
-                <p>
-                  Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
-                </p>
+                <p>For as long as computers are still on the earth. When you open up an account with us, you are allocated online storage that is only managed by you.</p>
               </div>
             </li>
 
             <li data-aos="fade-up" data-aos-delay="300">
-              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-4" class="collapsed">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <i class="bx bx-help-circle icon-help"></i>
+              <a data-toggle="collapse" href="#faq-list-4">
+                Does Chocolate Cosmos have User support?
+                <i class="bx bx-chevron-down icon-show"></i>
+                <i class="bx bx-chevron-up icon-close"></i>
+              </a>
               <div id="faq-list-4" class="collapse" data-parent=".faq-list">
-                <p>
-                  Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in.
+                <p>We have a team that is always online to help users with any issues. Chat with us online through a button on the right bottom of your screen.</p>
+              </div>
+            </li>
+
+          <li data-aos="fade-up">
+            <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse"  href="#faq-list-1">How long does the license last<i class="bx bx-chevron-down "></i><i class="bx bx-chevron-up icon-close"></i></a>
+            <div id="faq-list-1" class="" data-parent=".faq-list">
+              <p>
+                The license covers a period of 6 months and after this the user will be required to renew their licencse.
+                </p>
+            </div>
+          </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-2" class="collapsed">Is my data lost when the license expires?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-2" class="collapse" data-parent=".faq-list">
+                <p>No user data is lost or deleted after license expiry and this data is available whenever the user renews their license.
                 </p>
               </div>
             </li>
 
+
             <li data-aos="fade-up" data-aos-delay="400">
-              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-5" class="collapsed">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-5" class="collapse" data-parent=".faq-list">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-5" class="collapsed">How much storage am I allocated?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-5" class="" data-parent=".faq-list">
                 <p>
-                  Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque.
-                </p>
+                Every user is allocated upto 10GB online storage on our servers. Considering that you are storing mainly text, this takes a very long time to fill up and even then, more space will be allocated.</p>
               </div>
             </li>
 
@@ -719,153 +646,48 @@ type="text/javascript"></script> -->
       </div>
     </section><!-- End F.A.Q Section -->
 
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container">
-
-        <div class="section-title" data-aos="fade-up">
-          <h2>Contact</h2>
-          <p>Contact Us</p>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-4" data-aos="fade-right" data-aos-delay="100">
-            <div class="info">
-              <div class="address">
-                <i class="icofont-google-map"></i>
-                <h4>Location:</h4>
-                <p>A108 Adam Street, New York, NY 535022</p>
-              </div>
-
-              <div class="email">
-                <i class="icofont-envelope"></i>
-                <h4>Email:</h4>
-                <p>info@example.com</p>
-              </div>
-
-              <div class="phone">
-                <i class="icofont-phone"></i>
-                <h4>Call:</h4>
-                <p>+1 5589 55488 55s</p>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="col-lg-8 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="200">
-
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="form-row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                  <div class="validate"></div>
-                </div>
-                <div class="col-md-6 form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                  <div class="validate"></div>
-                </div>
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                <div class="validate"></div>
-              </div>
-              <div class="form-group">
-                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                <div class="validate"></div>
-              </div>
-              <div class="mb-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
-
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
+  <div class=" bottombox footer row">
+  <div class="blackleft left grey darken-4 col s18">
+    <a href="#" class="brand-logo left ">
+      <img src="images/choco2.png" style="width: 63px; height:33px;">
+      <h2 class="chocosize white-text">Chocolate Cosmos</h2>
+    </a>
+  </div>
+  <div class="blackabout left grey darken-4 col s12">
+    <a class="chocosititle white-text">ABOUT CHOCOLATE COSMOS</a><br/>
+    <!-- <a class="chocosid white-text" href="http://stardigitalbikes.com/">About Us</a><br/> -->
+    <a class="chocosid white-text" href="terms_and_conditions.html" target="_blank">Terms and Conditions</a><br/>
+    <a class="chocosid white-text" href="terms_and_conditions.html" target="_blank">Privacy policy</a>
+  </div>
+  <div class="blackcontact left grey darken-4 col s12">
+    <a class="chocosi white-text">FOLLOW US</a><br/><br/>
 
-          <div class="col-lg-4 col-md-6">
-            <div class="footer-info">
-              <h3>Bootslander</h3>
-              <p class="pb-3"><em>Qui repudiandae et eum dolores alias sed ea. Qui suscipit veniam excepturi quod.</em></p>
-              <p>
-                A108 Adam Street <br>
-                NY 535022, USA<br><br>
-                <strong>Phone:</strong> +1 5589 55488 55<br>
-                <strong>Email:</strong> info@example.com<br>
-              </p>
-              <div class="social-links mt-3">
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
+      <a href="https://web.facebook.com/Chocolate-Cosmos-109269794100142/" target="_blank">
+      <img  class="socialicons" src="images/facebookwhite.png" style="width: 15px; height:25px; margin-right: 35px;">
+      </a>
+      <a href="https://twitter.com/Chocola44697998" target="_blank">
+      <img  class="socialicons" src="images/twitterwhite.png" style="width: 25px; height:20px; margin-right: 35px;">
+      </a>
+      <a href="mailto:chocolatesosmosint@gmail.com">
+      <img  class="socialicons" src="images/emailwhite.png" style="width: 25px; height:20px;">
+    </a><br/><br/>
+      <a class="chocosic white-text">CONTACT US</a><br/><br/>
+    <!-- <form class="emailus" action="index.html" method="post">
+      <input type="email" class="contactinput" id="emailyours" placeholder="Your email">
+      <textarea id="emailmsg" class="contactinput" placeholder="Your message..."></textarea>
+      <button class="z-depth-2" id="sendemail">
+        <i class="material-icons white-text">send</i>
+        Send email</button>
+    </form>  -->
+    <!-- <button class="btn teal z-depth-2 z-depth-0" id="bottombtn">Register supplier</button> -->
 
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Bootslander</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bootslander-free-bootstrap-landing-page-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
+  </div>
+  <!-- <script src="js/index.js"></script> -->
+  </div>
+  <!-- End Footer -->
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
   <div id="preloader"></div>

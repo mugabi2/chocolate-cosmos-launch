@@ -470,3 +470,28 @@ auth.sendPasswordResetEmail(emailAddress).then(function() {
 });
 
   })
+  // 
+  // //count up
+  // db.collection("INFORMATION").onSnapshot(snapshot=>{
+  //   setupUsers(snapshot.docs);
+  // })
+  //
+  // const setupUsers =(data)=>{
+  //   let html='';
+  //   var list='';
+  //   data.forEach(doc=>{
+  //     const acc=doc.data();
+  //     jQuery.each(doc.data(), function (key, value) {
+  //     if(key=="number"){
+  //     var useit=value;
+  //       document.getElementById('usersNo').innerHTML=useit;
+  //       console.log("users "+useit);
+  //     }else if (key=="businesses") {
+  //     var busit=value;
+  //       document.getElementById('businessesNo').innerHTML=busit;
+  //       console.log("business "+busit);
+  //     }
+  //
+  //                         })
+  //   });
+  // }
