@@ -414,89 +414,162 @@ $(document).ready(function() {
   }).datepicker("setDate", new Date());
 });
 ///////////////////////////////////
-var daterfrom="08/19/2020";
-var daterto="08/28/2020";
-var collar = localStorage.getItem(transactions_key);
-console.log("collar "+collar);
-console.log("collar "+daterfrom);
-    // var sulement=db.collection(collar).where("date", "==", daterfrom);
-    var citiesRef = db.collection(collar).where("date", ">=", daterfrom).where("date", "<=", daterto);
-// citiesRef.where("state", "==", "CA").where("population", "<", 1000000);
-    citiesRef.get().then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-    var dropss=doc.id;
-    console.log("emmmmmmm "+dropss);
-      // localStorage.setItem(userid_key, dropss);
-             // if (doc.exists) {
-                 // console.log('Document data:', doc.data());
-    jQuery.each(doc.data(), function (key, value) {
-              if(key=="amount"){
-              var colder = localStorage.getItem(rangeTotal_key);
-              console.log("storage "+colder);
-              console.log("value "+value);
-              colder=parseInt(colder)+parseInt(value)
-                localStorage.setItem(rangeTotal_key, colder);
-                console.log("colder",colder);
-              }
 
-    })
-    });
-    }).catch(error => {
-    // document.getElementById("progbarlog").style.visibility="hidden";
-    console.error('error', error);
-    });
-
-    monthler(1,12);
-    function monthler(froma,toma){
+  var fdate="06/05/2020";
+  var tdate="09/25/2020";
+    monthler(fdate,tdate);
+    function monthler(frodate,todate){
+      var frodateNxt=frodate;
+      var froma=whatMonth(frodate);
+      var fromaNxt=whatMonth(frodate);
+      var toma=whatMonth(todate);
       for (var i = froma; i <= toma; i++) {
-        var whichMonthIsThis=whichMonth(i);
-      console.log(whichMonthIsThis);
-      if (froma==toma) {
+      if (froma==toma) {///same month
         i=toma;
-          var whichMonthIsThis=whichMonth(i);
-        console.log("same same same"+whichMonthIsThis);
+          var whichMonthIsThis=whichMonth(parseInt(i));
+        console.log("same same same "+froma);
+      console.log("same same same "+whichMonthIsThis);
+        var collar = localStorage.getItem(transactions_key);
+        // console.log("collar "+collar);
+        // console.log("collar "+daterfrom);
+            var citiesRef = db.collection(collar)
+            .where("date", ">=", frodateNxt).where("date", "<=", todate);
+            citiesRef.get().then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+            var dropss=doc.id;
+            // console.log("emmmmmmm "+dropss);
+            jQuery.each(doc.data(), function (key, value) {
+                      if(key=="amount"){
+                      var colder = localStorage.getItem(rangeTotal_key);
+                      // console.log("storage "+colder);
+                      // console.log("value "+value);
+                      colder=parseInt(colder)+parseInt(value)
+                        localStorage.setItem(rangeTotal_key, colder);
+                        // console.log("colder",colder);
+                          // Store
+                      localStorage.setItem(whichMonthIsThis, colder);
+                      }
+
+            })
+          var statusso = localStorage.getItem(whichMonthIsThis);
+          console.log(whichMonthIsThis+" save save save "+statusso);
+            });
+            }).catch(error => {
+            // document.getElementById("progbarlog").style.visibility="hidden";
+            console.error('error', error);
+            });
+
       }else {
-        froma++
-          var whichMonthIsThis=whichMonth(i);
+        // var whichMonthIsThis=whichMonth(parseInt(i));
         console.log("diff diff diff"+whichMonthIsThis);
+        if (i==froma) {
+          var maxDate=maximiseDays(frodate);
+          var miniDate=frodate;
+            var whichMonthIsThis=whichMonth(whatMonth(miniDate));
+          console.log(miniDate+" ====++++==> "+maxDate);
+            var collar = localStorage.getItem(transactions_key);
+            // console.log("collar "+collar);
+            // console.log("collar "+daterfrom);
+                var citiesRef = db.collection(collar)
+                .where("date", ">=", miniDate).where("date", "<=", maxDate);
+                citiesRef.get().then(function(querySnapshot) {
+                    querySnapshot.forEach(function(doc) {
+                var dropss=doc.id;
+                // console.log("emmmmmmm "+dropss);
+                jQuery.each(doc.data(), function (key, value) {
+                          if(key=="amount"){
+                          var colder = localStorage.getItem(rangeTotal_key);
+                          colder=parseInt(colder)+parseInt(value)
+                            localStorage.setItem(rangeTotal_key, colder);
+                            // console.log("colder",colder);
+                              // Store
+                          localStorage.setItem(whichMonthIsThis, colder);
+                          }
+
+                })
+              var statusso = localStorage.getItem(whichMonthIsThis);
+              console.log(whichMonthIsThis+" save save save "+statusso);
+                });
+                }).catch(error => {
+                // document.getElementById("progbarlog").style.visibility="hidden";
+                console.error('error', error);
+                });
+
+        }else {
+          // var whichMonthIsThis=whichMonth(parseInt(i));
+        var miniDate=minimizeDays(frodate);
+        var maxDate=maximiseDays(miniDate);
+        var whichMonthIsThis=whichMonth(whatMonth(miniDate));
+        frodate=miniDate;
+        console.log(miniDate+" ======> "+maxDate);
+          var collar = localStorage.getItem(transactions_key);
+          // console.log("collar "+collar);
+          // console.log("collar "+daterfrom);
+              var citiesRef = db.collection(collar)
+              .where("date", ">=", miniDate).where("date", "<=", maxDate);
+              citiesRef.get().then(function(querySnapshot) {
+                  querySnapshot.forEach(function(doc) {
+              var dropss=doc.id;
+              // console.log("emmmmmmm "+dropss);
+              jQuery.each(doc.data(), function (key, value) {
+                        if(key=="amount"){
+                        var colder = localStorage.getItem(rangeTotal_key);
+                        colder=parseInt(colder)+parseInt(value)
+                          localStorage.setItem(rangeTotal_key, colder);
+                          // console.log("colder",colder);
+                            // Store
+                        localStorage.setItem(whichMonthIsThis, colder);
+                        }
+
+              })
+            var statusso = localStorage.getItem(whichMonthIsThis);
+            console.log(whichMonthIsThis+" save save save "+statusso);
+              });
+              }).catch(error => {
+              // document.getElementById("progbarlog").style.visibility="hidden";
+              console.error('error', error);
+              });
+
+        }
       }
      }
     }
     function whichMonth(monthNumber){
+      var month;
       switch (monthNumber) {
-  case 1:
+  case 01:
     month = "Jan";
     return month;
     break;
-  case 2:
+  case 02:
      month = "Feb";
      return month;
     break;
-  case 3:
+  case 03:
     month = "Mar";
     return month;
     break;
-  case 4:
+  case 04:
     month = "Apr";
     return month;
     break;
-  case 5:
+  case 05:
     month = "May";
     return month;
     break;
-  case 6:
+  case 06:
     month = "Jun";
     return month;
     break;
-case 7:
+case 07:
   month = "Jul";
   return month;
   break;
-case 8:
+case 08:
    month = "Aug";
    return month;
   break;
-case 9:
+case 09:
   month = "Sep";
   return month;
   break;
@@ -515,4 +588,47 @@ case 12:
 }
 return month;
     }
+
+        function whatDay(operator){
+      return operator.substring(3, 5);
+    }
+        function whatMonth(operator){
+      return operator.substring(0, 2);
+    }
+        function whatYear(operator){
+      return operator.substring(6, 10);
+    }
+
+        function maximiseDays(operatorDate){
+          var daythere =whatDay(operatorDate);
+          var monththere =whatMonth(operatorDate);
+          if (monththere%2==0) {
+            var daylo=30;
+            operatorDate = replaceAtter(operatorDate,3, daylo);
+            console.log("day day day "+operatorDate);
+            return operatorDate;
+          }else {
+            var daylo=31;
+            operatorDate = replaceAtter(operatorDate,3, daylo);
+            console.log("day day day "+operatorDate);
+            return operatorDate;
+          }
+        }
+        // var iknowdate="08/25/3020";
+        // console.log("mini mini mini "+minimizeDays(iknowdate));
+        function minimizeDays(operatorDate){
+          var monththere =parseInt(whatMonth(operatorDate))+1;
+            var daylo="01";
+            operatorDate = replaceAtter(operatorDate,3, daylo);
+            operatorDate = replaceAtterMonth(operatorDate,0, "0"+monththere);
+            return operatorDate;
+        }
+        function replaceAtter(wholestring,indexat1, replacement) {
+        console.log("day day day "+wholestring);
+    return wholestring.substring(0, indexat1) + replacement + wholestring.substring(5,10);
+}
+function replaceAtterMonth(wholestring,indexat1, replacement) {
+console.log("day day day 22 "+wholestring);
+return  replacement + wholestring.substring(2,10);
+}
 //#################################
