@@ -414,7 +414,7 @@
     .progbarsing{
     display:block !important;
     margin:auto !important;
-    visibility: hidden;
+    /* visibility: hidden; */
     max-width: 400px;
     margin-bottom: 15px !important;
     margin-top: -10px !important;

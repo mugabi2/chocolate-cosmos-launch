@@ -21,5 +21,21 @@ Momo Sandbox Credentials {
   "userId": "2de0d2a5-0673-43e8-8bef-69b712711148"
 }
 9/1/20
-whichMonthIsThis only bringing septembre
+whichMonthIsThis only bringing septembre.....solved
 going to save total for each month
+9/3/20....day 3
+npx momo-sandbox --host https://chocolate-cosmos.web.app/ --primary-key 1deae1372c5c45ed946ab8d1bde2a5d5
+Momo Sandbox Credentials {
+  "userSecret": "daf173ef098143eeb746e685c50a6653",
+  "userId": "284cda10-6527-4c5f-88dc-2a6cc17fb0c2"
+}
+morning
+npx momo-sandbox --host chocolate-cosmos.web.app --primary-key 1deae1372c5c45ed946ab
+8d1bde2a5d5
+Momo Sandbox Credentials {
+  "userSecret": "ba23d6f0e8794b3e92540cdbde9c5ca1",
+  "userId": "ca96f95b-2bec-413e-9946-eb409138031e"
+}
+9/5/20
+day six
+left at momo CORS and was working from test.js/html

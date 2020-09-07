@@ -107,7 +107,7 @@ if (
     // });
 
 }else if(vine==0) {///2222222222222222222222222222222222222222222222222222///////////////////////////////////////////////
-  console.log("else else");
+  // console.log("else else");
 
   var totalitems,totalaccounts,itemaccount;
 var fuel=0,
@@ -214,7 +214,7 @@ auth.onAuthStateChanged(user=>{
 // localStorage.setItem(userid_key, user.uid);
 var statuss = localStorage.getItem(userid_key);
 var fycheck = localStorage.getItem(financialyear_key);
-  console.log("financial",fycheck);
+  // console.log("financial",fycheck);
   identitynational=user.uid;
 document.getElementById("bodey").style.visibility="visible";
 // $('#modal-accounts').modal({ show: false})
@@ -991,7 +991,7 @@ dropdownListfinapro.innerHTML=html;
 }
 // trait
 const setupDropdowntrait =(data)=>{
-  console.log(data);
+  // console.log(data);
   let html=`
     <select id="trait">
     <option>Item</option>`;
@@ -1014,7 +1014,7 @@ const setupDropdowntrait =(data)=>{
     html+=li;
   });
   html+=htmlEnd;
-  console.log(3333,html);
+  // console.log(3333,html);
   // console.log(3333,html);
 dropdownListtrait.innerHTML=html;
 // console.log(html);

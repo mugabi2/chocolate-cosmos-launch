@@ -16,33 +16,10 @@
     <meta charset="utf-8">
     <title></title>
   </head>
-  <body >
-    <form class="form" id="testt">
-      <input class="un signsa " type="text" placeholder="Surname" id="userSurnamesu"><a class="margin1"></a>
-      <input class="un signsa" type="text"  placeholder="Firstname" id="userFirstnamesu"><a class="margin1"></a>
-      <input class="un signsa" type="text"  placeholder="Phone number" id="userPhonesu"><br/>
-      <input class="un signse" type="email"  placeholder="Email" id="userEmailsu"><a class="margin1"></a>
-      <input class="un signsa" type="text"  placeholder="Company name" id="userCompanysu">
-      <input class="left pass signs" type="password" align="center" placeholder="Password" id="userPasswordsu"><br/><br/><br/><br/>
-      <a class="left red-text passnote">Password should be atleast 6 characters.</a>
-      <a class="right red-text fillnote" id="fillall"></a>
-    <br/>
-      <input type="button" class="submit center" value="Sign up" id="signupBtn"/>
-    </form>
+  <body class="container" id="container">
 
-      <!-- financialyear MODAL -->
-      <div id="mofinancialyear" class="mofinancialyear modal mfy modal-financialyear">
-        <div class="modal-content">
-          <h4>Finacial Year</h4><br />
-          <form id="financialyear-form">
-              <div class="input-field">
-                <input id="fromdate" class="dater" value="FROM DATE"><a class="margin2"></a><br/>
-                <input id="todate" class="dater" value="TO DATE">
-              </div>
-            <button class="btn teal z-depth-2" id="financialyearBtn">Submit</button>
-        </form>
-        </div>
-      </div>
+      <p id="outtext" style="color:black !important;margin-top:4px;"class="error white-text center-align">Users login here</p>
+
   </body>
 
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
@@ -72,6 +49,11 @@
       db.settings({timestampsInSnapshots: true});
 
   </script>
-  <script src='js/test.js'></script>
+  <!-- <script src='js/test.js'></script> -->
+  <script async
+    src="https://pay.google.com/gp/p/js/pay.js"
+    onload="onGooglePayLoaded()"></script>
+
+  <script src='js/googlepay.js'></script>
 
 </html>

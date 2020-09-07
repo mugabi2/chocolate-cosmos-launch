@@ -51,7 +51,7 @@ signupBtn.addEventListener('click', (e) =>{
         // alert("Please fill in all fields");
         // $('#selBooks').focus();
         console.log("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
-          document.querySelector('.error').innerHTML="Please fill in all fields";
+          document.getElementById('errormsg').innerHTML="Please fill in all fields";
           document.getElementById("progbarsing").style.visibility="hidden";
         return false;
       }else {
@@ -292,6 +292,15 @@ loginBtn.addEventListener('click', (e) =>{
 
   const email=document.getElementById("userEmailli").value;
   const password=document.getElementById("userPasswordli").value;
+  if (email === '' || password==='')
+  {
+      // alert("Please fill in all fields");
+      // $('#selBooks').focus();
+      console.log("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
+        document.getElementById('errormsglg').innerHTML="Please fill in all fields";
+        document.getElementById("progbarsing").style.visibility="hidden";
+      return false;
+    }else {
     // log in the user
   auth.signInWithEmailAndPassword(email, password).then(cred => {
       // console.log(cred.user);
@@ -331,6 +340,7 @@ console.log("wait",waitforme);
     document.getElementById("progbarlog").style.visibility="hidden";
   });
   console.log(email,password);
+}
 })
 
 
@@ -470,7 +480,7 @@ auth.sendPasswordResetEmail(emailAddress).then(function() {
 });
 
   })
-  // 
+  //
   // //count up
   // db.collection("INFORMATION").onSnapshot(snapshot=>{
   //   setupUsers(snapshot.docs);
