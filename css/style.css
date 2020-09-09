@@ -18,6 +18,15 @@
       margin: 0px;
       padding: 0px;
     }
+    .topper {
+    margin: 5px ;
+    padding: 5px ;
+    text-align: center;
+    }
+    .vipdiv {
+    margin: 5px !important;
+    padding: 5px !important;
+    }
     .histicon {
     margin: 0px !important;
     padding: 0px !important;
@@ -240,7 +249,7 @@
       overflow:hidden;
     }
     .finyearhead {
-      margin: -10;
+      margin: 5px;
       margin-left: 15px;
     }
     .helpbtn {

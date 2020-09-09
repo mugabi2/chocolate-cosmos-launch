@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- This site is converting visitors into subscribers and customers with respond.io - https://respond.io -->
+    <script src="https://app.respond.io/facebook/chat/plugin/30918/109269794100142" async></script>
+    <!-- https://respond.io/ -->
+    <script type = "text/javascript"
+          src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+      <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="./css/create.css">
+<!-- standalone -->
+<script src="http://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<link href="css/bootstrap-tour-standalone.min.css" rel="stylesheet">
+<script src="js/bootstrap-tour-standalone.min.js"></script>
+
+    <title>Chocolate Cosmos Create</title>
+  </head>
+  <body>
+    <button type="button" class="modal-trigger btn topper center" data-target="createbudgetmodal" name="button">Create new budget</button>
+    <div class="container threebig row">
+      <a class="container threes col s12 m4 l4">
+        <div class="bottomcol">
+        <div class="container" style="mar00gin-top: 40px;" background="#00ffff">
+        <h5 class="center hsix black-text">ITEMS</h5>
+        <!-- <br/> -->
+        <!-- <p>Select items to add to budget.</p> -->
+        <!-- <a href="">Select items to add to budget.</a> -->
+          <ul class="collapsible z-depth-0 guides guidesi" style="border: none;">
+          </ul>
+        </div>
+        </div>
+      </a>
+        <a class="container threes col s12  m4 l4">
+              <div class="bottomcol">
+              <h5 class="center hsix black-text">BUDGET</h5>
+                <ul class="collapsible z-depth-0 guides guidesb" style="border: none;">
+                </ul>
+            </div>
+        </a>
+    </div>
+    <!-- budget modal -->
+    <div id="budgetModal" class="modal budgetModal">
+      <div class="modal-content">
+
+        <h4 id="budgetItemHead"></h4><br />
+        <form id="accounts-form">
+          <input class="un signsa inputup" type="text"  placeholder="Amount" id="budgetAmount">
+            <!-- /////////////// -->
+                  <div class="progress progbarbgt " id="progbarbgt">
+                        <div class="indeterminate"></div>
+                    </div>
+            <!-- //////////////// -->
+          <button class="btn teal z-depth-2" id="addToBudget">Add to Budget</button>
+      </form>
+      </div>
+    </div>
+    <!-- new budget modal -->
+    <div id="createbudgetmodal" class="modal createbudgetmodal">
+      <div class="modal-content">
+
+        <h4 id="budgetItemHead">Create New Budget</h4><br />
+        <form id="accounts-form">
+          <input class="un signsa inputup" type="text"  placeholder="Budget name" id="budgetName">
+            <!-- /////////////// -->
+                  <div class="progress progbarnwbgt " id="progbarnwbgt">
+                        <div class="indeterminate"></div>
+                    </div>
+            <!-- //////////////// -->
+          <button class="btn teal z-depth-2" id="createBudget">Create New Budget</button>
+      </form>
+      </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+    <script>
+    const firebaseConfig = {
+    apiKey: "AIzaSyB8v_sona0iDOs26uX-uJtpYKCcFFjDVeQ",
+    authDomain: "chocolate-cosmos.firebaseapp.com",
+    databaseURL: "https://chocolate-cosmos.firebaseio.com",
+    projectId: "chocolate-cosmos",
+    storageBucket: "chocolate-cosmos.appspot.com",
+    messagingSenderId: "350208192448",
+    appId: "1:350208192448:web:3d0f46f2a4043d26fae225",
+    measurementId: "G-4VJF29Z73K"
+  };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      // firebase.analytics();
+
+    // auth and firestore references
+        const auth=firebase.auth();
+        const db=firebase.firestore();
+        var storage = firebase.storage();
+        var storageRef = storage.ref();
+    // update firestore settings
+        db.settings({timestampsInSnapshots: true});
+
+        // firebase.firestore().enablePersistence()
+        //   .catch(function(err) {
+        //       if (err.code == 'failed-precondition') {
+        //           // Multiple tabs open, persistence can only be enabled
+        //           // in one tab at a a time.
+        //           // ...
+        //       } else if (err.code == 'unimplemented') {
+        //           // The current browser does not support all of the
+        //           // features required to enable persistence
+        //           // ...
+        //       }
+        //   });
+        // Subsequent queries will use persistence, if it was enabled successfully
+
+    </script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="js/budget.js"></script>
+    <!-- <script src="js/tutorial.js"></script> -->
+  </body>
+</html>

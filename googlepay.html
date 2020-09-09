@@ -18,7 +18,7 @@ const baseRequest = {
  * @see {@link https://developers.google.com/pay/api/web/reference/request-objects#CardParameters|CardParameters}
  * @todo confirm card networks supported by your site and gateway
  */
-const allowedCardNetworks = ["MASTERCARD", "VISA"];
+const allowedCardNetworks = ["AMEX", "DISCOVER", "INTERAC", "JCB", "MASTERCARD", "VISA"];
 
 /**
  * Card authentication methods supported by your site and your gateway
@@ -41,7 +41,7 @@ const allowedCardAuthMethods = ["PAN_ONLY", "CRYPTOGRAM_3DS"];
 const tokenizationSpecification = {
   type: 'PAYMENT_GATEWAY',
   parameters: {
-    'gateway': 'payu',
+    'gateway': 'example',
     'gatewayMerchantId': 'exampleGatewayMerchantId'
   }
 };
@@ -114,7 +114,7 @@ function getGooglePaymentDataRequest() {
   paymentDataRequest.merchantInfo = {
     // @todo a merchant ID is available for a production environment after approval by Google
     // See {@link https://developers.google.com/pay/api/web/guides/test-and-deploy/integration-checklist|Integration checklist}
-    merchantId: 'exampleGatewayMerchantId',
+    // merchantId: '12345678901234567890',
     merchantName: 'Example Merchant'
   };
   return paymentDataRequest;
@@ -176,11 +176,11 @@ function addGooglePayButton() {
  */
 function getGoogleTransactionInfo() {
   return {
-    countryCode: 'UG',
-    currencyCode: 'UGX',
+    countryCode: 'US',
+    currencyCode: 'USD',
     totalPriceStatus: 'FINAL',
     // set to cart total
-    totalPrice: '10000'
+    totalPrice: '2.00'
   };
 }
 
@@ -193,13 +193,16 @@ function prefetchGooglePaymentData() {
   const paymentDataRequest = getGooglePaymentDataRequest();
   // transactionInfo must be set but does not affect cache
   paymentDataRequest.transactionInfo = {
-    totalPriceStatus: 'NOT_CURRENTLY_KNOWN',
-    currencyCode: 'UGX'
+    totalPriceStatus: 'FINAL',
+    currencyCode: 'USD'
   };
   const paymentsClient = getGooglePaymentsClient();
   paymentsClient.prefetchPaymentData(paymentDataRequest);
 }
 
+/**
+ * Show Google Pay payment sheet when Google Pay payment button is clicked
+ */
 function onGooglePaymentButtonClicked() {
   const paymentDataRequest = getGooglePaymentDataRequest();
   paymentDataRequest.transactionInfo = getGoogleTransactionInfo();
@@ -226,6 +229,9 @@ function processPayment(paymentData) {
     console.log(paymentData);
   // @todo pass payment token to your gateway to process payment
   paymentToken = paymentData.paymentMethodData.tokenizationData.token;
+  console.log(paymentToken);
+
+askProcessorToCharge(paymentToken, '2');
 }</script>
 <script async
   src="https://pay.google.com/gp/p/js/pay.js"

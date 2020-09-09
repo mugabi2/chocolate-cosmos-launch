@@ -29,6 +29,9 @@ document.getElementById("bodeys").style.visibility="visible";
           var logo_key="imagelogo";
           var changedlogo_key="changedlogo";
           var tutorial_key="tutorial";
+          var budgetaccounts_key="budget accounts";
+          var budgetitems_key="budget items";
+          var currentbudgetname_key="current budget name";
 
 
     localStorage.setItem(changedlogo_key, zero);
@@ -43,7 +46,7 @@ signupBtn.addEventListener('click', (e) =>{
   const firstname=document.getElementById("userFirstnamesu").value;
   const company=document.getElementById("userCompanysu").value.toUpperCase();
   const email=document.getElementById("userEmailsu").value;
-  const location=document.getElementById("userLocationsu").value;
+  const location=document.getElementById("userLocation").value;
   const phone=document.getElementById("userPhonesu").value;
   const password=document.getElementById("userPasswordsu").value;
     if (surname === '' || firstname==='' || company==='' || location==='' || email==='' || phone==='' || password==='')
@@ -78,7 +81,8 @@ firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
     // Save the email locally so you don't need to ask the user for it again
     // if they open the link on the same device.
     console.log("sent to to "+email);
-    window.localStorage.setItem('emailForSignIn', email);
+    localStorage.setItem('emailForSignIn', email);
+    // window.localStorage.setItem('emailForSignIn', email);
     outsider();
   })
   .catch(function(error) {
@@ -92,12 +96,12 @@ firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
   firebase.auth().createUserWithEmailAndPassword(email, password).then(async cred => {
     console.log("yyyyyyyyyyyyyyyyyyyyy");
     var user=firebase.auth().currentUser;
-    user.sendEmailVerification().then(function(){
-      console.log("sent sent sent"+ user);
-
-    }).catch(function(error){
-      console.log(error);
-    });
+    // user.sendEmailVerification().then(function(){
+    //   console.log("sent sent sent"+ user);
+    //
+    // }).catch(function(error){
+    //   console.log(error);
+    // });
 
           // function insider(){
     var usernumber=giveidentity();
@@ -173,6 +177,8 @@ var dbacc=idy+"ACCOUNTS"+finyear;
 var dbite=idy+"ITEMS"+finyear;
 var dbsup=idy+"SUPPLIERS"+finyear;
 var dbtra=idy+"TRANSACTIONS"+finyear;
+var dbbgtacc=idy+"BUDGETACCOUNTS"+finyear;
+var dbbgtit=idy+"BUDGETITEMS"+finyear;
 var newfinyear=idy+"FINANCIALYEAR";
 
   // Store
@@ -182,6 +188,8 @@ localStorage.setItem(suppliers_key, dbsup);
 localStorage.setItem(transactions_key, dbtra);
 localStorage.setItem(financialyear_key, finyear);
 localStorage.setItem(realfinancialyear_key, finyear);
+localStorage.setItem(budgetaccounts_key, dbbgtacc);
+localStorage.setItem(budgetitems_key, dbbgtit);
 
 localStorage.setItem("login", "1");
 
@@ -193,6 +201,7 @@ to: toto
 
 console.log("OVER"+finyear);
 ///////
+var empty="";
   var today = new Date();
   var date = (today.getMonth()+1).toString()+today.getDate().toString()+today.getFullYear().toString();
 var something=await db.collection('USERS').doc(userid).set({
@@ -213,7 +222,10 @@ var something=await db.collection('USERS').doc(userid).set({
   ITEMS:dbite,
   FINANCIALYEAR:finyear,
   SUPPLIERS:dbsup,
-  TRANSACTIONS:dbtra
+  TRANSACTIONS:dbtra,
+  BUDGETACCOUNTS:dbbgtacc,
+  BUDGETITEMS:dbbgtit,
+  currentbudget:""
 })
 
 // localStorage.setItem(userid_key, userid);
@@ -399,6 +411,12 @@ console.log("emmm "+doc);
                          localStorage.setItem(changedlogo_key, value);
                        }else if (key=="logo64") {
                          localStorage.setItem(logo_key, value);
+                       }else if (key=="BUDGETACCOUNTS") {
+                         localStorage.setItem(budgetaccounts_key, value);
+                       }else if (key=="BUDGETITEMS") {
+                         localStorage.setItem(budgetitems_key, value);
+                       }else if (key=="currentbudget") {
+                         localStorage.setItem(currentbudgetname_key, value);
                        }
                        localStorage.setItem("kzfour", 4);
 
@@ -460,8 +478,9 @@ $(document).ready(function () {
 });
 
 function initialize() {
-	 var input = document.getElementById('userLocationsu');
+	 var input = document.getElementById('userLocation');
 	 var autocomplete = new google.maps.places.Autocomplete(input);
+   console.log("inin ini");
 }
 
   //reset email

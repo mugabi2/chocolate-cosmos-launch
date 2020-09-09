@@ -1,17 +1,36 @@
 var vine=0;
+          var userid_key="userid";
+          var account_key="account";
+          var items_key="items";
+          var suppliers_key="suppliers";
+          var transactions_key="transactions";
+          var company_key="company";
+          var surname_key="surname";
+          var firstname_key="firstname";
+          var phone_key="phone";
+          var email_key="email";
+          var numberusers_key="usersNo";
+          var financialyear_key="financial year";
+          var realfinancialyear_key="real financial year";
+          var logo_key="imagelogo";
+          var changedlogo_key="changedlogo";
+          var tutorial_key="tutorial";
+          var budgetaccounts_key="budget accounts";
+          var budgetitems_key="budget items";
+          var currentbudgetname_key="current budget name";
+
 // localStorage.setItem(tutorial_key, 0);
 // Confirm the link is a sign-in with email link.
 if (
-  vine==1
-  // firebase.auth().isSignInWithEmailLink(window.location.href)
+  // vine==1
+  firebase.auth().isSignInWithEmailLink(window.location.href)
 ) {
   // Additional state parameters can also be passed via URL.
   // This can be used to continue the user's intended action before triggering
   // the sign-in operation.
   // Get the email if available. This should be available if the user completes
   // the flow on the same device where they started it.
-  var email = "samuelmugabi2@gmail.com";
-  // window.localStorage.getItem('emailForSignIn');
+  var email = localStorage.getItem('emailForSignIn');
   console.log("email "+email);
   if (!email) {
     // User opened the link on a different device. To prevent session fixation
@@ -22,7 +41,7 @@ if (
   // firebase.auth().signInWithEmailLink(email, window.location.href)
   //   .then(function(result) {
     var tutorial_key="tutorial";
-    localStorage.setItem(tutorial_key, 1);
+    // localStorage.setItem(tutorial_key, 1);
     // document.location.replace("create.html");
 
     var sulement=db.collection("USERS").where("email", "==", email);
@@ -76,6 +95,12 @@ if (
                  localStorage.setItem(changedlogo_key, value);
                }else if (key=="logo64") {
                  localStorage.setItem(logo_key, value);
+               }else if (key=="BUDGETACCOUNTS") {
+                 localStorage.setItem(budgetaccounts_key, value);
+               }else if (key=="BUDGETITEMS") {
+                 localStorage.setItem(budgetitems_key, value);
+               }else if (key=="currentbudget") {
+                 localStorage.setItem(currentbudgetname_key, value);
                }
                localStorage.setItem("kzfour", 4);
 
@@ -114,23 +139,6 @@ var fuel=0,
 zero=0,one=1,two=2,three=3,four=4;
 var identitynational;
 // logmeout();
-          var userid_key="userid";
-          var account_key="account";
-          var items_key="items";
-          var suppliers_key="suppliers";
-          var transactions_key="transactions";
-          var company_key="company";
-          var surname_key="surname";
-          var firstname_key="firstname";
-          var phone_key="phone";
-          var email_key="email";
-          var numberusers_key="usersNo";
-          var financialyear_key="financial year";
-          var realfinancialyear_key="real financial year";
-          var logo_key="imagelogo";
-          var changedlogo_key="changedlogo";
-          var tutorial_key="tutorial";
-
           var song = localStorage.getItem(userid_key);
           console.log("song id",song);
           var songs = localStorage.getItem("login");
