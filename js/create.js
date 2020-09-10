@@ -309,7 +309,8 @@ createAccBtncrt.addEventListener('click', (e) =>{
                                   // close the create modal & reset form
                                   accountsFormcrt.reset();
                                   document.getElementById("progbaraccrt").style.visibility="hidden";
-                                document.getElementById("account_namecrt").focus();                            }else {
+                                document.getElementById("account_namecrt").focus();
+                              }else {
                               console.log("noto not not");
                               db.collection(dbacca).doc(accountName).set({
                                   total: 0
@@ -595,7 +596,30 @@ createsupBtn.addEventListener('click', (e) =>{
           const buttonv=supForm['regsupcrt'].value;
           console.log("999999 "+buttonv);
 
+            // Retrieve
+            var dbsups = localStorage.getItem(suppliers_key);
       if (buttonv=="Register Supplier") {
+
+        var accchecker=0;
+                db.collection(dbsups).get()
+                    .then(function(querySnapshot) {
+                        querySnapshot.forEach(function(doc) {
+                          if (doc.id==supName) {
+                            accchecker=1;
+                            console.log("equal equal"+doc.id);
+                          }
+
+                        })
+                        if (accchecker==1) {
+                          console.log("sane same");
+
+          // close the create modal & reset form
+          supForm.reset();
+          document.getElementById("progbarsupcrt").style.visibility="hidden";
+        document.getElementById("supplier_namecrt").focus();
+
+                        }else {
+                        console.log("diff diff");
     // Retrieve
     var dbsu = localStorage.getItem(suppliers_key);
   db.collection(dbsu).doc(supName).set({
@@ -611,6 +635,9 @@ createsupBtn.addEventListener('click', (e) =>{
       console.log(err.message);
         document.getElementById("progbarsupcrt").style.visibility="hidden";
     });
+  }
+  });
+
 }else {
   // suppliers
   var originalName = localStorage.getItem(originalSupName_key);
@@ -1023,25 +1050,25 @@ tour.start();
 
         // localStorage.setItem("login", 0);
 var status = localStorage.getItem("login");
-if (status=="3") {
-localStorage.setItem(tutorial_key, 1);
-               jQuery(document).ready(function(){
-                     jQuery('#helpmodal').modal();
-                     jQuery(document).ready(function(){
-                         jQuery('#helpmodal').modal('open');
-                        jQuery('#helpmodal').modal({
-    dismissible: false
-  });
-                     });
-               });
-           }
+// if (status=="3") {
+// localStorage.setItem(tutorial_key, 1);
+//                jQuery(document).ready(function(){
+//                      jQuery('#helpmodal').modal();
+//                      jQuery(document).ready(function(){
+//                          jQuery('#helpmodal').modal('open');
+//                         jQuery('#helpmodal').modal({
+//     dismissible: false
+//   });
+//                      });
+//                });
+//            }
 
            // bring finyear modal
-           const tutbtn=document.querySelector('#tutbtn');
-           tutbtn.addEventListener('click', (e) =>{
-             e.preventDefault();
-              const modal = document.querySelector('#helpmodal');
-                // document.getElementById("progbaritcrt").style.visibility="hidden";
-              M.Modal.getInstance(modal).close();
-              tour.start();
-           })
+           // const tutbtn=document.querySelector('#tutbtn');
+           // tutbtn.addEventListener('click', (e) =>{
+           //   e.preventDefault();
+           //    const modal = document.querySelector('#helpmodal');
+           //      // document.getElementById("progbaritcrt").style.visibility="hidden";
+           //    M.Modal.getInstance(modal).close();
+           //    tour.start();
+           // })

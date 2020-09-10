@@ -10,6 +10,8 @@ zero=0,one=1,two=2,three=3,four=4;
 // }
 // })
 
+var vinil = localStorage.getItem("emailForSignIn");
+console.log(vinil+vinil);
 document.getElementById("bodeys").style.visibility="visible";
 
           var userid_key="userid";
@@ -82,6 +84,7 @@ firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
     // if they open the link on the same device.
     console.log("sent to to "+email);
     localStorage.setItem('emailForSignIn', email);
+    localStorage.setItem(email_key, email);
     // window.localStorage.setItem('emailForSignIn', email);
     outsider();
   })

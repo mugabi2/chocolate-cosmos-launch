@@ -6,14 +6,14 @@
 // });
 
 // scripts.js custom js file
-$(document).ready(function () {
-	google.maps.event.addDomListener(window, 'load', initialize);
-});
-
-function initialize() {
-	 var input = document.getElementById('userLocationsu');
-	 var autocomplete = new google.maps.places.Autocomplete(input);
-}
+// $(document).ready(function () {
+// 	google.maps.event.addDomListener(window, 'load', initialize);
+// });
+//
+// function initialize() {
+// 	 var input = document.getElementById('userLocationsu');
+// 	 var autocomplete = new google.maps.places.Autocomplete(input);
+// }
 //
 // auth.onAuthStateChanged(user=>{
 //           console.log(user.uid);
@@ -59,3 +59,8 @@ function initialize() {
 //       // Common errors could be invalid email and invalid or expired OTPs.
 //     });
 // }
+function sendEmail() {
+// const surname=document.getElementById("userLocationsu").value;
+
+window.open('mailto:chocolatecosmosint@gmail.com?subject=Choclolate Cosmos Invitation&body=Please follow the link to sign up for Chocolate Cosmos.');
+}

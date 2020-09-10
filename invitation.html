@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script type = "text/javascript"
+          src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-7RNMH0wBCXrOpWEy2bc5hfWBIBK8NrY&libraries=places"></script>
+
+	<script src="https://smtpjs.com/v3/smtp.js"></script>
+  <title></title>
+  </head>
+  <body>
+
+    <!-- create account -->
+    <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+      <h1 id="honey" class="hcreateacc heads yellow-text">INVITATION LINK</h1>
+      <h2 id="hone4" class="hcreateacc heads yellow-text">Create an account</h2>
+                <form class="form" id="signup_form1">
+                  <div class="flexdp">
+                  <input class="un signsa inputup" type="text" placeholder="Surname" id="userSurnamesu">
+                  <input class="un signsa inputup" type="text"  placeholder="Firstname" id="userFirstnamesu">
+                    </div><div class="flexdp">
+                  <input class="un signsa inputup" type="text"  placeholder="Phone number" id="userPhonesu">
+                  <input disabled  class="un signse inputup" type="email"  placeholder="Email" id="userEmailsu"><a class="margin1"></a>
+                    </div><div class="flexdp">
+                  <input disabled  class="un signsa inputup" type="text"  placeholder="Company name" id="userCompanysu">
+                  <input disabled class="un signsa inputup" type="text"  placeholder="Company location" id="userLocation">
+                    </div><div class="flexdp">
+                  <input class="left pass signs inputup" type="password" align="center" placeholder="Password" id="userPasswordsu">
+                  <p id="errormsg" class="passnote error white-text center-align">Password should be atleast 6 characters.</p>
+                </div><a class="right red-text fillnote" id="fillall"></a>
+                  <br/>
+                  <button  class="twobtn formbuttonsu" id="signupBtn" >Finish Signup</button>
+                  <br/>
+                <!-- /////////////// -->
+                        <div class="progress progbarsing center" id="progbarsing">
+                              <div class="indeterminate center"></div>
+                          </div>
+                  <!-- /////////////// -->
+                </form>
+    </div>
+    <!-- create account end -->
+    <script src="js/invitation.js"></<script></script>
+</body>
+</html>

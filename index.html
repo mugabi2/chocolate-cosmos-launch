@@ -6,11 +6,10 @@
   <!-- Add icon library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- This site is converting visitors into subscribers and customers with https://respond.io -->
-<script id="respondio__widget" src="https://cdn.respond.io/webchat/widget/widget.js?cId=aa37c11195cf4ff543e277a90eb53730d27c45929ad73434996960f225489c3f"></script>
-<!-- https://respond.io -->
-  <!-- This site is converting visitors into subscribers and customers with respond.io - https://respond.io -->
-  <script src="https://app.respond.io/facebook/chat/plugin/30918/109269794100142" async></script>
-  <!-- https://respond.io/ -->
+<!-- <script id="respondio__widget" src="https://cdn.respond.io/webchat/widget/widget.js?cId=aa37c11195cf4ff543e277a90eb53730d27c45929ad73434996960f225489c3f"></script><!-- https://respond.io --> -->
+<!-- This site is converting visitors into subscribers and customers with respond.io - https://respond.io -->
+<!-- <script src="https://app.respond.io/facebook/chat/plugin/30918/109269794100142" async></script> -->
+<!-- https://respond.io/ -->
   <script type = "text/javascript"
         src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
@@ -95,10 +94,11 @@
     <li>
       <a class="subheader">SETTINGS</a>
     </li>
-    <a>
+    <!-- <a>
       Translate this page:
     </a>
-    <div id="google_translate_element"></div>
+    <div id="google_translate_element"></div> -->
+    <button class="logout btn teal z-depth-2 modal-trigger" data-target="invitationmodal">Invite Staff Member</button>
       <a class="finyearhead">Financial year</a>
     <div class="input-field finapro center"></div>
       <!-- <div class="collapsible-body blue">financial year</div> -->
@@ -290,8 +290,31 @@
       </div>
     </div>
 
+    <!-- new budget modal -->
+    <div id="invitationmodal" class="modal invitationmodal">
+      <div class="modal-content">
+        <h4 id="budgetItemHead">Staff Member Invitaion</h4><br />
+        <form id="accounts-form">
+          <div class="flexdp">
+          <h6  class="un signsa inputup">Company name: </h6>
+          <input disabled class="un signsa inputup" type="text"  placeholder="bla and sons" id="companynameinvi">
+            </div>
+              <div class="flexdp">
+              <h6  class="un signsa inputup">Company location: </h6>
+              <input disabled class="un signsa inputup" type="text"  placeholder="bla and sons" id="companynameinvi">
+                </div>
+          <input class="un signsa inputup" type="text"  placeholder="Email address" id="emailinvi">
+            <!-- /////////////// -->
+                  <div class="progress progbarnwbgt " id="progbarnwbgt">
+                        <div class="indeterminate"></div>
+                    </div>
+            <!-- //////////////// -->
+          <button class="btn teal z-depth-2" id="sendInvitation" >Send invitaion link</button>
+      </form>
+      </div>
+    </div>
                   <!-- HELP MODAL -->
-                  <div id="helpmodal" class="modal container helpmodal" >
+                  <div id="helpmodals" class="modal container helpmodals" >
                       <!-- <a class="center black-text helpa">How does it work?</a> -->
                     <!-- <div class="container"> -->
                       <h5 class="center">QUICK HELP</h5>
@@ -409,14 +432,14 @@
   </script>
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <!-- <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> -->
   <script src="js/index.js"></script>
   <!-- <script src="js/tutorial.js"></script> -->
-  <script src="momo.js"></script>
+  <!-- <script src="momo.js"></script> -->
 </body>
 <div id="container"></div>
 
-<script>
+<!-- <script>
 /**
  * Define the version of the Google Pay API referenced when creating your
  * configuration
@@ -649,4 +672,4 @@ function processPayment(paymentData) {
 <script async
   src="https://pay.google.com/gp/p/js/pay.js"
   onload="onGooglePayLoaded()"></script>
-</html>
+</html> -->

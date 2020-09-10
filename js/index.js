@@ -5,6 +5,7 @@ var vine=0;
           var suppliers_key="suppliers";
           var transactions_key="transactions";
           var company_key="company";
+          var location_key="location";
           var surname_key="surname";
           var firstname_key="firstname";
           var phone_key="phone";
@@ -21,9 +22,9 @@ var vine=0;
 
 // localStorage.setItem(tutorial_key, 0);
 // Confirm the link is a sign-in with email link.
-if (
-  // vine==1
-  firebase.auth().isSignInWithEmailLink(window.location.href)
+if (//!!!!!!!!!!!!!!!!
+  vine==1
+  // firebase.auth().isSignInWithEmailLink(window.location.href)
 ) {
   // Additional state parameters can also be passed via URL.
   // This can be used to continue the user's intended action before triggering
@@ -31,7 +32,9 @@ if (
   // Get the email if available. This should be available if the user completes
   // the flow on the same device where they started it.
   var email = localStorage.getItem('emailForSignIn');
+  var emaila = localStorage.getItem(email_key);
   console.log("email "+email);
+  console.log("email "+emaila);
   if (!email) {
     // User opened the link on a different device. To prevent session fixation
     // attacks, ask the user to provide the associated email again. For example:
@@ -46,15 +49,6 @@ if (
 
     var sulement=db.collection("USERS").where("email", "==", email);
     sulement.get().then(function(querySnapshot) {
-                   jQuery(document).ready(function(){
-                         jQuery('#helpmodal').modal();
-                         jQuery(document).ready(function(){
-                             jQuery('#helpmodal').modal('open');
-                            jQuery('#helpmodal').modal({
-        dismissible: false
-      });
-                         });
-                   });
         querySnapshot.forEach(function(doc) {
     var dropss=doc.id;
     console.log("emmmmmmm "+dropss);
@@ -134,6 +128,21 @@ if (
 }else if(vine==0) {///2222222222222222222222222222222222222222222222222222///////////////////////////////////////////////
   // console.log("else else");
 
+                  // Or with jQuery
+
+                        $(document).ready(function(){
+                          $('.helpmodals').modal();
+                        });
+
+                           jQuery(document).ready(function(){
+                                 // jQuery('.helpmodals').modal();
+                                 jQuery(document).ready(function(){
+                                     jQuery('.helpmodals').modal('open');
+              //                       jQuery('.helpmodals').modal({
+              //   dismissible: false
+              // });
+                                 });
+                           });
   var totalitems,totalaccounts,itemaccount;
 var fuel=0,
 zero=0,one=1,two=2,three=3,four=4;
@@ -1452,6 +1461,12 @@ tour.start();
           // localStorage.setItem(tutorial_key, 0);
 }
 
+      // Or with jQuery
+
+            $(document).ready(function(){
+              $('.invitationmodal').modal();
+            });
+
 // Close the dropdown menu if the user clicks outside of it
 // window.onclick = function(event) {
 //
@@ -1464,4 +1479,22 @@ tour.start();
   // addBtn1.addEventListener('click', (e) =>{
   //   e.preventDefault();
   // })
-}
+}//vineEnd
+
+const invitebtn=document.getElementById('sendInvitation');
+invitebtn.addEventListener('click', (e) =>{
+  e.preventDefault();
+// function sendInvitation(){
+//   e.preventDefault();
+  var company = localStorage.getItem(company_key);
+  var location = localStorage.getItem(location_key);
+  const email=document.getElementById("emailinvi").value;
+  console.log(company+location+email);
+  var url="https://chocolate-cosmos.web.app/invitation.html?email="+email
+  +"&company="+company
+  +"&location="+location;
+  console.log(url);
+  window.open(`mailto:${email}?subject=Choclolate Cosmos Invitation&body=Please follow the link to sign up for Chocolate Cosmos. ${url}`);
+
+  // return url;
+})
