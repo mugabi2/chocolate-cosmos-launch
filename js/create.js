@@ -1072,3 +1072,7 @@ var status = localStorage.getItem("login");
            //    M.Modal.getInstance(modal).close();
            //    tour.start();
            // })
+
+           $(function(){
+             $("#bottomplaceholder").load("universal/bottom.html");
+           });

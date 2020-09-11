@@ -527,3 +527,7 @@ auth.sendPasswordResetEmail(emailAddress).then(function() {
   //                         })
   //   });
   // }
+
+             $(function(){
+               $("#bottomplaceholder").load("universal/bottom.html");
+             });

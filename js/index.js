@@ -878,22 +878,6 @@ function closeNav() {
   document.querySelector("bodey").style.marginLeft= "0";
   document.body.style.backgroundColor = "white";
 }
-// logout
-function logmeout(){
-    auth.signOut();
-    localStorage.clear();
-      document.location.replace("landing.html");}
-// log out
-const logoutBtn=document.querySelector('#logout');
-logoutBtn.addEventListener('click', (e) =>{
-  e.preventDefault();
-    auth.signOut();
-    localStorage.clear();
-      document.location.replace("landing.html");
-// Retrieve
-// var sample = localStorage.getItem(userid_key);
-// console.log(777,sample);
-})
 // dropdown
 const dropdownpro=document.querySelector('.finapro');
 const setupDropdownprocard =(data)=>{
@@ -1490,11 +1474,13 @@ invitebtn.addEventListener('click', (e) =>{
   var location = localStorage.getItem(location_key);
   const email=document.getElementById("emailinvi").value;
   console.log(company+location+email);
-  var url="https://chocolate-cosmos.web.app/invitation.html?email="+email
-  +"&company="+company
-  +"&location="+location;
+  var url="https://chocolate-cosmos.web.app/invitation.html?email="+email+"&company="+company+"&location="+location;
   console.log(url);
   window.open(`mailto:${email}?subject=Choclolate Cosmos Invitation&body=Please follow the link to sign up for Chocolate Cosmos. ${url}`);
 
   // return url;
 })
+
+           $(function(){
+             $("#bottomplaceholder").load("universal/bottom.html");
+           });

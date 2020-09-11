@@ -632,3 +632,7 @@ console.log("day day day 22 "+wholestring);
 return  replacement + wholestring.substring(2,10);
 }
 //#################################
+
+           $(function(){
+             $("#bottomplaceholder").load("universal/bottom.html");
+           });

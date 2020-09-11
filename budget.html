@@ -31,6 +31,87 @@
     <title>Chocolate Cosmos Create</title>
   </head>
   <body>
+    <ul id="slide-out" class="sidenav">
+        <li>
+          <div class="user-view">
+          <div class="background">
+            <img src="images/good1.webp">
+          </div>
+                <label class="imagelabel">
+                  <img class="imgprocd center circle" id="output_image" src="images/addlogo.png"><br/>
+                  <!-- <input type="file" accept="image/*"  style="display:none" onchange="chooseFile(event)"/> -->
+                  <input type="file" accept="image/*"  style="display:none" onchange="preview_image(event)"/>
+                </label>
+                  <h5 id="procona" class="white-text center proco trancate">COMPANY NAME</h5>
+          <a id="proem" href="#email"><span class="white-text email">email@gmail.com</span></a>
+        <!-- <li>
+          <a class="" href="#!"id="personaldetails">PERSONAL DETAILS</a>
+        </li> -->
+        </div>
+      </li>
+        <li>
+          <!-- <div> -->
+        <h5 id="liceNumb" class="black-text center prolice">LICENCE: days </h5>
+        <h5 class="finyearhead">Buy License at $50</h5>
+      <div id="gpcont" class="vipdiv container">
+        <!-- <img  id="mtnmomo" class="center imgpromomo"src="images/momo.jpg" >
+        <img class="center imgpromomo"src="images/googlepay.png" style="width: 60px; margin-top: 10px;"><br/> -->
+      </div>
+        </li>
+        <li><div class="divider"></div></li>
+        <li>
+          <a class="subheader">SETTINGS</a>
+        </li>
+        <!-- <a>
+          Translate this page:
+        </a>
+        <div id="google_translate_element"></div> -->
+        <button class="logout btn teal z-depth-2 modal-trigger" data-target="invitationmodal">Invite Staff Member</button>
+          <a class="finyearhead">Financial year</a>
+        <div class="input-field finapro center"></div>
+          <!-- <div class="collapsible-body blue">financial year</div> -->
+        <!-- <button class=" btn teal z-depth-2 center" id="personaldetails">Personal Details</button><br/> -->
+        <button class="logout btn teal z-depth-2" id="logoutbtnprof" onclick="logmeout()">LOG OUT</button>
+      </ul>
+      <!-- <a href="#" data-target="slide-out" class="sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a> -->
+
+
+      <!-- NAVBAR -->
+      <nav class="z-depth-0 navio pink darken-3 sticky">
+        <div class="nav-wrapper container row">
+          <a class="sidenav-trigger left hide-on-med-and-up" href="#!" data-target="mobile-links">
+            <i class="material-icons">menu</i>
+          </a>
+            <img src="images/choco2.png" style="width: 60px; margin-top: 10px;">
+            <a class="brand-logo flow-text" onclick="location.href='googlepay.html';">
+            Chocolate Cosmos
+          </a>
+          <ul id="nav-mobile" class="right nav-wrapper-fixed hide-on-small-only">
+          <!-- Dropdown Trigger -->
+          <li class="logged-in">
+            <a class="" href="#!" onclick="location.href='create.html';">Create</a>
+          </li>
+          <li class="logged-in">
+            <a href="#" id="reportshtml" onclick="location.href='reports1.html';">Reports</a>
+          </li>
+          <li class="logged-in">
+            <a href="#" id="reportshtml" onclick="location.href='budget.html';">Budget</a>
+          </li>
+          <li class="logged-in">
+            <a href="#" class="white-text modal-trigger"  onclick="location.href='landing.html';">Help</a>
+          </li>
+          <li class="logged-in">
+            <a class="sidenav-trigger show-on-large white-text 4 procardtrigpc" data-target="slide-out">Profile</a>
+          </li>
+              <!-- <li class="logged-out">
+                <a href="#" class="white-text" id="logout">Log Out</a>
+              </li> -->
+            </span>
+          </ul>
+        </div>
+      </nav>
     <button type="button" class="modal-trigger btn topper center" data-target="createbudgetmodal" name="button">Create new budget</button>
     <div class="container threebig row">
       <a class="container threes col s12 m4 l4">
@@ -86,6 +167,7 @@
       </div>
     </div>
 
+    <div class="" id="bottomplaceholder"></div>
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
@@ -131,6 +213,7 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="js/budget.js"></script>
+    <script src="js/navbar.js"></script>
     <!-- <script src="js/tutorial.js"></script> -->
   </body>
 </html>

@@ -20,7 +20,7 @@ var currentbudgetname_key="current budget name";
 var dbacc = localStorage.getItem(account_key);
 var dbit = localStorage.getItem(items_key);
 var dbsup = localStorage.getItem(suppliers_key);
-var db = localStorage.getItem(suppliers_key);
+// var db = localStorage.getItem(suppliers_key);
 
  var currentbgt = localStorage.getItem(currentbudgetname_key);
  var bgtitup = localStorage.getItem(budgetitems_key);
@@ -157,3 +157,7 @@ itemsList.innerHTML=html;
         [itemClicked]: itemAmount
       })
     }) // eventlistener end
+
+               $(function(){
+                 $("#bottomplaceholder").load("universal/bottom.html");
+               });
