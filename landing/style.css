@@ -118,10 +118,13 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   align-items: center;
 }
-.forgot{
-  width: 150px;
-  height: 15px;
-  font-size: 13px !important;
+.forgotp{
+  font-size: 11px !important;
+}
+  .forgot{
+    width: 150px;
+    height: 15px;
+    font-size: 13px !important;
   text-align: right;
     font-family: 'Source Sans Pro', sans-serif !important;
     background-color: transparent;
@@ -225,13 +228,17 @@ text-shadow: 0 2px 1px rgba(0, 0, 0, 0.4);
 
 #header .logo h6 {
   font-size: 24px;
-  margin: 0;
   padding: 0;
+  overflow-wrap: break-word;
   /* line-height: 1; */
   font-weight: 700;
+  /* margin: 0;
+   margin-top: 5px !important; */
+   margin: auto;
+   margin-left: 5px;
 }
 .logo{
-  width: 800px !important;
+  min-width: 400px !important;
 }
 #header .logo h1 a, #header .logo h1 a:hover {
   color: #fff;
@@ -255,7 +262,20 @@ text-shadow: 0 2px 1px rgba(0, 0, 0, 0.4);
     font-size: 28px;
   }
 }
-
+.right {
+  position: absolute;
+  right: 0px;
+  /* width: 300px; */
+  padding: 10px;
+  padding-top: 10px!important;
+}
+.left {
+  position: absolute;
+  left:  0px;
+  width: 300px;
+  padding: 10px;
+  padding-left: 50px;
+}
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -1149,7 +1169,7 @@ section {
 --------------------------------------------------------------*/
 .testimonials {
   padding: 80px 0;
-  /* background: url("img/cta-bg.jpg") no-repeat; */
+  background: url("img/cta-bg.jpg") no-repeat;
   background-position: center center;
   background-size: cover;
   position: relative;
@@ -1236,6 +1256,9 @@ section {
 
 .testimonials .owl-dot.active {
   background-color: #1acc8d !important;
+}
+.testitem {
+  height: 100%;
 }
 
 @media (min-width: 1024px) {

@@ -130,19 +130,21 @@ if (//!!!!!!!!!!!!!!!!
 
                   // Or with jQuery
 
-                        $(document).ready(function(){
-                          $('.helpmodals').modal();
-                        });
+              //           $(document).ready(function(){
+              //             $('.helpmodals').modal();
+              //           });
+              //
+              //              jQuery(document).ready(function(){
+              //                    // jQuery('.helpmodals').modal();
+              //                    jQuery(document).ready(function(){
+              //                        jQuery('.helpmodals').modal('open');
+              // //                       jQuery('.helpmodals').modal({
+              // //   dismissible: false
+              // // });
+              //                    });
+              //              });
 
-                           jQuery(document).ready(function(){
-                                 // jQuery('.helpmodals').modal();
-                                 jQuery(document).ready(function(){
-                                     jQuery('.helpmodals').modal('open');
-              //                       jQuery('.helpmodals').modal({
-              //   dismissible: false
-              // });
-                                 });
-                           });
+
   var totalitems,totalaccounts,itemaccount;
 var fuel=0,
 zero=0,one=1,two=2,three=3,four=4;
@@ -1447,9 +1449,9 @@ tour.start();
 
       // Or with jQuery
 
-            $(document).ready(function(){
-              $('.invitationmodal').modal();
-            });
+            // $(document).ready(function(){
+            //   $('.invitationmodal').modal();
+            // });
 
 // Close the dropdown menu if the user clicks outside of it
 // window.onclick = function(event) {
@@ -1484,3 +1486,15 @@ invitebtn.addEventListener('click', (e) =>{
            $(function(){
              $("#bottomplaceholder").load("universal/bottom.html");
            });
+// bootstrap///////////////////////////////////
+
+function openNav() {
+  document.getElementById("profilenav").style.width = "250px";
+console.log("open");}
+
+function closeNav() {
+  document.getElementById("profilenav").style.width = "0";
+console.log("close");}
+function bootlearn(){
+  document.location.replace("bootlearn/mainboot.html");
+}

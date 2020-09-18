@@ -6,7 +6,7 @@
   <!-- Add icon library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- This site is converting visitors into subscribers and customers with https://respond.io -->
-<!-- <script id="respondio__widget" src="https://cdn.respond.io/webchat/widget/widget.js?cId=aa37c11195cf4ff543e277a90eb53730d27c45929ad73434996960f225489c3f"></script><!-- https://respond.io --> -->
+<!-- <script id="respondio__widget" src="https://cdn.respond.io/webchat/widget/widget.js?cId=aa37c11195cf4ff543e277a90eb53730d27c45929ad73434996960f225489c3f"></script><!-- https://respond.io -->
 <!-- This site is converting visitors into subscribers and customers with respond.io - https://respond.io -->
 <!-- <script src="https://app.respond.io/facebook/chat/plugin/30918/109269794100142" async></script> -->
 <!-- https://respond.io/ -->
@@ -27,10 +27,18 @@
 <link href="css/bootstrap-tour-standalone.min.css" rel="stylesheet">
 <script src="js/bootstrap-tour-standalone.min.js"></script>
 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <title>Chocolate Cosmos</title>
 </head>
 <body class="grey lighten-3 bodey" id="bodey">
 
+  <div class="spinner-border text-success" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
   <!-- procard -->
   <div id="dropprocard" class="procard dropdown-content">
         <label>
@@ -49,7 +57,8 @@
   </div>
 
   <!-- <nav></nav> -->
-<ul id="slide-out" class="sidenav">
+  <div id="profilenav" class="sidenav">
+<ul id="profilenav" class="sidenav">
     <li>
       <div class="user-view">
       <div class="background">
@@ -91,44 +100,43 @@
     <!-- <button class=" btn teal z-depth-2 center" id="personaldetails">Personal Details</button><br/> -->
     <button class="logout btn teal z-depth-2" id="logoutbtnprof" onclick="logmeout()">LOG OUT</button>
   </ul>
+</div>
   <!-- <a href="#" data-target="slide-out" class="sidenav-trigger">
     <i class="material-icons">menu</i>
   </a> -->
 
 
   <!-- NAVBAR -->
-  <nav class="z-depth-0 navio pink darken-3 sticky">
-    <div class="nav-wrapper container row">
-      <a class="sidenav-trigger left hide-on-med-and-up" href="#!" data-target="mobile-links">
+  <nav class="navbar navbar-expand-sm navbar-custom fixed-top">
+      <!-- <a class="sidenav-trigger left hide-on-med-and-up" href="#!" data-target="mobile-links">
         <i class="material-icons">menu</i>
-      </a>
+      </a> -->
+      <a class="navbar-brand flow-text" onclick="location.href='googlepay.html';">
         <img src="images/choco2.png" style="width: 60px; margin-top: 10px;">
-        <a class="brand-logo flow-text" onclick="location.href='googlepay.html';">
         Chocolate Cosmos
       </a>
-      <ul id="nav-mobile" class="right nav-wrapper-fixed hide-on-small-only">
+      <ul id="nav-mobile" class="navbar-nav">
       <!-- Dropdown Trigger -->
-      <li class="logged-in">
-        <a class="" href="#!" onclick="location.href='create.html';">Create</a>
+      <li class="nav-item">
+        <a class="nav-link" href="#!" onclick="location.href='create.html';">Create</a>
       </li>
-      <li class="logged-in">
-        <a href="#" id="reportshtml" onclick="location.href='reports1.html';">Reports</a>
+      <li class="nav-item">
+        <a  class="nav-link"  href="#" id="reportshtml" onclick="location.href='reports1.html';">Reports</a>
       </li>
-      <li class="logged-in">
-        <a href="#" id="reportshtml" onclick="location.href='budget.html';">Budget</a>
+      <li class="nav-item">
+        <a  class="nav-link"  href="#" id="reportshtml" onclick="location.href='budget.html';">Budget</a>
       </li>
-      <li class="logged-in">
-        <a href="#" class="white-text modal-trigger"  onclick="location.href='landing.html';">Help</a>
+      <li class="nav-item">
+        <a href="#" class="nav-link"  onclick="location.href='landing.html';">Help</a>
       </li>
-      <li class="logged-in">
-        <a class="sidenav-trigger show-on-large white-text 4 procardtrigpc" data-target="slide-out">Profile</a>
+      <li class="nav-item">
+        <a class="nav-link " onclick="openNav()">Profile</a>
       </li>
           <!-- <li class="logged-out">
             <a href="#" class="white-text" id="logout">Log Out</a>
           </li> -->
         </span>
       </ul>
-    </div>
   </nav>
 <!-- sidenav -->
   <ul id="mobile-links" class="sidenav">
@@ -274,7 +282,7 @@
       </div>
     </div>
 
-    <!-- new budget modal -->
+    <!-- invitaion modal -->
     <div id="invitationmodal" class="modal invitationmodal">
       <div class="modal-content">
         <h4 id="budgetItemHead">Staff Member Invitaion</h4><br />
@@ -303,7 +311,7 @@
                     <!-- <div class="container"> -->
                       <h5 class="center">QUICK HELP</h5>
                       <img class="imghelp center"src="images/help.png">
-                  <button class="btn teal z-depth-2 center valign helpbtn" id="tutbtn">START QUICK TOUR</button>
+                  <button class="btn teal z-depth-2 center valign helpbtn" id="tutbtn" onclick="bootlearn()">START QUICK TOUR</button>
                 <!-- </div> -->
                   </div>
   <!-- items MODAL -->
@@ -416,7 +424,7 @@
 
   </script>
   <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
   <!-- <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> -->
   <script src="js/index.js"></script>
   <script src="js/navbar.js"></script>

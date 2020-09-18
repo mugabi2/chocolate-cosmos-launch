@@ -1,3 +1,4 @@
+var Jan=0, Feb=0, Mar=0, Apr=0, May=0, Jun=0, Jul=0, Aug=0, Sep=0, Oct=0, Nov=0, Dec=0;
   // get acc data
 var account_key="account";
 var items_key="items";
@@ -21,9 +22,9 @@ var rangeTotal_key="range total";
 var dbacc = localStorage.getItem(account_key);
 var dbit = localStorage.getItem(items_key);
 var dbsup = localStorage.getItem(suppliers_key);
-console.log("itit"+dbacc);
-console.log("itit"+dbit);
-console.log("itit"+dbsup);
+// console.log("itit"+dbacc);
+// console.log("itit"+dbit);
+// console.log("itit"+dbsup);
 db.collection(dbacc).onSnapshot(snapshot=>{
 window.localStorage.setItem(currentAccounts_key, snapshot.docs);
 setupDropdownacccha(snapshot.docs);
@@ -419,54 +420,125 @@ $(document).ready(function() {
   var tdate="09/25/2020";
     monthler(fdate,tdate);
     function monthler(frodate,todate){
+      setupMonths();
       var frodateNxt=frodate;
       var froma=whatMonth(frodate);
-      var fromaNxt=whatMonth(frodate);
+      // var fromaNxt=whatMonth(frodate);
       var toma=whatMonth(todate);
-      for (var i = froma; i <= toma; i++) {
-      if (froma==toma) {///same month
-        i=toma;
-          var whichMonthIsThis=whichMonth(parseInt(i));
-        console.log("same same same "+froma);
+      for (fromaNxt=froma; fromaNxt <= toma; fromaNxt++) {
+      if (fromaNxt==toma) {
+        ///same month
+        // i=toma;
+          var whichMonthIsThis=whichMonth(parseInt(fromaNxt));
+        console.log("same same same "+fromaNxt);
       console.log("same same same "+whichMonthIsThis);
         var collar = localStorage.getItem(transactions_key);
-        // console.log("collar "+collar);
-        // console.log("collar "+daterfrom);
+        console.log("collar "+collar);
+        console.log(frodateNxt+" collar "+todate);
+        frodateNxt=minimizeDays(frodateNxt);
+        console.log(frodateNxt+" collar "+todate);
             var citiesRef = db.collection(collar)
-            .where("date", ">=", frodateNxt).where("date", "<=", todate);
+            .where("date", ">=", frodateNxt)
+            .where("date", "<=", todate);
             citiesRef.get().then(function(querySnapshot) {
                 querySnapshot.forEach(function(doc) {
             var dropss=doc.id;
             // console.log("emmmmmmm "+dropss);
             jQuery.each(doc.data(), function (key, value) {
                       if(key=="amount"){
+                      switch (whichMonthIsThis) {
+                  case "Jan":
+                    Jan = Jan+value;
+                    localStorage.setItem("Jan", Jan);
+                    console.log("!!!!Jan: "+Jan);
+                    break;
+                  case "Feb":
+                    Feb = Feb+value;
+                    localStorage.setItem("Feb", Feb);
+                    console.log("!!!!!Feb: "+Feb);
+                    break;
+                  case "Mar":
+                    Mar = Mar+value;
+                    localStorage.setItem("Mar", Mar);
+                    console.log("!!!!!Mar: "+Mar);
+                    break;
+                  case "Apr":
+                    Apr = Apr+value;
+                    localStorage.setItem("Apr", Apr);
+                    console.log("!!!!!Apr: "+Apr);
+                    break;
+                  case "May":
+                    May = May+value;
+                    localStorage.setItem("May", May);
+                    console.log("!!!!!May: "+May);
+                    break;
+                  case "Jun":
+                    Jun = Jun+value;
+                    localStorage.setItem("Jun", Jun);
+                    console.log("!!!!!Jun: "+Jun);
+                    break;
+                case "Jul":
+                  Jul = Jul+value;
+                  localStorage.setItem("Jul", Jul);
+                  console.log("!!!!!Jul: "+Jul);
+                  break;
+                case "Aug":
+                  Aug = Aug+value;
+                  localStorage.setItem("Aug", Aug);
+                  console.log("!!!!!Aug: "+Aug);
+                  break;
+                case "Sep":
+                  Sep = Sep+value;
+                  localStorage.setItem("Sep", Sep);
+                  console.log("!!!!!sep: "+Sep);
+                  break;
+                case "Oct":
+                  Oct = Oct+value;
+                  localStorage.setItem("Oct", Oct);
+                  console.log("!!!!!oct: "+Oct);
+                  break;
+                case "Nov":
+                  Nov = Nov+value;
+                  localStorage.setItem("Nov", Nov);
+                  console.log("!!!!!Nov: "+Nov);
+                  break;
+                case "Dec":
+                  Dec = Dec+value;
+                  localStorage.setItem("Dec", Dec);
+                  console.log("!!!!!Dec: "+Dec);
+                  break;
+                }
                       var colder = localStorage.getItem(rangeTotal_key);
-                      // console.log("storage "+colder);
-                      // console.log("value "+value);
                       colder=parseInt(colder)+parseInt(value)
                         localStorage.setItem(rangeTotal_key, colder);
-                        // console.log("colder",colder);
+                        var monthSave = localStorage.getItem(whichMonthIsThis);
+                        var monthTotal=parseInt(monthSave)+parseInt(value)
+                        localStorage.setItem(whichMonthIsThis, monthTotal);
+                        // `${sdfd}`
                           // Store
                       localStorage.setItem(whichMonthIsThis, colder);
+          // echoMonths();
                       }
+                    // var statusso = localStorage.getItem(whichMonthIsThis);
+                    // console.log(whichMonthIsThis+" save save save "+statusso);
 
             })
-          var statusso = localStorage.getItem(whichMonthIsThis);
-          console.log(whichMonthIsThis+" save save save "+statusso);
+          // var statusso = localStorage.getItem(whichMonthIsThis);
+          // console.log(whichMonthIsThis+" save save save "+statusso);
             });
             }).catch(error => {
             // document.getElementById("progbarlog").style.visibility="hidden";
             console.error('error', error);
             });
-
+            console.log("Jan "+Jan+"Feb "+Feb+"Mar"+Mar+"Apr "+Apr+"May "+May+"Jun "+Jun+"Jul"+Jul+"Aug "+Aug+"Sep "+Sep+"Oct "+Oct+"Nov"+Nov+"Dec "+Dec);
       }else {
-        // var whichMonthIsThis=whichMonth(parseInt(i));
+        var whichMonthIsThis=whichMonth(parseInt(fromaNxt));
         console.log("diff diff diff"+whichMonthIsThis);
-        if (i==froma) {
-          var maxDate=maximiseDays(frodate);
+        if (fromaNxt==froma) {//range of beginning month
+          var maxDate=maximiseDays(frodateNxt);
           var miniDate=frodate;
-            var whichMonthIsThis=whichMonth(whatMonth(miniDate));
-          console.log(miniDate+" ====++++==> "+maxDate);
+          var whichMonthIsThis=whichMonth(whatMonth(miniDate));
+          console.log(miniDate+" ====++++==>1111 "+maxDate);
             var collar = localStorage.getItem(transactions_key);
             // console.log("collar "+collar);
             // console.log("collar "+daterfrom);
@@ -478,64 +550,209 @@ $(document).ready(function() {
                 // console.log("emmmmmmm "+dropss);
                 jQuery.each(doc.data(), function (key, value) {
                           if(key=="amount"){
+                          switch (whichMonthIsThis) {
+                      case "Jan":
+                        Jan = Jan+value;
+                        localStorage.setItem("Jan", Jan);
+                        console.log("!!!!Jan: "+Jan);
+                        break;
+                      case "Feb":
+                        Feb = Feb+value;
+                        localStorage.setItem("Feb", Feb);
+                        console.log("!!!!!Feb: "+Feb);
+                        break;
+                      case "Mar":
+                        Mar = Mar+value;
+                        localStorage.setItem("Mar", Mar);
+                        console.log("!!!!!Mar: "+Mar);
+                        break;
+                      case "Apr":
+                        Apr = Apr+value;
+                        localStorage.setItem("Apr", Apr);
+                        console.log("!!!!!Apr: "+Apr);
+                        break;
+                      case "May":
+                        May = May+value;
+                        localStorage.setItem("May", May);
+                        console.log("!!!!!May: "+May);
+                        break;
+                      case "Jun":
+                        Jun = Jun+value;
+                        localStorage.setItem("Jun", Jun);
+                        console.log("!!!!!Jun: "+Jun);
+                        break;
+                    case "Jul":
+                      Jul = Jul+value;
+                      localStorage.setItem("Jul", Jul);
+                      console.log("!!!!!Jul: "+Jul);
+                      break;
+                    case "Aug":
+                      Aug = Aug+value;
+                      localStorage.setItem("Aug", Aug);
+                      console.log("!!!!!Aug: "+Aug);
+                      break;
+                    case "Sep":
+                      Sep = Sep+value;
+                      localStorage.setItem("Sep", Sep);
+                      console.log("!!!!!sep: "+Sep);
+                      break;
+                    case "Oct":
+                      Oct = Oct+value;
+                      localStorage.setItem("Oct", Oct);
+                      console.log("!!!!!oct: "+Oct);
+                      break;
+                    case "Nov":
+                      Nov = Nov+value;
+                      localStorage.setItem("Nov", Nov);
+                      console.log("!!!!!Nov: "+Nov);
+                      break;
+                    case "Dec":
+                      Dec = Dec+value;
+                      localStorage.setItem("Dec", Dec);
+                      console.log("!!!!!Dec: "+Dec);
+                      break;
+                    }
                           var colder = localStorage.getItem(rangeTotal_key);
+                          // console.log("colder1",colder);
                           colder=parseInt(colder)+parseInt(value)
                             localStorage.setItem(rangeTotal_key, colder);
-                            // console.log("colder",colder);
+                            // console.log("colder2",colder);
                               // Store
                           localStorage.setItem(whichMonthIsThis, colder);
+                          var monthSave = localStorage.getItem(whichMonthIsThis);
+                          var monthTotal=parseInt(monthSave)+parseInt(value)
+                          localStorage.setItem(whichMonthIsThis, monthTotal);
+                          var variable=localStorage.getItem(whichMonthIsThis);
+                          console.log(whichMonthIsThis+"######",variable);
                           }
+                        var statusso = localStorage.getItem(whichMonthIsThis);
+                        // console.log(whichMonthIsThis+" save save save "+statusso);
 
                 })
-              var statusso = localStorage.getItem(whichMonthIsThis);
-              console.log(whichMonthIsThis+" save save save "+statusso);
+              // var statusso = localStorage.getItem(whichMonthIsThis);
+              // console.log(whichMonthIsThis+" save save save "+statusso);
                 });
                 }).catch(error => {
                 // document.getElementById("progbarlog").style.visibility="hidden";
                 console.error('error', error);
                 });
-
-        }else {
+                frodateNxt=maxDate;
+        }else {//range of following months
           // var whichMonthIsThis=whichMonth(parseInt(i));
-        var miniDate=minimizeDays(frodate);
+        var miniDate=minimizeDays(frodateNxt);
         var maxDate=maximiseDays(miniDate);
-        var whichMonthIsThis=whichMonth(whatMonth(miniDate));
+        var whichMonthIsThis2=whichMonth(whatMonth(miniDate));
         frodate=miniDate;
-        console.log(miniDate+" ======> "+maxDate);
+        console.log(miniDate+" ======> "+whichMonthIsThis2);
           var collar = localStorage.getItem(transactions_key);
           // console.log("collar "+collar);
           // console.log("collar "+daterfrom);
               var citiesRef = db.collection(collar)
-              .where("date", ">=", miniDate).where("date", "<=", maxDate);
+              .where("date", ">=", miniDate)
+              .where("date", "<=", maxDate);
               citiesRef.get().then(function(querySnapshot) {
                   querySnapshot.forEach(function(doc) {
               var dropss=doc.id;
               // console.log("emmmmmmm "+dropss);
               jQuery.each(doc.data(), function (key, value) {
                         if(key=="amount"){
+                        switch (whichMonthIsThis2) {
+                    case "Jan":
+                      Jan = Jan+value;
+                      localStorage.setItem("Jan", Jan);
+                      console.log("!!!!Jan: "+Jan);
+                      break;
+                    case "Feb":
+                      Feb = Feb+value;
+                      localStorage.setItem("Feb", Feb);
+                      console.log("!!!!!Feb: "+Feb);
+                      break;
+                    case "Mar":
+                      Mar = Mar+value;
+                      localStorage.setItem("Mar", Mar);
+                      console.log("!!!!!Mar: "+Mar);
+                      break;
+                    case "Apr":
+                      Apr = Apr+value;
+                      localStorage.setItem("Apr", Apr);
+                      console.log("!!!!!Apr: "+Apr);
+                      break;
+                    case "May":
+                      May = May+value;
+                      localStorage.setItem("May", May);
+                      console.log("!!!!!May: "+May);
+                      break;
+                    case "Jun":
+                      Jun = Jun+value;
+                      localStorage.setItem("Jun", Jun);
+                      console.log("!!!!!Jun: "+Jun);
+                      break;
+                  case "Jul":
+                    Jul = Jul+value;
+                    localStorage.setItem("Jul", Jul);
+                    console.log("!!!!!Jul: "+Jul);
+                    break;
+                  case "Aug":
+                    Aug = Aug+value;
+                    localStorage.setItem("Aug", Aug);
+                    console.log("!!!!!Aug: "+Aug);
+                    break;
+                  case "Sep":
+                    Sep = Sep+value;
+                    localStorage.setItem("Sep", Sep);
+                    console.log("!!!!!sep: "+Sep);
+                    break;
+                  case "Oct":
+                    Oct = Oct+value;
+                    localStorage.setItem("Oct", Oct);
+                    console.log("!!!!!oct: "+Oct);
+                    break;
+                  case "Nov":
+                    Nov = Nov+value;
+                    localStorage.setItem("Nov", Nov);
+                    console.log("!!!!!Nov: "+Nov);
+                    break;
+                  case "Dec":
+                    Dec = Dec+value;
+                    localStorage.setItem("Dec", Dec);
+                    console.log("!!!!!Dec: "+Dec);
+                    break;
+                  }
                         var colder = localStorage.getItem(rangeTotal_key);
                         colder=parseInt(colder)+parseInt(value)
                           localStorage.setItem(rangeTotal_key, colder);
                           // console.log("colder",colder);
                             // Store
-                        localStorage.setItem(whichMonthIsThis, colder);
+                        localStorage.setItem(whichMonthIsThis2, colder);
+                        var monthSave = localStorage.getItem(whichMonthIsThis2);
+                        var monthTotal=parseInt(monthSave)+parseInt(value)
+                        localStorage.setItem(whichMonthIsThis2, monthTotal);
+                        var variable=localStorage.getItem(whichMonthIsThis2);
+                        console.log(whichMonthIsThis2+"######",variable);
                         }
+                      // var statusso = localStorage.getItem(whichMonthIsThis2);
+                      // console.log(whichMonthIsThis2+" save save save "+statusso);
 
               })
-            var statusso = localStorage.getItem(whichMonthIsThis);
-            console.log(whichMonthIsThis+" save save save "+statusso);
+            // var statusso = localStorage.getItem(whichMonthIsThis);
+            // console.log(whichMonthIsThis+" save save save "+statusso);
               });
               }).catch(error => {
               // document.getElementById("progbarlog").style.visibility="hidden";
               console.error('error', error);
               });
-
+              frodateNxt=maxDate;
         }
       }
-     }
+      // console.log(fromaNxt+"####"+frodateNxt);
+      // frodateNxt=minimizeDays(frodateNxt);
+      // console.log(fromaNxt+"####"+frodateNxt);
+    }//for End
+
     }
     function whichMonth(monthNumber){
       var month;
+      monthNumber=parseInt(monthNumber);
       switch (monthNumber) {
   case 01:
     month = "Jan";
@@ -605,12 +822,12 @@ return month;
           if (monththere%2==0) {
             var daylo=30;
             operatorDate = replaceAtter(operatorDate,3, daylo);
-            console.log("day day day "+operatorDate);
+            // console.log("day day day "+operatorDate);
             return operatorDate;
           }else {
             var daylo=31;
             operatorDate = replaceAtter(operatorDate,3, daylo);
-            console.log("day day day "+operatorDate);
+            // console.log("day day day "+operatorDate);
             return operatorDate;
           }
         }
@@ -624,11 +841,11 @@ return month;
             return operatorDate;
         }
         function replaceAtter(wholestring,indexat1, replacement) {
-        console.log("day day day "+wholestring);
+        // console.log("day day day "+wholestring);
     return wholestring.substring(0, indexat1) + replacement + wholestring.substring(5,10);
 }
 function replaceAtterMonth(wholestring,indexat1, replacement) {
-console.log("day day day 22 "+wholestring);
+// console.log("day day day 22 "+wholestring);
 return  replacement + wholestring.substring(2,10);
 }
 //#################################
@@ -636,3 +853,59 @@ return  replacement + wholestring.substring(2,10);
            $(function(){
              $("#bottomplaceholder").load("universal/bottom.html");
            });
+
+           function addCommas(nStr) {
+             nStr += '';
+             var comma = /,/g;
+             nStr = nStr.replace(comma,'');
+             x = nStr.split('.');
+             x1 = x[0];
+             x2 = x.length > 1 ? '.' + x[1] : '';
+             var rgx = /(\d+)(\d{3})/;
+             while (rgx.test(x1)) {
+               x1 = x1.replace(rgx, '$1' + ',' + '$2');
+             }
+             return x1 + x2;
+           }
+
+           function setupMonths(){
+           localStorage.setItem("Jan", 0);
+           localStorage.setItem("Feb", 0);
+           localStorage.setItem("Mar", 0);
+           localStorage.setItem("Apr", 0);
+           localStorage.setItem("May", 0);
+           localStorage.setItem("Jun", 0);
+           localStorage.setItem("Jul", 0);
+           localStorage.setItem("Aug", 0);
+           localStorage.setItem("Sep", 0);
+           localStorage.setItem("Oct", 0);
+           localStorage.setItem("Nov", 0);
+           localStorage.setItem("Dec", 0);
+           }
+           function echoMonths(){
+             var variable;
+           variable=localStorage.getItem("Jan");
+           console.log("1: "+variable);
+           variable=localStorage.getItem("Feb");
+           console.log("1: "+variable);
+           variable=localStorage.getItem("Mar");
+           console.log("1: "+variable);
+           variable=localStorage.getItem("Apr");
+           console.log("1: "+variable);
+           variable=localStorage.getItem("May");
+           console.log("1: "+variable);
+           variable=localStorage.getItem("Jun");
+           console.log("1: "+variable);
+           variable=localStorage.getItem("Jul");
+           console.log("jul: "+variable);
+           variable=localStorage.getItem("Aug");
+           console.log("aug: "+variable);
+           variable=localStorage.getItem("Sep");
+           console.log("sept: "+variable);
+           variable=localStorage.getItem("Oct");
+           console.log("oct: "+variable);
+           variable=localStorage.getItem("Nov");
+           console.log("nov: "+variable);
+           variable=localStorage.getItem("Dec");
+           console.log("dec: "+variable);
+           }

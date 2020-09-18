@@ -5,24 +5,27 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Bootslander Bootstrap Template - Index</title>
+  <title>Welcome to Chocolate Cosmos</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="landing/img/favicon.png" rel="icon">
-  <link href="landing/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="images/chocopink.png" rel="icon">
+  <link href="images/chocopink.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
+  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="myProjects/webProject/icofont/css/icofont.min.css">
   <!-- Vendor CSS Files -->
   <link href="landing/bootstrap.min.css" rel="stylesheet">
   <!-- <link href="landing/icofont.min.css" rel="stylesheet"> -->
   <!-- <link href="landing/boxicons.min.css" rel="stylesheet"> -->
-  <!-- <link href="landing/venobox.css" rel="stylesheet"> -->
+  <link href="landing/venobox.css" rel="stylesheet">
   <!-- <link href="landing/remixicon.css" rel="stylesheet"> -->
-  <!-- <link href="landing/owl.carousel.min.css" rel="stylesheet"> -->
+  <link href="landing/owl.carousel.min.css" rel="stylesheet">
   <link href="landing/aos.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
@@ -67,29 +70,29 @@ type="text/javascript"></script> -->
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center header-transparent">
     <div class="container d-flex align-items-center topnav ">
-      <div class="logo ">
-        <img src="images/choco2.png">
-        <h6 class="text-light"><span>Chocolate Cosmos</span></h6>
+      <div class="logo flexdp left">
+        <img src="images/choco2.png" style="width: 70px; height: 35px; margin-top: 0px !important;">
+        <h6 class="text-light">Chocolate Cosmos</h6>
       </div>
 
-      <nav class="nav-menu d-none d-lg-block ">
+      <nav class="nav-menu d-none d-lg-block right">
         <div class="container ">
           <form class="form flexdp" id="login_form">
-            <p id="errormsglg" style="color:white;margin-top:4px;"class="error white-text center-align">Users login here</p>
+            <p id="errormsglg" style="color:white;margin-top:4px;"class="error white-text center-align">Users' login here</p>
             <input class="inputlg center white-text input-field" type="text" placeholder="Email" id="userEmailli">
             <input  class="inputlg center input-field" type="password" placeholder="Password" id="userPasswordli">
             <!-- <input class="un signsa" type="text"  placeholder="Company location" id="userLocationsu"> -->
-            <button  class="formbuttonreal" type="submit" id="login-button">Login</button></br>
-
+            <button  class="formbuttonreal" type="submit" id="login-button">Login</button>
+            <button  class="formbuttonreal forgotp" data-toggle="modal" data-target="#modal-reset">Forgot Password</button>
+            <!-- <p  class="forgot"
+             data-toggle="modal" data-target="#modal-reset">
+            Forgot Password!</p> -->
             <!-- /////////////// -->
                 <!-- <div class="container progcont"> -->
                       <div class="progress progbarlog center" id="progbarlog">
                             <div class="indeterminate center"></div>
                         </div>
                 <!-- </div> -->
-                <a  class="forgot"
-                 data-toggle="modal" data-target="#modal-reset">
-                Forgot Password!</a>
           </form>
         </div>
       </nav><!-- .nav-menu -->
@@ -275,11 +278,11 @@ type="text/javascript"></script> -->
                       This is the main Feature of the system and is broken down as below:
                     </p>
                     <ul>
-                      <li><i class="icofont-check"></i>Total Expenditure of the business.</li>
-                      <li><i class="icofont-check"></i>Charts and Graphs for the Expenditure Breakdown according to each Item or Account.</li>
-                      <li><i class="icofont-check"></i>Printable Expense Reports.</li>
-                      <li><i class="icofont-check"></i>Custom Time Range Reports.</li>
-                      <li><i class="icofont-check"></i>Monthly email of the Business Expenditure Report.</li>
+                      <li><i class="ri-checkbox-circle-line"></i>Total Expenditure of the business.</li>
+                      <li><i class="ri-checkbox-circle-line"></i>Charts and Graphs for the Expenditure Breakdown according to each Item or Account.</li>
+                      <li><i class="ri-checkbox-circle-line"></i>Printable Expense Reports.</li>
+                      <li><i class="ri-checkbox-circle-line"></i>Custom Time Range Reports.</li>
+                      <li><i class="ri-checkbox-circle-line"></i>Monthly email of the Business Expenditure Report.</li>
                     </ul>
                   </div>
                 </div>
@@ -296,7 +299,7 @@ type="text/javascript"></script> -->
 
           <div class="col-lg-3 col-md-6">
             <div class="count-box">
-              <i class="icofont-simple-smile"></i>
+              <i class="ri-user-line"></i>
               <span id="usersNo"data-toggle="counter-up">10</span>
               <p>Users</p>
             </div>
@@ -304,7 +307,7 @@ type="text/javascript"></script> -->
 
           <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
             <div class="count-box">
-              <i class="icofont-document-folder"></i>
+              <i class="ri-store-3-fill"></i>
               <span id="businessesNo" data-toggle="counter-up">5</span>
               <p>Businesses</p>
             </div>
@@ -312,15 +315,15 @@ type="text/javascript"></script> -->
 
           <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
             <div class="count-box">
-              <i class="icofont-live-support"></i>
+              <i class="ri-facebook-fill"></i>
               <span data-toggle="counter-up">1,463</span>
-              <p>Social media followers</p>
+              <p>Facebook followers</p>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
             <div class="count-box">
-              <i class="icofont-users-alt-5"></i>
+              <i class="ri-road-map-fill"></i>
               <span data-toggle="counter-up">15</span>
               <p>Countries</p>
             </div>
@@ -410,61 +413,73 @@ type="text/javascript"></script> -->
 
       </div>
     </section><!-- End Gallery Section -->
-
     <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials">
-
       <div class="container">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-          </ol>
 
-          <!-- Wrapper for slides -->
-          <div class="carousel-inner">
+        <div class="owl-carousel testimonials-carousel" data-aos="zoom-in">
 
-            <div class="item active">
-              <img src="landing/img/team/team-3.jpg" alt="Los Angeles" style="width:100px; height:100px"><br/>
-              <div class="carousel-caption">
-                <h3>Paragon Real Estate</h3>
-                <p>"We keep track of our expenses but also the system is simple to use."</p>
-              </div>
-            </div>
-
-            <div class="item">
-              <img src="landing/img/team/team-2.jpg" alt="Chicago" style="width:100%; height:300px">
-              <div class="carousel-caption">
-                <h3>St. Florence S. S.</h3>
-                <p>"Other systems complicate the expense recording process which Chocolate Cosmos has simplified."</p>
-              </div>
-            </div>
-
-            <div class="item">
-              <img src="landing/img/team/team-3.jpg" alt="New York" style="width:100%; height:300px">
-              <div class="carousel-caption">
-                <h3>Hillside Hardware</h3>
-                <p>It simplified our record keeping</p>
-              </div>
-            </div>
-
+          <div class="testimonial-item">
+            <img src="landing/img/testimonials/three.png" class="testimonial-img" alt="">
+            <h3>Paul Kakaire</h3>
+            <h4>Hardware Store Owner</h4>
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              We keep track of our expenses but also the system is simple to use.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
           </div>
 
-          <!-- Left and right controls -->
-          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
+          <div class="testimonial-item">
+            <img src="landing/img/testimonials/one.png" class="testimonial-img" alt="">
+            <h3>Sara Mirembe</h3>
+            <h4>Bursar</h4>
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              Other systems complicate the expense recording process which Chocolate Cosmos has simplified.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+          </div>
 
-    </section><!-- End Testimonials Section -->
+          <div class="testimonial-item">
+            <img src="landing/img/testimonials/five.png" class="testimonial-img" alt="">
+            <h3>Ali Kabenge</h3>
+            <h4>Store Owner</h4>
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              It simplified our record keeping
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+          </div>
+
+          <div class="testimonial-item">
+            <img src="landing/img/testimonials/two.png" class="testimonial-img" alt="">
+            <h3>Sheillah Namono</h3>
+            <h4>Bursar</h4>
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              Easy to use.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+          </div>
+
+          <div class="testimonial-item">
+            <img src="landing/img/testimonials/four.png" class="testimonial-img" alt="">
+            <h3>John Ochieng</h3>
+            <h4>Entrepreneur</h4>
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              The system produces good Expense Reports that help know how the business is moving.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+    <!-- End Testimonials Section -->
+
 
     <!-- ======= Team Section ======= -->
     <section id="team" class="team">
@@ -484,10 +499,10 @@ type="text/javascript"></script> -->
                 <h4>Esther Gonza</h4>
                 <span>Chief Executive Officer</span>
                 <div class="social">
-                  <a href=""><i class="icofont-twitter"></i></a>
-                  <a href=""><i class="icofont-facebook"></i></a>
-                  <a href=""><i class="icofont-instagram"></i></a>
-                  <a href=""><i class="icofont-linkedin"></i></a>
+                  <a href=""><i class="bx-fw bx bxl-facebook"></i></a>
+                  <a href=""><i class="bx-fw bx bxl-twitter"></i></a>
+                  <a href=""><i class="bx-fw bx bxl-instagram"></i></a>
+                  <a href=""><i class="bx-fw bx bxl-google-plus"></i></a>
                 </div>
               </div>
             </div>
@@ -500,10 +515,10 @@ type="text/javascript"></script> -->
                 <h4>Florence Wotali</h4>
                 <span>Chief Finance Officer</span>
                 <div class="social">
-                  <a href=""><i class="icofont-twitter"></i></a>
-                  <a href=""><i class="icofont-facebook"></i></a>
-                  <a href=""><i class="icofont-instagram"></i></a>
-                  <a href=""><i class="icofont-linkedin"></i></a>
+                  <a href=""><i class="bx-fw bx bxl-facebook"></i></a>
+                  <a href=""><i class="bx-fw bx bxl-twitter"></i></a>
+                  <a href=""><i class="bx-fw bx bxl-instagram"></i></a>
+                  <a href=""><i class="bx-fw bx bxl-google-plus"></i></a>
                 </div>
               </div>
             </div>
@@ -516,10 +531,10 @@ type="text/javascript"></script> -->
                 <h4>Samuel Mugabi</h4>
                 <span>Chief Technical Officer</span>
                 <div class="social">
-                  <a href=""><i class="icofont-twitter"></i></a>
-                  <a href=""><i class="icofont-facebook"></i></a>
-                  <a href=""><i class="icofont-instagram"></i></a>
-                  <a href=""><i class="icofont-linkedin"></i></a>
+                  <a href=""><i class="bx-fw bx bxl-facebook"></i></a>
+                  <a href=""><i class="bx-fw bx bxl-twitter"></i></a>
+                  <a href=""><i class="bx-fw bx bxl-instagram"></i></a>
+                  <a href=""><i class="bx-fw bx bxl-google-plus"></i></a>
                 </div>
               </div>
             </div>
@@ -532,10 +547,10 @@ type="text/javascript"></script> -->
                 <h4>Emmanuel Walugula</h4>
                 <span>Social Media Manager</span>
                 <div class="social">
-                  <a href=""><i class="icofont-twitter"></i></a>
-                  <a href=""><i class="icofont-facebook"></i></a>
-                  <a href=""><i class="icofont-instagram"></i></a>
-                  <a href=""><i class="icofont-linkedin"></i></a>
+                  <a href=""><i class="bx-fw bx bxl-facebook"></i></a>
+                  <a href=""><i class="bx-fw bx bxl-twitter"></i></a>
+                  <a href=""><i class="bx-fw bx bxl-instagram"></i></a>
+                  <a href=""><i class="bx-fw bx bxl-google-plus"></i></a>
                 </div>
               </div>
             </div>
@@ -559,7 +574,7 @@ type="text/javascript"></script> -->
 
           <div class=" col-lg-3 col-md-6 mt-4 mt-md-0">
             <div class="box featured" data-aos="zoom-in" data-aos-delay="200">
-              <h3>160,000/=</h3>
+              <h3>200,000/=</h3>
               <!-- <h5>~26,700<span> / month</span></h5> -->
               <ul>
                 <li>For 6 months</li>
@@ -619,7 +634,7 @@ type="text/javascript"></script> -->
 
           <li data-aos="fade-up">
             <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse"  href="#faq-list-1">How long does the license last<i class="bx bx-chevron-down "></i><i class="bx bx-chevron-up icon-close"></i></a>
-            <div id="faq-list-1" class="" data-parent=".faq-list">
+            <div id="faq-list-1" class="collapse" data-parent=".faq-list">
               <p>
                 The license covers a period of 6 months and after this the user will be required to renew their licencse.
                 </p>
@@ -636,7 +651,7 @@ type="text/javascript"></script> -->
 
             <li data-aos="fade-up" data-aos-delay="400">
               <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-5" class="collapsed">How much storage am I allocated?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-5" class="" data-parent=".faq-list">
+              <div id="faq-list-5" class="collapse" data-parent=".faq-list">
                 <p>
                 Every user is allocated upto 10GB online storage on our servers. Considering that you are storing mainly text, this takes a very long time to fill up and even then, more space will be allocated.</p>
               </div>
@@ -655,9 +670,16 @@ type="text/javascript"></script> -->
   <div class="" id="bottomplaceholder"></div>
   <!-- End Footer -->
 
-  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+  <a href="#" class="back-to-top">
+    <!-- <i class="icofont-simple-up"></i> -->
+
+<i class='bx bxs-up-arrow-circle bx-fade-up'></i>
+  </a>
   <div id="preloader"></div>
 
+  <div class="spinner-border text-success" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
     <!-- account MODAL -->
     <div id="modal-reset" class="modal fade"  role="dialog">
       <div class="modal-content">
