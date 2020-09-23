@@ -13,20 +13,19 @@
   <link href="images/chocopink.png" rel="icon">
   <link href="images/chocopink.png" rel="apple-touch-icon">
 
+  <link href='https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic' rel='stylesheet' type='text/css'>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"> -->
 
   <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-  <link rel="stylesheet" href="myProjects/webProject/icofont/css/icofont.min.css">
+  <!-- <link rel="stylesheet" href="myProjects/webProject/icofont/css/icofont.min.css"> -->
   <!-- Vendor CSS Files -->
   <link href="landing/bootstrap.min.css" rel="stylesheet">
-  <!-- <link href="landing/icofont.min.css" rel="stylesheet"> -->
-  <!-- <link href="landing/boxicons.min.css" rel="stylesheet"> -->
   <link href="landing/venobox.css" rel="stylesheet">
-  <!-- <link href="landing/remixicon.css" rel="stylesheet"> -->
   <link href="landing/owl.carousel.min.css" rel="stylesheet">
   <link href="landing/aos.css" rel="stylesheet">
+  <link href="css/progress_button.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="landing/style.css" rel="stylesheet">
@@ -43,6 +42,8 @@ type="text/javascript"></script> -->
 <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-7RNMH0wBCXrOpWEy2bc5hfWBIBK8NrY&libraries=places"></script> -->
 <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=&libraries=places"></script> -->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-7RNMH0wBCXrOpWEy2bc5hfWBIBK8NrY&libraries=places"></script>
+
+<!-- <link href='https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic' rel='stylesheet' type='text/css'> -->
 </head>
 
 <body id="bodeys">
@@ -82,22 +83,27 @@ type="text/javascript"></script> -->
             <input class="inputlg center white-text input-field" type="text" placeholder="Email" id="userEmailli">
             <input  class="inputlg center input-field" type="password" placeholder="Password" id="userPasswordli">
             <!-- <input class="un signsa" type="text"  placeholder="Company location" id="userLocationsu"> -->
-            <button  class="formbuttonreal" type="submit" id="login-button">Login</button>
+            <button  class="formbuttonreal butprog" type="submit" id="login-button">Login</button>
+            <!-- <button  class="formbuttonreal butprog" type="submit" id="bta">Login</button> -->
+<!-- ///////////// -->
+  <!-- <button id="bta"class='progress'>Voodoo</button> -->
+<!-- ///////////////////// -->
             <button  class="formbuttonreal forgotp" data-toggle="modal" data-target="#modal-reset">Forgot Password</button>
             <!-- <p  class="forgot"
              data-toggle="modal" data-target="#modal-reset">
             Forgot Password!</p> -->
             <!-- /////////////// -->
                 <!-- <div class="container progcont"> -->
-                      <div class="progress progbarlog center" id="progbarlog">
+                      <!-- <div class="progress progbarlog center" id="progbarlog">
                             <div class="indeterminate center"></div>
-                        </div>
+                        </div> -->
                 <!-- </div> -->
           </form>
         </div>
       </nav><!-- .nav-menu -->
 
     </div>
+
   </header><!-- End Header -->
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="secondBg">
@@ -119,6 +125,7 @@ type="text/javascript"></script> -->
 <!-- create account -->
         <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
           <h2 id="hone4" class="hcreateacc heads yellow-text">Create an account</h2>
+
                     <form class="form" id="signup_form1">
                       <div class="flexdp">
                       <input class="un signsa inputup" type="text" placeholder="Surname" id="userSurnamesu">
@@ -130,16 +137,18 @@ type="text/javascript"></script> -->
                       <input class="un signsa inputup" type="text"  placeholder="Company name" id="userCompanysu">
                       <input class="un signsa inputup" type="text"  placeholder="Company location" id="userLocation">
                         </div><div class="flexdp">
-                      <input class="left pass signs inputup" type="password" align="center" placeholder="Password" id="userPasswordsu">
+                      <input class=" pass signs inputup" type="password" align="center" placeholder="Password" id="userPasswordsu">
                       <p id="errormsg" class="passnote error white-text center-align">Password should be atleast 6 characters.</p>
                     </div><a class="right red-text fillnote" id="fillall"></a>
                       <br/>
-                      <button  class="twobtn formbuttonsu" id="signupBtn" >Finish Signup</button>
+                      <button  class="twobtn formbuttonsu butprog" id="signupBtn" >Finish Signup</button>
                       <br/>
+
+                        <!-- <p id="errormsgsu" style="color:white;margin-top:4px;"class="error white-text center-align">Users' login here</p> -->
                     <!-- /////////////// -->
-                            <div class="progress progbarsing center" id="progbarsing">
+                            <!-- <div class="progress progbarsing center" id="progbarsing">
                                   <div class="indeterminate center"></div>
-                              </div>
+                              </div> -->
                       <!-- /////////////// -->
                     </form>
         </div>
@@ -707,6 +716,39 @@ type="text/javascript"></script> -->
             <h4>VERIFICATION EMAIL SENT</h4><br />
           <h6>Please follow the link sent to your email to verify account</h6>          </div>
         </div>
+
+                    <div class="row">
+                    	<div class="progress-btn" data-progress-style="fill-back">
+                    	  <div class="btn">Button</div>
+                    	  <div class="progress"></div>
+                    	</div>
+
+                    	<div class="progress-btn" data-progress-style="fill-bottom">
+                    	  <div class="btn">Button</div>
+                    	  <div class="progress"></div>
+                    	</div>
+
+                    	<div class="progress-btn" data-progress-style="fill-top">
+                    	  <div class="btn">Button</div>
+                    	  <div class="progress"></div>
+                    	</div>
+                    </div>
+
+                    <div class="row">
+                    	<div class="progress-btn active" data-progress-style="indefinite">
+                    	  <div class="btn">Button</div>
+                    	  <div class="progress"></div>
+                    	</div>
+
+                    	<div class="progress-btn " data-progress-style="indefinite-circle">
+                    		<div class="btn">Button</div>
+                    		<svg class="progress circle-loader" width="40" height="40" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    			<circle cx="20" cy="20" r="15">
+                    		</svg>
+                    	</div>
+                    </div>
+                    <link href="css/progressbutton.css" rel="stylesheet">
+
     </body>
 
     <!-- Vendor JS Files -->

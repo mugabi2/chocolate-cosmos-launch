@@ -1,5 +1,19 @@
+
+//   var button = document.getElementById('bta');
+//
+//   var timeout = 0;
+//   button.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     button.classList.add('active');
+// console.log("@@@@@@@@@");
+//     clearTimeout(timeout);
+//     timeout = setTimeout(() => {
+//       button.classList.remove('active');
+//     }, 2000);
+//   })
 var fuel=0,
 zero=0,one=1,two=2,three=3,four=4;
+
 // listen for authentication
 // auth.onAuthStateChanged(user=>{
 //   if(user){
@@ -43,7 +57,8 @@ const signupBtn=document.querySelector('#signupBtn');
 
 signupBtn.addEventListener('click', (e) =>{
   e.preventDefault();
-  document.getElementById("progbarsing").style.visibility="visible";
+  signupBtn.classList.add('active');
+  // document.getElementById("progbarsing").style.visibility="visible";
   const surname=document.getElementById("userSurnamesu").value;
   const firstname=document.getElementById("userFirstnamesu").value;
   const company=document.getElementById("userCompanysu").value.toUpperCase();
@@ -57,7 +72,8 @@ signupBtn.addEventListener('click', (e) =>{
         // $('#selBooks').focus();
         console.log("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
           document.getElementById('errormsg').innerHTML="Please fill in all fields";
-          document.getElementById("progbarsing").style.visibility="hidden";
+          signupBtn.classList.remove('active');
+          // document.getElementById("progbarsing").style.visibility="hidden";
         return false;
       }else {
 
@@ -130,7 +146,8 @@ firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
                       console.log("0000004",usernumber);
                                 localStorage.setItem(tutorial_key, 1);
                       // signup
-                      document.getElementById("progbarsing").style.visibility="hidden";
+                      signupBtn.classList.remove('active');
+                      // document.getElementById("progbarsing").style.visibility="hidden";
                       // document.location.replace("create.html");
                           alert("A login link has been sent to "+email+". PLEASE CHECK YOUR EMAIL");
                       console.log("please check email for link");
@@ -138,7 +155,8 @@ firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
                       .catch(err => {
                         console.error(err)
                           document.getElementById('.errormsg').innerHTML=err.message;
-                          document.getElementById("progbarsing").style.visibility="hidden";
+                          signupBtn.classList.remove('active');
+                          // document.getElementById("progbarsing").style.visibility="hidden";
                       })
 
                   }
@@ -148,7 +166,8 @@ firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
               .catch(err => {
                 console.error(err)
                   document.querySelector('.error').innerHTML=err.message;
-                  document.getElementById("progbarsing").style.visibility="hidden";
+                  signupBtn.classList.remove('active');
+                  // document.getElementById("progbarsing").style.visibility="hidden";
               })
 
           }
@@ -158,7 +177,8 @@ firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
 document.getElementById("errormsg").innerHTML =err.message;
     // document.querySelector('.error').innerHTML=err.message;
     console.log(err);
-    document.getElementById("progbarsing").style.visibility="hidden";
+    signupBtn.classList.remove('active');
+    // document.getElementById("progbarsing").style.visibility="hidden";
   });
   console.log(email,password);
 }//outsider end
@@ -168,7 +188,7 @@ document.getElementById("errormsg").innerHTML =err.message;
 async function inside(usernumber,company,surname,firstname,email,phone,location){
 var userid=generator(usernumber,company);
 // fina setup
-document.getElementById("progbarsing").style.visibility="visible";
+// document.getElementById("progbarsing").style.visibility="visible";
 var frofro="2019";
 var toto="2020";
 finyear=localStorage.getItem(financialyear_key);
@@ -299,7 +319,8 @@ const loginForm=document.querySelector('#login_form');
 const loginBtn=document.querySelector('#login-button');
 loginBtn.addEventListener('click', (e) =>{
   e.preventDefault();
-  document.getElementById("progbarlog").style.visibility="visible";
+  // document.getElementById("progbarlog").style.visibility="visible";
+  loginBtn.classList.add('active');
 
 // $('#progbar1').addClass("active");
   // const email=loginForm['userEmailli'].value;
@@ -312,8 +333,9 @@ loginBtn.addEventListener('click', (e) =>{
       // alert("Please fill in all fields");
       // $('#selBooks').focus();
       console.log("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
-        document.getElementById('errormsglg').innerHTML="Please fill in all fields";
-        document.getElementById("progbarsing").style.visibility="hidden";
+        document.getElementById('errormsg').innerHTML="Please fill in all fields";
+        // document.getElementById("progbarsing").style.visibility="hidden";
+        loginBtn.classList.remove('active');
       return false;
     }else {
     // log in the user
@@ -339,12 +361,13 @@ console.log("wait",waitforme);
         var take=localStorage.getItem(account_key);
         console.log("take",take);
         // login
-        document.getElementById("progbarlog").style.visibility="hidden";
+        loginBtn.classList.remove('active');
         document.location.replace("index.html");
 
           })
           .catch(err => {
             console.error(err)
+            loginBtn.classList.remove('active');
           })
 
       }
@@ -352,7 +375,7 @@ console.log("wait",waitforme);
 
   }).catch(err=>{
     document.querySelector('.error').innerHTML=err.message;
-    document.getElementById("progbarlog").style.visibility="hidden";
+    loginBtn.classList.remove('active');
   });
   console.log(email,password);
 }
@@ -530,4 +553,17 @@ auth.sendPasswordResetEmail(emailAddress).then(function() {
 
              $(function(){
                $("#bottomplaceholder").load("universal/bottom.html");
+             });
+
+             $(document).ready(function() {
+               $(".progress-btn").on("click", function() {
+                 var progressBtn = $(this);
+                 console.log("CLICK CLICK");
+                 if (!progressBtn.hasClass("active")) {
+                   progressBtn.addClass("active");
+                   setTimeout(function() {
+                     progressBtn.removeClass("active");
+                   }, 10000);
+                 }
+               })
              });

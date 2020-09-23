@@ -668,6 +668,7 @@ transactBtn.addEventListener('click', (e) =>{
     }else {
       console.log("yyyyyyyyyyyyyyyyyyyyy");
     }
+    var monthie=whichMonth(whatMonth(datetrans));
     var amounttrans=sanitizeStringComma(amounttrans);
     amounttrans=amounttrans*quantity;
   var accit;
@@ -749,6 +750,7 @@ transactBtn.addEventListener('click', (e) =>{
                                          item:   itemtrans,
                                          supplier:suptrans,
                                          time:timetransaction,
+                                         month:monthie,
                                          created:  firebase.firestore.FieldValue.serverTimestamp()
                                        }).then(() => {
                                          transactForm.reset();
@@ -1498,3 +1500,63 @@ console.log("close");}
 function bootlearn(){
   document.location.replace("bootlearn/mainboot.html");
 }
+
+    function whatMonth(operator){
+  return operator.substring(0, 2);
+}
+
+  function whichMonth(monthNumber){
+    var month;
+    monthNumber=parseInt(monthNumber);
+    switch (monthNumber) {
+case 01:
+  month = "Jan";
+  return month;
+  break;
+case 02:
+   month = "Feb";
+   return month;
+  break;
+case 03:
+  month = "Mar";
+  return month;
+  break;
+case 04:
+  month = "Apr";
+  return month;
+  break;
+case 05:
+  month = "May";
+  return month;
+  break;
+case 06:
+  month = "Jun";
+  return month;
+  break;
+case 07:
+month = "Jul";
+return month;
+break;
+case 08:
+ month = "Aug";
+ return month;
+break;
+case 09:
+month = "Sep";
+return month;
+break;
+case 10:
+month = "Oct";
+return month;
+break;
+case 11:
+month = "Nov";
+return month;
+break;
+case 12:
+month = "Dec";
+return month;
+break;
+}
+return month;
+  }
