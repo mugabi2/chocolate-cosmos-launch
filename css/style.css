@@ -12,6 +12,9 @@
         .bodey {
         visibility: hidden;
             } */
+    .margino {
+    margin-left: 20px !important;
+        }
     .cornerpad {
     margin-top: -100px !important;
     padding-top: -100px !important;
