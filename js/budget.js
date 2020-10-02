@@ -17,6 +17,7 @@ var currentAccounts_key="current accounts";
 var currentItems_key="current items";
 var budgetaccounts_key="budget accounts";
 var budgetitems_key="budget items";
+var budgetTotal_key="budget total";
 var currentbudgetname_key="current budget name";
 var dbacc = localStorage.getItem(account_key);
 var dbit = localStorage.getItem(items_key);
@@ -32,6 +33,10 @@ var bugs = localStorage.getItem(userid_key)+"BUDGETS";
 db.collection(dbit).onSnapshot(snapshot=>{
 window.localStorage.setItem(currentItems_key, snapshot.docs);
 setupItems(snapshot.docs);
+})
+// var polyster=localStorage.getItem(userid_key)+bugt;
+db.collection(bugt).onSnapshot(snapshot=>{
+setupTotalBudge(snapshot.docs);
 })
 db.collection(bugt).onSnapshot(snapshot=>{
 setupBudgetItems(snapshot.docs);
@@ -167,7 +172,7 @@ data.forEach(doc=>{
   if(key=="item"){
      itd=value;
    }else if (key=="amount") {
-     amd=value;
+     amd=addCommas(value);
    }
     liste=doc.id+" "+itd+" "+amd+" "+spd+" "+dtd+" "+tmd;
     k++;
@@ -249,7 +254,7 @@ budgetList.innerHTML=html;
             });
 
             db.collection(bugatti).doc(budge).set({
-              name: budge
+              name: budgetN
             })
     })
     // eventlistener end
@@ -281,16 +286,20 @@ budgetList.innerHTML=html;
                const setupDropdownbgt =(data)=>{
                  let html=`
                    <select class="team wonder " id="dropitcrt">
-                   <option>Choose Item's Account</option>`;
+                   <option>Choose Item's Acnt</option>`;
                  let htmlEnd=`
                </select>`;
                  var list='';
                  data.forEach(doc=>{
                    const drops=doc.data();
-                   const li=`
-                   <option>${doc.id}</option>
-                   `;
-                   html+=li;
+      jQuery.each(doc.data(), function (key, value) {
+                if(key=="name"){
+                             const li=`
+                             <option id="${doc.id}" onchange="budClick(event)">${value}</option>
+                             `;
+                                          html+=li;
+                }
+      })
                  });
                  html+=htmlEnd;
                dropdownpro.innerHTML=html;
@@ -300,4 +309,41 @@ budgetList.innerHTML=html;
                  $(document).ready(function(){
                    $('select').formSelect();
                  });
+               }
+function budClick(event){
+  var budgetKi=event.target.id;
+  console.log("!!!!"+budgetKi);
+  // localStorage.setItem(currentbudgetname_key, budgetKi);
+}
+
+               const setupTotalBudge =(data)=>{
+               localStorage.setItem(budgetTotal_key, 0);
+                 data.forEach(doc=>{
+                   const drops=doc.data();
+      jQuery.each(doc.data(), function (key, value) {
+                if(key=="amount"){
+                  var silk = localStorage.getItem(budgetTotal_key);
+                  silk=parseInt(silk)+parseInt(value);
+                  localStorage.setItem(budgetTotal_key, silk);
+
+                }
+      })
+                 });
+                 console.log("!!!! "+localStorage.getItem(budgetTotal_key));
+               document.getElementById('totalbudge').innerHTML
+               ="Budget  "+addCommas(localStorage.getItem(budgetTotal_key));
+               }
+
+               function addCommas(nStr) {
+                 nStr += '';
+                 var comma = /,/g;
+                 nStr = nStr.replace(comma,'');
+                 x = nStr.split('.');
+                 x1 = x[0];
+                 x2 = x.length > 1 ? '.' + x[1] : '';
+                 var rgx = /(\d+)(\d{3})/;
+                 while (rgx.test(x1)) {
+                   x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                 }
+                 return x1 + x2;
                }
