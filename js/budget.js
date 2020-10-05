@@ -19,6 +19,7 @@ var budgetaccounts_key="budget accounts";
 var budgetitems_key="budget items";
 var budgetTotal_key="budget total";
 var currentbudgetname_key="current budget name";
+var currentbudgetnamename_key="current budget name name";
 var dbacc = localStorage.getItem(account_key);
 var dbit = localStorage.getItem(items_key);
 var dbbgtit = localStorage.getItem(budgetitems_key);
@@ -177,8 +178,8 @@ data.forEach(doc=>{
     liste=doc.id+" "+itd+" "+amd+" "+spd+" "+dtd+" "+tmd;
     k++;
     identity=doc.id;
-    identitye=doc.id+'e';
-    identityd=doc.id+'d';
+    identitye=doc.id;
+    identityd=doc.id;
                })
           y++;
           prints.push(identitye);
@@ -190,8 +191,8 @@ data.forEach(doc=>{
             <div class="divlist">${doc.id}</div> &ensp;
             <div class="divlist">${amd}</div>
             <div class="text-right divicon">
-            <i id="${identityd}" onclick="predeleteItem(event)" class=" icondelete small material-icons right histicon">delete_forever</i>
-            <i id="${identitye}" onclick="editItemAdapter(event)" class="center iconprint small material-icons right histicon">edit</i>
+            <i id="${identityd}" onclick="deleteItem(event)" class=" icondelete small material-icons right histicon">delete_forever</i>
+            <i id="${identitye}" onclick="editItem(event)" class="center iconprint small material-icons right histicon">edit</i>
             </div>
             </div>
             </li>
@@ -215,9 +216,12 @@ budgetList.innerHTML=html;
 
       // Or with jQuery
 
-            $(document).ready(function(){
-              $('.createbudgetmodal').modal();
-            });
+                  $(document).ready(function(){
+                    $('.editmodal').modal();
+                  });
+                  $(document).ready(function(){
+                    $('.createbudgetmodal').modal();
+                  });
                   $(document).ready(function(){
                     $('.budgetModal').modal();
                   });
@@ -245,17 +249,20 @@ budgetList.innerHTML=html;
       var bgtit = localStorage.getItem(budgetitems_key);
       var budge=iden+budgetN;
       var bugatti=iden+"BUDGETS"
+      localStorage.setItem(currentbudgetnamename_key, budgetN);
         localStorage.setItem(currentbudgetname_key, budge);
+                    db.collection(bugatti).doc(budge).set({
+                      name: budgetN
+                    })
           db.collection('USERS').doc(iden).update({
               budget: budge
+            }).then(() => {
+        location.reload();
             }).catch(err => {
               console.log("errrr");
               console.log(err.message);
             });
 
-            db.collection(bugatti).doc(budge).set({
-              name: budgetN
-            })
     })
     // eventlistener end
 
@@ -284,9 +291,12 @@ budgetList.innerHTML=html;
                const dropdownpro=document.querySelector('.bgtdrp');
 
                const setupDropdownbgt =(data)=>{
+                var montevideo = localStorage.getItem(currentbudgetnamename_key);
+                console.log("bonsoir "+montevideo);
+                  document.getElementById('budhead').innerHTML="Budget name: "+montevideo;
                  let html=`
-                   <select class="team wonder " id="dropitcrt">
-                   <option>Choose Item's Acnt</option>`;
+                   <select class="team wonder " id="dropitcrt"  onchange="budClick()">
+                   <option>${montevideo}</option>`;
                  let htmlEnd=`
                </select>`;
                  var list='';
@@ -294,10 +304,10 @@ budgetList.innerHTML=html;
                    const drops=doc.data();
       jQuery.each(doc.data(), function (key, value) {
                 if(key=="name"){
-                             const li=`
-                             <option id="${doc.id}" onchange="budClick(event)">${value}</option>
-                             `;
-                                          html+=li;
+                 const li=`
+                 <option id="${doc.id}">${value}</option>
+                 `;
+                              html+=li;
                 }
       })
                  });
@@ -310,10 +320,25 @@ budgetList.innerHTML=html;
                    $('select').formSelect();
                  });
                }
-function budClick(event){
-  var budgetKi=event.target.id;
-  console.log("!!!!"+budgetKi);
-  // localStorage.setItem(currentbudgetname_key, budgetKi);
+function budClick(){
+  var budgetKi = document.getElementById("dropitcrt").value;
+   var iden = localStorage.getItem(userid_key);
+   var bgtit = localStorage.getItem(budgetitems_key);
+   var budge=iden+budgetKi;
+   var bugatti=iden+"BUDGETS"
+     localStorage.setItem(currentbudgetname_key, budge);
+       // var =event.target.id;
+       console.log("!!!!"+budgetKi);
+       localStorage.setItem(currentbudgetname_key, budge);
+       localStorage.setItem(currentbudgetnamename_key, budgetKi);
+       db.collection('USERS').doc(iden).update({
+           budget: budge
+         }).then(() => {
+     location.reload();
+         }).catch(err => {
+           console.log("errrr");
+           console.log(err.message);
+         });
 }
 
                const setupTotalBudge =(data)=>{
@@ -347,3 +372,19 @@ function budClick(event){
                  }
                  return x1 + x2;
                }
+
+
+ function editItem(event){
+ var ideas=event.target.id;
+ console.log(ideas);
+ localStorage.setItem("item clicked", ideas);
+
+   document.getElementById('editmodal').innerHTML="Edit amount for "+ ideas;
+                jQuery(document).ready(function(){
+                      jQuery('.editmodal').modal();
+                      jQuery(document).ready(function(){
+                          jQuery('.editmodal').modal('open');
+                      });
+                });
+
+              }
