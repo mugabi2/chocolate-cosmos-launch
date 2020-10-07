@@ -191,7 +191,7 @@ data.forEach(doc=>{
             <div class="divlist">${doc.id}</div> &ensp;
             <div class="divlist">${amd}</div>
             <div class="text-right divicon">
-            <i id="${identityd}" onclick="deleteItem(event)" class=" icondelete small material-icons right histicon">delete_forever</i>
+            <i id="${identityd}" onclick="deleteBgtItem(event)" class=" icondelete small material-icons right histicon">delete_forever</i>
             <i id="${identitye}" onclick="editItem(event)" class="center iconprint small material-icons right histicon">edit</i>
             </div>
             </div>
@@ -228,7 +228,7 @@ budgetList.innerHTML=html;
   function itemClick(event){
     var ideas=event.target.id;
     console.log(ideas);
-  localStorage.setItem("item clicked", ideas);
+    localStorage.setItem("item clicked", ideas);
 
       document.getElementById('budgetItemHead').innerHTML="Budget amount for "+ ideas;
                    jQuery(document).ready(function(){
@@ -237,13 +237,15 @@ budgetList.innerHTML=html;
                              jQuery('.budgetModal').modal('open');
                          });
                    });
-
+  document.getElementById("budgetAmount").focus();
                  }
 
 
          const createbBtn=document.querySelector('#createBudget');
          createbBtn.addEventListener('click', (e) =>{
            e.preventDefault();
+            var v = document.getElementById("progbarnwbgt");
+            v.classList.remove("progbudget");
      const budgetN=document.getElementById("budgetName").value;
       var iden = localStorage.getItem(userid_key);
       var bgtit = localStorage.getItem(budgetitems_key);
@@ -269,6 +271,8 @@ budgetList.innerHTML=html;
          const addbgtBtn=document.querySelector('#addToBudget');
          addbgtBtn.addEventListener('click', (e) =>{
            e.preventDefault();
+            var v = document.getElementById("progbarbgt");
+            v.classList.remove("progbudget");
      const itemAmount=document.getElementById("budgetAmount").value;
       var itemClicked = localStorage.getItem("item clicked");
        var bgtacc = localStorage.getItem(budgetaccounts_key);
@@ -280,6 +284,10 @@ budgetList.innerHTML=html;
       db.collection(currentbgtname).doc(itemClicked).set({
         item: itemClicked,
         amount: itemAmount
+      }).then(() => {
+      v.classList.add("progbudget");
+         const modal = document.querySelector('#budgetModal');
+         M.Modal.getInstance(modal).close();
       })
     }) // eventlistener end
 
@@ -376,10 +384,31 @@ function budClick(){
 
  function editItem(event){
  var ideas=event.target.id;
+ var outputer;
  console.log(ideas);
  localStorage.setItem("item clicked", ideas);
+ var bugten = localStorage.getItem(currentbudgetname_key);
+   const docReftss = db.collection(bugten).doc(ideas);
+   docReftss.get().then(doc => {
+            if (doc.exists) {
+                // console.log('Document data:', doc.data());
+   jQuery.each(doc.data(), function (key, value) {
+             if(key=="amount"){
+              outputer=value;
+             }
+ })
 
-   document.getElementById('editmodal').innerHTML="Edit amount for "+ ideas;
+ } else {
+  console.error('Please check your collection and document name in the [firestore] shortcode!');
+ }
+ }).then(doc => {
+ document.getElementById('editAmount').value=outputer;
+ console.log("55555"+outputer);
+    document.getElementById('editItemHead').innerHTML="Edit amount for "+ ideas;
+}).catch(error => {
+ console.error('Please check your collection and document name in the [firestore] shortcode!', error);
+ });
+
                 jQuery(document).ready(function(){
                       jQuery('.editmodal').modal();
                       jQuery(document).ready(function(){
@@ -388,3 +417,35 @@ function budClick(){
                 });
 
               }
+      function deleteBgtItem(event){
+        var ideas=event.target.id;
+        // var namesir= ideas.substring(0, ideas.length - 1);
+        var txt;
+        if (confirm("Do you want to delete "+ideas+" from your Budget!")) {
+        console.log(ideas+" deleted");
+          // Retrieve
+          var dbtra = localStorage.getItem(currentbudgetname_key);
+          console.log("****"+dbtra);
+        db.collection(dbtra).doc(ideas).delete().then(function() {
+            console.log(ideas+"Document successfully deleted!");
+        }).catch(function(error) {
+            console.error("Error removing document: ", error);
+        });
+        }
+      }
+      function submitEdit(e){
+          e.preventDefault();
+           var v = document.getElementById("progbaredtbgt");
+           v.classList.remove("progbudget");
+        const itemAmount=document.getElementById("editAmount").value;
+        var itemClicked = localStorage.getItem("item clicked");
+        var currentbgtname = localStorage.getItem(currentbudgetname_key);
+        db.collection(currentbgtname).doc(itemClicked).set({
+        item: itemClicked,
+        amount: itemAmount
+        }).then(() => {
+        v.classList.add("progbudget");
+           const modal = document.querySelector('#editmodal');
+           M.Modal.getInstance(modal).close();
+        })
+      }

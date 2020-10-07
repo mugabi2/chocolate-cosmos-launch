@@ -88,7 +88,7 @@ type="text/javascript"></script> -->
 <!-- ///////////// -->
   <!-- <button id="bta"class='progress'>Voodoo</button> -->
 <!-- ///////////////////// -->
-            <button  class="formbuttonreal forgotp" data-toggle="modal" data-target="#modal-reset">Forgot Password</button>
+            <button  class="formbuttonreal forgotp" data-toggle="modal" data-target="#modalreset">Forgot Password</button>
             <!-- <p  class="forgot"
              data-toggle="modal" data-target="#modal-reset">
             Forgot Password!</p> -->
@@ -325,36 +325,23 @@ dfgfdgfgdfgdfgdgf
 
         <div class="row" data-aos="fade-up">
 
-          <div class="col-lg-3 col-md-6">
-            <div class="count-box">
-              <i class="ri-user-line"></i>
-              <span id="usersNo"data-toggle="counter-up">10</span>
-              <p>Users</p>
-            </div>
+          <div id="countuser" class="countuser col-lg-3 col-md-6">
           </div>
 
-          <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
-            <div class="count-box">
-              <i class="ri-store-3-fill"></i>
-              <span id="businessesNo" data-toggle="counter-up">5</span>
-              <p>Businesses</p>
-            </div>
+          <div id="countbusiness" class="col-lg-3 col-md-6 mt-5 mt-md-0">
+
           </div>
 
-          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+          <div id="countfacebook" class="col-lg-3 col-md-6 mt-5 mt-lg-0">
             <div class="count-box">
               <i class="ri-facebook-fill"></i>
-              <span data-toggle="counter-up">1,463</span>
+              <span id="facebookNo" data-toggle="counter-up">283</span>
               <p>Facebook followers</p>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-            <div class="count-box">
-              <i class="ri-road-map-fill"></i>
-              <span data-toggle="counter-up">15</span>
-              <p>Countries</p>
-            </div>
+          <div id="countcountries" class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+
           </div>
 
         </div>
@@ -602,13 +589,15 @@ dfgfdgfgdfgdfgdgf
 
           <div class=" col-lg-3 col-md-6 mt-4 mt-md-0">
             <div class="box featured" data-aos="zoom-in" data-aos-delay="200">
-              <h3>200,000/=</h3>
+            <div class="btn-wrap colortop">
+              <h3><sup><sup>Ugx</sup></sup>200,000/=</h3>
+            </div><br/><br/>
               <!-- <h5>~26,700<span> / month</span></h5> -->
               <ul>
                 <li>For 6 months</li>
                 <li>Expense Reports</li>
-                <li>10GB Cloud Storage</li>
                 <li>Budgeting Tool</li>
+                <li>10GB Cloud Storage</li>
                 <li>24/7 Customer Support</li>
                 <li>Global Access</li>
                 <!-- <li class="na">Massa ultricies mi</li> -->
@@ -706,7 +695,7 @@ dfgfdgfgdfgdfgdgf
   <div id="preloader"></div>
 
     <!-- account MODAL -->
-    <div id="modal-reset" class="modal fade"  role="dialog">
+    <div id="modalreset" class="modal fade"  role="dialog">
       <div class="modal-content">
 
         <h4>Reset Password</h4><br />
@@ -750,7 +739,6 @@ dfgfdgfgdfgdfgdgf
 
     <!-- Template Main JS File -->
     <script src="landing/main.js"></script>
-    <script src="js/login.js"></script>
     <!-- mine -->
     <!-- <link rel="stylesheet" href="./css/signup.css"> -->
 
@@ -784,4 +772,5 @@ dfgfdgfgdfgdfgdgf
       db.settings({timestampsInSnapshots: true});
 
   </script>
+  <script src="js/login.js"></script>
 </html>

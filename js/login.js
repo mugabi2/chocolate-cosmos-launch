@@ -1,4 +1,68 @@
 
+// db.collection("INFORMATION").onSnapshot(snapshot=>{
+// // setupcounters(snapshot.docs);
+// })
+      var sulement=db.collection("INFORMATION");
+    sulement.get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+    var dropss=doc.id;
+    console.log("emmmmmmm "+dropss);
+      localStorage.setItem(userid_key, dropss);
+             // if (doc.exists) {
+                 // console.log('Document data:', doc.data());
+    jQuery.each(doc.data(), function (key, value) {
+              if(key=="number"){
+                localStorage.setItem(account_key, value);
+                // document.getElementById("usersNo").value=value;
+                // document.getElementById('usersNo').innerHTML=value;
+                var fixUser=document.getElementById('countuser');
+                var htmls=`<div class="count-box">
+                  <i class="ri-user-line"></i>
+                  <span id="usersNo" data-toggle="counter-up">${value}</span>
+                  <p>Users</p>
+                </div>`;
+                fixUser.innerHTML=htmls;
+                console.log("songof users",value);
+              }else if (key=="businesses") {
+                 localStorage.setItem(items_key, value);
+                 var fixUser=document.getElementById('countbusiness');
+                 var htmls=`<div class="count-box">
+                   <i class="ri-store-3-fill"></i>
+                   <span id="businessesNo" data-toggle="counter-up">${value}</span>
+                   <p>Businesses</p>
+                 </div>`;
+                 fixUser.innerHTML=htmls;
+                 console.log("songof businesses",value);
+               }else if (key=="facebook") {
+                 localStorage.setItem(suppliers_key, value);
+                 // var fixUser=document.getElementById('countfacebook');
+                 // var htmls=`<div class="count-box">
+                 //   <i class="ri-facebook-fill"></i>
+                 //   <span id="facebookNo" data-toggle="counter-up">${value}</span>
+                 //   <p>Facebook followers</p>
+                 // </div>`;
+                 // fixUser.innerHTML=htmls;
+                 console.log("songof facebook",value);
+               }else if (key=="countries") {
+                 localStorage.setItem(transactions_key, value);
+                 var fixUser=document.getElementById('countcountries');
+                 var htmls=`<div class="count-box">
+                   <i class="ri-road-map-fill"></i>
+                   <span id="countriesNo" data-toggle="counter-up">${value}</span>
+                   <p>Countries</p>
+                 </div>`;
+                 fixUser.innerHTML=htmls;
+                 console.log("songof countries",value);
+               }
+               localStorage.setItem("kzfour", 4);
+
+    })
+    });
+    }).catch(error => {
+    // document.getElementById("progbarlog").style.visibility="hidden";
+    console.error('Please check your collection and document name in the [firestore] shortcode!', error);
+    });
+
 //   var button = document.getElementById('bta');
 //
 //   var timeout = 0;

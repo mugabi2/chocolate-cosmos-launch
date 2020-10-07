@@ -146,7 +146,7 @@
         <form id="accounts-form">
           <input class="un signsa inputup" type="text"  placeholder="Amount" id="budgetAmount">
             <!-- /////////////// -->
-                  <div class="progress progbarbgt " id="progbarbgt">
+                  <div class="progress progbarbgt  progbudget" id="progbarbgt">
                         <div class="indeterminate"></div>
                     </div>
             <!-- //////////////// -->
@@ -162,7 +162,7 @@
         <form id="accounts-form">
           <input class="un signsa inputup" type="text"  placeholder="Budget name" id="budgetName">
             <!-- /////////////// -->
-                  <div class="progress progbarnwbgt " id="progbarnwbgt">
+                  <div class="progress progbarnwbgt  progbudget" id="progbarnwbgt">
                         <div class="indeterminate"></div>
                     </div>
             <!-- //////////////// -->
@@ -177,15 +177,14 @@
         <h4 id="editItemHead">Edit</h4><br />
         <form id="accounts-form">
           <input class="un signsa inputup" type="text" id="editAmount">
-            <!-- /////////////// -->
-                  <div class="progress progbaredtbgt " id="progbaredtbgt">
+                  <div class="progress progbaredtbgt progbudget" id="progbaredtbgt">
                         <div class="indeterminate"></div>
                     </div>
-            <!-- //////////////// -->
-          <button class="btn teal z-depth-2" id="createBudget">Save Edit</button>
+          <button class="btn teal z-depth-2" onclick="submitEdit(event)" id="saveEdit">Save Edit</button>
       </form>
       </div>
     </div>
+
 
     <div class="" id="bottomplaceholder"></div>
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
