@@ -1046,26 +1046,31 @@ section {
   transition: ease-in-out 0.3s;
 }
 
-.features .icon-box i {
+.iconox {
   font-size: 32px;
   padding-right: 10px;
   line-height: 1;
+  margin-top: -4px;
 }
 
-.features .icon-box h3 {
+.collarhead{
   font-weight: 700;
-  margin: 0;
-  padding: 0;
-  line-height: 1;
-  font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+    margin-top: 4px !important;
+    padding: 0;
+    line-height: 1;
+    font-size: 16px;
+      color: #010483 !important;
+      transition: ease-in-out 0.3s;
+}
+.features .icon-box h3 {
 }
 
 .features .icon-box h3 a {
-  color: #010483;
-  transition: ease-in-out 0.3s;
 }
 
-.features .icon-box h3 a:hover {
+.collarhead :hover {
   color: #01036f;
 }
 
@@ -1888,6 +1893,8 @@ section {
   height: 65px;
   background-color:  #e8eaf6 !important;
   padding: 10px;
+  margin: 3px;
+  /* max-width: 300px; */
 }
 .mytabletshead{
   background-color: #e8eaf6 !important;
