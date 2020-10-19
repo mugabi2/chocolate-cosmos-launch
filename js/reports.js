@@ -18,6 +18,7 @@ var totalaccounts_key="total accounts";
 var totalitems_key="total items";
 var transactions_key="transactions";
 var rangeTotal_key="range total";
+var totalRecallAcc_key="total recall";
   localStorage.setItem(rangeTotal_key, parseInt(0));
 var dbacc = localStorage.getItem(account_key);
 var dbit = localStorage.getItem(items_key);
@@ -1537,3 +1538,24 @@ console.log("nov: "+variable);
 variable=localStorage.getItem("Dec1");
 console.log("dec: "+variable);
 }
+
+var kadra = localStorage.getItem(items_key);
+console.log("!!!! "+kadra);
+db.collection(kadra).onSnapshot(snapshot=>{
+setupRecallAccTotal(snapshot.docs);
+})
+               const setupRecallAccTotal =(data)=>{
+               localStorage.setItem(totalRecallAcc_key, 0);
+                 data.forEach(doc=>{
+                   const drops=doc.data();
+      jQuery.each(doc.data(), function (key, value) {
+                if(key=="amount"){
+                  var silk = localStorage.getItem(totalRecallAcc_key);
+                  silk=parseInt(silk)+parseInt(value);
+                  localStorage.setItem(totalRecallAcc_key, silk);
+
+                }
+      })
+                 });
+                 console.log("!!!! "+localStorage.getItem(totalRecallAcc_key));
+               }

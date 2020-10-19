@@ -34,15 +34,16 @@ if (//!!!!!!!!!!!!!!!!
   var email = localStorage.getItem('emailForSignIn');
   var emaila = localStorage.getItem(email_key);
   console.log("email "+email);
-  console.log("email "+emaila);
+  console.log("emaila "+emaila);
   if (!email) {
     // User opened the link on a different device. To prevent session fixation
     // attacks, ask the user to provide the associated email again. For example:
     email = window.prompt('Please provide your email for confirmation');
   }
+  console.log("email "+email);
   // The client SDK will parse the code from the link for you.
-  // firebase.auth().signInWithEmailLink(email, window.location.href)
-  //   .then(function(result) {
+  firebase.auth().signInWithEmailLink(email, window.location.href)
+    .then(function(result) {
     var tutorial_key="tutorial";
     // localStorage.setItem(tutorial_key, 1);
     // document.location.replace("create.html");
@@ -119,13 +120,27 @@ if (//!!!!!!!!!!!!!!!!
       // result.additionalUserInfo.profile == null
       // You can check if the user is new or existing:
       // result.additionalUserInfo.isNewUser
-    // })
-    // .catch(function(error) {
-    //   // Some error occurred, you can inspect the code: error.code
-    //   // Common errors could be invalid email and invalid or expired OTPs.
-    // });
+    })
+    .catch(function(error) {
+      // Some error occurred, you can inspect the code: error.code
+      // Common errors could be invalid email and invalid or expired OTPs.
+    });
 
-}else if(vine==0) {///2222222222222222222222222222222222222222222222222222///////////////////////////////////////////////
+                            $(document).ready(function(){
+                              $('.helpmodals').modal();
+                            });
+
+                               jQuery(document).ready(function(){
+                                     // jQuery('.helpmodals').modal();
+                                     jQuery(document).ready(function(){
+                                         jQuery('.helpmodals').modal('open');
+                                        jQuery('.helpmodals').modal({
+                    dismissible: false
+                  });
+                                     });
+                               });
+
+}else {///2222222222222222222222222222222222222222222222222222///////////////////////////////////////////////
   // console.log("else else");
 
                   // Or with jQuery
@@ -901,9 +916,9 @@ const setupDropdownprocard =(data)=>{
 dropdownpro.innerHTML=html;
 // console.log(html);
   // Or with jQuery
-  $(document).ready(function(){
-    $('select').formSelect();
-  });
+  // $(document).ready(function(){
+  //   $('select').formSelect();
+  // });
 }
 // dropdown
 // const dropdownList=document.querySelector('.one');
@@ -932,9 +947,9 @@ var sample = localStorage.getItem(realfinancialyear_key);
 dropdownListfin.innerHTML=html;
 // console.log(html);
   // Or with jQuery
-  $(document).ready(function(){
-    $('select').formSelect();
-  });
+  // $(document).ready(function(){
+  //   $('select').formSelect();
+  // });
 }
 const setupDropdownitacc =(data)=>{
   let html=`
@@ -954,9 +969,9 @@ const setupDropdownitacc =(data)=>{
 dropdownList.innerHTML=html;
 // console.log(html);
   // Or with jQuery
-  $(document).ready(function(){
-    $('select').formSelect();
-  });
+  // $(document).ready(function(){
+  //   $('select').formSelect();
+  // });
 }
 // profile financialyear
 const setupDropdownfinapro =(data)=>{
@@ -988,11 +1003,11 @@ var sample = localStorage.getItem(realfinancialyear_key);
 dropdownListfinapro.innerHTML=html;
 // console.log(html);
   // Or with jQuery
-  $(document).ready(function(){
-    $('select').formSelect();
-  // document.getElementById("probartra").style.visibility="invisible";
-  var status = localStorage.getItem("login");
-  });
+  // $(document).ready(function(){
+  //   $('select').formSelect();
+  // // document.getElementById("probartra").style.visibility="invisible";
+  // var status = localStorage.getItem("login");
+  // });
 }
 // trait
 const setupDropdowntrait =(data)=>{
@@ -1024,11 +1039,11 @@ const setupDropdowntrait =(data)=>{
 dropdownListtrait.innerHTML=html;
 // console.log(html);
   // Or with jQuery
-  $(document).ready(function(){
-    $('select').formSelect();
-  document.getElementById("probartra").style.visibility="invisible";
-  var status = localStorage.getItem("login");
-  });
+  // $(document).ready(function(){
+  //   $('select').formSelect();
+  // document.getElementById("probartra").style.visibility="invisible";
+  // var status = localStorage.getItem("login");
+  // });
 }
   // Or with jQuery
   $('.dropdown-trigger').dropdown();
@@ -1052,9 +1067,9 @@ dropdownListtrasup.innerHTML=html;
           document.getElementById("probartra").style.visibility="hidden";
 // console.log(html);
   // Or with jQuery
-  $(document).ready(function(){
-    $('select').formSelect();
-  });
+  // $(document).ready(function(){
+  //   $('select').formSelect();
+  // });
 }
 function accountIt(item,amt,accc){
     // Retrieve
@@ -1275,37 +1290,37 @@ db.collection(dbtra).orderBy("created", "desc").onSnapshot(snapshot=>{
 //////////
 //////////
 // datepicker
-var currYear = (new Date()).getFullYear();
-var today = new Date();
-var datetoday = (today.getMonth()+1).toString()+today.getDate().toString()+today.getFullYear().toString();
-$(document).ready(function() {
-  $(".datepicker").datepicker({
-    defaultDate: datetoday,
-    setDefaultDate: true,
-    format: "mm/dd/yyyy",
-    autoClose:true
-  }).datepicker("setDate", new Date());
-});
-// datepicker2
-var currYear = (new Date()).getFullYear();
-$(document).ready(function() {
-  $(".dater").datepicker({
-    defaultDate: new Date(),
-    // setDefaultDate: new Date(2000,01,31),
-    format: "mm/dd/yyyy",
-    autoClose:true
-  }).datepicker("setDate", new Date());
-});
-  $(document).ready(function(){
-    $('.sidenav').sidenav();
-  });
+// var currYear = (new Date()).getFullYear();
+// var today = new Date();
+// var datetoday = (today.getMonth()+1).toString()+today.getDate().toString()+today.getFullYear().toString();
+// $(document).ready(function() {
+//   $(".datepicker").datepicker({
+//     defaultDate: datetoday,
+//     setDefaultDate: true,
+//     format: "mm/dd/yyyy",
+//     autoClose:true
+//   }).datepicker("setDate", new Date());
+// });
+// // datepicker2
+// var currYear = (new Date()).getFullYear();
+// $(document).ready(function() {
+//   $(".dater").datepicker({
+//     defaultDate: new Date(),
+//     // setDefaultDate: new Date(2000,01,31),
+//     format: "mm/dd/yyyy",
+//     autoClose:true
+//   }).datepicker("setDate", new Date());
+// });
+  // $(document).ready(function(){
+  //   $('.sidenav').sidenav();
+  // });
   // setup materialize components
-  document.addEventListener('DOMContentLoaded', function() {
-    var modals = document.querySelectorAll('.modal');
-    M.Modal.init(modals);
-    var items = document.querySelectorAll('.collapsible');
-    M.Collapsible.init(items);
-  });
+  // document.addEventListener('DOMContentLoaded', function() {
+  //   var modals = document.querySelectorAll('.modal');
+  //   M.Modal.init(modals);
+  //   var items = document.querySelectorAll('.collapsible');
+  //   M.Collapsible.init(items);
+  // });
     // Or with jQuery
     $(document).ready(function(){
       $('.helpmodal').modal();
@@ -1357,9 +1372,9 @@ $(document).ready(function() {
         // output.src = "data:image/png;base64," + dataImage;
                })
       }
-  $(document).ready(function(){
-    $('.sidenav').sidenav();
-  });
+  // $(document).ready(function(){
+  //   $('.sidenav').sidenav();
+  // });
   function getBase64Image(img) {
       var canvas = document.createElement("canvas");
       canvas.width = img.width;
@@ -1411,7 +1426,8 @@ function googleTranslateElementInit() {
 var tour = new Tour({
   steps: [
   {
-    element: ".tranco",
+    // element: ".tranco",
+      element: "#additembtn",
     title: "RECORD TRANSACTION",
     content: "Fill in and click Transact button"
   },
@@ -1444,7 +1460,8 @@ var tour = new Tour({
 
 tour.init();
 var tut = localStorage.getItem(tutorial_key);
-if (tut==1) {
+console.log("%%%%%%%% "+tut);
+if (tut==3) {
 tour.start();
           // localStorage.setItem(tutorial_key, 0);
 }
@@ -1498,7 +1515,7 @@ function closeNav() {
   document.getElementById("profilenav").style.width = "0";
 console.log("close");}
 function bootlearn(){
-  document.location.replace("bootlearn/mainboot.html");
+  document.location.replace("create.html");
 }
 
     function whatMonth(operator){
