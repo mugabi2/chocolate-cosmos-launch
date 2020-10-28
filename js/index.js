@@ -612,11 +612,13 @@ const setupAccounts =(data)=>{
 accountList.innerHTML=html;
 // console.log(html);
 }
+//\\
 function sanitizeSlash(str){
   console.log("sani1",str);
   str = str.replace(/[^a-z0-9,_-]/gim,"");
     return str;//.trim();
 }
+//\\
 //financialyear
 // const finForm=document.querySelector('#financialyear-form');
 const finBtn=document.querySelector('#financialyearBtn');
@@ -650,6 +652,7 @@ createAccBtn.addEventListener('click', (e) =>{
     });
   // console.log(accountName);
 })
+//\\
 // bring finyear modal
 // const helpfinebtn=document.querySelector('#helpfinebtn');
 // helpfinebtn.addEventListener('click', (e) =>{
@@ -783,6 +786,7 @@ transactBtn.addEventListener('click', (e) =>{
 //   total: totalitems
 // })
 })
+//\\
 //items
 const itForm=document.querySelector('#items-form');
 const createItBtn=document.querySelector('#createIt');

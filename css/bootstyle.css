@@ -1,0 +1,35 @@
+
+.body{
+ background-color: #f5f5f5 !important;
+}
+.chocolor{
+  background-color: #ad1457;
+}
+.righter{
+ display: flex !important;
+ justify-content: flex-end !important;
+}
+.transbox{
+ margin: 50px;
+ margin-top: 50px !important;
+ padding: 50px !important;
+ padding-top: 20px !important;
+ max-width: 70% !important;
+ margin-left: auto;
+ margin-right: auto;
+}
+.sider{
+  height: 110vh;
+ margin-top:-7% !important;
+ padding-top: 50px;
+ margin-left: -25% !important;
+ /* color: white; */
+}
+.imgprocd {
+  display:block;
+  margin-left:auto;
+  margin-right: auto;
+  width: 80px;
+  margin-top: -5px;
+  margin-bottom: 5px;
+}
